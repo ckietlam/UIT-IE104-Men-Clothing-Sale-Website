@@ -1,0 +1,1113 @@
+  /* General Reset */
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Montserrat", sans-serif;
+}
+
+@font-face {
+  font-family: 'Montserrat'; 
+  src: url('../assets/fonts/Montserrat/Montserrat-Regular.ttf') format('truetype');
+  font-weight: normal; 
+  font-style: normal; 
+}
+
+@font-face {
+  font-family: 'Montserrat';
+  src: url('../assets/fonts/Montserrat/Montserrat-Bold.ttf') format('truetype');
+  font-weight: bold;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Montserrat';
+  src: url('../assets/fonts/Montserrat/Montserrat-Italic.ttf') format('truetype');
+  font-weight: normal;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'Poppins';
+  src: url('../assets/fonts/Poppins/Poppins-ExtraBold.ttf') format('truetype');
+  font-weight: bold;
+  font-style: normal;
+}
+
+/* Áp dụng Montserrat Regular cho toàn bộ trang */
+body {
+font-family: 'Montserrat', sans-serif; /* Sử dụng Montserrat Regular */
+font-weight: normal; /* Đảm bảo dùng độ dày Regular */
+line-height: 1.6; /* Dòng chữ dễ đọc hơn */
+color: black; /* Màu chữ mặc định */
+}
+
+/* Header */
+.header, .navbar a, .dropdownButton {
+font-family: 'Montserrat', sans-serif; /* Font Montserrat Regular */
+font-weight: normal; /* Giữ độ dày mặc định */
+}
+
+/* Footer */
+.footer, .footer-links a, .footer-social p, .footer-newsletter label {
+font-family: 'Montserrat', sans-serif; /* Font Montserrat Regular */
+font-weight: normal; /* Giữ độ dày mặc định */
+}
+
+/* Các cột và items */
+.column a, .product-item p, h3 {
+font-family: 'Montserrat', sans-serif; /* Font Montserrat Regular */
+font-weight: normal; /* Giữ độ dày mặc định */
+}
+
+
+
+/* Adjust spacing in the header */
+.header {
+  display: flex;
+  justify-content: space-between; /* Căn đều các phần */
+  align-items: center;
+  padding: 20px 50px; /* Tăng/giảm padding trên header */
+  border-bottom: 1px solid #ddd;
+}
+
+.brand-logo {
+  display: flex;
+  align-items: center;
+  gap: 15px; /* Khoảng cách giữa logo và brand name */
+  margin-left: 100px;
+}
+
+.brand-name {
+  font-family: 'Poppins', sans-serif; /* Sử dụng font Poppins, fallback là sans-serif */
+  font-size: 30px; /* Điều chỉnh kích thước chữ */
+  font-weight: bold; /* Đảm bảo độ đậm được sử dụng */
+  color: black; /* Màu chữ */
+}
+
+
+.header-icons img {
+  margin: 0 10px;
+  cursor: pointer;
+}
+
+.header-icons {
+  display: flex;
+  align-items: center;
+  gap: 20px; /* Khoảng cách giữa các icon */
+  margin-right: 30px; /* Tạo khoảng cách với viền phải */
+}
+
+/* Shirt Navbar container */
+.shirtNavbar {
+  overflow: hidden;
+  background-color: #ffffff;
+  font-family: Arial;
+}
+
+/* Links inside the navbar */
+.shirtNavbar a {
+  float: left;
+  font-size: 18px;
+  font-weight: 600;
+  color: rgb(0, 0, 0);
+  text-align: center;
+  padding: 14px 60px;
+  text-decoration: none;
+}
+
+/* The dropdown container */
+.shirtDropdown {
+  float: left;
+  overflow: hidden;
+}
+
+/* Dropdown button */
+.shirtDropdown .dropdownButton {
+  font-size: 18px !important;
+  font-weight: 600 !important;
+  border: none;
+  outline: none;
+  color: black; /* Màu chữ mặc định là đen */
+  padding: 14px 60px;
+  background-color: inherit; /* Loại bỏ màu nền */
+  font: inherit;
+  margin: 0;
+  cursor: pointer;
+  transition: color 0.03s ease; /* Hiệu ứng chuyển đổi màu */
+}
+
+/* Add a green color to dropdown link on hover */
+.shirtNavbar a:hover,
+.shirtDropdown:hover .dropdownButton {
+  color: #006400;
+  background-color: transparent; /* Đảm bảo không có màu nền */
+  box-shadow: none; /* Loại bỏ viền nổi */
+  border: none; /* Loại bỏ mọi viền nếu tồn tại */
+}
+
+/* Dropdown content (hidden by default) */
+.shirtDropdownContent {
+  display: none;
+  position: absolute;
+  background-color: #ffffff;
+  width: 100%;
+  left: 0;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+}
+
+/* Show the dropdown menu on hover */
+.shirtDropdown:hover .shirtDropdownContent {
+  display: block;
+}
+
+/* Điều chỉnh cột */
+.shirtColumn {
+  width: auto; /* Điều chỉnh độ rộng */
+  padding-left: 0px; /* Thụt lề vừa phải */
+  padding-right: 0px; /* Thụt lề bên phải */
+  margin: 0; /* Loại bỏ margin thừa */
+  text-align: left;
+  margin-top: 30px;
+  margin-left: 220px;
+  margin-bottom: 30px;
+}
+
+/* Adjust row layout to minimize spacing between columns */
+.shirtRow {
+  display: flex; /* Kích hoạt Flexbox */
+  justify-content: flex-start; /* Căn các cột bắt đầu từ trái */
+  gap: 5px; /* Giảm khoảng cách giữa hai cột gần nhất */
+}
+
+/* Style links inside the columns */
+.shirtColumn a {
+  float: none;
+  color: black; /* Giữ màu chữ mặc định */
+  padding: 8px 0;
+  text-decoration: none;
+  display: block;
+  font-size: 20px;
+  font-weight: normal;
+  text-align: left;
+  transition: color 0.01s ease; /* Thêm hiệu ứng mượt cho màu chữ */
+}
+
+/* Remove background color on hover */
+.shirtColumn a:hover {
+  background-color: transparent; /* Đảm bảo không có màu nền khi hover */
+  color: #006400; /* Đổi màu chữ sang xanh lá đậm khi hover */
+}
+
+/* Style for the title (e.g., "Áo Thun") */
+.shirtColumn h3 {
+  margin-bottom: 15px; /* Tăng khoảng cách dưới tiêu đề */
+  font-size: 20px; /* Điều chỉnh kích thước chữ nếu cần */
+  font-weight: bold; /* Đảm bảo chữ đậm */
+}
+
+/* Product images container: set layout to flex for horizontal alignment */
+.shirtProductImages {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px; /* Khoảng cách giữa các ảnh */
+}
+
+/* Product item */
+.shirtProductItem {
+  text-align: center;
+  flex: 1; /* Đảm bảo các ảnh chiếm không gian đều nhau */
+}
+
+.shirtProductItem img {
+  border-radius: 10px;
+  max-width: 80%; /* Đảm bảo hình ảnh không vượt quá container */
+  height: auto;
+}
+
+.shirtProductItem p {
+  margin-top: 5px;
+  font-size: 20px;
+  color: #333333; /* Đổi màu chữ để dễ nhìn hơn */
+}
+
+/* Add a background color on hover */
+.shirtColumn a:hover {
+  background-color: transparent;
+}
+
+/* Clear floats after the columns */
+.shirtRow:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/* Pants Navbar container */
+.pantsNavbar {
+overflow: hidden;
+background-color: #ffffff;
+font-family: Arial, sans-serif;
+}
+
+/* Links inside the navbar */
+.pantsNavbar a {
+float: left;
+font-size: 18px;
+font-weight: 600;
+color: rgb(0, 0, 0);
+text-align: center;
+padding: 14px 60px;
+text-decoration: none;
+}
+
+/* The dropdown container */
+.pantsDropdown {
+float: left;
+overflow: hidden;
+}
+
+/* Dropdown button */
+.pantsDropdown .dropdownButton {
+font-size: 18px !important;
+font-weight: 600 !important;
+border: none;
+outline: none;
+color: black;
+padding: 14px 60px;
+background-color: inherit;
+font: inherit;
+margin: 0;
+cursor: pointer;
+transition: color 0.03s ease;
+}
+
+/* Add a green color to dropdown link on hover */
+.pantsNavbar a:hover,
+.pantsDropdown:hover .dropdownButton {
+color: #006400;
+background-color: transparent;
+box-shadow: none;
+border: none;
+}
+
+/* Dropdown content (hidden by default) */
+.pantsDropdownContent {
+display: none;
+position: absolute;
+background-color: #ffffff;
+width: 100%;
+left: 0;
+box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+z-index: 1;
+}
+
+/* Show the dropdown menu on hover */
+.pantsDropdown:hover .pantsDropdownContent {
+display: block;
+}
+
+/* Column layout */
+.pantsColumn {
+width: auto;
+padding-left: 0px;
+padding-right: 0px;
+margin: 0;
+text-align: left;
+margin-top: 30px;
+margin-left: 220px;
+margin-bottom: 30px;
+}
+
+/* Adjust row layout */
+.pantsRow {
+display: flex;
+justify-content: flex-start;
+gap: 5px;
+}
+
+/* Style links inside the columns */
+.pantsColumn a {
+float: none;
+color: black;
+padding: 8px 0;
+text-decoration: none;
+display: block;
+font-size: 20px;
+font-weight: normal;
+text-align: left;
+transition: color 0.01s ease;
+}
+
+/* Remove background color on hover */
+.pantsColumn a:hover {
+background-color: transparent;
+color: #006400;
+}
+
+/* Style for the title (e.g., "Quần") */
+.pantsColumn h3 {
+margin-bottom: 15px;
+font-size: 20px;
+font-weight: bold;
+}
+
+/* Product images container: set layout to flex for horizontal alignment */
+.pantsProductImages {
+display: flex;
+justify-content: space-between;
+gap: 20px;
+}
+
+/* Product item */
+.pantsProductItem {
+text-align: center;
+flex: 1;
+}
+
+.pantsProductItem img {
+border-radius: 10px;
+max-width: 80%;
+height: auto;
+}
+
+.pantsProductItem p {
+margin-top: 5px;
+font-size: 20px;
+color: #333333;
+}
+
+/* Add a background color on hover */
+.pantsColumn a:hover {
+background-color: transparent;
+}
+
+/* Clear floats after the columns */
+.pantsRow:after {
+content: "";
+display: table;
+clear: both;
+}
+
+
+
+/* Shoes Navbar container */
+.shoesNavbar {
+overflow: hidden;
+background-color: #ffffff;
+font-family: Arial;
+}
+
+/* Links inside the navbar */
+.shoesNavbar a {
+float: left;
+font-size: 18px;
+font-weight: 600;
+color: rgb(0, 0, 0);
+text-align: center;
+padding: 14px 60px;
+text-decoration: none;
+}
+
+/* The dropdown container */
+.shoesDropdown {
+float: left;
+overflow: hidden;
+}
+
+/* Dropdown button */
+.shoesDropdown .dropdownButton {
+font-size: 18px !important;
+font-weight: 600 !important;
+border: none;
+outline: none;
+color: black; /* Màu chữ mặc định là đen */
+padding: 14px 60px;
+background-color: inherit; /* Loại bỏ màu nền */
+font: inherit;
+margin: 0;
+cursor: pointer;
+transition: color 0.03s ease; /* Hiệu ứng chuyển đổi màu */
+}
+
+/* Add a green color to dropdown link on hover */
+.shoesNavbar a:hover,
+.shoesDropdown:hover .dropdownButton {
+color: #006400;
+background-color: transparent; /* Đảm bảo không có màu nền */
+box-shadow: none; /* Loại bỏ viền nổi */
+border: none; /* Loại bỏ mọi viền nếu tồn tại */
+}
+
+/* Dropdown content (hidden by default) */
+.shoesDropdownContent {
+display: none;
+position: absolute;
+background-color: #ffffff;
+width: 100%;
+left: 0;
+box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+z-index: 1;
+}
+
+/* Show the dropdown menu on hover */
+.shoesDropdown:hover .shoesDropdownContent {
+display: block;
+}
+
+/* Điều chỉnh cột */
+.shoesColumn {
+width: auto; /* Điều chỉnh độ rộng */
+padding-left: 0px; /* Thụt lề vừa phải */
+padding-right: 0px; /* Thụt lề bên phải */
+margin: 0; /* Loại bỏ margin thừa */
+text-align: left;
+margin-top: 30px;
+margin-left: 220px;
+margin-bottom: 30px;
+}
+
+/* Adjust row layout to minimize spacing between columns */
+.shoesRow {
+display: flex; /* Kích hoạt Flexbox */
+justify-content: flex-start; /* Căn các cột bắt đầu từ trái */
+gap: 5px; /* Giảm khoảng cách giữa hai cột gần nhất */
+}
+
+/* Style links inside the columns */
+.shoesColumn a {
+float: none;
+color: black; /* Giữ màu chữ mặc định */
+padding: 8px 0;
+text-decoration: none;
+display: block;
+font-size: 20px;
+font-weight: normal;
+text-align: left;
+transition: color 0.01s ease; /* Thêm hiệu ứng mượt cho màu chữ */
+}
+
+/* Remove background color on hover */
+.shoesColumn a:hover {
+background-color: transparent; /* Đảm bảo không có màu nền khi hover */
+color: #006400; /* Đổi màu chữ sang xanh lá đậm khi hover */
+}
+
+/* Style for the title (e.g., "Giày") */
+.shoesColumn h3 {
+margin-bottom: 15px; /* Tăng khoảng cách dưới tiêu đề */
+font-size: 20px; /* Điều chỉnh kích thước chữ nếu cần */
+font-weight: bold; /* Đảm bảo chữ đậm */
+}
+
+/* Product images container: set layout to flex for horizontal alignment */
+.shoesProductImages {
+display: flex;
+justify-content: space-between;
+gap: 20px; /* Khoảng cách giữa các ảnh */
+}
+
+/* Product item */
+.shoesProductItem {
+text-align: center;
+flex: 1; /* Đảm bảo các ảnh chiếm không gian đều nhau */
+}
+
+.shoesProductItem img {
+border-radius: 10px;
+max-width: 80%; /* Đảm bảo hình ảnh không vượt quá container */
+height: auto;
+}
+
+.shoesProductItem p {
+margin-top: 5px;
+font-size: 20px;
+color: #333333; /* Đổi màu chữ để dễ nhìn hơn */
+}
+
+/* Add a background color on hover */
+.shoesColumn a:hover {
+background-color: transparent;
+}
+
+/* Clear floats after the columns */
+.shoesRow:after {
+content: "";
+display: table;
+clear: both;
+}
+
+
+/* Accessories Navbar container */
+.accessoriesNavbar {
+overflow: hidden;
+background-color: #ffffff;
+font-family: Arial, sans-serif;
+}
+
+/* Links inside the navbar */
+.accessoriesNavbar a {
+float: left;
+font-size: 18px;
+font-weight: 600;
+color: rgb(0, 0, 0);
+text-align: center;
+padding: 0px 60px;
+text-decoration: none;
+}
+
+/* The dropdown container */
+.accessoriesDropdown {
+float: left;
+overflow: hidden;
+}
+
+/* Dropdown button */
+.accessoriesDropdown .dropdownButton {
+font-size: 18px !important;
+font-weight: 600 !important;
+border: none;
+outline: none;
+color: black;
+padding: 14px 60px;
+background-color: inherit;
+font: inherit;
+margin: 0;
+cursor: pointer;
+transition: color 0.03s ease;
+}
+
+/* Add a green color to dropdown link on hover */
+.accessoriesNavbar a:hover,
+.accessoriesDropdown:hover .dropdownButton {
+color: #006400;
+background-color: transparent;
+box-shadow: none;
+border: none;
+}
+
+/* Dropdown content (hidden by default) */
+.accessoriesDropdownContent {
+display: none;
+position: absolute;
+background-color: #ffffff;
+width: 100%;
+left: 0;
+box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+z-index: 1;
+}
+
+/* Show the dropdown menu on hover */
+.accessoriesDropdown:hover .accessoriesDropdownContent {
+display: block;
+}
+
+/* Accessories Column Layout */
+.accessoriesColumn {
+width: auto; /* Để các cột co dãn tự động */
+padding-left: 0px;
+padding-right: 0px;
+margin: 0;
+text-align: left;
+margin-top: 30px;
+margin-bottom: 30px;
+}
+
+/* Cột đầu tiên */
+.accessoriesColumn:first-child {
+margin-left: 220px; /* Giữ cố định khoảng cách cột đầu tiên */
+}
+
+/* Căn chỉnh khoảng cách giữa các cột */
+.accessoriesRow {
+display: flex; /* Sử dụng Flexbox để quản lý cột */
+justify-content: space-between; /* Căn đều khoảng cách giữa các cột */
+gap: 20px; /* Khoảng cách giữa các cột còn lại */
+}
+
+
+/* Style links inside the columns */
+.accessoriesColumn a {
+float: none;
+color: black;
+padding: 8px 0;
+text-decoration: none;
+display: block;
+font-size: 20px;
+font-weight: normal;
+text-align: left;
+transition: color 0.01s ease;
+}
+
+/* Remove background color on hover */
+.accessoriesColumn a:hover {
+background-color: transparent;
+color: #006400;
+}
+
+/* Style for the title (e.g., "Tất") */
+.accessoriesColumn h3 {
+margin-bottom: 15px;
+font-size: 20px;
+font-weight: bold;
+}
+
+/* Product images container: set layout to flex for horizontal alignment */
+.accessoriesProductImages {
+display: flex;
+justify-content: space-between;
+gap: 15px;
+}
+
+/* Product item */
+.accessoriesProductItem {
+text-align: center;
+flex: 1;
+}
+
+.accessoriesProductItem img {
+border-radius: 20px;
+max-width: 80%;
+height: auto;
+}
+
+.accessoriesProductItem p {
+margin-top: 5px;
+font-size: 20px;
+color: #333333;
+}
+
+/* Add a background color on hover */
+.accessoriesColumn a:hover {
+background-color: transparent;
+}
+
+/* Clear floats after the columns */
+.accessoriesRow:after {
+content: "";
+display: table;
+clear: both;
+}
+
+/* Footer */
+.footer {
+  background-color: #081d22;
+  color: #ffffff;
+  padding: 40px 20px;
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  width: 100%;
+}
+
+.footer-left, .footer-right {
+  flex: 1;
+  max-width: 500px;
+  padding: 20px;
+}
+
+/* Adjust footer-right to shift right by 10% */
+.footer-right {
+  margin-left: 10%;
+}
+
+.footer-newsletter {
+  text-align: left;
+  margin-bottom: 20px;
+}
+
+.footer-newsletter h3 {
+  font-size: 18px;
+  margin-bottom: 20px;
+  padding-left: 10px;
+}
+
+.newsletter-form {
+  display: flex;
+  border: 1px solid #ffffff;
+  margin-bottom: 20px;
+  padding-left: 10px;
+}
+
+.newsletter-form input {
+  flex: 1;
+  padding: 10px;
+  border: none;
+  background-color: #081d22;
+  color: #ffffff;
+}
+
+.newsletter-form button {
+  background-color: #081d22;
+  color: #ffffff;
+  border: none;
+  padding: 10px;
+  cursor: pointer;
+}
+
+.footer-newsletter label {
+  display: block;
+  margin-top: 20px;
+  font-size: 14px;
+  color: #9ea7ad;
+  padding-left: 10px;
+}
+
+/* Social Media and Links */
+.footer-links {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  margin-top: 30px;
+  width: 100%;
+}
+
+.footer-links div {
+  text-align: left;
+}
+
+.footer-links h4 {
+  font-size: 16px;
+  margin-bottom: 10px;
+}
+
+.footer-links a {
+  color: #9ea7ad;
+  text-decoration: none;
+  font-size: 14px;
+  display: block;
+  margin: 5px 0;
+}
+
+/* Footer Social Media */
+.footer-social {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-top: 60px;
+  padding-bottom: 20px;
+  padding-left: 10px;
+}
+
+.footer-social-icons {
+  display: flex;
+  justify-content: flex-start;
+  gap: 10px;
+}
+
+.footer-social img {
+  width: 24px;
+  height: 24px;
+}
+
+.footer-social p {
+  color: #9ea7ad;
+  margin-top: 10px;
+  font-size: 12px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .footer {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .footer-left, .footer-right {
+    max-width: 100%;
+    padding: 10px;
+    margin-left: 0;
+  }
+
+  .footer-links {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .footer-newsletter {
+    text-align: center;
+  }
+}
+
+/* Main Content */
+main {
+    margin: 30px auto;
+    max-width: 1200px;
+    padding: 10px 20px;
+}
+
+/* Breadcrumb */
+.breadcrumb {
+    font-size: 14px;
+    color: #555;
+    margin-bottom: 20px;
+}
+
+.breadcrumb a {
+    text-decoration: none;
+    color: #1D7873;
+    font-weight: bold;
+}
+
+.breadcrumb a:hover {
+    text-decoration: underline;
+}
+
+.breadcrumb span {
+    color: #777;
+}
+
+/* Product Detail Section */
+.product-detail {
+    display: flex; 
+    justify-content: flex-start; 
+    margin-top: 40px;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    max-width: 100%;
+}
+
+/* Thông tin về hình ảnh */
+.product-image {
+    position: relative;
+    display: flex; 
+    flex-direction: row; 
+    gap: 20px;
+    align-items: flex-start; 
+}
+
+/* Phần chứa hình ảnh thu nhỏ theo chiều dọc */
+.product-image .thumbnail-container {
+    display: flex;
+    flex-direction: column; 
+    gap: 10px; 
+    align-items: center; 
+}
+
+/* Kiểu dáng cho các hình ảnh thu nhỏ */
+.product-image .thumbnail-container img {
+    width: 60px;
+    height: 60px;
+    object-fit: cover;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+/* Hiệu ứng hover cho các hình ảnh thu nhỏ */
+.product-image .thumbnail-container img:hover {
+    transform: scale(1.1);
+}
+
+/* Kiểu cho hình ảnh chính */
+.product-image #main-image {
+    width: 400px;
+    height: auto;
+    border-radius: 8px;
+    object-fit: contain; 
+}
+
+/* Product Info Section */
+.product-info {
+    max-width: 600px;
+    margin-left: 50px;
+}
+
+/* Tiêu đề của sản phẩm */
+.product-info h2 {
+    font-size: 28px;
+    font-weight: 700;
+    color: #333;
+    margin-bottom: 15px;
+    text-align: left; 
+}
+
+/* Mô tả sản phẩm */
+.product-info p {
+    font-size: 16px;
+    color: #555;
+    margin-bottom: 20px;
+    line-height: 1.6; 
+    text-align: justify; 
+}
+
+/* Danh sách thông tin chi tiết */
+.product-info ul {
+    font-size: 14px;
+    color: #777;
+    padding-left: 20px; 
+    font-weight: bold;
+}
+
+/* Mỗi mục trong danh sách */
+.product-info ul li {
+    margin: 10px 0;
+    position: relative;
+}
+
+/* Hiệu ứng cho các mục trong danh sách khi hover */
+.product-info ul li:hover {
+    color: #333;
+    font-weight: bold; 
+    transition: color 0.3s ease, font-weight 0.3s ease;
+}
+
+/* Chỉnh sửa button */
+.button-container {
+    display: flex;
+    gap: 20px;
+}
+
+.add-to-cart-btn,
+.buy-now-btn {
+    padding: 14px 30px;
+    border-radius: 5px;
+    font-size: 18px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    transition: all 0.3s ease;
+}
+
+.button-container {
+    display: flex;
+    gap: 15px; 
+    justify-content: flex-start; 
+    margin-top: 20px; 
+}
+
+.add-to-cart-btn,
+.buy-now-btn {
+    padding: 12px 25px; 
+    border-radius: 5px;
+    font-size: 16px; 
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: auto; 
+    transition: all 0.3s ease;
+}
+
+/* Nút "Thêm vào giỏ hàng" */
+.add-to-cart-btn {
+    background-color: white;
+    border: 2px solid #1D7873;
+    color: #1D7873;
+    font-weight: 600;
+}
+
+.add-to-cart-btn:hover {
+    background-color: #1D7873;
+    color: white;
+}
+
+.add-to-cart-btn i {
+    margin-right: 10px;
+    font-size: 18px; 
+}
+
+/* Nút "Mua ngay" */
+.buy-now-btn {
+    background-color: #1D7873;
+    color: white;
+    border: none;
+    font-weight: 600;
+}
+
+.buy-now-btn:hover {
+    background-color: #164a41;
+}
+
+.buy-now-btn i {
+    margin-right: 10px;
+    font-size: 18px; 
+}
+
+/* Thông tin đánh giá */
+.product-info .reviews {
+    margin-top: 30px;
+    margin-bottom: 30px;
+    font-size: 14px;
+    color: #777;
+}
+
+.product-info .reviews span {
+    color: #f39c12;
+}
+
+/* Các phần liên quan đến sản phẩm gợi ý 
+.product-suggestions {
+    margin-top: 30px;
+    text-align: center;
+}
+
+.suggested-products {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px; /* Khoảng cách giữa các sản phẩm */
+    /* flex-wrap: wrap; Cho phép sản phẩm xuống dòng nếu không đủ chỗ */
+/* } 
+/* .suggested-item { 
+    width: 18%;
+    min-width: 150px;
+    text-align: center;
+}
+
+.suggested-item img {
+    width: 100%;
+    height: auto;
+    border-radius: 5px;
+}
+
+.suggested-item p {
+    margin-top: 10px;
+    font-weight: bold;
+    color: #333;
+}*/
+
+
+/* Responsive Design cho các button */
+@media screen and (max-width: 768px) {
+    .button-container {
+        flex-direction: column; 
+        align-items: center; 
+    }
+
+    .add-to-cart-btn,
+    .buy-now-btn {
+        width: 100%; 
+        margin-bottom: 10px; 
+    }
+
+    .add-to-cart-btn i,
+    .buy-now-btn i {
+        font-size: 16px; 
+    }
+
+    .product-detail {
+        flex-direction: column;
+        align-items: center;
+        padding: 20px;
+    }
+
+    .product-image img {
+        width: 100%;
+        max-width: 350px;
+        height: auto;
+        border-radius: 8px;
+    }
+
+    .product-info {
+        max-width: 100%;
+        margin-left: 0;
+    }
+
+    .breadcrumb {
+        font-size: 12px;
+    }
+}
