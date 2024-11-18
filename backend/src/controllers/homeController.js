@@ -4,7 +4,7 @@ let getAdmin = async (req, res) => {
     message: null,
   });
 };
-let getProductManagement = async (req, res) => {
+let getProductManagementPage = async (req, res) => {
   try {
     let data = await productService.getAllProducts("ALL");
     return res.render("pages/product-management", {
@@ -19,17 +19,15 @@ let getProductManagement = async (req, res) => {
   }
 };
 
-let getEditProductManagement = async (req, res) => {
+let getEditProductPage = async (req, res) => {
   try {
     let productId = req.query.pd_id;
-    // console.log("Noah check id: ", productId);
     if (productId) {
       let data = await productService.getAllProducts(productId);
       let categoriesData = await productService.getAllCategories();
-      console.log("Noah check categoriesData: ", categoriesData)
       return res.render("pages/edit-product", {
         productData: data,
-        categoriesData: categoriesData.data
+        categoriesData: categoriesData.data,
       });
     } else {
       return res.send("Product not found!");
@@ -43,17 +41,12 @@ let getEditProductManagement = async (req, res) => {
   }
 };
 
-let postProduct = async (req, res) => {
+let getAddProductPage = async (req, res) => {
   try {
-    let data = req.body;
-    console.log("Noah check req.body: ", req.body);
-    let response = await productService.updateProductData(data);
-    if (response.errCode === 0) {
-      let data = await productService.getAllProducts("ALL");
-      return res.render("pages/product-management", {
-        dataTable: data,
-      });
-    }
+    let categoriesData = await productService.getAllCategories();
+    return res.render("pages/add-product", {
+      categoriesData: categoriesData.data,
+    });
   } catch (e) {
     console.log(e);
     return res.status(200).json({
@@ -62,9 +55,10 @@ let postProduct = async (req, res) => {
     });
   }
 };
+
 module.exports = {
   getAdmin,
-  getProductManagement,
-  getEditProductManagement,
-  postProduct,
+  getProductManagementPage,
+  getEditProductPage,
+  getAddProductPage,
 };

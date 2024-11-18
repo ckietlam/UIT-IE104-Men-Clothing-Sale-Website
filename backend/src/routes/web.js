@@ -5,17 +5,17 @@ let router = express.Router();
 
 let initWebRouters = (app) => {
   router.get("/admin", homeController.getAdmin);
-  router.get("/admin-products-management", homeController.getProductManagement);
-  router.get("/edit-product", homeController.getEditProductManagement);
-  router.post("/post-product", homeController.postProduct)
+  router.get("/admin-products-management", homeController.getProductManagementPage);
+  router.get("/edit-product", homeController.getEditProductPage);
+  router.get("/admin-add-product", homeController.getAddProductPage)
   //Product api
   router.get("/api/get-all-products", productController.handleGetAllProducts);
   router.post(
-    "/api/create-new-product",
+    "/create-new-product",
     productController.handleCreateNewProduct
   );
-  router.put("/api/edit-product", productController.handleEditProduct);
-  router.delete("/api/delete-product", productController.handleDeleteProduct);
+  router.post("/post-product", productController.handleEditProduct);
+  router.get("/delete-product", productController.handleDeleteProduct);
   router.get(
     "/api/get-all-categories",
     productController.handleGetAllCategories

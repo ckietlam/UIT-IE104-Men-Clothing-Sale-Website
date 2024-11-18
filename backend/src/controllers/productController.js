@@ -23,7 +23,12 @@ let handleGetAllProducts = async (req, res) => {
 let handleCreateNewProduct = async (req, res) => {
   try {
     let response = await productService.createNewProduct(req.body);
-    return res.status(200).json(response);
+    if (response.errCode === 0) {
+      let data = await productService.getAllProducts("ALL");
+      return res.render("pages/product-management", {
+        dataTable: data,
+      });
+    }
   } catch (e) {
     console.log(e);
     return res.status(200).json({
@@ -36,25 +41,34 @@ let handleEditProduct = async (req, res) => {
   try {
     let data = req.body;
     let response = await productService.updateProductData(data);
-    return res.status(200).json(response);
+    if (response.errCode === 0) {
+      let data = await productService.getAllProducts("ALL");
+      return res.render("pages/product-management", {
+        dataTable: data,
+      });
+    }
   } catch (e) {
     console.log(e);
     return res.status(200).json({
       errCode: -1,
-      errMessage: "Error from server!",
+      errMessage: "Error from server",
     });
   }
 };
 let handleDeleteProduct = async (req, res) => {
   try {
-    if (!req.body.pd_id) {
+    console.log("Noah check: ");
+    if (!req.query.pd_id) {
       return res.status(200).json({
         errCode: 1,
         errMessage: "Missing required parameters!",
       });
     }
-    let response = await productService.deleteProduct(req.body.pd_id);
-    return res.status(200).json(response);
+    let response = await productService.deleteProduct(req.query.pd_id);
+    let data = await productService.getAllProducts("ALL");
+    return res.render("pages/product-management", {
+      dataTable: data,
+    });
   } catch (e) {
     console.log(e);
     return res.status(200).json({
@@ -63,7 +77,7 @@ let handleDeleteProduct = async (req, res) => {
     });
   }
 };
-let handleGetAllCategories = async (req, res) => { 
+let handleGetAllCategories = async (req, res) => {
   try {
     let categories = await productService.getAllCategories();
     return res.status(200).json(categories);
