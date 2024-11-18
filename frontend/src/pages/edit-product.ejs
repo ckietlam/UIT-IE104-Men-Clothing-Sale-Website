@@ -25,6 +25,9 @@
 
     <!-- Custom styles for this template-->
     <link href="css/sb-admin-2.min.css" rel="stylesheet" />
+
+    <!-- jQuery library -->
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.slim.min.js"></script>
   </head>
 
   <body id="page-top">
@@ -197,6 +200,7 @@
                   <input
                     type="text"
                     class="form-control"
+                    name="name"
                     id="inputName"
                     value="<%= productData.name %>"
                   />
@@ -206,6 +210,7 @@
                   <input
                     type="number"
                     class="form-control"
+                    name="price"
                     id="inputPrice"
                     value="<%= productData.price %>"
                   />
@@ -214,31 +219,45 @@
               <div class="form-row">
                 <div class="form-group col-md-3">
                   <label for="inputType_of_clothes">Type of clothes</label>
-                  <select id="inputType_of_clothes" class="form-control">
-                    <option selected><%= productData.type_of_clothes %></option>
-                    <option>...</option>
-                    <option>...</option>
-                    <option>...</option>
+                  <select
+                    id="inputType_of_clothes"
+                    class="form-control"
+                    name="type_of_clothes"
+                  >
+                    <option selected value="<%=productData.type_of_clothes %>">
+                      <%= productData.type_of_clothes %>
+                    </option>
+                    <% let data = ['Tees', 'Sweats', 'Shirts', 'Jeans',
+                    'Shorts', 'Jackets', 'Sneakers', 'Sandals', 'Boxers',
+                    'Socks', 'Hats']; for (let i = 0; i < data.length; i++) { if
+                    (data[i] !== productData.type_of_clothes) { %>
+                    <option value="<%= data[i] %>"><%= data[i] %></option>
+                    <% } } %>
                   </select>
                 </div>
                 <div class="form-group col-md-3">
                   <label for="inputCategory">Category</label>
-                  <select id="inputCategory" class="form-control">
-                    <option selected>
+                  <select id="inputCategory" class="form-control" name="cat_id">
+                    <option selected value="<%= productData.cat_id %>">
                       <%= productData.categoryData.name %>
                     </option>
-                    <option>...</option>
-                    <option>...</option>
-                    <option>...</option>
+                    <% for (let i = 0; i < categoriesData.length; i++) { %> <%
+                    if (productData.cat_id !== categoriesData[i].cat_id) { %>
+                    <option value="<%= categoriesData[i].cat_id %>">
+                      <%= categoriesData[i].name %>
+                    </option>
+                    <% } %> <% } %>
                   </select>
                 </div>
                 <div class="form-group col-md-1">
                   <label for="inputSize">Size</label>
-                  <select id="inputSize" class="form-control">
+                  <select id="inputSize" class="form-control" name="size">
                     <option selected><%= productData.size %></option>
-                    <option>...</option>
-                    <option>...</option>
-                    <option>...</option>
+                    <% let sizes = ['S', 'M', 'L', '39', '40', '41', '42',
+                    'None']; for (let i = 0; i < sizes.length; i++) { if
+                    (sizes[i] !== productData.size) { %>
+                    <option value="<%= sizes[i] %>"><%= sizes[i] %></option>
+                    <% } } %>
                   </select>
                 </div>
               </div>
@@ -248,12 +267,13 @@
                   <input
                     type="text"
                     class="form-control"
+                    name="description"
                     id="inputDescription"
                     value="<%= productData.description %>"
                   />
                 </div>
               </div>
-
+              <input name="pd_id" value="<%= productData.pd_id %>" type="text" hidden />
               <button type="submit" class="btn btn-primary">Update</button>
             </form>
           </div>

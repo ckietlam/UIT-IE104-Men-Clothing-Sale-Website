@@ -22,11 +22,14 @@ let getProductManagement = async (req, res) => {
 let getEditProductManagement = async (req, res) => {
   try {
     let productId = req.query.pd_id;
-    console.log("Noah check id: ", productId);
+    // console.log("Noah check id: ", productId);
     if (productId) {
       let data = await productService.getAllProducts(productId);
+      let categoriesData = await productService.getAllCategories();
+      console.log("Noah check categoriesData: ", categoriesData)
       return res.render("pages/edit-product", {
         productData: data,
+        categoriesData: categoriesData.data
       });
     } else {
       return res.send("Product not found!");
@@ -43,7 +46,7 @@ let getEditProductManagement = async (req, res) => {
 let postProduct = async (req, res) => {
   try {
     let data = req.body;
-    console.log(req)
+    console.log("Noah check req.body: ", req.body);
     let response = await productService.updateProductData(data);
     if (response.errCode === 0) {
       let data = await productService.getAllProducts("ALL");

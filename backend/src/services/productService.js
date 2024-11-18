@@ -94,9 +94,9 @@ let updateProductData = (data) => {
         !data.pd_id ||
         !data.name ||
         !data.price ||
-        !type_of_clothes ||
-        !description ||
-        !size
+        !data.type_of_clothes ||
+        !data.description ||
+        !data.size || !data.cat_id
       ) {
         resolve({
           errCode: 2,
@@ -134,7 +134,7 @@ let getAllCategories = () => {
   return new Promise(async (resolve, reject) => {
     try {
       let categories = await db.Category.findAll({
-        raw: false,
+        raw: true,
         attributes: { exclude: ["createdAt", "updatedAt"] },
       });
       resolve({
