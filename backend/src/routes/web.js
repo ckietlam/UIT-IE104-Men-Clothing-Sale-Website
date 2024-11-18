@@ -1,9 +1,11 @@
 import express from "express";
 import homeController from "../controllers/homeController";
 import productController from "../controllers/productController"
+import userController from "../controllers/userController";
 let router = express.Router();
 
 let initWebRouters = (app) => {
+  router.get("/login", userController.getLogin);
   router.get("/admin", homeController.getAdmin);
   router.get("/admin-products-management", homeController.getProductManagement);
   router.get("/edit-product", homeController.getEditProductManagement);
