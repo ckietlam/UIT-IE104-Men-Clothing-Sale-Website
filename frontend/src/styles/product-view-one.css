@@ -926,7 +926,7 @@ main {
 
 /* Mô tả sản phẩm */
 .product-info p {
-    font-size: 16px;
+    font-size: 20px;
     color: #555;
     margin-bottom: 20px;
     line-height: 1.6; 
@@ -938,20 +938,12 @@ main {
     font-size: 14px;
     color: #777;
     padding-left: 20px; 
-    font-weight: bold;
 }
 
 /* Mỗi mục trong danh sách */
 .product-info ul li {
     margin: 10px 0;
     position: relative;
-}
-
-/* Hiệu ứng cho các mục trong danh sách khi hover */
-.product-info ul li:hover {
-    color: #333;
-    font-weight: bold; 
-    transition: color 0.3s ease, font-weight 0.3s ease;
 }
 
 /* Chỉnh sửa button */
@@ -1032,13 +1024,19 @@ main {
 .product-info .reviews {
     margin-top: 30px;
     margin-bottom: 30px;
-    font-size: 14px;
+    font-size: 16px;
     color: #777;
 }
 
 .product-info .reviews span {
     color: #f39c12;
 }
+
+.product-info .reviews p {
+  font-size: 16px; 
+  color: #777; 
+}
+
 
 /* Các phần liên quan đến sản phẩm gợi ý 
 .product-suggestions {
