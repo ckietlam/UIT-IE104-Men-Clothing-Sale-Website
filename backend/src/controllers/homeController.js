@@ -25,9 +25,18 @@ let getEditProductPage = async (req, res) => {
     if (productId) {
       let data = await productService.getAllProducts(productId);
       let categoriesData = await productService.getAllCategories();
+      let imagesData = await productService.getAllImagesById(productId);
+      let images = "";
+      if (imagesData.data) {
+        images = imagesData.data.map((item, index) => ({
+          image_id: item.image_id,
+          image: Buffer.from(item.image, "base64").toString("binary"),
+        }));
+      }
       return res.render("pages/edit-product", {
         productData: data,
         categoriesData: categoriesData.data,
+        imagesData: images,
       });
     } else {
       return res.send("Product not found!");
@@ -61,4 +70,5 @@ module.exports = {
   getProductManagementPage,
   getEditProductPage,
   getAddProductPage,
+  
 };

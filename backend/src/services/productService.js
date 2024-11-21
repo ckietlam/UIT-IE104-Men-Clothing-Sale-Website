@@ -10,14 +10,10 @@ let getAllProducts = (productId) => {
               model: db.Category,
               as: "categoryData",
               attributes: ["name"],
+              raw: false,
             },
-            // {
-            //   model: db.Image,
-            //   as: "productImageData",
-            //   attributes: ["image_id", "image"],
-            // }, có bảng image đã rồi mới bỏ cmt
           ],
-          raw: true,
+          raw: false,
           nest: true,
         });
       }
@@ -49,14 +45,32 @@ let getAllProducts = (productId) => {
 let createNewProduct = (data) => {
   return new Promise(async (resolve, reject) => {
     try {
-      await db.Product.create({
-        name: data.name,
-        price: data.price,
-        type_of_clothes: data.type_of_clothes,
-        description: data.description,
-        cat_id: data.cat_id,
-        size: data.size,
-      });
+      if (!data.name || !data.price) {
+        resolve({
+          errCode: 2,
+          errMessage: "Missing required parameters!",
+        });
+      } else {
+        let product = await db.Product.create({
+          name: data.name,
+          price: data.price,
+          type_of_clothes: data.type_of_clothes,
+          description: data.description,
+          cat_id: data.cat_id,
+          size: data.size,
+        });
+        if (data.images) {
+          let images = JSON.parse(data.images);
+          await Promise.all(
+            images.map((item, index) =>
+              db.Image.create({
+                pd_id: product.pd_id,
+                image: item,
+              })
+            )
+          );
+        }
+      }
       resolve({
         errCode: 0,
         message: "OK",
@@ -68,6 +82,15 @@ let createNewProduct = (data) => {
 };
 let deleteProduct = (productId) => {
   return new Promise(async (resolve, reject) => {
+    let images = await db.Image.findOne({
+      where: { pd_id: productId },
+      raw: false,
+    });
+    if (images) {
+      await db.Image.destroy({
+        where: { pd_id: productId },
+      });
+    }
     let product = await db.Product.findOne({
       where: { pd_id: productId },
       raw: false,
@@ -77,10 +100,12 @@ let deleteProduct = (productId) => {
         errCode: 2,
         errMessage: `The product isn't exist`,
       });
+    } else {
+      await db.Product.destroy({
+        where: { pd_id: productId },
+      });
     }
-    await db.Product.destroy({
-      where: { pd_id: productId },
-    });
+
     resolve({
       errCode: 0,
       message: `The product is deleted`,
@@ -96,7 +121,8 @@ let updateProductData = (data) => {
         !data.price ||
         !data.type_of_clothes ||
         !data.description ||
-        !data.size || !data.cat_id
+        !data.size ||
+        !data.cat_id
       ) {
         resolve({
           errCode: 2,
@@ -157,8 +183,8 @@ let getAllImagesById = (pd_id) => {
       } else {
         let data = await db.Image.findAll({
           where: { pd_id: pd_id },
-          raw: false,
-          attributes: { exclude: ["createdAt", "updatedAt"] },
+          attributes: { exclude: ["createdAt", "updatedAt", "pd_id"] },
+          raw: true,
         });
         if (data && data.image) {
           data.image = new Buffer(data.image, "base64").toString("binary");
@@ -174,6 +200,24 @@ let getAllImagesById = (pd_id) => {
     }
   });
 };
+
+let deleteImage = (imageId) => {
+  return new Promise(async (resolve, reject) => {
+    let images = await db.Image.findOne({
+      where: { image_id: imageId },
+      raw: false,
+    });
+    if (images) {
+      await db.Image.destroy({
+        where: { image_id: imageId },
+      });
+    }
+    resolve({
+      errCode: 0,
+      message: `The product is deleted`,
+    });
+  });
+};
 module.exports = {
   getAllProducts,
   createNewProduct,
@@ -181,4 +225,5 @@ module.exports = {
   updateProductData,
   getAllCategories,
   getAllImagesById,
+  deleteImage,
 };

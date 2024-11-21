@@ -20,6 +20,7 @@ let initWebRouters = (app) => {
     "/api/get-all-categories",
     productController.handleGetAllCategories
   );
+  router.get("/delete-image-by-id", productController.handleDeleteImageById);
   return app.use("/", router);
 };
 

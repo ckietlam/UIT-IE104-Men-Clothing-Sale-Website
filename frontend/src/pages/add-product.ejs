@@ -10,7 +10,7 @@
     <meta name="description" content="" />
     <meta name="author" content="" />
 
-    <title>SB Admin 2 - Blank</title>
+    <title>Admin Dashboard - Men's Fashion Store</title>
 
     <!-- Custom fonts for this template-->
     <link
@@ -29,7 +29,25 @@
     <!-- jQuery library -->
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.slim.min.js"></script>
   </head>
-
+  <style>
+    .label-upload {
+      border-radius: 3px;
+      padding: 5px;
+      color: white;
+      background-color: #4e73df;
+      cursor: pointer;
+    }
+    .label-upload:hover {
+      opacity: 0.9;
+    }
+    .preview-image {
+      height: 100px;
+      width: 100px;
+      background-size: cover;
+      background-position: center;
+      margin-bottom: 10px;
+    }
+  </style>
   <body id="page-top">
     <!-- Page Wrapper -->
     <div id="wrapper">
@@ -87,7 +105,9 @@
           >
             <div class="bg-white py-2 collapse-inner rounded">
               <h6 class="collapse-header">Quản lý:</h6>
-              <a class="collapse-item" href="/admin-add-product">Thêm sản phẩm</a>
+              <a class="collapse-item" href="/admin-add-product"
+                >Thêm sản phẩm</a
+              >
               <a class="collapse-item" href="/admin-products-management"
                 >Quản lý sản phẩm</a
               >
@@ -193,7 +213,13 @@
           <div class="container-fluid">
             <!-- Page Heading -->
             <h1 class="h3 mb-4 text-gray-800">Thêm sản phẩm</h1>
-            <form action="/create-new-product" method="POST" class="offset-lg-1">
+            <form
+              action="/create-new-product"
+              method="POST"
+              class="offset-lg-1"
+              name="myForm"
+              onsubmit="return validateForm()"
+            >
               <div class="form-row">
                 <div class="form-group col-md-5">
                   <label for="inputName">Name</label>
@@ -203,6 +229,7 @@
                     name="name"
                     id="inputName"
                     placeholder="Name..."
+                    required
                   />
                 </div>
                 <div class="form-group col-md-2">
@@ -213,10 +240,85 @@
                     name="price"
                     id="inputPrice"
                     placeholder="Price..."
+                    required
                   />
                 </div>
-              </div>
-              <div class="form-row">
+                <div class="form-group col-md-5"></div>
+                <div class="form-group col-md-1">
+                  <label>Ảnh</label>
+                  <script>
+                    function getBase64(file) {
+                      return new Promise((resolve, reject) => {
+                        const reader = new FileReader();
+                        reader.readAsDataURL(file);
+                        reader.onload = () => resolve(reader.result);
+                        reader.onerror = (error) => reject(error);
+                      });
+                    }
+                    let imageUrls = [];
+                    let images = [];
+                    handleOnchangeImage = async (event) => {
+                      console.log("Noah check images: ", images);
+                      const files = event.target.files;
+                      imageUrls = [];
+                      images = [];
+                      for (let i = 0; i < files.length; i++) {
+                        let file = files[i];
+                        let objectUrl = URL.createObjectURL(file);
+                        let base64 = await getBase64(file);
+                        images.push(base64);
+                        imageUrls.push(objectUrl);
+                      }
+                      document.getElementById("imagesInput").value =
+                        JSON.stringify(images);
+                      renderPreviews();
+                    };
+                    function renderPreviews() {
+                      const previewContainer =
+                        document.querySelector(".preview-container");
+                      previewContainer.innerHTML = "";
+                      imageUrls.forEach((url) => {
+                        const previewDiv = document.createElement("div");
+                        previewDiv.classList.add("preview-image");
+                        previewDiv.style.backgroundImage = `url(${url})`;
+                        previewContainer.appendChild(previewDiv);
+                      });
+                    }
+                    function validateForm() {
+                      let nameInput = document.forms["myForm"]["name"].value;
+                      let priceInput = document.forms["myForm"]["price"].value;
+                      if (nameInput === "" || priceInput === "") {
+                        alert(
+                          "Phải điền tên sản phẩm và giá sản phẩm trước khi tạo!"
+                        );
+                        return false;
+                      }
+                    }
+                  </script>
+
+                  <div>
+                    <input
+                      type="file"
+                      id="inputImage"
+                      multiple
+                      hidden
+                      onchange="handleOnchangeImage(event)"
+                    />
+                    <label class="label-upload" for="inputImage" nam
+                      >Tải ảnh <i class="fas fa-upload"></i
+                    ></label>
+                  </div>
+                </div>
+                <div class="form-group col-md-11">
+                  <label></label>
+                  <div
+                    class="preview-container"
+                    style="display: flex; flex-wrap: wrap; gap: 10px"
+                  >
+                    <!-- Các preview image sẽ được tạo và thêm vào đây -->
+                  </div>
+                </div>
+
                 <div class="form-group col-md-3">
                   <label for="inputType_of_clothes">Type of clothes</label>
                   <select
@@ -250,8 +352,7 @@
                     <% } %>
                   </select>
                 </div>
-              </div>
-              <div class="form-row">
+
                 <div class="form-group col-md-7">
                   <label for="inputDescription">Description</label>
                   <input
@@ -264,7 +365,8 @@
                 </div>
               </div>
               <input name="pd_id" type="text" hidden />
-              <button type="submit" class="btn btn-primary">Update</button>
+              <input type="hidden" id="imagesInput" name="images" />
+              <button type="submit" class="btn btn-primary">Create</button>
             </form>
           </div>
           <!-- /.container-fluid -->
