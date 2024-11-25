@@ -5,7 +5,7 @@ let router = express.Router();
 
 let initWebRouters = (app) => {
   router.get("/admin", userController.getAdmin);
-
+  router.get("/")
   return app.use("/", router);
 };
 
