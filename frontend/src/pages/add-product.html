@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thêm Sản Phẩm</title>
+    <link rel="stylesheet" href="../../public/styles/add-product.css">
+</head>
+<body>
+    
+    <!-- Sidebar Section -->
+    <div class="sidebar">
+        <div class="sidebarHeader">
+            <h2>ADMIN</h2>
+            <hr class="menuDivider">
+        </div>
+
+        <ul class="menu">
+            <li class="menuItem">
+                <a href="#">
+                    <img src="../../public/icons/icon-dashboard.svg" alt="Dashboard Icon" class="menuIcon">
+                    Dashboard
+                </a>
+            </li>
+            <hr class="menuDivider"> <!-- Divider added here -->
+            <li class="menuItem dropdown">
+                <button class="dropdownToggle">
+                    <img src="../../public/icons/icon-table.svg" alt="Product Icon" class="menuIcon">
+                    <span>Sản phẩm</span>
+                </button>
+                <ul class="submenu">
+                    <li><a href="#">Thêm sản phẩm</a></li>
+                    <li><a href="#">Quản lý sản phẩm</a></li>
+                </ul>
+            </li>
+            <li class="menuItem">
+                <a href="#">
+                    <img src="../../public/icons/icon-user.svg" alt="User Icon" class="menuIcon">
+                    Người dùng
+                </a>
+            </li>
+            <li class="menuItem">
+                <a href="#">
+                    <img src="../../public/icons/icon-table.svg" alt="Order Icon" class="menuIcon">
+                    Đơn hàng
+                </a>
+            </li>
+            <hr class="menuDivider"> <!-- Divider added here -->
+            <li class="menuItem">
+                <a href="#">
+                    <img src="../../public/icons/icon-setting.svg" alt="Logout Icon" class="menuIcon">
+                    Settings
+                </a>
+            </li>
+
+            <li class="menuItem">
+                <a href="#">
+                    <img src="../../public/icons/icon-logout.svg" alt="Logout Icon" class="menuIcon">
+                    Đăng xuất
+                </a>
+            </li>
+        </ul>
+        
+
+        <button class="toggleSidebarBtn">
+            <img src="../../public/icons/icon-backward.svg" alt="Toggle Icon" class="toggleIcon">
+        </button>
+    </div>
+
+
+    <!-- Main Content Section -->
+    <div class="mainContent">
+
+        <!-- Form Section -->
+        <div class="formContainer">
+            <h1>Thêm sản phẩm</h1>
+            <form action="#">
+                <div class="formGroup">
+                    <label for="name">Tên sản phẩm</label>
+                    <input type="text" id="name" placeholder="Nhập tên sản phẩm">
+                </div>
+                <div class="formGroup">
+                    <label for="price">Giá tiền sản phẩm</label>
+                    <input type="text" id="price" placeholder="Nhập giá sản phẩm">
+                </div>
+                <div class="formGroup">
+                    <label for="upload">Ảnh</label>
+                    <button type="button" id="upload">
+                        Tải ảnh
+                    </button>                    
+                </div>
+                <div class="formGroup">
+                    <label for="type">Thể loại sản phẩm</label>
+                    <select id="type">
+                        <option>Tees</option>
+                        <option>Pants</option>
+                        <option>Outerwear</option>
+                    </select>
+                </div>
+                <div class="formGroup">
+                    <label for="category">Phân loại sản phẩm</label>
+                    <select id="category">
+                        <option>Office Wear</option>
+                        <option>Casual</option>
+                    </select>
+                </div>
+                <div class="formGroup">
+                    <label for="size">Kích cỡ sản phẩm</label>
+                    <select id="size">
+                        <option>S</option>
+                        <option>M</option>
+                        <option>L</option>
+                    </select>
+                </div>
+                <div class="formGroup">
+                    <label for="description">Mô tả sản phẩm</label>
+                    <textarea id="description" placeholder="Nhập mô tả sản phẩm"></textarea>
+                </div>
+                <div class="formGroup">
+                    <button type="submit">Tạo thông tin sản phẩm mới</button>
+                </div>
+            </form>
+        </div>
+        
+    </div>
+
+        <!-- Add your JavaScript file -->
+        <script src="../../public/scripts/admin-sidebar.js"></script>
+</body>
+</html>
