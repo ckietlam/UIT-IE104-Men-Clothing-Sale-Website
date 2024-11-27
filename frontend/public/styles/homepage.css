@@ -15,17 +15,10 @@
 
 @font-face {
   font-family: 'Montserrat';
-  src: url('../../public/fonts/Montserrat/static/Montserrat-SemiBold.ttf') format('truetype');
-  font-weight: semibold;
+  src: url('../../public/fonts/Montserrat/Montserrat-Bold.ttf') format('truetype');
+  font-weight: bold;
   font-style: normal;
 }
-
-@font-face {
-    font-family: 'Montserrat';
-    src: url('../../public/fonts/Montserrat/Montserrat-Bold.ttf') format('truetype');
-    font-weight: bold;
-    font-style: normal;
-  }
 
 @font-face {
   font-family: 'Montserrat';
@@ -87,7 +80,7 @@ font-weight: normal; /* Giữ độ dày mặc định */
 
 .brand-name {
   font-family: 'Poppins', sans-serif; /* Sử dụng font Poppins, fallback là sans-serif */
-  font-size: 30px; /* Điều chỉnh kích thước chữ */
+  font-size: 42px; /* Điều chỉnh kích thước chữ */
   font-weight: bold; /* Đảm bảo độ đậm được sử dụng */
   color: black; /* Màu chữ */
 }
@@ -115,7 +108,7 @@ font-weight: normal; /* Giữ độ dày mặc định */
 /* Links inside the navbar */
 .shirtNavbar a {
   float: left;
-  font-size: 18px;
+  font-size: 32px;
   font-weight: 600;
   color: rgb(0, 0, 0);
   text-align: center;
@@ -698,10 +691,6 @@ clear: both;
 }
 
 
-
-
-
-
 /* Advertise Section */
 .advertise {
     position: relative; /* Để nút hiển thị trên ảnh */
@@ -760,7 +749,7 @@ clear: both;
 .text-container {
     position: absolute;
     top: -25px;
-    left: 16%;
+    margin-left: -130px;
     transform: translateX(-50%);
     z-index: 2; /* Đặt z-index cao hơn icon để chữ nằm trên */
 }
@@ -773,8 +762,9 @@ clear: both;
 
 .icon-container {
     position: relative;
-    right: 28%;
+    right: 10%;
     bottom: 10%;
+    margin-left: -220px;
     z-index: 1; /* Z-index thấp hơn chữ */
 }
 
@@ -782,96 +772,289 @@ clear: both;
     display: block;
     margin: 0 auto;
     width: 180px; /* Điều chỉnh kích thước icon */
-    height: auto;
+    height: 20 ;
     opacity: 0.8; /* Tùy chọn: giảm opacity để chữ nổi bật hơn */
 }
 
-
 /* Product Carousel */
 .product-carousel {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center; /* Cân đều các phần tử */
+  position: relative;
+  margin-top: 40px;
+  width: 90%; /* Đảm bảo carousel không chiếm toàn bộ chiều rộng */
+  margin-left: auto; /* Căn giữa carousel */
+  margin-right: auto; /* Căn giữa carousel */
+  gap: 40px; /* Khoảng cách giữa các phần tử (bao gồm mũi tên và sản phẩm) */
 }
 
+/* Carousel Control (Prev/Next Buttons) */
 .carousel-control {
-    background: none;
-    border: none;
-    cursor: pointer;
-    padding: 10px;
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    z-index: 2;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 10px;
+  z-index: 2;
+  width: 40px; /* Đảm bảo kích thước nút mũi tên phù hợp */
 }
 
 .carousel-control.prev {
-    left: -30px;
+  position: absolute;
+  left: 50px; /* Cách mép trái 50px */
+  top: 50%; /* Căn giữa theo chiều dọc */
+  transform: translateY(-50%); /* Đảm bảo căn giữa đúng */
 }
 
 .carousel-control.next {
-    right: -30px;
+  position: absolute;
+  right: 50px; /* Cách mép phải 50px */
+  top: 50%; /* Căn giữa theo chiều dọc */
+  transform: translateY(-50%); /* Đảm bảo căn giữa đúng */
 }
 
+/* Carousel Items */
 .carousel-items {
-    display: flex;
-    gap: 20px;
-    overflow: hidden;
-    width: 80%;
+  display: flex;
+  gap: 60px; /* Khoảng cách giữa các sản phẩm */
+  overflow: hidden;
+  width: calc(100% - 80px); /* Đảm bảo chừa khoảng trống cho hai mũi tên */
+  justify-content: center;
 }
 
+/* Product Items */
 .product-item {
-    background-color: #f9f9f9;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    padding: 10px;
-    text-align: center;
-    width: 200px;
+  background-color: #f9f9f9;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  padding: 10px;
+  text-align: center;
+  width: 320px; /* Đảm bảo kích thước sản phẩm đồng đều */
 }
 
 .product-item img {
-    width: 100%;
-    height: auto;
-    margin-bottom: 10px;
-    border-radius: 5px;
+  width: 100%;
+  height: auto;
+  margin-bottom: 10px;
+  border-radius: 5px;
 }
 
 .product-item h3 {
-    font-size: 18px;
-    font-weight: bold;
-    color: #333333;
-    margin-bottom: 5px;
+  font-size: 18px;
+  font-weight: bold;
+  color: #333333;
+  margin-bottom: 5px;
 }
 
 .product-item p {
-    font-size: 14px;
-    color: #666666;
-    margin-bottom: 10px;
+  font-size: 14px;
+  color: #666666;
+  margin-bottom: 10px;
 }
 
 .product-item span {
-    font-size: 16px;
-    font-weight: bold;
-    color: #ff5722;
-}
-
-/* Responsive Design */
-@media (max-width: 768px) {
-    .carousel-items {
-        flex-direction: column;
-        align-items: center;
-    }
-    
-    .carousel-control {
-        display: none; /* Hide controls on small screens */
-    }
+  font-size: 16px;
+  font-weight: bold;
+  color: #000000;
 }
 
 
+/* Collection Section */
+.collection {
+  margin: 50px 0;
+  padding: 20px;
+  background-color: #ffffff;
+}
+
+/* Section Title */
+.section-title {
+  position: relative; /* Cho phép đặt các phần tử con tuyệt đối */
+  text-align: left; /* Căn chữ và icon về bên trái */
+}
+
+.text-container {
+  position: absolute;
+  top: -25px; /* Căn chỉnh chữ bên trên icon */
+  left: 16%; /* Đẩy chữ về bên trái theo tỷ lệ */
+  transform: translateX(-50%); /* Đảm bảo căn giữa phần chữ */
+  z-index: 2; /* Đảm bảo chữ nằm trên icon */
+}
+
+.section-title h2 {
+  font-size: 36px; /* Font chữ lớn cho tiêu đề */
+  font-weight: bold;
+  color: #000000;
+}
+
+.icon-container {
+  position: relative;
+  right: 28%; /* Điều chỉnh icon sang bên phải */
+  bottom: 10%; /* Đẩy icon xuống dưới */
+  z-index: 1; /* Đặt icon phía dưới chữ */
+}
+
+.section-title .title-icon {
+  display: block;
+  margin: 0 auto;
+  width: 180px; /* Kích thước icon */
+  height: auto;
+  opacity: 0.8; /* Tùy chỉnh độ trong suốt để làm nổi bật chữ */
+}
 
 
 
+
+/* Collection Section */
+.collection {
+  margin: 50px 0;
+  padding: 20px;
+  background-color: #ffffff;
+}
+
+/* Section Title */
+.section-title {
+  position: relative;
+  text-align: left;
+  margin-left: 10%; /* Căn thẳng hàng với text */
+}
+
+.text-container {
+  position: absolute;
+  top: -25px;
+  left: 16%;
+  transform: translateX(-50%);
+  z-index: 2;
+}
+
+.section-title h2 {
+  font-size: 36px;
+  font-weight: bold;
+  color: #000000;
+}
+
+.icon-container {
+  position: relative;
+  right: 28%;
+  bottom: 10%;
+  z-index: 1;
+}
+
+.section-title .title-icon {
+  display: block;
+  margin: 0 auto;
+  width: 180px;
+  height: auto;
+  opacity: 0.8;
+}
+
+/* Collection Grid */
+.collection-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr; /* Tạo hai cột */
+  grid-template-rows: auto auto; /* Tạo hai hàng với chiều cao tự động */
+  gap: 20px; /* Khoảng cách giữa các items */
+  margin: 0 10%; /* Căn chỉnh để thẳng với "Bộ sưu tập" */
+}
+
+/* Collection Items */
+.collection-item {
+  position: relative;
+  overflow: hidden;
+  text-align: center;
+  border-radius: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.collection-item img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 5px;
+}
+
+/* Button Adjustments */
+.collection-item .item-button {
+  position: absolute;
+  left: 50%; /* Centers the button horizontally */
+  transform: translateX(-50%); /* Ensures it's perfectly centered horizontally */
+  bottom: 10%; /* Adjust this value to place the button over the image */
+  padding: 10px 25px; /* Padding for button size */
+  border-radius: 5px; /* Rounded corners */
+  background-color: rgba(0, 0, 0, 0.7); /* Semi-transparent background */
+  color: #ffffff; /* Text color */
+  font-size: 16px;
+  font-weight: semibold;
+  cursor: pointer;
+  transition: background-color 0.3s ease; /* Smooth transition for hover effect */
+  z-index: 10; /* Higher z-index to ensure it overlays the image */
+}
+
+.collection-item .item-button:hover {
+  background-color: rgba(0, 0, 0, 0.9); /* Darker on hover for better visibility */
+}
+
+/* You can adjust the `bottom`, `left`, and other positions as needed for alignment */
+.item-jacket .item-button {
+  bottom: 30%; /* Example to move the button higher on the jacket image */
+  margin-left: 200px;
+}
+
+.item-shoes .item-button {
+  bottom: 5%; /* Example for positioning the shoe button */
+  margin-left: -250px;
+}
+
+.item-pants .item-button {
+  bottom: 3%; /* Adjust based on the specific image layout */
+  margin-left: 250px;
+}
+
+.item-accessories .item-button {
+  bottom: 26%; /* Position the button at the middle of the accessory image */
+  margin-left: 170px;
+}
+
+/* Specific Grid Placements */
+.item-jacket {
+  grid-column: 1 / 2;
+  grid-row: 1 / 2;
+}
+
+.item-shoes {
+  grid-column: 2 / 3;
+  grid-row: 1 / 2;
+}
+
+.item-pants {
+  grid-column: 1 / 2;
+  grid-row: 2 / 3;
+}
+
+.item-accessories {
+  grid-column: 2 / 3;
+  grid-row: 2 / 3;
+}
+
+/* Specific Styles for Jacket and Shoes */
+.item-jacket {
+  margin-top: -250px; /* Chỉnh margin-top sao cho ngang bằng với đường màu đỏ */
+}
+
+.item-shoes {
+  margin-top: 85px; /* Chỉnh margin-top sao cho ngang bằng với đường màu đỏ */
+  flex: 1 1 auto; /* Adjust this if necessary to allow size override */
+}
+
+.item-pants {
+  margin-top: -250px; /* Chỉnh margin-top sao cho ngang bằng với đường màu đỏ */
+}
+
+.item-accessories {
+  margin-bottom: -180px;
+}
 
 
 
@@ -994,6 +1177,77 @@ clear: both;
 }
 
 /* Responsive Design */
+@media (max-width: 1024px) {
+  /* Chỉnh lại grid layout cho Collection Grid để chỉ có một cột trên màn hình nhỏ hơn */
+  .collection-grid {
+    grid-template-columns: 1fr; /* Chuyển thành một cột */
+    gap: 10px; /* Giảm khoảng cách giữa các items */
+    margin: 0 5%; /* Giảm lề hai bên */
+  }
+
+  /* Chỉnh sửa kích thước cho các item */
+  .collection-item {
+    width: 100%; /* Chiếm toàn bộ chiều rộng khả dụng */
+  }
+
+  /* Khi cỡ màn hình nhỏ, các nút và hình ảnh trong carousel cũng cần được điều chỉnh */
+  .product-carousel {
+    width: 100%; /* Để carousel chiếm toàn bộ chiều rộng */
+    gap: 20px; /* Giảm khoảng cách giữa các sản phẩm */
+  }
+
+  .header {
+    flex-direction: column; /* Chuyển header thành hướng dọc */
+    padding: 10px; /* Giảm padding */
+  }
+
+  .brand-logo, .header-icons {
+    justify-content: center; /* Căn giữa logo và các icon trong header */
+    margin-left: 0; /* Loại bỏ lề trái */
+  }
+
+  .footer {
+    padding: 20px; /* Giảm padding của footer */
+  }
+
+  .footer-left, .footer-right {
+    width: 100%; /* Các phần tử footer chiếm toàn bộ chiều rộng */
+  }
+
+  /* Điều chỉnh lại layout cho các phần tử navbar */
+  .shirtNavbar a, .pantsNavbar a, .shoesNavbar a, .accessoriesNavbar a {
+    padding: 10px 20px; /* Giảm padding của các links trong navbar */
+    font-size: 16px; /* Giảm kích thước font */
+  }
+
+  .shirtDropdownContent, .pantsDropdownContent, .shoesDropdownContent, .accessoriesDropdownContent {
+    width: 100%; /* Đảm bảo dropdown chiếm toàn bộ chiều rộng */
+  }
+}
+
+@media (max-width: 480px) {
+  /* Điều chỉnh cỡ chữ và layout trên điện thoại */
+  body {
+    font-size: 14px; /* Giảm kích thước font cho toàn bộ trang */
+  }
+
+  .brand-name {
+    font-size: 24px; /* Giảm kích thước chữ cho tên thương hiệu */
+  }
+
+  .collection-item .item-button {
+    padding: 8px 15px; /* Giảm kích thước của các nút */
+  }
+
+  .header, .footer {
+    flex-direction: column; /* Chuyển tất cả thành hướng dọc */
+  }
+}
+
+
+
+
+/* Footer Responsive Design */
 @media (max-width: 768px) {
   .footer {
     flex-direction: column;
