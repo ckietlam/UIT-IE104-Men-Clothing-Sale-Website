@@ -5,10 +5,9 @@ import initWebRouters from "./routes/web";
 import connectDB from './config/connectDB';
 let app = express();
 const path = require('path');
-const __rootDir = path.dirname(__dirname);
-const __viewsDir = path.join(__rootDir, 'views');
-const __publicDir = path.join(__rootDir, 'public');
-
+const __mainDir = path.resolve(__dirname, '../../frontend');
+const __viewsDir = path.join(__mainDir, '/src');
+const __publicDir = path.join(__mainDir, '/public');
 app.set('views', __viewsDir);
 app.set('view engine', 'ejs');
 app.use(express.static(__publicDir));
