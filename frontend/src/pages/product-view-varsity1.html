@@ -1,17 +1,15 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="vi">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>H(T)ML Product</title>
-    <link rel="icon" type="product_img" href="../../public/images/LOGO ICON.png">
-    <link rel="stylesheet" href="../../public/styles/product-view-all.css">
+    <title>Áo Jacket Thời Trang Phong Cách Hiện Đại</title>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600&family=Poppins:wght@900&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet">
-    
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet"> 
+    <link rel="stylesheet" href="../../public/styles/product-view-blazer.css">
 </head>
 <body>
-
+    
     <header class="header">
         <div class="brand-logo">
             <img src="../../public/icons/logos/logo-html.svg" alt="H(T)ML Logo">
@@ -209,221 +207,84 @@
             </div>
         </header>
 
-    <!-- Product Section -->
-     
-    <div class="categories-container">
-        <div class="category-section">
-            <div class="category-header">
-                <h2>Áo</h2>
-                <a href="#" class="view-all" onclick="toggleView(this)">Xem tất cả</a>
+    <main>
+        <div class="breadcrumb">
+            <a href="../pages/product-view-all.html">Tất cả sản phẩm</a> &gt; 
+            <a href="#">Áo</a> &gt; 
+            <span><strong>Varsity 1</strong></span>
+        </div>
+    
+        <div class="product-detail">
+            <div class="product-image">
+                <div class="thumbnail-container">
+                    <img src="../../public/images/temp/jacket(1).jpg" alt="jacket1" class="thumbnail" onclick="changeImage('jacket(1).jpg')">
+                    <img src="../../public/images/temp/jacket(2).jpg" alt="jacket2" class="thumbnail" onclick="changeImage('jacket(2).jpg')">
+                    <img src="../../public/images/temp/jacket(3).jpg" alt="jacket3" class="thumbnail" onclick="changeImage('jacket(3).jpg')">
+                </div>
+                <img id="main-image" src="../../public/images/temp/jacket(1).jpg" alt="Blazer Đen">
             </div>
-            <div class="product-carousel limited-view">
-                <div class="carousel-track">
-                    <div class="product-card">
-                        <a href="../pages/product-view-blazer.html">
-                            <img src="../../public/images/temp/blazer(1).jpg" alt="Blazer Đen">
-                            <h3>Blazer</h3>
-                            <div class="product-details">
-                                <p class="product-description">Blazer trơn màu đen</p>
-                                <p class="product-price">125.000đ</p>
-                            </div>
-                        </a>
+            <div class="product-info">
+                <h2>Áo Jacket Thời Trang Hiện Đại</h2>
+                <p><strong>Giá: 400.000đ</strong></p>
+                <p><strong>Mô tả:</strong></p>
+                <ul>
+                    <li>Áo Jacket phong cách hiện đại, thiết kế đơn giản, phù hợp với nhiều dịp khác nhau.</li>
+                    <li>Chất liệu vải chống gió và giữ ấm, thích hợp cho những ngày se lạnh.</li>
+                    <li>Phom dáng rộng, thoải mái, dễ dàng vận động.</li>
+                    <li>Màu sắc: Đen, xám, xanh rêu.</li>
+                    <li>Size từ M đến XXL, cho cả nam và nữ.</li>
+                    <li>Phối đồ dễ dàng với áo thun và quần jeans để tạo phong cách năng động.</li>
+                </ul>
+                <div class="button-container">
+                    <button class="add-to-cart-btn">
+                        <i class="material-icons-outlined">add_shopping_cart</i> Thêm vào giỏ hàng
+                    </button>
+                    <button class="buy-now-btn">
+                        <i class="material-icons-outlined">shopping_cart</i> Mua ngay
+                    </button>
+                </div>
+    
+                <!-- Đánh giá -->
+                <div class="reviews">
+                    <h3>Đánh giá sản phẩm</h3>
+                    <div class="review-stars">
+                        <span class="material-icons-outlined">star</span>
+                        <span class="material-icons-outlined">star</span>
+                        <span class="material-icons-outlined">star</span>
+                        <span class="material-icons-outlined">star_half</span>
+                        <span class="material-icons-outlined">star_border</span>
                     </div>
-                    
-                    <div class="product-card">
-                        <a href="../pages/product-view-varsity1.html">
-                            <img src="../../public/images/temp/jacket(1).jpg" alt="Jacket bóng chày">
-                            <h3>Varsity 1</h3>
-                            <div class="product-details">
-                                <p class="product-description">Varsity bóng chày</p>
-                                <p class="product-price">350.000đ</p>
-                            </div>
-                        </a>
-                    </div>
-
-                    <div class="product-card">
-                        <img src="../../public/images/temp/jacket2(1).jpg" alt="Jacket bóng chày">
-                        <h3>Varsity 2</h3>
-                        <div class="product-details">
-                            <p class="product-description">Varsity trắng đen</p>
-                            <p class="product-price">350.000đ</p>
-                        </div>
-                    </div>
-                    <div class="product-card">
-                        <img src="../../public/images/temp/aokhoacda(1).jpg" alt="Khoác da bò">
-                        <h3>Áo khoác da</h3>
-                        <div class="product-details">
-                            <p class="product-description">Áo khoác nâu da bò</p>
-                            <p class="product-price">550.000đ</p>
-                        </div>
-                    </div>
-                    <div class="product-card">
-                        <img src="../../public/images/temp/kakiconon(1).jpg" alt="Khoác Kaki có nón">
-                        <h3>Áo khoác kaki</h3>
-                        <div class="product-details">
-                            <p class="product-description">Áo khoác Kaki có nón</p>
-                            <p class="product-price">455.000đ</p>
-                        </div>
+                    <p><strong>4.5/5</strong> (Dựa trên 120 đánh giá)</p>
+                    <p><em>Người dùng đánh giá cao sản phẩm này vì chất liệu tốt và thiết kế đẹp.</em></p>
+                </div>
+    
+                <!-- <div class="product-suggestions"> -->
+                    <!-- <h3>Sản phẩm gợi ý</h3> -->
+                    <!-- <div class="suggested-products"> -->
+                        <!-- <div class="suggested-item"> -->
+                            <!-- <img src="../../assets/blazer(2).jpg" alt="Blazer Xanh Navy"> -->
+                            <!-- <p>Blazer Xanh Navy</p> -->
+                        <!-- </div> -->
+                        <!-- <div class="suggested-item"> -->
+                            <!-- <img src="../../assets/blazer(3).jpg" alt="Blazer Xám"> -->
+                            <!-- <p>Blazer Xám</p> -->
+                        <!-- </div> -->
+                        <!-- <div class="suggested-item"> -->
+                            <!-- <img src="../../assets/blazer(4).jpg" alt="Blazer Xanh Dương"> -->
+                            <!-- <p>Blazer Xanh Dương</p> -->
+                        <!-- </div> -->
+                        <!-- <div class="suggested-item"> -->
+                            <!-- <img src="../../assets/blazer(5).jpg" alt="Blazer Trắng"> -->
+                            <!-- <p>Blazer Trắng</p> -->
+                        <!-- </div> -->
+                        <!-- <div class="suggested-item"> -->
+                            <!-- <img src="../../assets/blazer(6).jpg" alt="Blazer Đỏ"> -->
+                            <!-- <p>Blazer Đỏ</p> -->
+                        <!-- </div> -->
                     </div>
                 </div>
-            </div>
-        </div>
-          
-
-        <div class="category-section">
-            <div class="category-header">
-                <h2>Quần</h2>
-                <a href="#" class="view-all" onclick="toggleView(this)">Xem tất cả</a>
-            </div>
-            <div class="product-carousel limited-view">
-                <div class="carousel-track">
-                    <div class="product-card">
-                        <img src="../../public/images/temp/kakinhungtam(1).jpg" alt="Quần kaki">
-                        <h3>Quần Kaki</h3>
-                        <div class="product-details">
-                            <p class="product-description">Quần Kaki Nhung tăm</p>
-                            <p class="product-price">125.000đ</p>
-                        </div>
-                    </div>
-                    <div class="product-card">
-                        <img src="../../public/images/temp/quanshortdu(1).jpg" alt="Quần Short dù">
-                        <h3>Quần Short</h3>
-                        <div class="product-details">
-                            <p class="product-description">Quần Short Dù</p>
-                            <p class="product-price">350.000đ</p>
-                        </div>
-                    </div>
-                    <div class="product-card">
-                        <img src="../../public/images/temp/quantaylinen(1).jpg" alt="Quần tây linen">
-                        <h3>Quần Tây</h3>
-                        <div class="product-details">
-                            <p class="product-description">Quần Tây Linen</p>
-                            <p class="product-price">350.000đ</p>
-                        </div>
-                    </div>
-                    <div class="product-card">
-                        <img src="../../public/images/temp/joggernichancua(1).jpg" alt="Jogger nỉ chân cua">
-                        <h3>Quần Jogger</h3>
-                        <div class="product-details">
-                            <p class="product-description">Jogger nỉ chân cua</p>
-                            <p class="product-price">550.000đ</p>
-                        </div>
-                    </div>
-                    <div class="product-card">
-                        <img src="../../public/images/temp/quantaysidetab(1).jpg" alt="Quần tây sidetab">
-                        <h3>Quần Sidetab</h3>
-                        <div class="product-details">
-                            <p class="product-description">Quần tây sidetab</p>
-                            <p class="product-price">455.000đ</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="category-section">
-            <div class="category-header">
-                <h2>Giày dép</h2>
-                <a href="#" class="view-all" onclick="toggleView(this)">Xem tất cả</a>
-            </div>
-            <div class="product-carousel limited-view">
-                <div class="carousel-track">
-                    <div class="product-card">
-                        <img src="../../public/images/temp/dep-da-microfiber(1).jpg" alt="Dép da Microfiber">
-                        <h3>Dép da</h3>
-                        <div class="product-details">
-                            <p class="product-description">Dép da Microfiber</p>
-                            <p class="product-price">125.000đ</p>
-                        </div>
-                    </div>
-                    <div class="product-card">
-                        <img src="../../public/images/temp/dep-sandal-quai-ngang(1).jpg" alt="Dép sandal quai ngang">
-                        <h3>Dép quai ngang</h3>
-                        <div class="product-details">
-                            <p class="product-description">Dép sandal quai ngang</p>
-                            <p class="product-price">350.000đ</p>
-                        </div>
-                    </div>
-                    <div class="product-card">
-                        <img src="../../public/images/temp/giay-penny-loafer(1).jpg" alt="giay-penny-loafer">
-                        <h3>Giày da Penny</h3>
-                        <div class="product-details">
-                            <p class="product-description">Giày Penny Loafer</p>
-                            <p class="product-price">350.000đ</p>
-                        </div>
-                    </div>
-                    <div class="product-card">
-                        <img src="../../public/images/temp/giay-slip-on-jean(1).jpg" alt="giay-slip-on-jean">
-                        <h3>Giày Slip-on</h3>
-                        <div class="product-details">
-                            <p class="product-description">Giày Slip-on bằng jean</p>
-                            <p class="product-price">550.000đ</p>
-                        </div>
-                    </div>
-                    <div class="product-card">
-                        <img src="../../public/images/temp/giay-tay-leathe(1).jpg" alt="giay-tay-leathe">
-                        <h3>Giày Tây</h3>
-                        <div class="product-details">
-                            <p class="product-description">Giày Tây Leathe</p>
-                            <p class="product-price">455.000đ</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="category-section">
-            <div class="category-header">
-                <h2>Phụ kiện</h2>
-                <a href="#" class="view-all" onclick="toggleView(this)">Xem tất cả</a>
-            </div>
-            <div class="product-carousel limited-view">
-                <div class="carousel-track">
-                    <div class="product-card">
-                        <img src="../../public/images/temp/tat-co-dai(1).jpg" alt="tat-co-dai">
-                        <h3>Tất cổ dài</h3>
-                        <div class="product-details">
-                            <p class="product-description">Tất cổ dài họa tiết</p>
-                            <p class="product-price">125.000đ</p>
-                        </div>
-                    </div>
-                    <div class="product-card">
-                        <img src="../../public/images/temp/tat-co-ngan(1).jpg" alt="tat-co-ngan">
-                        <h3>Tất cổ ngắn</h3>
-                        <div class="product-details">
-                            <p class="product-description">Tất cổ ngắn họa tiết</p>
-                            <p class="product-price">100.000đ</p>
-                        </div>
-                    </div>
-                    <div class="product-card">
-                        <img src="../../public/images/temp/that-lung-dau-kim(1).jpg" alt="that-lung-dau-kim">
-                        <h3>Thắt lưng đầu kim</h3>
-                        <div class="product-details">
-                            <p class="product-description">Thắt lưng đen đầu kim</p>
-                            <p class="product-price">250.000đ</p>
-                        </div>
-                    </div>
-                    <div class="product-card">
-                        <img src="../../public/images/temp/that-lung-khoa-tu-dong(1).jpg" alt="that-lung-khoa-tu-dong">
-                        <h3>Thắt lưng tự khóa</h3>
-                        <div class="product-details">
-                            <p class="product-description">Thắt lưng khóa tự động</p>
-                            <p class="product-price">250.000đ</p>
-                        </div>
-                    </div>
-                    <div class="product-card">
-                        <img src="../../public/images/temp/vi-khoa-ca-sau(1).jpg" alt="vi-khoa-ca-sau">
-                        <h3>Ví khóa cá sấu</h3>
-                        <div class="product-details">
-                            <p class="product-description">Ví da cá sấu có khóa</p>
-                            <p class="product-price">455.000đ</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
+    </main>
+    
            <!-- Footer Section -->
     
         <!-- Left Side of Footer -->
@@ -473,6 +334,7 @@
             </div>
         </footer>
 
-    <script src="../../public/scripts/product-view-all.js"></script>
+        
+    <script src="../../public/scripts/product-view-blazer.js"></script>
 </body>
 </html>
