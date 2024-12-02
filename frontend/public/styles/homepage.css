@@ -695,7 +695,7 @@ clear: both;
 .advertise {
     position: relative; /* Để nút hiển thị trên ảnh */
     width: 100%; /* Chiếm toàn bộ chiều rộng màn hình */
-    margin: 50px 0; /* Tạo khoảng cách trên và dưới */
+    margin: 0 0; /* Tạo khoảng cách trên và dưới */
     display: flex;
     justify-content: center; /* Căn giữa ảnh */
 }
@@ -714,11 +714,11 @@ clear: both;
 /* Advertise Button */
 .advertise-btn {
     position: absolute; /* Đặt nút chồng lên ảnh */
-    bottom: 21%; /* Vị trí cách đáy ảnh */
+    bottom: 22%; /* Vị trí cách đáy ảnh */
     left: 14%; /* Vị trí cách cạnh trái */
     transform: translate(-50%, 50%); /* Căn chỉnh để nút nằm chính xác */
-    padding: 15px 30px;
-    font-size: 18px;
+    padding: 20px 40px;
+    font-size: 22px;
     font-weight: semibold;
     color: white;
     background-color: #000000;
@@ -749,7 +749,7 @@ clear: both;
 .text-container {
     position: absolute;
     top: -25px;
-    margin-left: -130px;
+    margin-left: -115px;
     transform: translateX(-50%);
     z-index: 2; /* Đặt z-index cao hơn icon để chữ nằm trên */
 }
@@ -829,7 +829,7 @@ clear: both;
   border-radius: 5px;
   padding: 10px;
   text-align: center;
-  width: 320px; /* Đảm bảo kích thước sản phẩm đồng đều */
+  width: 500px; /* Đảm bảo kích thước sản phẩm đồng đều */
 }
 
 .product-item img {
@@ -840,20 +840,20 @@ clear: both;
 }
 
 .product-item h3 {
-  font-size: 18px;
+  font-size: 22px;
   font-weight: bold;
   color: #333333;
   margin-bottom: 5px;
 }
 
 .product-item p {
-  font-size: 14px;
+  font-size: 20px;
   color: #666666;
   margin-bottom: 10px;
 }
 
 .product-item span {
-  font-size: 16px;
+  font-size: 22px;
   font-weight: bold;
   color: #000000;
 }
@@ -875,7 +875,7 @@ clear: both;
 .text-container {
   position: absolute;
   top: -25px; /* Căn chỉnh chữ bên trên icon */
-  left: 16%; /* Đẩy chữ về bên trái theo tỷ lệ */
+  left: 17%; /* Đẩy chữ về bên trái theo tỷ lệ */
   transform: translateX(-50%); /* Đảm bảo căn giữa phần chữ */
   z-index: 2; /* Đảm bảo chữ nằm trên icon */
 }
@@ -921,7 +921,7 @@ clear: both;
 .text-container {
   position: absolute;
   top: -25px;
-  left: 16%;
+  left: 17%;
   transform: translateX(-50%);
   z-index: 2;
 }
@@ -981,11 +981,11 @@ clear: both;
   left: 50%; /* Centers the button horizontally */
   transform: translateX(-50%); /* Ensures it's perfectly centered horizontally */
   bottom: 10%; /* Adjust this value to place the button over the image */
-  padding: 10px 25px; /* Padding for button size */
+  padding: 20px 50px; /* Padding for button size */
   border-radius: 5px; /* Rounded corners */
   background-color: rgba(0, 0, 0, 0.7); /* Semi-transparent background */
   color: #ffffff; /* Text color */
-  font-size: 16px;
+  font-size: 20px;
   font-weight: semibold;
   cursor: pointer;
   transition: background-color 0.3s ease; /* Smooth transition for hover effect */
@@ -998,13 +998,13 @@ clear: both;
 
 /* You can adjust the `bottom`, `left`, and other positions as needed for alignment */
 .item-jacket .item-button {
-  bottom: 30%; /* Example to move the button higher on the jacket image */
-  margin-left: 200px;
+  bottom: 27%; /* Example to move the button higher on the jacket image */
+  margin-left: 320px;
 }
 
 .item-shoes .item-button {
   bottom: 5%; /* Example for positioning the shoe button */
-  margin-left: -250px;
+  margin-left: -300px;
 }
 
 .item-pants .item-button {
@@ -1014,7 +1014,7 @@ clear: both;
 
 .item-accessories .item-button {
   bottom: 26%; /* Position the button at the middle of the accessory image */
-  margin-left: 170px;
+  margin-left: -300px;
 }
 
 /* Specific Grid Placements */
@@ -1040,7 +1040,7 @@ clear: both;
 
 /* Specific Styles for Jacket and Shoes */
 .item-jacket {
-  margin-top: -250px; /* Chỉnh margin-top sao cho ngang bằng với đường màu đỏ */
+  margin-top: -370px; /* Chỉnh margin-top sao cho ngang bằng với đường màu đỏ */
 }
 
 .item-shoes {
