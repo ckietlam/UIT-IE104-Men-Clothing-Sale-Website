@@ -3,6 +3,7 @@ import bodyParser from "body-parser";
 import viewEngine from "./config/viewEngine";
 import initWebRouters from "./routes/web";
 import connectDB from './config/connectDB';
+import session from 'express-session';
 let app = express();
 const path = require('path');
 const __mainDir = path.resolve(__dirname, '../../frontend');
@@ -11,7 +12,16 @@ const __publicDir = path.join(__mainDir, '/public');
 app.set('views', __viewsDir);
 app.set('view engine', 'ejs');
 app.use(express.static(__publicDir));
-
+app.use(session({
+    secret: "example123",
+    resave: false,
+    saveUninitialized: true,
+    cookie: {
+        maxAge: 24 * 60 * 60 
+    }
+    })
+    
+)
 require('dotenv').config();
 
 

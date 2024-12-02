@@ -1,8 +1,21 @@
 import productService from "../services/productService";
+import express from "express";
+const app = express();
+
 let getAdmin = async (req, res) => {
-  return res.render("pages/admin", {
-    message: null,
-  });
+  if (!req.session.user) {
+    return res.redirect('/404');
+  }
+
+  if (req.session.user.role === "Admin") {
+      return res.render("pages/admin", {
+          user: req.session.user
+      });
+  } else {
+      return res.redirect('/404');
+}
+
+  
 };
 let getProductManagementPage = async (req, res) => {
   try {
@@ -64,11 +77,43 @@ let getAddProductPage = async (req, res) => {
     });
   }
 };
+const getHomePage = async (req, res) => {
+  try {
+    
+    const isAuthenticated = req.session.authenticated || false;
+    const user = req.session.user || null;
 
+    
+    return res.render('pages/homepage', {
+      user: user,
+      message: null,
+      isAuthenticated: isAuthenticated, // Can be used for conditional rendering
+    });
+  } catch (error) {
+    console.error("Error rendering homepage:", error);
+    return res.status(500).json({
+      message: "Error from server",
+      error: error.message,
+    });
+  }
+};
+
+const get404Page = async (req, res) => {
+    try {
+      return res.redirect('/404');
+    } catch (error) {
+      console.error("Error rendering 404 page:", error);
+      return res.status(500).json({
+        message: "Error from server",
+        error: error.message,
+      });
+    }
+}
 module.exports = {
   getAdmin,
   getProductManagementPage,
   getEditProductPage,
   getAddProductPage,
-  
+  getHomePage,
+  get404Page
 };

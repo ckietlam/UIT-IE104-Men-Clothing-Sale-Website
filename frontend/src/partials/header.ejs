@@ -184,13 +184,21 @@
             </div>
         </div>
     </div>
-
-
     </div>
 
         <div class="header-icons">
+            
             <img src="/icons/icon-search.svg" alt="Search">
-            <img src="/icons/icon-user-nav.svg" alt="User">
+            <% if (isAuthenticated) { %>
+                <a href="/profile">
+                    <img src="/icons/icon-user-nav.svg" alt="User Icon">
+                    
+                </a>
+            <% } else { %>
+                <a href="/login">
+                    <img src="/icons/icon-user-nav.svg" alt="User Icon">
+                </a>
+            <% } %>
             <img src="/icons/icon-shopping.svg" alt="Shopping Bag">
         </div>
     </header>

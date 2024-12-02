@@ -2,14 +2,21 @@ import express from "express";
 import homeController from "../controllers/homeController";
 import productController from "../controllers/productController"
 import userController from "../controllers/userController";
+import addSessionData from "../middlewares/addSessionData";
 let router = express.Router();
 
 let initWebRouters = (app) => {
+  app.use(addSessionData);
 
+  router.get("/", homeController.getHomePage);
+  router.get("/profile", userController.getProfilePage);
   router.get("/login", userController.getLogin);
   router.post("/login", userController.handleLogin);
   router.get("/register", userController.getRegister);
   router.post("/register", userController.handleRegister);
+  router.get("/logout", userController.getLogout);
+  router.get("/404", homeController.get404Page);
+
   router.get("/admin", homeController.getAdmin);
   router.get("/admin-products-management", homeController.getProductManagementPage);
   router.get("/edit-product", homeController.getEditProductPage);

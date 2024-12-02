@@ -1,7 +1,9 @@
 import userService from "../services/userService"
 import otpService from "../services/otpService"
 import nodemailer from 'nodemailer';
-import cookieParser from "cookie-parser";
+import express from "express";
+const app = express();
+
 const handleRegister = async (req, res) => {
     try {
         const { email, password, name, phone,role } = req.body;
@@ -50,12 +52,20 @@ const handleLogin = async (req, res) => {
                 message: 'Invalid email or password'
             });
         }
-
-       
-        res.status(200).json({
-            statusCode: 200,
-            msg: 'Login success',
-          });
+        req.session.user = {
+            id: user.id,
+            email: user.email,
+            name: user.name,
+            phone: user.phone,
+            role: user.role
+        };
+        req.session.authenticated = true;
+        // Redirect based on role
+        if (user.role === 'Admin') {
+            return res.redirect('/admin');
+        }
+        
+        return res.redirect('/');
     } catch (error) {
         return res.status(500).json({
             message: 'Error from server',
@@ -147,11 +157,24 @@ const getLogin = async (req, res) => {
         message: null
     });
 }
+const getLogout = async (req, res) => {
+    req.session.destroy();
+    return res.redirect('/');
+}
+
+const getProfilePage = async (req, res) => {
+    return res.render('pages/profile', { 
+        user: req.session.user,
+        message: null
+    });
+}
 module.exports = {
     handleRegister,
     handleLogin,
     handleForgotPassword,
     handleChangePassword,
     getRegister,
-    getLogin
+    getLogin,
+    getLogout,
+    getProfilePage
 }
