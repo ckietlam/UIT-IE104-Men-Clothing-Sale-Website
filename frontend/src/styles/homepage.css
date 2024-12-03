@@ -1,0 +1,53 @@
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(5px);   
+  z-index: 100;     
+}
+
+.hide {
+  display: none;
+}
+
+.overlay .box-welcome {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  background-color: #fff;
+  padding: 30px 100px;
+  text-align: center;
+}
+
+.box-welcome .x-btn {
+  position: absolute;
+  top: 10px;
+  left: 20px;
+  padding: 10px;
+  cursor: pointer;
+}
+
+.box-welcome h2 {
+  text-transform: capitalize;
+}
+
+.box-welcome p {
+  font-weight: 600;
+}
+
+.box-welcome button {
+  background-color: darkgreen;
+  color: #fff;
+  padding: 10px;
+  margin: auto 30px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}

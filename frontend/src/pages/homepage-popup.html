@@ -6,37 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>H(T)ML Website</title>
     <link rel="stylesheet" href="../styles/nav-bar.css">
-    <style>
-        .box-main {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            flex-direction: column;
-            width: 100%;
-            height: 600px;
-            text-align: center;
-        }
-
-        .box-main h1 {
-            color: crimson;
-            line-height: 80px;
-            text-transform: capitalize;
-        }
-
-        .box-main p {
-            line-height: 2.5;
-        }
-
-        .box-main button {
-            width: 350px;
-            padding: 8px;
-            border: none;
-            background-color: darkgreen;
-            color: #fff;
-            border-radius: 5px;
-            margin-top: 40px;
-        }
-    </style>
+    <link rel="stylesheet" href="../styles/homepage.css">
 </head>
 
 <body>
@@ -239,31 +209,15 @@
         </div>
     </header>
 <!-- Main Section -->
-<main class="mainContent">
-    <div class="box-main">
-        <img src="../assets/icons/fail.png" alt="Fail" width="100" height="100" >
-        
-        <h1>Thanh toán thất bại</h1>
-        <p>
-            Xin lỗi đơn hàng của bạn không thể hoàn tất. <br />
-            Vui lòng đảm bảo rằng địa chỉ thanh toán bạn cung cấp là địa
-            chỉ mà tài khoản ngân hàng của bạn đã đăng ký. <br />
-            Nếu không bạn hãy thử một phương thức thanh toán khác
-        </p>
-        <button type="button">Thanh toán lại</button>
-        <div
-            style="
-                color: darkcyan;
-                margin-top: 20px;
-                font-weight: 500;
-                cursor: pointer;
-                font-size: 15px;
-            "
-        >
-            &larr; Trở về đơn hàng
-        </div>
+<div class="overlay">
+    <div class="box-welcome">
+        <div class="x-btn" onclick="handleClickPopup()">x</div>
+        <h2>Chào mừng bạn đến với H(T)ML!</h2>
+        <p>HONED TREND, MODERN LOCK</p>
+        <p>Chúc bạn có một trải nghiệm mua sắm tuyệt vời</p>
+        <button type="button" onclick="handleClickPopup()">Bắt đầu mua sắm</button>
     </div>
-</main>
+ </div>
 
     <!-- Footer Section -->
 
@@ -313,6 +267,13 @@
             </div>
         </div>
     </footer>
+    <script>
+        function handleClickPopup() {
+            let overlayClassname = document.getElementsByClassName("overlay");
+            overlayClassname.item(0).classList.add("hide");
+        }
+    </script>
+    
 
 </body>
 
