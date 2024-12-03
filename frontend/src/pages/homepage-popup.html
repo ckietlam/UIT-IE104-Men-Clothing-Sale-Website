@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>H(T)ML Website</title>
+    <link rel="stylesheet" href="../styles/search.css">
     <link rel="stylesheet" href="../styles/nav-bar.css">
     <link rel="stylesheet" href="../styles/homepage.css">
 </head>
@@ -203,11 +204,33 @@
     </div>
 
         <div class="header-icons">
-            <img src="../assets/icons/icon-search.svg" alt="Search">
+            <img 
+                onclick="showSearch()"
+                class="search"
+                src="../assets/icons/icon-search.svg" 
+                alt="Search"
+            />
             <img src="../assets/icons/icon-user.svg" alt="User">
             <img src="../assets/icons/icon-shopping.svg" alt="Shopping Bag">
         </div>
+        
+        <div id="box-search" class="box-search">
+            <div class="icon-search">
+                <img
+                    id="search"
+                    src="../assets/icons/icon-search.svg"
+                    width="25px"
+                    height="25px"
+                    alt="Search"
+                />
+            </div>
+            <input type="text" id="search-input" class="search-input" placeholder="Tìm kiếm...">
+            
+
+
     </header>
+
+
 <!-- Main Section -->
 <div class="overlay">
     <div class="box-welcome">
@@ -273,7 +296,29 @@
             overlayClassname.item(0).classList.add("hide");
         }
     </script>
-    
+    <script>
+        function showSearch() {
+            var boxSearch = document.getElementById('box-search');
+            var overlay = document.getElementById('overlay');
+            // Kiểm tra xem boxSearch có đang hiển thị dưới dạng flex không
+            if (boxSearch.style.display === 'flex') {
+                closeSearch(); // Nếu đang flex thì đóng hộp tìm kiếm
+            } else {
+                // Nếu không phải flex thì mở hộp tìm kiếm
+                boxSearch.style.display = 'flex';
+                overlay.style.display = 'block';
+            }
+        }
+
+        function closeSearch() {
+            var boxSearch = document.getElementById('box-search');
+            var overlay = document.getElementById('overlay');
+
+            boxSearch.style.display = 'none';
+            overlay.style.display = 'none';
+        }
+    </script>
+
 
 </body>
 
