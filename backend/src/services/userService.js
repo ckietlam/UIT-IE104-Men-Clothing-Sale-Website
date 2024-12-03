@@ -1,6 +1,7 @@
 import db from '../models/index';
 import bcrypt from 'bcryptjs';
 import otpService from "../services/otpService"
+import Op from 'sequelize';
 
 const salt = bcrypt.genSaltSync(10);
 
@@ -38,6 +39,7 @@ const checkUserEmail = async (userEmail) => {
         throw error;
     }
 }
+
 
 const handleUserLogin = async (email, password) => {
     try {
@@ -103,10 +105,40 @@ const resetPassword = async (email, otp, newPassword) => {
         throw error;  
     }
 }
+
+const checkUserEmailWhenChangePassword = async (userEmail, currentUserEmail) => {
+    try {
+        const user = await db.User.findOne({
+            where: {
+                email: userEmail,
+                [Op.not]: [{ email: currentUserEmail }]
+            }
+        });
+        return !!user; 
+    } catch (error) {
+        throw error; 
+    }
+}
+const updateProfile = async (new_email, name, phone, current_email) => {
+    try {
+        const user = await db.User.findOne({ where: { email: current_email }});
+        if (user) {
+            user.name = name;
+            user.phone = phone;
+            user.email = new_email;
+            await user.save();
+            return true;
+        }
+        
+    } catch (error) {
+        throw error;
+    }
+}
 module.exports = {
     createNewUser,
     checkUserEmail,
     handleUserLogin,
     forgotPassword,
-    resetPassword
+    resetPassword,
+    updateProfile
 }

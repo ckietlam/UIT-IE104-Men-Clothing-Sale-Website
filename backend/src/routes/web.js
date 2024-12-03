@@ -16,6 +16,7 @@ let initWebRouters = (app) => {
   router.post("/register", userController.handleRegister);
   router.get("/logout", userController.getLogout);
   router.get("/404", homeController.get404Page);
+  router.post("/update-profile", userController.handleUpdateProfile);
 
   router.get("/admin", homeController.getAdmin);
   router.get("/admin-products-management", homeController.getProductManagementPage);

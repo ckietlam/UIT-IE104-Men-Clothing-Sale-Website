@@ -1,35 +1,49 @@
 <!DOCTYPE html>
 <html lang="vi">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Profile Page</title>
-    <link rel="stylesheet" href="/styles/homepage.css">
+    <link rel="stylesheet" href="/styles/profile.css">
 </head>
-
 <body>
-
-    <!-- Include the header -->
     <%- include('../partials/header', { activeIdx: 1 }) %>
-
-    <!-- Check if the user is logged in and display profile information -->
     
-        <div class="profile-container">
-            <h2>Your Profile</h2>
-            <p><strong>Name:</strong> <%= user.name %></p>
-            <p><strong>Email:</strong> <%= user.email %></p>
-            <p><strong>Phone:</strong> <%= user.phone %></p>
-          
-            <!-- Logout Button -->
+    <% if (message != null) { %>
+        <script>alert('<%= message %>');</script>
+    <% } %>
+
+    <main class="mainContent">
+        <h1 class="pageTitle">THÔNG TIN TÀI KHOẢN</h1>
+        <form class="accountInfoForm" action="/update-profile" method="POST">
+            <div class="doubleInputGroup">
+                <div class="inputWrapper">
+                    <input type="text" id="name" name="name" placeholder="Tên Người Dùng" required value="<%= user.name %>">
+                    <label for="fullName" class="requiredLabel">Họ và tên</label>
+                </div>
+            </div>
+
+            <div class="doubleInputGroup">
+                <div class="inputWrapper">
+                    <input type="text" id="email" name="email" placeholder="Nhập địa chỉ email" required value="<%= user.email %>">
+                    <label for="email" class="requiredLabel">Email</label>
+                </div>
+                <div class="inputWrapper">
+                    <input type="text" id="phone" name="phone" placeholder="Nhập số điện thoại" required value="<%= user.phone %>">
+                    <label for="phone" class="requiredLabel">Số điện thoại</label>
+                </div>
+            </div>
+
+            <button type="submit" class="updateButton">Cập Nhật Thông Tin</button>
+        </form>
+
+        <div class="formButtons">
             <form action="/logout" method="GET">
-                <button type="submit">Log Out</button>
+                <button type="submit" class="exitButton">Đăng Xuất</button>
             </form>
         </div>
+    </main>
 
-    <!-- Include the footer -->
     <%- include('../partials/footer', { activeIdx: 1 }) %>
-
 </body>
-
 </html>
