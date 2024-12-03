@@ -8,28 +8,28 @@
 
 @font-face {
   font-family: 'Montserrat'; 
-  src: url('../../public/fonts/Montserrat/Montserrat-Regular.ttf') format('truetype');
+  src: url('/fonts/Montserrat/Montserrat-Regular.ttf') format('truetype');
   font-weight: normal; 
   font-style: normal; 
 }
 
 @font-face {
   font-family: 'Montserrat';
-  src: url('../../public/fonts/Montserrat/Montserrat-Bold.ttf') format('truetype');
+  src: url('/fonts/Montserrat/Montserrat-Bold.ttf') format('truetype');
   font-weight: bold;
   font-style: normal;
 }
 
 @font-face {
   font-family: 'Montserrat';
-  src: url('../../public/fonts/Montserrat/Montserrat-Italic.ttf') format('truetype');
+  src: url('/fonts/Montserrat/Montserrat-Italic.ttf') format('truetype');
   font-weight: normal;
   font-style: italic;
 }
 
 @font-face {
   font-family: 'Poppins';
-  src: url('../../public/fonts/Poppins/Poppins-ExtraBold.ttf') format('truetype');
+  src: url('/fonts/Poppins/Poppins-ExtraBold.ttf') format('truetype');
   font-weight: bold;
   font-style: normal;
 }
@@ -79,8 +79,8 @@ font-weight: normal; /* Giữ độ dày mặc định */
 }
 
 .brand-name {
-  font-family: 'Poppins', sans-serif; /* Sử dụng font Poppins, fallback là sans-serif */
-  font-size: 42px; /* Điều chỉnh kích thước chữ */
+  font-family: 'Poppins', sans-serif !important; /* Sử dụng font Poppins, fallback là sans-serif */
+  font-size: 36px; /* Điều chỉnh kích thước chữ */
   font-weight: bold; /* Đảm bảo độ đậm được sử dụng */
   color: black; /* Màu chữ */
 }
@@ -714,8 +714,8 @@ clear: both;
 /* Advertise Button */
 .advertise-btn {
     position: absolute; /* Đặt nút chồng lên ảnh */
-    bottom: 22%; /* Vị trí cách đáy ảnh */
-    left: 14%; /* Vị trí cách cạnh trái */
+    bottom: 19%; /* Vị trí cách đáy ảnh */
+    left: 15%; /* Vị trí cách cạnh trái */
     transform: translate(-50%, 50%); /* Căn chỉnh để nút nằm chính xác */
     padding: 20px 40px;
     font-size: 22px;
@@ -729,7 +729,7 @@ clear: both;
 }
 
 .advertise-btn:hover {
-    background-color: #375a7f; /* Màu xanh đậm hơn khi hover */
+    background-color: #679289; /* Màu xanh đậm hơn khi hover */
 }
 
 
@@ -829,7 +829,7 @@ clear: both;
   border-radius: 5px;
   padding: 10px;
   text-align: center;
-  width: 500px; /* Đảm bảo kích thước sản phẩm đồng đều */
+  width: 350px; /* Đảm bảo kích thước sản phẩm đồng đều */
 }
 
 .product-item img {
@@ -999,22 +999,22 @@ clear: both;
 /* You can adjust the `bottom`, `left`, and other positions as needed for alignment */
 .item-jacket .item-button {
   bottom: 27%; /* Example to move the button higher on the jacket image */
-  margin-left: 320px;
+  margin-left: 200px;
 }
 
 .item-shoes .item-button {
   bottom: 5%; /* Example for positioning the shoe button */
-  margin-left: -300px;
+  margin-left: -200px;
 }
 
 .item-pants .item-button {
   bottom: 3%; /* Adjust based on the specific image layout */
-  margin-left: 250px;
+  margin-left: 200px;
 }
 
 .item-accessories .item-button {
   bottom: 26%; /* Position the button at the middle of the accessory image */
-  margin-left: -300px;
+  margin-left: -180px;
 }
 
 /* Specific Grid Placements */
