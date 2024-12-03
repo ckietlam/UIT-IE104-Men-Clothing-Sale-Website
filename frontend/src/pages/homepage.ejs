@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>H(T)ML Website</title>
+    <link rel="stylesheet" href="/styles/homepage.css">
+</head>
+
+<body>
+
+    <%- include('../partials/header', { activeIdx: 0 }) %>
+    <% if (message != null ) { %> <script> alert('<%= message %>'); </script> <% } %>
+
+        <!-- Advertise Section -->
+    <section class="advertise">
+        <div class="advertise-image">
+            <img src="/images/topbar.png" alt="Advertise Image">
+            <button class="advertise-btn">Mua Ngay</button>
+        </div>
+    </section>
+
+
+        <!-- New Arrival Section -->
+    <section class="new-arrival">
+        <div class="section-title">
+            <div class="text-container">
+                <h2>Hàng mới về</h2>
+            </div>
+            <div class="icon-container">
+                <img src="/icons/icon-homepage.svg" alt="New Arrival Icon" class="title-icon">
+            </div>
+        </div>
+        <div class="product-carousel">
+            <!-- Icon Left -->
+            <button class="carousel-control prev">
+                <img src="/icons/arrow-left-homepage.svg" alt="Previous">
+            </button>
+            
+            <!-- Product Items -->
+            <div class="carousel-items">
+                <div class="product-item">
+                    <img src="/images/Shirt-1.png" alt="Product 1">
+                    <h3>Basic T-shirt</h3>
+                    <p>Áo thun trơn màu đen</p>
+                    <span>125.000đ</span>
+                </div>
+                <div class="product-item">
+                    <img src="/images/Shirt-2.png" alt="Product 2">
+                    <h3>Basic T-shirt</h3>
+                    <p>Áo thun trơn màu đen</p>
+                    <span>125.000đ</span>
+                </div>
+                <div class="product-item">
+                    <img src="/images/Shirt-3.png" alt="Product 3">
+                    <h3>Basic T-shirt</h3>
+                    <p>Áo thun trơn màu đen</p>
+                    <span>125.000đ</span>
+                </div>
+            </div>
+
+            <!-- Icon Right -->
+            <button class="carousel-control next">
+                <img src="/icons/arrow-right-homepage.svg" alt="Next">
+            </button>
+        </div>
+    </section>
+
+
+    <!-- Collection -->
+
+    <section class="collection">
+        <div class="section-title">
+            <!-- Text container -->
+            <div class="text-container">
+                <h2>Bộ sưu tập</h2>
+            </div>
+            <!-- Icon container -->
+            <div class="icon-container">
+                <img src="/icons/icon-homepage.svg" alt="Collection Icon" class="title-icon">
+            </div>
+        </div>
+    
+        <div class="collection-grid">
+            <!-- Item 1 -->
+            <div class="collection-item item-jacket">
+                <img src="/images/collection-shirts.png" alt="Jacket">
+                <button class="item-button">Jacket</button>
+            </div>
+            <!-- Item 2 -->
+            <div class="collection-item item-shoes">
+                <img src="/images/Collection-Shoes.png" alt="Dép">
+                <button class="item-button">Dép</button>
+            </div>
+            <!-- Item 3 -->
+            <div class="collection-item item-pants">
+                <img src="/images/Collection-Pants.png" alt="Quần">
+                <button class="item-button">Quần</button>
+            </div>
+            <!-- Item 4 -->
+            <div class="collection-item item-accessories">
+                <img src="/images/collection-belts.png" alt="Thắt Lưng">
+                <button class="item-button">Thắt Lưng</button>
+            </div>
+        </div>
+
+    </section>
+    <%- include('../partials/footer', { activeIdx: 0 }) %>
+
+
+</body>
+
+</html>
