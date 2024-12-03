@@ -1,12 +1,69 @@
-/* General Reset */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: "Montserrat", sans-serif;
+  /* General Reset */
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Montserrat", sans-serif;
+}
+
+@font-face {
+  font-family: 'Montserrat'; 
+  src: url('/fonts/Montserrat/Montserrat-Regular.ttf') format('truetype');
+  font-weight: normal; 
+  font-style: normal; 
+}
+
+@font-face {
+  font-family: 'Montserrat';
+  src: url('/fonts/Montserrat/Montserrat-Bold.ttf') format('truetype');
+  font-weight: bold;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Montserrat';
+  src: url('/fonts/Montserrat/Montserrat-Italic.ttf') format('truetype');
+  font-weight: normal;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'Poppins';
+  src: url('/fonts/Poppins/Poppins-ExtraBold.ttf') format('truetype');
+  font-weight: bold;
+  font-style: normal;
+}
+
+
+/* Áp dụng Montserrat Regular cho toàn bộ trang */
+body {
+font-family: 'Montserrat', sans-serif; /* Sử dụng Montserrat Regular */
+font-weight: normal; /* Đảm bảo dùng độ dày Regular */
+line-height: 1.6; /* Dòng chữ dễ đọc hơn */
+color: black; /* Màu chữ mặc định */
 }
 
 /* Header */
+.header, .navbar a, .dropdownButton {
+font-family: 'Montserrat', sans-serif; /* Font Montserrat Regular */
+font-weight: normal; /* Giữ độ dày mặc định */
+}
+
+/* Footer */
+.footer, .footer-links a, .footer-social p, .footer-newsletter label {
+font-family: 'Montserrat', sans-serif; /* Font Montserrat Regular */
+font-weight: normal; /* Giữ độ dày mặc định */
+}
+
+/* Các cột và items */
+.column a, .product-item p, h3 {
+font-family: 'Montserrat', sans-serif; /* Font Montserrat Regular */
+font-weight: normal; /* Giữ độ dày mặc định */
+}
+
+
+
+/* Adjust spacing in the header */
 .header {
   display: flex;
   justify-content: space-between; /* Căn đều các phần */
@@ -636,130 +693,127 @@ clear: both;
 
 /* Main Content */
 .main-content {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 60px 0;
-  margin: 0 auto;
-  max-width: 800px; /* Đặt chiều rộng tối đa để căn giữa */
-}
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 60px 0;
+    margin: 0 auto;
+    max-width: 800px; /* Đặt chiều rộng tối đa để căn giữa */
+  }
+  
+  
+  /* Login Container */
+  .login-container {
+    display: flex;
+    gap: 30px;
+    align-items: center;
+    max-width: 900px;
+  }
+  
+  /* Login Banner */
+  .login-banner {
+    width: 50%;
+    height: auto;
+  }
+  
+  /* Login Form */
+  .login-form {
+    width: 50%;
+    max-width: 400px;
+  }
+  
+  /* Centered Login Heading */
+  .login-form h2 {
+    font-size: 24px;
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  /* Input Group */
+  .input-group {
+    margin-bottom: 15px;
+    position: relative;
+  }
+  
+  /* Input Fields */
+  .input-group input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+  
+  /* Visibility Icon */
+  .visibility-icon {
+    position: absolute;
+    top: 50%;
+    right: 10px;
+    transform: translateY(-50%);
+    cursor: pointer;
+  }
+  
+  /* Forgot Password Link */
+  .forgot-password {
+    display: block;
+    text-align: right;
+    margin-top: 5px;
+    margin-bottom: 20px; /* Tạo khoảng cách rộng hơn giữa "Quên Mật Khẩu?" và nút Đăng Nhập */
+    font-size: 14px;
+    color: #1d7873;
+    text-decoration: none;
+  }
+  
+  .forgot-password:hover {
+    text-decoration: underline;
+  }
+  
+  /* Login Button */
+  .login-button {
+    width: 100%;
+    padding: 10px;
+    color: #fff;
+    background-color: #1d7873;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    text-align: center;
+    margin-bottom: 15px; /* Tạo khoảng cách giữa nút Đăng Nhập và phần "Chưa Có Tài Khoản?" */
+  }
+  
+  /* Terms Text */
+  .terms {
+    font-size: 14px;
+    text-align: center;
+    color: #666;
+    line-height: 1.5;
+    margin-top: 20px; /* Tăng khoảng cách trên */
+    margin-bottom: 20px; /* Tăng khoảng cách dưới */
+  }
+  
+  .login-form p {
+    margin-top: 15px;
+    text-align: center;
+  }
+  
+  /* Register Text */
+  .login-form p {
+    font-size: 14px;
+    color: #000000;
+    margin-top: 10px;
+  }
+  
+  .login-form p a {
+    color: #1d7873;
+    text-decoration: none;
+  }
+  
+  .login-form p a:hover {
+    text-decoration: underline;
+  }
 
 
-/* Login Container */
-.login-container {
-  display: flex;
-  gap: 30px;
-  align-items: center;
-  max-width: 900px;
-}
-
-/* Login Banner */
-.login-banner {
-  width: 50%;
-  height: auto;
-}
-
-/* Login Form */
-.login-form {
-  width: 50%;
-  max-width: 400px;
-}
-
-/* Centered Login Heading */
-.login-form h2 {
-  font-size: 24px;
-  text-align: center;
-  margin-bottom: 20px;
-}
-
-/* Input Group */
-.input-group {
-  margin-bottom: 15px;
-  position: relative;
-}
-
-/* Input Fields */
-.input-group input {
-  width: 100%;
-  padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-}
-
-/* Visibility Icon */
-.visibility-icon {
-  position: absolute;
-  top: 50%;
-  right: 10px;
-  transform: translateY(-50%);
-  cursor: pointer;
-}
-
-/* Forgot Password Link */
-.forgot-password {
-  display: block;
-  text-align: right;
-  margin-top: 5px;
-  margin-bottom: 20px; /* Tạo khoảng cách rộng hơn giữa "Quên Mật Khẩu?" và nút Đăng Nhập */
-  font-size: 14px;
-  color: #1d7873;
-  text-decoration: none;
-}
-
-.forgot-password:hover {
-  text-decoration: underline;
-}
-
-/* Login Button */
-.login-button {
-  width: 100%;
-  padding: 10px;
-  color: #fff;
-  background-color: #1d7873;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-  text-align: center;
-  margin-bottom: 15px; /* Tạo khoảng cách giữa nút Đăng Nhập và phần "Chưa Có Tài Khoản?" */
-}
-
-/* Terms Text */
-.terms {
-  font-size: 14px;
-  text-align: center;
-  color: #666;
-  line-height: 1.5;
-  margin-top: 20px; /* Tăng khoảng cách trên */
-  margin-bottom: 20px; /* Tăng khoảng cách dưới */
-}
-
-.login-form p {
-  margin-top: 15px;
-  text-align: center;
-}
-
-/* Register Text */
-.login-form p {
-  font-size: 14px;
-  color: #000000;
-  margin-top: 10px;
-}
-
-.login-form p a {
-  color: #1d7873;
-  text-decoration: none;
-}
-
-.login-form p a:hover {
-  text-decoration: underline;
-}
-
-
-
-
-
- /* Footer */
- .footer {
+/* Footer */
+.footer {
   background-color: #081d22;
   color: #ffffff;
   padding: 40px 20px;
@@ -775,9 +829,9 @@ clear: both;
   padding: 20px;
 }
 
-/* Dịch footer-right sang phải thêm 20% */
+/* Adjust footer-right to shift right by 10% */
 .footer-right {
-  margin-left: 10%; /* Dịch sang phải thêm 20% */
+  margin-left: 10%;
 }
 
 .footer-newsletter {
@@ -788,14 +842,14 @@ clear: both;
 .footer-newsletter h3 {
   font-size: 18px;
   margin-bottom: 20px;
-  padding-left: 10px; /* Căn lề trái cho tiêu đề */
+  padding-left: 10px;
 }
 
 .newsletter-form {
   display: flex;
   border: 1px solid #ffffff;
   margin-bottom: 20px;
-  padding-left: 10px; /* Căn lề trái cho ô nhập email */
+  padding-left: 10px;
 }
 
 .newsletter-form input {
@@ -819,7 +873,7 @@ clear: both;
   margin-top: 20px;
   font-size: 14px;
   color: #9ea7ad;
-  padding-left: 10px; /* Căn lề trái cho nhãn */
+  padding-left: 10px;
 }
 
 /* Social Media and Links */
@@ -853,15 +907,15 @@ clear: both;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  margin-top: 60px; /* Tạo khoảng cách lớn giữa nhãn và phần mạng xã hội */
+  margin-top: 60px;
   padding-bottom: 20px;
-  padding-left: 10px; /* Căn lề trái cho các biểu tượng mạng xã hội và dòng bản quyền */
+  padding-left: 10px;
 }
 
 .footer-social-icons {
   display: flex;
   justify-content: flex-start;
-  gap: 10px; /* Điều chỉnh khoảng cách giữa các biểu tượng mạng xã hội */
+  gap: 10px;
 }
 
 .footer-social img {
@@ -871,7 +925,7 @@ clear: both;
 
 .footer-social p {
   color: #9ea7ad;
-  margin-top: 10px; /* Khoảng cách giữa hàng biểu tượng và dòng Copyright */
+  margin-top: 10px;
   font-size: 12px;
 }
 
@@ -885,7 +939,7 @@ clear: both;
   .footer-left, .footer-right {
     max-width: 100%;
     padding: 10px;
-    margin-left: 0; /* Reset margin trên màn hình nhỏ */
+    margin-left: 0;
   }
 
   .footer-links {
@@ -894,6 +948,6 @@ clear: both;
   }
 
   .footer-newsletter {
-    text-align: center; /* Căn giữa cho màn hình nhỏ hơn */
+    text-align: center;
   }
 }

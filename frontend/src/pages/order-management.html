@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Quản lý sản phẩm</title>
-    <link rel="stylesheet" href="../../public/styles/product-management.css">
+    <link rel="stylesheet" href="../../public/styles/order-management.css">
 </head>
 <body>
     
@@ -70,7 +70,7 @@
 
     <!-- Main Content Section -->
     <div class="mainContent">
-        <h2 class="pageTitle">Danh sách sản phẩm</h2>
+        <h2 class="pageTitle">Danh sách đơn hàng</h2>
         
         <!-- Filter and Search Row -->
         <div class="filterSearchRow">
@@ -82,7 +82,7 @@
                     <option value="50">50</option>
                     <option value="100">100</option>
                 </select>
-                <span>sản phẩm</span>
+                <span>đơn hàng</span>
             </div>
             <div class="searchContainer">
                 <label for="searchInput">Tìm kiếm:</label>
@@ -95,25 +95,23 @@
             <table class="dataTable">
                 <thead>
                     <tr>
-                        <th>ID</th>
-                        <th>Name</th>
-                        <th>Price</th>
-                        <th>Type</th>
-                        <th>Description</th>
-                        <th>Category</th>
-                        <th>Size</th>
+                        <th>Order ID</th>
+                        <th>Cost</th>
+                        <th>User ID</th>
+                        <th>Address Shipping</th>
+                        <th>Status</th>
+                        <th>Payment Type</th>
                         <th>Actions</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr>
                         <td>1</td>
-                        <td>Áo thun nam cổ tròn</td>
-                        <td>220,000</td>
-                        <td>Tees</td>
-                        <td>Áo thun đơn giản, phù hợp mọi hoàn cảnh</td>
-                        <td>Office Wear</td>
-                        <td>M</td>
+                        <td>500,000</td>
+                        <td>123</td>
+                        <td>123 Đường ABC, Quận 1, TP.HCM</td>
+                        <td>Delivering</td>
+                        <td>CARD</td>
                         <td class="action-buttons">
                             <button class="btn-edit">Edit</button>
                             <button class="btn-delete">Delete</button>
@@ -124,9 +122,9 @@
             </table>
         </div>
 
-            <!-- Pagination -->
+        <!-- Pagination -->
         <div class="paginationContainer">
-            <span class="paginationInfo">Showing 1 to 10 of 30 entries</span>
+            <span class="paginationInfo">Showing 1 to 10 of 50 entries</span>
             <div class="paginationControls">
                 <button class="paginationButton" id="prevPage">Previous</button>
                 <button class="paginationButton active">1</button>
@@ -137,12 +135,9 @@
         </div>
     </div>
 
-    
-
         <!-- Add your JavaScript file -->
         <script src="../../public/scripts/admin-sidebar.js"></script>
-        <script src="../../public/scripts/admin-product-management.js"></script>
+        <script src="../../public/scripts/admin-order-management.js"></script>
 
-        <script src="../../public/js/demo/datatables-demo.js"></script>
 </body>
 </html>

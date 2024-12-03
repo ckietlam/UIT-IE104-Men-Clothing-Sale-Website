@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile Page</title>
+    <link rel="stylesheet" href="/styles/homepage.css">
+</head>
+
+<body>
+
+    <!-- Include the header -->
+    <%- include('../partials/header', { activeIdx: 1 }) %>
+
+    <!-- Check if the user is logged in and display profile information -->
+    
+        <div class="profile-container">
+            <h2>Your Profile</h2>
+            <p><strong>Name:</strong> <%= user.name %></p>
+            <p><strong>Email:</strong> <%= user.email %></p>
+            <p><strong>Phone:</strong> <%= user.phone %></p>
+          
+            <!-- Logout Button -->
+            <form action="/logout" method="GET">
+                <button type="submit">Log Out</button>
+            </form>
+        </div>
+
+    <!-- Include the footer -->
+    <%- include('../partials/footer', { activeIdx: 1 }) %>
+
+</body>
+
+</html>
