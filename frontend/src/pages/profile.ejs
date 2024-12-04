@@ -29,9 +29,10 @@
                     <label for="email" class="requiredLabel">Email</label>
                 </div>
                 <div class="inputWrapper">
-                    <input type="text" id="phone" name="phone" placeholder="Nhập số điện thoại" required value="<%= user.phone %>">
+                    <input type="tel" inputmode="numeric" pattern="[0-9]*" id="phone" name="phone" placeholder="Nhập số điện thoại" required value="<%= user.phone %>" onkeypress="return event.charCode >= 48 && event.charCode <= 57">
                     <label for="phone" class="requiredLabel">Số điện thoại</label>
                 </div>
+                
             </div>
 
             <button type="submit" class="updateButton">Cập Nhật Thông Tin</button>

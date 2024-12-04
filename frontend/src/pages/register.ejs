@@ -32,9 +32,17 @@
                         <img src="/icons/icon-hiddeneyes.svg" alt="Toggle Visibility" class="visibility-icon">
                     </div>
                     <div class="input-group">
-                        <input type="text" name="phone" placeholder="Số Điện Thoại" required> <!-- Phone number field -->
+                        <input 
+                            type="tel" 
+                            inputmode="numeric" 
+                            pattern="[0-9]*" 
+                            name="phone" 
+                            placeholder="Số Điện Thoại" 
+                            required 
+                            onkeypress="return event.charCode >= 48 && event.charCode <= 57"
+                        >
                     </div>
-                    <input type="hidden" name="role" value="customer">
+                    <input type="hidden" name="role" value="Customer">
                     <button type="submit" class="login-button">Đăng Ký</button> 
                     
                 </form>
