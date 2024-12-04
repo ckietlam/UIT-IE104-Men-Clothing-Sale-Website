@@ -126,6 +126,24 @@ body {
   margin-bottom: 30px;
 }
 
+.contactInformation p, .deliveryAddress p {
+  font-size: 24px;
+  font-weight: semibold;
+}
+
+.contactInformation a, .deliveryAddress a {
+  font-size: 16px;
+  font-weight: bold;
+  color: #26736E; /* Green color for clickable steps */
+  cursor: pointer;
+  text-decoration: none; /* Ensure no underline */
+  transition: color 0.1s ease; /* Smooth transition for hover effect */
+}
+
+.contactInformation a:hover, .deliveryAddress a:hover {
+  color: #154A49; /* Darker green on hover for clickable steps */
+}
+
 .headerSection {
   display: flex;
   justify-content: space-between;
@@ -134,64 +152,32 @@ body {
 }
 
 .headerSection h2 {
-  font-size: 16px;
+  font-size: 32px;
   font-weight: bold;
   margin: 0;
-}
-
-.headerSection .loginPrompt span {
-  font-size: 14px;
-  color: #333;
-}
-
-.headerSection .loginPrompt a {
-  color: #26736E;
-  font-weight: bold;
-  text-decoration: none;
-}
-
-.headerSection .loginPrompt a:hover {
-  text-decoration: underline;
 }
 
 /* Buttons */
 
 .formButtons {
-  display: grid;                                  /* Sử dụng Grid Layout */
-  grid-template-columns: auto auto;               /* Hai cột với kích thước tự động */
-  justify-content: space-between;                 /* Đẩy hai nút về hai góc */
-  align-items: center;                            /* Căn giữa theo chiều dọc */
-  margin-top: 60px;                               /* Khoảng cách phía trên */
-  gap: 20px;                                      /* Khoảng cách giữa hai button nếu cần */
-}
-
-.backButton {
   display: flex;
+  justify-content: space-between; /* Đẩy hai nút ra hai bên */
   align-items: center;
-  gap: 5px;
-  text-decoration: none;
-  font-size: 14px;
-  font-weight: bold;
-  color: #26736E;
-  transition: color 0.2s ease;
-  margin-left:-700px;
-}
-
-.backButton:hover {
-  color: #154A49;
+  margin-top: 20%;
+  padding-right: 10%;
+  gap: 200px;
 }
 
 .continueButton {
   background-color: #26736E;
   color: white;
-  padding: 10px 30px;
+  padding: 15px 40px;
   border: none;
   border-radius: 4px;
-  font-size: 14px;
+  font-size: 16px;
   font-weight: bold;
   cursor: pointer;
   transition: background-color 0.3s ease;
-  margin-right: 600px;
 }
 
 .continueButton:hover {
@@ -204,7 +190,7 @@ body {
   align-items: center;
   gap: 8px; /* Khoảng cách giữa icon và text */
   text-decoration: none;
-  font-size: 14px;
+  font-size: 18px;
   font-weight: bold;
   color: #26736E;
   transition: color 0.2s ease;
@@ -216,8 +202,8 @@ body {
 
 .buttonIcon {
   width: 16px; /* Kích thước icon */
+  color: #26736E;
   height: 16px;
-  pointer-events: none; /* Đảm bảo không thể click vào icon */
 }
 
 
@@ -226,10 +212,36 @@ body {
   display: grid;
   grid-template-columns: 1fr 1fr; /* Hai cột */
   grid-template-rows: auto auto; /* Hai hàng */
-  gap: 20px; /* Khoảng cách giữa các mục */
+  gap: 40px; /* Khoảng cách giữa các mục */
+}
+
+.item.GHN span {
+  font-size: 22px; /* Điều chỉnh kích thước chữ theo nhu cầu */
+  font-weight: bold; /* (Tùy chọn) Thêm độ đậm cho chữ */
+  color: #333; /* (Tùy chọn) Thay đổi màu chữ */
+}
+
+.item.GHTK span {
+  font-size: 22px; /* Điều chỉnh kích thước chữ theo nhu cầu */
+  font-weight: bold; /* (Tùy chọn) Thêm độ đậm cho chữ */
+  color: #333; /* (Tùy chọn) Thay đổi màu chữ */
+}
+
+.item.Viettel span {
+  font-size: 22px; /* Điều chỉnh kích thước chữ theo nhu cầu */
+  font-weight: bold; /* (Tùy chọn) Thêm độ đậm cho chữ */
+  color: #333; /* (Tùy chọn) Thay đổi màu chữ */
+}
+
+.item.JTExpress span {
+  font-size: 22px; /* Điều chỉnh kích thước chữ theo nhu cầu */
+  font-weight: bold; /* (Tùy chọn) Thêm độ đậm cho chữ */
+  color: #333; /* (Tùy chọn) Thay đổi màu chữ */
 }
 
 .shippingOptions h3 {
+  font-size: 32px;
+  margin-top: 20px;
   margin-bottom: 20px; /* Tăng khoảng cách giữa tiêu đề và các ô chọn */
 }
 
@@ -253,10 +265,6 @@ body {
   grid-column: 2 / 3;
   grid-row: 2 / 3;
 }
-
-
-
-
 
 
 /* Right Column */
