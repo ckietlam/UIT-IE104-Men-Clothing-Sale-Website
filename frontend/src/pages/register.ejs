@@ -16,7 +16,7 @@
     <!-- Main Content Section -->
     <main class="main-content">
         <div class="login-container">
-            <img src="/images/unknown-example0.png" alt="Banner Image" class="login-banner">
+            <img src="/images/Login-Register-Picture.png" alt="Banner Image" class="login-banner">
             <div class="login-form">
                 <h2>Đăng Ký</h2>
                 <form action="/register" method="POST"> <!-- Change action to /register -->
@@ -29,12 +29,20 @@
                     </div>
                     <div class="input-group">
                         <input type="password" name="password" placeholder="Mật Khẩu" required>
-                        <img src="/images/visibility-off0.svg" alt="Toggle Visibility" class="visibility-icon">
+                        <img src="/icons/icon-hiddeneyes.svg" alt="Toggle Visibility" class="visibility-icon">
                     </div>
                     <div class="input-group">
-                        <input type="text" name="phone" placeholder="Số Điện Thoại" required> <!-- Phone number field -->
+                        <input 
+                            type="tel" 
+                            inputmode="numeric" 
+                            pattern="[0-9]*" 
+                            name="phone" 
+                            placeholder="Số Điện Thoại" 
+                            required 
+                            onkeypress="return event.charCode >= 48 && event.charCode <= 57"
+                        >
                     </div>
-                    <input type="hidden" name="role" value="customer">
+                    <input type="hidden" name="role" value="Customer">
                     <button type="submit" class="login-button">Đăng Ký</button> 
                     
                 </form>
