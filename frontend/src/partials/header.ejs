@@ -1,3 +1,4 @@
+<link rel="stylesheet" href="/styles/header.css">
 <header class="header">
     <div class="brand-logo">
         <a href="/">
@@ -193,7 +194,7 @@
             <img 
                 onclick="showSearch()"
                 class="search"
-                src="/frontend/public/icons/icon-search.svg"
+                src="/icons/icon-search.svg"
                 alt="Search"
             />
             <% if (isAuthenticated) { %>
@@ -210,16 +211,20 @@
         </div> 
         
         <div id="box-search" class="box-search">
-        <div class="icon-search">
+            <div class="icon-search">
             <img
                 id="search"
-                src="../assets/icons/icon-search.svg"
+                src="/icons/icon-search.svg"
                 width="25px"
                 height="25px"
                 alt="Search"
             />
+            </div>
+            <input placeholder="Search" type="text" />
         </div>
-        <input type="text" id="search-input" class="search-input" placeholder="Tìm kiếm...">
+<div id="overlay" class="overlay" onclick="closeSearch()"></div>
+
+
 
     <script>
         function showSearch() {

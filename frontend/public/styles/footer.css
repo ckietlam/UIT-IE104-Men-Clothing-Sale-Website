@@ -1,0 +1,139 @@
+/* Footer */
+.footer {
+    background-color: #081d22;
+    color: #ffffff;
+    padding: 40px 20px;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    width: 100%;
+  }
+  
+  .footer-left, .footer-right {
+    flex: 1;
+    max-width: 500px;
+    padding: 20px;
+  }
+  
+  /* Adjust footer-right to shift right by 10% */
+  .footer-right {
+    margin-left: 10%;
+  }
+  
+  .footer-newsletter {
+    text-align: left;
+    margin-bottom: 20px;
+  }
+  
+  .footer-newsletter h3 {
+    font-size: 18px;
+    margin-bottom: 20px;
+    padding-left: 10px;
+  }
+  
+  .newsletter-form {
+    display: flex;
+    border: 1px solid #ffffff;
+    margin-bottom: 20px;
+    padding-left: 10px;
+  }
+  
+  .newsletter-form input {
+    flex: 1;
+    padding: 10px;
+    border: none;
+    background-color: #081d22;
+    color: #ffffff;
+  }
+  
+  .newsletter-form button {
+    background-color: #081d22;
+    color: #ffffff;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+  }
+  
+  .footer-newsletter label {
+    display: block;
+    margin-top: 20px;
+    font-size: 14px;
+    color: #9ea7ad;
+    padding-left: 10px;
+  }
+  
+  /* Social Media and Links */
+  .footer-links {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    margin-top: 30px;
+    width: 100%;
+  }
+  
+  .footer-links div {
+    text-align: left;
+  }
+  
+  .footer-links h4 {
+    font-size: 16px;
+    margin-bottom: 10px;
+  }
+  
+  .footer-links a {
+    color: #9ea7ad;
+    text-decoration: none;
+    font-size: 14px;
+    display: block;
+    margin: 5px 0;
+  }
+  
+  /* Footer Social Media */
+  .footer-social {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-top: 60px;
+    padding-bottom: 20px;
+    padding-left: 10px;
+  }
+  
+  .footer-social-icons {
+    display: flex;
+    justify-content: flex-start;
+    gap: 10px;
+  }
+  
+  .footer-social img {
+    width: 24px;
+    height: 24px;
+  }
+  
+  .footer-social p {
+    color: #9ea7ad;
+    margin-top: 10px;
+    font-size: 12px;
+  }
+  
+  /* Responsive Design */
+  @media (max-width: 768px) {
+    .footer {
+      flex-direction: column;
+      align-items: center;
+    }
+  
+    .footer-left, .footer-right {
+      max-width: 100%;
+      padding: 10px;
+      margin-left: 0;
+    }
+  
+    .footer-links {
+      flex-direction: column;
+      align-items: center;
+    }
+  
+    .footer-newsletter {
+      text-align: center;
+    }
+  }
