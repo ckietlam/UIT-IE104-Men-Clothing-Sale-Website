@@ -105,109 +105,159 @@ body {
 
 
 /* Main Content */
-
-/* Main Content */
 .mainContent {
-    display: flex;
-    justify-content: space-between; /* Căn đều khoảng cách giữa các cột */
-    gap: 40px;
-    margin: 20px auto; /* Căn giữa nội dung chính */
-    max-width: 1200px; /* Giới hạn chiều rộng tổng */
-    padding: 0 20px; /* Thêm padding để tránh sát viền màn hình */
-    align-items: flex-start; /* Căn hai cột theo đầu dòng */
+  display: flex;
+  justify-content: space-between;
+  gap: 40px;
+  margin: 20px 60px;
 }
 
 /* Left Column */
 .leftColumn {
-    flex: 0.6; /* Tăng tỷ lệ để cột trái chiếm diện tích phù hợp */
-    display: flex;
-    flex-direction: column;
-    gap: 30px; /* Khoảng cách giữa các phần trong cột */
-    margin-left: 0; /* Đặt lề trái bằng 0 để căn chỉnh đúng */
-    padding-left: 50px; /* Đồng bộ với logo */
-    box-sizing: border-box; /* Đảm bảo padding không làm thay đổi kích thước */
+  flex: 0.5; /* Giảm kích thước cột trái (giảm flex ratio) */
+  margin-left: 50px; /* Thêm khoảng cách từ lề trái */
+  display: flex;
+  flex-direction: column;
+  gap: 20px; /* Khoảng cách đều giữa các container */
+  margin-top: 30px;
 }
 
-/* Header Section */
+.contactInformation {
+  margin-bottom: 30px;
+}
+
 .headerSection {
-    display: flex;
-    justify-content: space-between; /* Căn đều hai phần */
-    align-items: center;
-    margin-bottom: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
 }
 
-/* Contact Information */
-.contactInformation h2 {
-    font-size: 18px;
-    font-weight: bold;
-    margin-bottom: 10px;
-    text-align: left; /* Căn trái tiêu đề */
+.headerSection h2 {
+  font-size: 16px;
+  font-weight: bold;
+  margin: 0;
 }
 
-.contactInformation a {
-    font-size: 14px;
-    color: #26736E;
-    text-decoration: none;
-    font-weight: bold;
+.headerSection .loginPrompt span {
+  font-size: 14px;
+  color: #333;
 }
 
-.contactInformation a:hover {
-    text-decoration: underline;
+.headerSection .loginPrompt a {
+  color: #26736E;
+  font-weight: bold;
+  text-decoration: none;
 }
 
-/* Shipping Options */
-.shippingOptions h2 {
-    font-size: 18px;
-    font-weight: bold;
-    margin-bottom: 20px;
-    text-align: left; /* Căn trái tiêu đề */
-}
-
-.radioGroup {
-    display: flex;
-    flex-wrap: wrap; /* Cho phép các tùy chọn xuống dòng */
-    gap: 20px; /* Khoảng cách giữa các tùy chọn */
+.headerSection .loginPrompt a:hover {
+  text-decoration: underline;
 }
 
 /* Buttons */
+
 .formButtons {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-top: 20px;
-    padding-left: 50px; /* Đồng nhất căn lề */
+  display: grid;                                  /* Sử dụng Grid Layout */
+  grid-template-columns: auto auto;               /* Hai cột với kích thước tự động */
+  justify-content: space-between;                 /* Đẩy hai nút về hai góc */
+  align-items: center;                            /* Căn giữa theo chiều dọc */
+  margin-top: 60px;                               /* Khoảng cách phía trên */
+  gap: 20px;                                      /* Khoảng cách giữa hai button nếu cần */
 }
 
 .backButton {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    text-decoration: none;
-    font-size: 14px;
-    font-weight: bold;
-    color: #26736E;
-    transition: color 0.2s ease;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: bold;
+  color: #26736E;
+  transition: color 0.2s ease;
+  margin-left:-700px;
 }
 
 .backButton:hover {
-    color: #154A49;
+  color: #154A49;
 }
 
 .continueButton {
-    background-color: #26736E;
-    color: white;
-    padding: 10px 30px;
-    border: none;
-    border-radius: 4px;
-    font-size: 14px;
-    font-weight: bold;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
+  background-color: #26736E;
+  color: white;
+  padding: 10px 30px;
+  border: none;
+  border-radius: 4px;
+  font-size: 14px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  margin-right: 600px;
 }
 
 .continueButton:hover {
-    background-color: #154A49;
+  background-color: #154A49;
 }
+
+/* Back Button */
+.backButton {
+  display: flex;
+  align-items: center;
+  gap: 8px; /* Khoảng cách giữa icon và text */
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: bold;
+  color: #26736E;
+  transition: color 0.2s ease;
+}
+
+.backButton:hover {
+  color: #154A49; /* Màu đậm hơn khi hover */
+}
+
+.buttonIcon {
+  width: 16px; /* Kích thước icon */
+  height: 16px;
+  pointer-events: none; /* Đảm bảo không thể click vào icon */
+}
+
+
+/* Container for grid layout */
+.radioGroup {
+  display: grid;
+  grid-template-columns: 1fr 1fr; /* Hai cột */
+  grid-template-rows: auto auto; /* Hai hàng */
+  gap: 20px; /* Khoảng cách giữa các mục */
+}
+
+.shippingOptions h3 {
+  margin-bottom: 20px; /* Tăng khoảng cách giữa tiêu đề và các ô chọn */
+}
+
+/* Specific Grid Placements */
+.GHN {
+  grid-column: 1 / 2;
+  grid-row: 1 / 2;
+}
+
+.GHTK {
+  grid-column: 2 / 3;
+  grid-row: 1 / 2;
+}
+
+.JTExpress {
+  grid-column: 1 / 2;
+  grid-row: 2 / 3;
+}
+
+.Viettel {
+  grid-column: 2 / 3;
+  grid-row: 2 / 3;
+}
+
+
+
+
+
 
 /* Right Column */
 .rightColumn {

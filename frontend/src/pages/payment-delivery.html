@@ -31,12 +31,14 @@
     <main class="mainContent">
         <!-- Left Column -->
         <div class="leftColumn">
+
             <!-- Contact Information -->
             <div class="contactInformation">
                 <div class="headerSection">
                     <h2>Thông Tin Liên Hệ</h2>
                     <a href="#" class="editLink">Thay Đổi</a>
                 </div>
+                
                 <p>john.doe@example.com</p>
             </div>
         
@@ -53,27 +55,37 @@
             <div class="shippingOptions">
                 <h3>Lựa Chọn Đơn Vị Vận Chuyển</h3>
                 <div class="radioGroup">
-                    <label>
-                        <input type="radio" name="shipping" checked>
-                        <span>Giao Hàng Nhanh</span>
-                        <p>2 tới 3 ngày làm việc</p>
-                    </label>
-                    <label>
-                        <input type="radio" name="shipping">
-                        <span>J&T Express</span>
-                        <p>2 tới 3 ngày làm việc</p>
-                    </label>
-                    <label>
-                        <input type="radio" name="shipping">
-                        <span>Giao Hàng Tiết Kiệm</span>
-                        <p>3 tới 4 ngày làm việc</p>
-                    </label>
-                    <label>
-                        <input type="radio" name="shipping">
-                        <span>Viettel Post</span>
-                        <p>3 tới 4 ngày làm việc</p>
-                    </label>
+                    <div class="item GHN">
+                        <label>
+                            <input type="radio" name="shipping" checked>
+                            <span>Giao Hàng Nhanh</span>
+                            <p>2 tới 3 ngày làm việc</p>
+                        </label>
+                    </div>
+                    <div class="item JTExpress">
+                        <label>
+                            <input type="radio" name="shipping">
+                            <span>J&T Express</span>
+                            <p>2 tới 3 ngày làm việc</p>
+                        </label>
+                    </div>
+                    <div class="item GHTK">
+                        <label>
+                            <input type="radio" name="shipping">
+                            <span>Giao Hàng Tiết Kiệm</span>
+                            <p>3 tới 4 ngày làm việc</p>
+                        </label>
+                    </div>
+                    <div class="item Viettel">
+                        <label>
+                            <input type="radio" name="shipping">
+                            <span>Viettel Post</span>
+                            <p>3 tới 4 ngày làm việc</p>
+                        </label>
+                    </div>
                 </div>
+            </div>
+
             </div>
         
             <!-- Navigation Buttons -->
