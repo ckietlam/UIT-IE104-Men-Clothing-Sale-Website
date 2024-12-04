@@ -163,7 +163,7 @@ body {
   display: flex;
   justify-content: space-between; /* Đẩy hai nút ra hai bên */
   align-items: center;
-  margin-top: 20%;
+  margin-top: 10%;
   padding-right: 10%;
   gap: 200px;
 }
