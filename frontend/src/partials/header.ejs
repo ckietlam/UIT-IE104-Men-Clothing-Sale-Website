@@ -1,3 +1,4 @@
+<link rel="stylesheet" href="/styles/header.css">
 <header class="header">
     <div class="brand-logo">
         <a href="/">
@@ -178,7 +179,12 @@
 
         <div class="header-icons">
             
-            <img src="/icons/icon-search.svg" alt="Search">
+            <img 
+                onclick="showSearch()"
+                class="search"
+                src="/icons/icon-search.svg"
+                alt="Search"
+            />
             <% if (isAuthenticated) { %>
                 <a href="/profile">
                     <img src="/icons/icon-user-nav.svg" alt="User Icon">
@@ -190,5 +196,46 @@
                 </a>
             <% } %>
             <img src="/icons/icon-shopping.svg" alt="Shopping Bag">
+        </div> 
+        
+        <div id="box-search" class="box-search">
+            <div class="icon-search">
+            <img
+                id="search"
+                src="/icons/icon-search.svg"
+                width="25px"
+                height="25px"
+                alt="Search"
+            />
+            </div>
+            <input placeholder="Search" type="text" />
         </div>
-    </header>
+<div id="overlay" class="overlay" onclick="closeSearch()"></div>
+
+
+
+    <script>
+        function showSearch() {
+            var boxSearch = document.getElementById('box-search');
+            var overlay = document.getElementById('overlay');
+            // Kiểm tra xem boxSearch có đang hiển thị dưới dạng flex không
+            if (boxSearch.style.display === 'flex') {
+                closeSearch(); // Nếu đang flex thì đóng hộp tìm kiếm
+            } else {
+                // Nếu không phải flex thì mở hộp tìm kiếm
+                boxSearch.style.display = 'flex';
+                overlay.style.display = 'block';
+            }
+        }
+
+        function closeSearch() {
+            var boxSearch = document.getElementById('box-search');
+            var overlay = document.getElementById('overlay');
+
+            boxSearch.style.display = 'none';
+            overlay.style.display = 'none';
+        }
+    </script>
+
+</header>
+
