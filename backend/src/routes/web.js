@@ -16,6 +16,14 @@ let initWebRouters = (app) => {
   router.post("/register", userController.handleRegister);
   router.get("/logout", userController.getLogout);
   router.get("/404", homeController.get404Page);
+  router.post("/update-profile", userController.handleUpdateProfile);
+  router.get("/product-view-all-ao", homeController.getProductViewAllAo);
+  router.get("/product-view-all-giaydep", homeController.getProductViewAllGiayDep);
+  router.get('/product-view-all-phukien',homeController.getProductViewAllPhuKien);
+  router.get('/product-view-all-quan',homeController.getProductViewAllQuan);
+  router.get('/product-view-all',homeController.getProductViewAll);
+
+
 
   router.get("/admin", homeController.getAdmin);
   router.get("/admin-products-management", homeController.getProductManagementPage);

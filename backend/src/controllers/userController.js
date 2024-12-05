@@ -168,6 +168,28 @@ const getProfilePage = async (req, res) => {
         message: null
     });
 }
+
+const handleUpdateProfile = async (req, res) => {
+    try {
+        const { new_email, name, phone } = req.body;
+        const current_email = req.session.user.email;
+        if (!name || !phone) {
+            return res.status(400).json({
+                message: 'Missing required parameters'
+            });
+        }
+
+        await userService.updateProfile(new_email, name, phone, current_email);
+        return res.status(201).render("pages/homepage",{
+            message: 'Profile updated successfully'
+        });;
+    } catch (error) {
+        return res.status(500).json({
+            message: 'Error from server',
+            error: error.message
+        });
+    }
+}
 module.exports = {
     handleRegister,
     handleLogin,
@@ -176,5 +198,6 @@ module.exports = {
     getRegister,
     getLogin,
     getLogout,
-    getProfilePage
+    getProfilePage,
+    handleUpdateProfile
 }
