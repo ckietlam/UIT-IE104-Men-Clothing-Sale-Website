@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>H(T)ML Website</title>
+    <link rel="stylesheet" href="/styles/homepage.css">
+</head>
+
+<body>
+
+    <%- include('../partials/header', { activeIdx: 0 }) %>
+    <% if (message != null ) { %> <script> alert('<%= message %>'); </script> <% } %>
+
+    <%- include('../partials/footer', { activeIdx: 0 }) %>
+
+
+</body>
+
+</html>

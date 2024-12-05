@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>H(T)ML Product</title>
+    <link rel="icon" type="product_img" href="/images/LOGO ICON.png">
+    <link rel="stylesheet" href="/styles/product-view-all.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600&family=Poppins:wght@900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet">
+    
+</head>
+<body>
+
+    <%- include('../partials/header', { activeIdx: 1 }) %>
+    
+    <% if (message != null) { %>
+        <script>alert('<%= message %>');</script>
+    <% } %>
+
+    <!-- Product Section -->
+     
+    <div class="categories-container">
+        <div class="category-section">
+            <div class="category-header">
+                <h2>Áo</h2>
+                <a href="/product-view-all-ao" class="view-all" onclick="toggleView(this)">Xem tất cả</a>
+            </div>
+            <div class="product-carousel limited-view">
+                <div class="carousel-track">
+                    <div class="product-card">
+                        <a href="../pages/product-view-blazer">
+                            <img src="/images/temp/assets/products/shirts/aokhoac/ao_blazer/den-1.jpg" alt="Blazer Đen">
+                            <h3>Blazer</h3>
+                            <div class="product-details">
+                                <p class="product-description">Blazer trơn màu đen</p>
+                                <p class="product-price">125.000đ</p>
+                            </div>
+                        </a>
+                    </div>
+                    
+                    <div class="product-card">
+                        <a href="../pages/product-view-varsity1">
+                            <img src="/images/temp/assets/products/shirts/aokhoac/ao_jacket/1.jpg" alt="Jacket bóng chày">
+                            <h3>Varsity 1</h3>
+                            <div class="product-details">
+                                <p class="product-description">Varsity bóng chày</p>
+                                <p class="product-price">350.000đ</p>
+                            </div>
+                        </a>
+                    </div>
+
+                    <div class="product-card">
+                        <img src="/images/temp/assets/products/shirts/aokhoac/ao_jacket_2/1.jpg" alt="Jacket bóng chày">
+                        <h3>Varsity 2</h3>
+                        <div class="product-details">
+                            <p class="product-description">Varsity trắng đen</p>
+                            <p class="product-price">350.000đ</p>
+                        </div>
+                    </div>
+                    <div class="product-card">
+                        <img src="/images/temp/assets/products/shirts/aokhoac/ao_khoac_da/1.jpg" alt="Khoác da bò">
+                        <h3>Áo khoác da</h3>
+                        <div class="product-details">
+                            <p class="product-description">Áo khoác nâu da bò</p>
+                            <p class="product-price">550.000đ</p>
+                        </div>
+                    </div>
+                    <div class="product-card">
+                        <img src="/images/temp/assets/products/shirts/aokhoac/ao_khoac_kaki_co_non_ra_phoi_preppy/1.jpg" alt="Khoác Kaki có nón">
+                        <h3>Áo khoác kaki</h3>
+                        <div class="product-details">
+                            <p class="product-description">Áo khoác Kaki có nón</p>
+                            <p class="product-price">455.000đ</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+          
+
+        <div class="category-section">
+            <div class="category-header">
+                <h2>Quần</h2>
+                <a href="/product-view-all-quan" class="view-all" onclick="toggleView(this)">Xem tất cả</a>
+            </div>
+            <div class="product-carousel limited-view">
+                <div class="carousel-track">
+                    <div class="product-card">
+                        <img src="/images/temp/assets/products/pants/Quần kaki/Quần Kaki Nhung Tăm Lưng Thun/quan-kaki-nhung-tam-lung-thun-form-slim-cropped-qk023-mau-be-18314-slide-products-658a524414e4e.jpg" alt="Quần kaki">
+                        <h3>Quần Kaki</h3>
+                        <div class="product-details">
+                            <p class="product-description">Quần Kaki Nhung tăm</p>
+                            <p class="product-price">125.000đ</p>
+                        </div>
+                    </div>
+                    <div class="product-card">
+                        <img src="/images/temp/assets/products/pants/Quần short/Quần Short Dù Giãn Túi Hộp/quan-short-du-gian-tui-hop-form-straight-qs055-mau-be-18521-slide-products-664f1881db3d1.jpg" alt="Quần Short dù">
+                        <h3>Quần Short</h3>
+                        <div class="product-details">
+                            <p class="product-description">Quần Short Dù</p>
+                            <p class="product-price">350.000đ</p>
+                        </div>
+                    </div>
+                    <div class="product-card">
+                        <img src="/images/temp/assets/products/pants/Quần tây/Quần Tây Nazafu Linen/-18206-slide-products-64ddbf6366ad6.jpg" alt="Quần tây linen">
+                        <h3>Quần Tây</h3>
+                        <div class="product-details">
+                            <p class="product-description">Quần Tây Linen</p>
+                            <p class="product-price">350.000đ</p>
+                        </div>
+                    </div>
+                    <div class="product-card">
+                        <img src="/images/temp/assets/products/pants/Quần jogger/Quần Jogger Nỉ Chân Cua/-17831-slide-products-63ec93f9d7b70.jpg" alt="Jogger nỉ chân cua">
+                        <h3>Quần Jogger</h3>
+                        <div class="product-details">
+                            <p class="product-description">Jogger nỉ chân cua</p>
+                            <p class="product-price">550.000đ</p>
+                        </div>
+                    </div>
+                    <div class="product-card">
+                        <img src="/images/temp/assets/products/pants/Quần tây/Quần Tây Sidetab 1/quan-tay-sidetab-1-ben-form-regular-qt062-18784-slide-products-6703add41246f.jpg" alt="Quần tây sidetab">
+                        <h3>Quần Sidetab</h3>
+                        <div class="product-details">
+                            <p class="product-description">Quần tây sidetab</p>
+                            <p class="product-price">455.000đ</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="category-section">
+            <div class="category-header">
+                <h2>Giày dép</h2>
+                <a href="/product-view-all-giaydep" class="view-all" onclick="toggleView(this)">Xem tất cả</a>
+            </div>
+            <div class="product-carousel limited-view">
+                <div class="carousel-track">
+                    <div class="product-card">
+                        <img src="/images/temp/assets/products/shoes/dep/dep_da/dep-da-microfiber-de-trau-de003-18540-slide-products-6650782dd33ad.jpg" alt="Dép da Microfiber">
+                        <h3>Dép da</h3>
+                        <div class="product-details">
+                            <p class="product-description">Dép da Microfiber</p>
+                            <p class="product-price">125.000đ</p>
+                        </div>
+                    </div>
+                    <div class="product-card">
+                        <img src="/images/temp/assets/products/shoes/dep/sandal/dep-sandal-quai-ngang-da-microfiber-de-tpr-de005-18569-slide-products-6656a872e4abc.jpg" alt="Dép sandal quai ngang">
+                        <h3>Dép quai ngang</h3>
+                        <div class="product-details">
+                            <p class="product-description">Dép sandal quai ngang</p>
+                            <p class="product-price">350.000đ</p>
+                        </div>
+                    </div>
+                    <div class="product-card">
+                        <img src="/images/temp/assets/products/shoes/giay/Derby/giay-penny-loafer-da-bo-gi020-18585-slide-products-665ecb7c84442.jpg" alt="giay-penny-loafer">
+                        <h3>Giày da Penny</h3>
+                        <div class="product-details">
+                            <p class="product-description">Giày Penny Loafer</p>
+                            <p class="product-price">350.000đ</p>
+                        </div>
+                    </div>
+                    <div class="product-card">
+                        <img src="/images/temp/assets/products/shoes/giay/Slip_On _Jeans/-17070-slide-products-62e09f86282e3.jpg" alt="giay-slip-on-jean">
+                        <h3>Giày Slip-on</h3>
+                        <div class="product-details">
+                            <p class="product-description">Giày Slip-on bằng jean</p>
+                            <p class="product-price">550.000đ</p>
+                        </div>
+                    </div>
+                    <div class="product-card">
+                        <img src="/images/temp/assets/products/shoes/giay/Chelsea_Boots/giay-tay-leather-g017-17174-slide-products-630c83ea0cf78.jpg" alt="giay-tay-leathe">
+                        <h3>Giày Tây</h3>
+                        <div class="product-details">
+                            <p class="product-description">Giày Tây Leathe</p>
+                            <p class="product-price">455.000đ</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="category-section">
+            <div class="category-header">
+                <h2>Phụ kiện</h2>
+                <a href="/product-view-all-phukien" class="view-all" onclick="toggleView(this)">Xem tất cả</a>
+            </div>
+            <div class="product-carousel limited-view">
+                <div class="carousel-track">
+                    <div class="product-card">
+                        <img src="/images/temp/assets/products/accessories/Tat/co_dai/vo-dai-soc-vo073-18560-slide-products-6650b88c3b048 (1).jpg" alt="tat-co-dai">
+                        <h3>Tất cổ dài</h3>
+                        <div class="product-details">
+                            <p class="product-description">Tất cổ dài họa tiết</p>
+                            <p class="product-price">125.000đ</p>
+                        </div>
+                    </div>
+                    <div class="product-card">
+                        <img src="/images/temp/assets/products/accessories/Tat/co_ngan/-18381-slide-products-65d870e3a7ed0.jpg" alt="tat-co-ngan">
+                        <h3>Tất cổ ngắn</h3>
+                        <div class="product-details">
+                            <p class="product-description">Tất cổ ngắn họa tiết</p>
+                            <p class="product-price">100.000đ</p>
+                        </div>
+                    </div>
+                    <div class="product-card">
+                        <img src="/images/temp/assets/products/accessories/That_lung/dau_kim_1/that-lung-dau-kim-tl165-18572-slide-products-66570a11e3e78.jpg" alt="that-lung-dau-kim">
+                        <h3>Thắt lưng đầu kim</h3>
+                        <div class="product-details">
+                            <p class="product-description">Thắt lưng đen đầu kim</p>
+                            <p class="product-price">250.000đ</p>
+                        </div>
+                    </div>
+                    <div class="product-card">
+                        <img src="/images/temp/assets/products/accessories/That_lung/khoa_tu_dong_1/that-lung-khoa-tu-dong-tl163-18466-slide-products-663c7c480f1a1.jpg" alt="that-lung-khoa-tu-dong">
+                        <h3>Thắt lưng tự khóa</h3>
+                        <div class="product-details">
+                            <p class="product-description">Thắt lưng khóa tự động</p>
+                            <p class="product-price">250.000đ</p>
+                        </div>
+                    </div>
+                    <div class="product-card">
+                        <img src="/images/temp/assets/products/accessories/Vi/khoa_ca_sau/vi-cam-tay-co-khoa-ca-sau-017-16397-slide-products-621464c90b454.jpg" alt="vi-khoa-ca-sau">
+                        <h3>Ví khóa cá sấu</h3>
+                        <div class="product-details">
+                            <p class="product-description">Ví da cá sấu có khóa</p>
+                            <p class="product-price">455.000đ</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+           <!-- Footer Section -->
+           <%- include('../partials/footer', { activeIdx: 0 }) %>
+</body>
+</html>
