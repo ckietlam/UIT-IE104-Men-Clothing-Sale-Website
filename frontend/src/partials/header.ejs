@@ -188,19 +188,47 @@
     </div>
     </div>
 
-        <div class="header-icons">
-            
-            <img src="/icons/icon-search.svg" alt="Search">
-            <% if (isAuthenticated) { %>
-                <a href="/profile">
-                    <img src="/icons/icon-user-nav.svg" alt="User Icon">
-                    
-                </a>
-            <% } else { %>
-                <a href="/login">
-                    <img src="/icons/icon-user-nav.svg" alt="User Icon">
-                </a>
-            <% } %>
-            <img src="/icons/icon-shopping.svg" alt="Shopping Bag">
+    <div class="header-icons">
+        <img src="/icons/icon-search.svg" alt="Search">
+        <% if (isAuthenticated) { %>
+            <a href="/profile">
+                <img src="/icons/icon-user-nav.svg" alt="User Icon">
+            </a>
+        <% } else { %>
+            <a href="/login">
+                <img src="/icons/icon-user-nav.svg" alt="User Icon">
+            </a>
+        <% } %>
+        <img src="/icons/icon-shopping.svg" alt="Shopping Bag" id="cart-btn">
+    </div>
+
+<!-- Giỏ hàng popup (ẩn mặc định) -->
+<div id="cart-popup" class="cart-popup" style="display: none;">
+    <div class="cart-popup-content">
+        <!-- Giỏ hàng trống -->
+        <div id="empty-cart" class="cart-empty">
+            <h2>Giỏ hàng của bạn trống</h2>
+            <p>Hãy thêm sản phẩm vào giỏ hàng.</p>
+            <button id="continue-shopping-btn">Tiếp tục mua sắm</button>
         </div>
-    </header>
+
+        <!-- Giỏ hàng có sản phẩm -->
+<div id="filled-cart" class="cart-filled" style="display: none;">
+    <h2>Giỏ Hàng</h2>
+    <ul id="cart-items">
+        <!-- Các sản phẩm sẽ được liệt kê ở đây -->
+    </ul>
+    <div class="cart-total">
+        <p>Tổng cộng: <span class="total-price">0 VND</span></p>
+    </div>
+    <button id="checkout-btn">Thanh toán</button>
+</div>
+
+        <span id="close-cart-btn" class="close-btn">&times;</span>
+    </div>
+</div>
+
+
+    <script src="/scripts/shopping-cart.js"></script>
+
+</header>

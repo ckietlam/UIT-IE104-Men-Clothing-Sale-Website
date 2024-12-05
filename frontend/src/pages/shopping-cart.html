@@ -1,0 +1,25 @@
+<!-- shopping-cart.html -->
+
+<div id="cart-popup" class="cart-popup">
+    <div class="cart-popup-content">
+        <!-- Giỏ hàng trống -->
+        <div id="empty-cart" class="cart-empty">
+            <h2>Giỏ hàng của bạn trống</h2>
+            <p>Hãy thêm sản phẩm vào giỏ hàng.</p>
+            <button id="continue-shopping-btn">Tiếp tục mua sắm</button>
+        </div>
+
+        <!-- Giỏ hàng có sản phẩm -->
+        <div id="filled-cart" class="cart-filled" style="display: none;">
+            <h2>Giỏ hàng của bạn</h2>
+            <ul id="cart-items">
+                <!-- Các sản phẩm sẽ được liệt kê ở đây -->
+            </ul>
+            <div class="cart-total">
+                <p>Tổng cộng: <span class="total-price">0 VND</span></p>
+            </div>
+            <button id="checkout-btn">Thanh toán</button>
+        </div>
+        <button id="close-cart-btn">Đóng</button>
+    </div>
+</div>

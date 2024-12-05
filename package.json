@@ -1,0 +1,16 @@
+{
+  "name": "uit-ie104-men-clothing-sale-website",
+  "version": "1.0.0",
+  "description": "Dự án được thực hiện bởi nhiều thành viên, do đó để đảm bảo sự phối hợp hiệu quả và tránh xung đột code, tất cả các thành viên cần tuân thủ các quy tắc sau.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "ejs": "^3.1.10",
+    "express": "^4.21.1"
+  }
+}
