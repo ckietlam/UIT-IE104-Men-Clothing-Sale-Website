@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>H(T)ML Product</title>
+    <link rel="icon" type="product_img" href="/images/LOGO ICON.png">
+    <link rel="stylesheet" href="/styles/product-view-all-giay.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600&family=Poppins:wght@900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet">
+    
+</head>
+<body>
+
+    <%- include('../partials/header', { activeIdx: 1 }) %>
+    
+    <% if (message != null) { %>
+        <script>alert('<%= message %>');</script>
+    <% } %>
+
+            <!-- Thêm nút trở về ở đây -->
+            <div class="back-button-container">
+                <a href="/product-view-all" class="back-button">← Trở về</a>
+            </div>
+    <!-- Product Section -->
+     
+    <div class="categories-container">
+        <div class="category-section">
+            <div class="category-header">
+                <h2>Dép</h2>
+            </div>
+            <div class="product-carousel limited-view">
+                <div class="carousel-track">
+                    <div class="product-card">
+                        <a href="../pages/product-view-blazer.html">
+                            <img src="/images/temp/assets/products/shoes/dep/dep_da/dep-da-microfiber-de-trau-de003-18540-slide-products-6650782dd33ad.jpg" alt="dep-da">
+                            <h3>Dép da</h3>
+                            <div class="product-details">
+                                <p class="product-description">Dép da bò</p>
+                                <p class="product-price">125.000đ</p>
+                            </div>
+                        </a>
+                    </div>
+                    
+                    <div class="product-card">
+                        <a href="../pages/product-view-varsity1.html">
+                            <img src="/images/temp/assets/products/shoes/dep/sandal/dep-sandal-quai-ngang-da-microfiber-de-tpr-de005-18569-slide-products-6656a872e4abc.jpg" alt="sandal">
+                            <h3>Sandal</h3>
+                            <div class="product-details">
+                                <p class="product-description">Dép Sandal thoải mái</p>
+                                <p class="product-price">350.000đ</p>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+          
+
+        <div class="category-section">
+            <div class="category-header">
+                <h2>Giày</h2>
+            </div>
+            <div class="product-carousel limited-view">
+                <div class="carousel-track">
+                    <div class="product-card">
+                        <img src="/images/temp/assets/products/shoes/giay/Chelsea_Boots/giay-tay-leather-g017-17174-slide-products-630c83ea0cf78.jpg" alt="giay-chelsea-boots">
+                        <h3>Chelsea Boots</h3>
+                        <div class="product-details">
+                            <p class="product-description">Giày Chelsea Boots</p>
+                            <p class="product-price">125.000đ</p>
+                        </div>
+                    </div>
+
+                    <div class="product-card">
+                        <img src="/images/temp/assets/products/shoes/giay/Derby/giay-penny-loafer-da-bo-gi020-18585-slide-products-665ecb7c84442.jpg" alt="giay-penny-loafer">
+                        <h3>Giày Derby</h3>
+                        <div class="product-details">
+                            <p class="product-description">Giày Penny Loafer da bò</p>
+                            <p class="product-price">350.000đ</p>
+                        </div>
+                    </div>
+                    <div class="product-card">
+                        <img src="/images/temp/assets/products/shoes/giay/Slip_On _Jeans/-17070-slide-products-62e09f86282e3.jpg" alt="giay-slip-on-jean">
+                        <h3>Giày Slip-on Jeans</h3>
+                        <div class="product-details">
+                            <p class="product-description">Giày Slip-on vải jeans</p>
+                            <p class="product-price">350.000đ</p>
+                        </div>
+                    </div>
+                    <div class="product-card">
+                        <img src="/images/temp/assets/products/shoes/giay/the_thao/-17093-slide-products-62ea494d393c9.jpg" alt="giay-the-thao">
+                        <h3>Giày thể thao</h3>
+                        <div class="product-details">
+                            <p class="product-description">Giày thể thao năng động</p>
+                            <p class="product-price">550.000đ</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+           <!-- Footer Section -->
+    
+           <%- include('../partials/footer', { activeIdx: 0 }) %>
+</body>
+</html>
