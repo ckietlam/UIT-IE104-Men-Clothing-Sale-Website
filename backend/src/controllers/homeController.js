@@ -190,5 +190,6 @@ module.exports = {
   getProductViewAllPhuKien,
   getProductViewAll,
   getProductViewAllGiayDep,
-  getProductViewAllAo
+  getProductViewAllAo,
+  getProductViewAllQuan
 };

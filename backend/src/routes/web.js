@@ -2,7 +2,7 @@ import express from "express";
 import homeController from "../controllers/homeController";
 import productController from "../controllers/productController"
 import userController from "../controllers/userController";
-import addSessionData from "../middlewares/addSessionData";import homeController from "../controllers/homeController"
+import addSessionData from "../middlewares/addSessionData";
 let router = express.Router();
 
 let initWebRouters = (app) => {
