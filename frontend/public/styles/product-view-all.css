@@ -5,6 +5,18 @@
     box-sizing: border-box;
     font-family: "Montserrat", sans-serif;
 }
+.product-description {
+  white-space: nowrap; /* Không cho phép xuống dòng */
+  overflow: hidden;    /* Ẩn bớt phần văn bản thừa */
+  text-overflow: ellipsis; /* Thêm dấu ba chấm khi vượt quá */
+}
+
+.product-name {
+  white-space: nowrap; /* Không cho phép xuống dòng */
+  overflow: hidden;    /* Ẩn phần văn bản thừa */
+  text-overflow: ellipsis; /* Thêm dấu ba chấm khi vượt quá */
+}
+
 
 @font-face {
   font-family: 'Montserrat'; 
@@ -15,21 +27,21 @@
 
 @font-face {
   font-family: 'Montserrat';
-  src: url('../assets/fonts/Montserrat/Montserrat-Bold.ttf') format('truetype');
+  src: url('../fonts/Montserrat/Montserrat-Bold.ttf') format('truetype');
   font-weight: bold;
   font-style: normal;
 }
 
 @font-face {
   font-family: 'Montserrat';
-  src: url('../assets/fonts/Montserrat/Montserrat-Italic.ttf') format('truetype');
+  src: url('../fonts/Montserrat/Montserrat-Italic.ttf') format('truetype');
   font-weight: normal;
   font-style: italic;
 }
 
 @font-face {
   font-family: 'Poppins';
-  src: url('../assets/fonts/Poppins/Poppins-ExtraBold.ttf') format('truetype');
+  src: url('../fonts/Poppins/Poppins-ExtraBold.ttf') format('truetype');
   font-weight: bold;
   font-style: normal;
 }
