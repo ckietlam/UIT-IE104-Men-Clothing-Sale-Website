@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>H(T)ML Website</title>
-    <link rel="stylesheet" href="../../public/styles/nav-bar.css">
+    <link rel="stylesheet" href="../../public/styles/profile.css">
 </head>
 
 <body>
@@ -13,7 +13,6 @@
 <!-- Header Section -->
 <header class="header">
     <div class="brand-logo">
-        <img src="../../public/icons/logos/logo-html.svg" alt="H(T)ML Logo">
         <img src="../../public/icons/logos/logo-html.svg" alt="H(T)ML Logo">
         <span class="brand-name">H(T)ML</span>
     </div>
@@ -52,11 +51,9 @@
                         <div class="shirtProductImages">
                             <div class="shirtProductItem">
                                 <img src="../../public/images/Polo-Shirt-Menu.png" alt="Polo Shirt">
-                                <img src="../../public/images/Polo-Shirt-Menu.png" alt="Polo Shirt">
                                 <p>Polo</p>
                             </div>
                             <div class="shirtProductItem">
-                                <img src="../../public/images/Thun-Shirt-Menu.png" alt="T-Shirt">
                                 <img src="../../public/images/Thun-Shirt-Menu.png" alt="T-Shirt">
                                 <p>Thun</p>
                             </div>
@@ -92,11 +89,9 @@
                         <div class="pantsProductImages">
                             <div class="pantsProductItem">
                                 <img src="../../public/images/Jeans-Pants-Menu.png" alt="Jeans">
-                                <img src="../../public/images/Jeans-Pants-Menu.png" alt="Jeans">
                                 <p>Jeans</p>
                             </div>
                             <div class="pantsProductItem">
-                                <img src="../../public/images/Jogger-Pants-Menu.png" alt="Jogger">
                                 <img src="../../public/images/Jogger-Pants-Menu.png" alt="Jogger">
                                 <p>Jogger</p>
                             </div>
@@ -141,7 +136,6 @@
                     <div class="shoesColumn">
                         <div class="shoesProductImages">
                             <div class="shoesProductItem">
-                                <img src="../../public/images/Sandal-Shoes-Menu.png" alt="Sandal">
                                 <img src="../../public/images/Sandal-Shoes-Menu.png" alt="Sandal">
                                 <p>Sandal</p>
                             </div>
@@ -191,11 +185,9 @@
                         <div class="accessoriesProductImages">
                             <div class="accessoriesProductItem">
                                 <img src="../../public/images/Wallet-Accessories-Menu.png" alt="Ví Có Khóa Cá Sấu">
-                                <img src="../../public/images/Wallet-Accessories-Menu.png" alt="Ví Có Khóa Cá Sấu">
                                 <p>Ví Có Khóa Cá Sấu</p>
                             </div>
                             <div class="accessoriesProductItem">
-                                <img src="../../public/images/Socks-Accessories-Menu.png" alt="Tất Cổ Dài">
                                 <img src="../../public/images/Socks-Accessories-Menu.png" alt="Tất Cổ Dài">
                                 <p>Tất Cổ Dài</p>
                             </div>
@@ -211,60 +203,115 @@
 
         <div class="header-icons">
             <img src="../../public/icons/icon-search.svg" alt="Search">
-            <img src="../../public/icons/icon-user.svg" alt="User">
+            <img src="../../public/icons/icon-user-nav.svg" alt="User">
             <img src="../../public/icons/icon-shopping.svg" alt="Shopping Bag">
         </div>
     </header>
 
+    <!-- Main Content Section -->
 
-           <!-- Footer Section -->
-    
-        <!-- Left Side of Footer -->
-        <footer class="footer">
-            <div class="footer-left">
-                <div class="footer-newsletter">
-                    <h3>Theo Dõi Các Tin Tức Mới Nhất Từ H(T)ML!</h3>
-                    <div class="newsletter-form">
-                        <input type="email" placeholder="Nhập Email Của Bạn">
-                        <button><img src="../../public/icons/arrow-forward.svg" alt="Arrow"></button>
-                    </div>
-                    <label>
-                        <input type="checkbox"> Bằng việc nhập email, bạn đồng ý với việc nhận các tin quảng cáo, ưu đãi từ
-                        H(T)ML
-                    </label>
+    <main class="mainContent">
+        <h1 class="pageTitle">THÔNG TIN TÀI KHOẢN</h1>
+        <form class="accountInfoForm">
+            <!-- Họ và Tên + Ngày Sinh -->
+            <div class="doubleInputGroup">
+                <div class="inputWrapper">
+                    <input type="text" id="fullName" placeholder="Tên Người Dùng" required>
+                    <label for="fullName" class="requiredLabel">Họ và tên </label>
                 </div>
-                <div class="footer-social">
-                    <div class="footer-social-icons">
-                        <img src="../../public/icons/logos/logo-instagram.svg" alt="Instagram">
-                        <img src="../../public/icons/logos/logo-facebook.svg" alt="Facebook">
-                        <img src="../../public/icons/logos/logo-pinterest.svg" alt="Pinterest">
-                        <img src="../../public/icons/logos/logo-tiktok.svg" alt="TikTok">
-                    </div>
-                    <p>© 2024 H(T)ML. All Rights Reserved.</p>
+                <div class="inputWrapper">
+                    <input type="text" id="dob" placeholder="Ngày/Tháng/Năm">
+                    <label for="dob" class="requiredLabel">Ngày sinh </label>
                 </div>
             </div>
     
-            <!-- Right Side of Footer -->
-            <div class="footer-right">
-                <div class="footer-links">
-                    <div>
-                        <h4>Về H(T)ML</h4>
-                        <a href="#">Bộ Sưu Tập</a>
-                        <a href="#">Quyền Riêng Tư</a>
-                        <a href="#">Hệ Thống Hỗ Trợ</a>
-                        <a href="#">Điều Khoản</a>
-                        <a href="#">Bản Quyền</a>
-                    </div>
-                    <div>
-                        <h4>Hỗ Trợ</h4>
-                        <a href="#">Mua Hàng & Vận Chuyển</a>
-                        <a href="#">Trả Hàng & Hoàn Tiền</a>
-                        <a href="#">Các Câu Hỏi Thường Gặp</a>
-                        <a href="#">Liên Hệ Với Chúng Tôi</a>
-                    </div>
+            <!-- Email + Số Điện Thoại -->
+            <div class="doubleInputGroup">
+                <div class="inputWrapper">
+                    <input type="email" id="email" placeholder="Nhập địa chỉ email" required>
+                    <label for="email" class="requiredLabel">Email </label>
+                </div>
+                <div class="inputWrapper">
+                    <input type="text" id="phone" placeholder="Nhập số điện thoại" required>
+                    <label for="phone" class="requiredLabel">Số điện thoại </label>
                 </div>
             </div>
-        </footer>
+    
+            <!-- Address Section -->
+            <div class="inputGroup addressGroup">
+                <!-- Label for Address -->
+                <div class="addressLabelWrapper">
+                    <span class="addressLabel">Địa chỉ </span>
+                </div>
+                        
+                <!-- Detailed Address Input -->
+                <div class="inputWrapper">
+                    <input type="text" id="detailedAddress" placeholder="Nhập địa chỉ chi tiết" required>
+                </div>
+            </div>
+
+    
+            <!-- Buttons -->
+            <div class="formButtons">
+                <button type="button" class="exitButton">Đăng Xuất</button>
+                <button type="submit" class="updateButton">Cập Nhật Thông Tin</button>
+            </div>
+        </form>
+    </main>
+    
+    
+
+    
+
+
+    <!-- Footer Section -->
+
+    <!-- Left Side of Footer -->
+    <footer class="footer">
+        <div class="footer-left">
+            <div class="footer-newsletter">
+                <h3>Theo Dõi Các Tin Tức Mới Nhất Từ H(T)ML!</h3>
+                <div class="newsletter-form">
+                    <input type="email" placeholder="Nhập Email Của Bạn">
+                    <button><img src="../../public/icons/arrow-forward.svg" alt="Arrow"></button>
+                </div>
+                <label>
+                    <input type="checkbox"> Bằng việc nhập email, bạn đồng ý với việc nhận các tin quảng cáo, ưu đãi từ
+                    H(T)ML
+                </label>
+            </div>
+            <div class="footer-social">
+                <div class="footer-social-icons">
+                    <img src="../../public/icons/logos/logo-instagram.svg" alt="Instagram">
+                    <img src="../../public/icons/logos/logo-facebook.svg" alt="Facebook">
+                    <img src="../../public/icons/logos/logo-pinterest.svg" alt="Pinterest">
+                    <img src="../../public/icons/logos/logo-tiktok.svg" alt="TikTok">
+                </div>
+                <p>© 2024 H(T)ML. All Rights Reserved.</p>
+            </div>
+        </div>
+
+        <!-- Right Side of Footer -->
+        <div class="footer-right">
+            <div class="footer-links">
+                <div>
+                    <h4>Về H(T)ML</h4>
+                    <a href="#">Bộ Sưu Tập</a>
+                    <a href="#">Quyền Riêng Tư</a>
+                    <a href="#">Hệ Thống Hỗ Trợ</a>
+                    <a href="#">Điều Khoản</a>
+                    <a href="#">Bản Quyền</a>
+                </div>
+                <div>
+                    <h4>Hỗ Trợ</h4>
+                    <a href="#">Mua Hàng & Vận Chuyển</a>
+                    <a href="#">Trả Hàng & Hoàn Tiền</a>
+                    <a href="#">Các Câu Hỏi Thường Gặp</a>
+                    <a href="#">Liên Hệ Với Chúng Tôi</a>
+                </div>
+            </div>
+        </div>
+    </footer>
 
 </body>
 

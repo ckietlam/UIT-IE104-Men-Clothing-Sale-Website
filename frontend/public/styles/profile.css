@@ -1,5 +1,5 @@
-   /* General Reset */
-   * {
+  /* General Reset */
+  * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -8,28 +8,28 @@
 
 @font-face {
   font-family: 'Montserrat'; 
-  src: url('../../public/fonts/Montserrat/Montserrat-Regular.ttf') format('truetype');
+  src: url('/fonts/Montserrat/Montserrat-Regular.ttf') format('truetype');
   font-weight: normal; 
   font-style: normal; 
 }
 
 @font-face {
   font-family: 'Montserrat';
-  src: url('../fonts/Montserrat/Montserrat-Bold.ttf') format('truetype');
+  src: url('/fonts/Montserrat/Montserrat-Bold.ttf') format('truetype');
   font-weight: bold;
   font-style: normal;
 }
 
 @font-face {
   font-family: 'Montserrat';
-  src: url('../fonts/Montserrat/Montserrat-Italic.ttf') format('truetype');
+  src: url('/fonts/Montserrat/Montserrat-Italic.ttf') format('truetype');
   font-weight: normal;
   font-style: italic;
 }
 
 @font-face {
   font-family: 'Poppins';
-  src: url('../fonts/Poppins/Poppins-ExtraBold.ttf') format('truetype');
+  src: url('/fonts/Poppins/Poppins-ExtraBold.ttf') format('truetype');
   font-weight: bold;
   font-style: normal;
 }
@@ -693,6 +693,142 @@ clear: both;
 
 
 
+/* Main Content */
+.mainContent {
+    margin: 50px auto;
+    max-width: 800px;
+    font-family: 'Montserrat', sans-serif;
+    text-align: center;
+}
+
+.pageTitle {
+    font-size: 24px;
+    font-weight: semibold;
+    margin-bottom: 30px;
+    text-transform: uppercase;
+    margin-bottom: 80px; /* Tăng khoảng cách bottom */
+    color: #000;
+}
+
+/* Form Styling */
+.accountInfoForm {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+/* Input Groups */
+.doubleInputGroup {
+    display: flex;
+    gap: 20px;
+    align-items: flex-start; /* Căn các phần tử theo đầu dòng để tránh ngắt dòng */
+}
+
+.inputGroup {
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: column; /* Căn các phần tử theo chiều dọc */
+    gap: 20px; /* Khoảng cách giữa các phần tử trong nhóm */
+}
+
+/* Input Fields */
+.inputWrapper {
+    position: relative;
+    flex: 1;
+}
+
+.inputWrapper input,
+.selectWrapper select {
+    width: 100%;
+    margin-top: 0px;
+    margin-bottom: 30px;
+    padding: 15px 20px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.inputWrapper input:focus,
+.selectWrapper select:focus {
+    border-color: #26736E;
+    outline: none;
+}
+
+.inputWrapper input::placeholder {
+    color: #aaa;
+    margin-top: 5px; /* Tùy chỉnh thêm nếu cần */
+    margin-bottom: 5px;
+}
+
+/* Labels */
+.requiredLabel {
+    position: absolute;
+    top: -30px; /* Đảm bảo nhãn luôn nằm phía trên input */
+    left: 0;
+    font-size: 16px;
+    font-weight: bold;
+    color: #000;
+    white-space: nowrap; /* Ngăn nhãn bị ngắt dòng */
+}
+
+/* Style for address label */
+.addressLabelWrapper {
+    margin-bottom: -10px; /* Tạo khoảng cách giữa nhãn và các phần tử bên dưới */
+}
+
+.addressLabel {
+    font-size: 16px; /* Kích thước chữ */
+    font-weight: bold; /* Chữ đậm */
+    color: #000; /* Màu chữ đen */
+    display: block; /* Đảm bảo nhãn hiển thị trên một dòng riêng */
+    text-align: left; /* Căn chữ sang trái */
+}
+
+.selectWrapper select {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-family: "Montserrat", sans-serif;
+}
+
+.selectWrapper {
+    flex: 1; /* Đảm bảo các ô chọn có kích thước bằng nhau */
+}
+
+/* Buttons */
+.formButtons {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+.exitButton {
+    background: none;
+    border: none;
+    color: #26736E;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    text-decoration: underline;
+}
+
+.updateButton {
+    background-color: #26736E;
+    color: white;
+    padding: 10px 30px;
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.updateButton:hover {
+    background-color: #154A49;
+}
 
 
 
