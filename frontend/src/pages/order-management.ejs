@@ -1,143 +1,174 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Quản lý sản phẩm</title>
-    <link rel="stylesheet" href="../../public/styles/order-management.css">
-</head>
-<body>
-    
+    <link rel="stylesheet" href="styles/order-management.css" />
+  </head>
+  <body>
     <!-- Sidebar Section -->
     <div class="sidebar">
-        <div class="sidebarHeader">
-            <h2>ADMIN</h2>
-            <hr class="menuDivider">
-        </div>
+      <div class="sidebarHeader">
+        <h2>ADMIN</h2>
+        <hr class="menuDivider" />
+      </div>
 
-        <ul class="menu">
-            <li class="menuItem">
-                <a href="#">
-                    <img src="../../public/icons/icon-dashboard.svg" alt="Dashboard Icon" class="menuIcon">
-                    Dashboard
-                </a>
-            </li>
-            <hr class="menuDivider"> <!-- Divider added here -->
-            <li class="menuItem dropdown">
-                <button class="dropdownToggle">
-                    <img src="../../public/icons/icon-table.svg" alt="Product Icon" class="menuIcon">
-                    <span>Sản phẩm</span>
-                </button>
-                <ul class="submenu">
-                    <li><a href="#">Thêm sản phẩm</a></li>
-                    <li><a href="#">Quản lý sản phẩm</a></li>
-                </ul>
-            </li>
-            <li class="menuItem">
-                <a href="#">
-                    <img src="../../public/icons/icon-user.svg" alt="User Icon" class="menuIcon">
-                    Người dùng
-                </a>
-            </li>
-            <li class="menuItem">
-                <a href="#">
-                    <img src="../../public/icons/icon-table.svg" alt="Order Icon" class="menuIcon">
-                    Đơn hàng
-                </a>
-            </li>
-            <hr class="menuDivider"> <!-- Divider added here -->
-            <li class="menuItem">
-                <a href="#">
-                    <img src="../../public/icons/icon-setting.svg" alt="Logout Icon" class="menuIcon">
-                    Settings
-                </a>
-            </li>
+      <ul class="menu">
+        <li class="menuItem">
+          <a href="#">
+            <img
+              src="icons/icon-dashboard.svg"
+              alt="Dashboard Icon"
+              class="menuIcon"
+            />
+            Dashboard
+          </a>
+        </li>
+        <hr class="menuDivider" />
+        <!-- Divider added here -->
+        <li class="menuItem dropdown">
+          <button class="dropdownToggle">
+            <img
+              src="icons/icon-table.svg"
+              alt="Product Icon"
+              class="menuIcon"
+            />
+            <span>Sản phẩm</span>
+          </button>
+          <ul class="submenu">
+            <li><a href="/admin-add-product">Thêm sản phẩm</a></li>
+            <li><a href="/admin-products-management">Quản lý sản phẩm</a></li>
+          </ul>
+        </li>
+        <li class="menuItem">
+          <a href="/admin-users-management">
+            <img src="icons/icon-user.svg" alt="User Icon" class="menuIcon" />
+            Người dùng
+          </a>
+        </li>
+        <li class="menuItem">
+          <a href="/admin-orders-management">
+            <img src="icons/icon-table.svg" alt="Order Icon" class="menuIcon" />
+            Đơn hàng
+          </a>
+        </li>
+        <hr class="menuDivider" />
+        <!-- Divider added here -->
+        <li class="menuItem">
+          <a href="#">
+            <img
+              src="icons/icon-setting.svg"
+              alt="Logout Icon"
+              class="menuIcon"
+            />
+            Settings
+          </a>
+        </li>
 
-            <li class="menuItem">
-                <a href="#">
-                    <img src="../../public/icons/icon-logout.svg" alt="Logout Icon" class="menuIcon">
-                    Đăng xuất
-                </a>
-            </li>
-        </ul>
-        
+        <li class="menuItem">
+          <a href="#">
+            <img
+              src="icons/icon-logout.svg"
+              alt="Logout Icon"
+              class="menuIcon"
+            />
+            Đăng xuất
+          </a>
+        </li>
+      </ul>
 
-        <button class="toggleSidebarBtn">
-            <img src="../../public/icons/icon-backward.svg" alt="Toggle Icon" class="toggleIcon">
-        </button>
+      <button class="toggleSidebarBtn">
+        <img
+          src="icons/icon-backward.svg"
+          alt="Toggle Icon"
+          class="toggleIcon"
+        />
+      </button>
     </div>
-
 
     <!-- Main Content Section -->
     <div class="mainContent">
-        <h2 class="pageTitle">Danh sách đơn hàng</h2>
-        
-        <!-- Filter and Search Row -->
-        <div class="filterSearchRow">
-            <div class="filterEntries">
-                <label for="entriesSelect">Hiển thị</label>
-                <select id="entriesSelect" class="entriesSelect">
-                    <option value="10">10</option>
-                    <option value="25">25</option>
-                    <option value="50">50</option>
-                    <option value="100">100</option>
-                </select>
-                <span>đơn hàng</span>
-            </div>
-            <div class="searchContainer">
-                <label for="searchInput">Tìm kiếm:</label>
-                <input type="text" id="searchInput" class="searchInput" placeholder="Nhập từ khóa...">
-            </div>
-        </div>
+      <h2 class="pageTitle">Danh sách đơn hàng</h2>
 
-        <!-- Table Container -->
-        <div class="tableContainer">
-            <table class="dataTable">
-                <thead>
-                    <tr>
-                        <th>Order ID</th>
-                        <th>Cost</th>
-                        <th>User ID</th>
-                        <th>Address Shipping</th>
-                        <th>Status</th>
-                        <th>Payment Type</th>
-                        <th>Actions</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>1</td>
-                        <td>500,000</td>
-                        <td>123</td>
-                        <td>123 Đường ABC, Quận 1, TP.HCM</td>
-                        <td>Delivering</td>
-                        <td>CARD</td>
-                        <td class="action-buttons">
-                            <button class="btn-edit">Edit</button>
-                            <button class="btn-delete">Delete</button>
-                        </td>
-                    </tr>
-                    <!-- Thêm nhiều dòng trống khác ở đây -->
-                </tbody>
-            </table>
+      <!-- Filter and Search Row -->
+      <div class="filterSearchRow">
+        <div class="filterEntries">
+          <label for="entriesSelect">Hiển thị</label>
+          <select id="entriesSelect" class="entriesSelect">
+            <option value="10">10</option>
+            <option value="25">25</option>
+            <option value="50">50</option>
+            <option value="100">100</option>
+          </select>
+          <span>đơn hàng</span>
         </div>
+        <div class="searchContainer">
+          <label for="searchInput">Tìm kiếm:</label>
+          <input
+            type="text"
+            id="searchInput"
+            class="searchInput"
+            placeholder="Nhập từ khóa..."
+          />
+        </div>
+      </div>
 
-        <!-- Pagination -->
-        <div class="paginationContainer">
-            <span class="paginationInfo">Showing 1 to 10 of 50 entries</span>
-            <div class="paginationControls">
-                <button class="paginationButton" id="prevPage">Previous</button>
-                <button class="paginationButton active">1</button>
-                <button class="paginationButton">2</button>
-                <button class="paginationButton">3</button>
-                <button class="paginationButton" id="nextPage">Next</button>
-            </div>
+      <!-- Table Container -->
+      <div class="tableContainer">
+        <table class="dataTable">
+          <thead>
+            <tr>
+              <th>Order ID</th>
+              <th>Cost</th>
+              <th>User ID</th>
+              <th>Address Shipping</th>
+              <th>Status</th>
+              <th>Payment Type</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% for(let i=0; i < dataTable.length; i++) { %>
+            <tr>
+              <td><%= dataTable[i].order_id %></td>
+              <td><%= dataTable[i].cost %></td>
+              <td><%= dataTable[i].user_id %></td>
+              <td><%= dataTable[i].address_shipping %></td>
+              <td><%= dataTable[i].status %></td>
+              <td><%= dataTable[i].payment_type %></td>
+              <td class="action-buttons">
+                <button class="btn-edit">
+                  <a
+                    href="/edit-order-status?order_id=<%= dataTable[i].order_id %>"
+                    class="btn-edit"
+                    type="button"
+                    onmouseover="this.style.textDecoration='none'"
+                    >Edit</a
+                  >
+                </button>
+              </td>
+            </tr>
+            <% } %>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Pagination -->
+      <div class="paginationContainer">
+        <span class="paginationInfo">Showing 1 to 10 of 50 entries</span>
+        <div class="paginationControls">
+          <button class="paginationButton" id="prevPage">Previous</button>
+          <button class="paginationButton active">1</button>
+          <button class="paginationButton">2</button>
+          <button class="paginationButton">3</button>
+          <button class="paginationButton" id="nextPage">Next</button>
         </div>
+      </div>
     </div>
 
-        <!-- Add your JavaScript file -->
-        <script src="../../public/scripts/admin-sidebar.js"></script>
-        <script src="../../public/scripts/admin-order-management.js"></script>
-
-</body>
+    <!-- Add your JavaScript file -->
+    <script src="scripts/admin-sidebar.js"></script>
+    <script src="scripts/admin-order-management.js"></script>
+  </body>
 </html>

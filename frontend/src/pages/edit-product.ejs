@@ -70,13 +70,13 @@
           </ul>
         </li>
         <li class="menuItem">
-          <a href="#">
+          <a href="/admin-users-management">
             <img src="icons/icon-user.svg" alt="User Icon" class="menuIcon" />
             Người dùng
           </a>
         </li>
         <li class="menuItem">
-          <a href="#">
+          <a href="/admin-orders-management">
             <img src="icons/icon-table.svg" alt="Order Icon" class="menuIcon" />
             Đơn hàng
           </a>
@@ -266,18 +266,19 @@
           </div>
           <div class="formGroup">
             <label for="description">Mô tả sản phẩm</label>
-            <textarea
+            <input
+            type="text"
               id="description"
               value="<%= productData.description %>"
               name="description"
-            ></textarea>
+            ></input>
           </div>
           <input
             name="pd_id"
             value="<%= productData.pd_id %>"
             type="text"
             hidden
-          />
+          />  
           <input name="pd_id" type="text" hidden />
           <input type="hidden" id="imagesInput" name="images" />
           <div class="formGroup">
