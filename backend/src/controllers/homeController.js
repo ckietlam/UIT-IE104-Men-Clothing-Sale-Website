@@ -109,11 +109,44 @@ const get404Page = async (req, res) => {
       });
     }
 }
+const getProductViewAllAo = async (req,res) => {
+  return res.render('pages/product-view-all-ao', { 
+    message: null
+})
+};
+
+const getProductViewAllGiayDep = async (req,res) => {
+  return res.render('pages/product-view-all-giaydep', { 
+    message: null
+})
+};
+
+const getProductViewAllPhuKien = async  (req,res) => {
+  return res.render('pages/product-view-all-phukien', { 
+    message: null
+})
+};
+
+const getProductViewAllQuan = async (req,res) => {
+  return res.render('pages/product-view-all-quan', { 
+    message: null
+})
+};
+const getProductViewAll = async (req,res) => {
+  return res.render('pages/product-view-all', { 
+    message: null
+})
+};
 module.exports = {
   getAdmin,
   getProductManagementPage,
   getEditProductPage,
   getAddProductPage,
   getHomePage,
-  get404Page
+  get404Page,
+  getProductViewAllAo,
+  getProductViewAllGiayDep,
+  getProductViewAllPhuKien,
+  getProductViewAllQuan,
+  getProductViewAll
 };
