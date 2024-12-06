@@ -1,0 +1,426 @@
+  /* General Reset */
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Montserrat", sans-serif;
+}
+
+@font-face {
+  font-family: 'Montserrat'; 
+  src: url('../../public/fonts/Montserrat/Montserrat-Regular.ttf') format('truetype');
+  font-weight: normal; 
+  font-style: normal; 
+}
+
+@font-face {
+  font-family: 'Montserrat';
+  src: url('../../public/fonts/Montserrat/Montserrat-Bold.ttf') format('truetype');
+  font-weight: bold;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Montserrat';
+  src: url('../../public/fonts/Montserrat/Montserrat-Italic.ttf') format('truetype');
+  font-weight: normal;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'Poppins';
+  src: url('../../public/fonts/Poppins/Poppins-ExtraBold.ttf') format('truetype');
+  font-weight: bold;
+  font-style: normal;
+}
+
+
+/* Header */
+.header {
+    display: flex;
+    justify-content: space-between; /* Align three sections */
+    align-items: center;
+    padding: 20px 50px;
+    border-bottom: 1px solid #ddd;
+}
+
+/* Brand Logo Section */
+.brand-logo {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.brand-name {
+    font-family: 'Poppins', sans-serif;
+    font-size: 30px;
+    font-weight: bold;
+    color: black;
+}
+
+
+/* Body Style */
+body {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: normal;
+    line-height: 1.6;
+    color: black;
+}
+
+/* Navigation Steps */
+.navSteps {
+    font-size: 16px;
+    font-weight: normal;
+    font-family: 'Montserrat', sans-serif;
+    display: flex;
+    gap: 40px; /* Spacing between items */
+    margin-left: 150px;
+    margin-top: 40px;
+    margin-bottom: 20px;
+}
+
+/* Default styling for all steps */
+.navSteps span {
+    color: #26736E; /* Green color for clickable steps */
+    cursor: pointer;
+    text-decoration: none; /* Ensure no underline */
+    transition: color 0.1s ease; /* Smooth transition for hover effect */
+}
+
+.navSteps span:hover {
+    color: #154A49; /* Darker green on hover for clickable steps */
+}
+
+/* Active step (Thông tin) */
+.navSteps span:nth-child(1) {
+    color: #000; /* Black color for active step */
+    font-weight: bold;
+    cursor: default; /* Remove pointer cursor for non-clickable step */
+    text-decoration: none; /* No underline */
+}
+
+.navSteps span:nth-child(1):hover {
+    color: #000; /* Ensure hover doesn't change active step */
+}
+
+
+
+/* MAIN CONTENT */
+
+.mainContent {
+    display: flex;
+    justify-content: space-between;
+    gap: 40px;
+    margin: 20px 100px;
+}
+
+/* Left Column */
+.leftColumn {
+    flex: 0.4; /* Giảm kích thước cột trái (giảm flex ratio) */
+    margin-left: 50px; /* Thêm khoảng cách từ lề trái */
+    display: flex;
+    flex-direction: column;
+    gap: 20px; /* Khoảng cách đều giữa các container */
+    margin-top: 30px;
+}
+
+.leftColumn h2 {
+    font-size: 22px;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+/* Right Column */
+.rightColumn {
+    flex: 0.4;
+    padding: 20px;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    margin-top: -10px; /* Giảm margin-top */
+    margin-bottom: 100px; /* Tăng margin-bottom */
+    margin-right: 50px;
+    font-size: 18px; /* Example font size */
+}
+
+.rightColumn h2 {
+    font-size: 22px;
+    font-weight: bold;
+    text-align: left;
+    margin-bottom: 20px;
+}
+
+.cartItems .item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.cartItems img {
+    width: 130px; /* Adjust size as needed */
+    height: auto;
+}
+
+.description {
+    flex-grow: 1;
+    margin-left: 10px;
+}
+
+.removeItem {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 24px;
+}
+
+.pricing .priceDetail {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.quantityControl button, .quantityControl input {
+    border: 1px solid #ccc;
+    background: none;
+    padding: 5px 10px;
+}
+
+.quantityControl input {
+    width: 50px;
+    text-align: center;
+}
+
+.totals {
+    border-top: 1px solid #ccc;
+    padding-top: 10px;
+}
+
+.totals div {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 5px;
+}
+
+.priceHeaders {
+    display: flex;
+    justify-content: space-between; /* This ensures that the children span elements are spaced out over the full width of the container. */
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.priceHeaders span {
+    flex: 1; /* This gives equal space to each span, but we will override this for specific alignment */
+    text-align: center; /* Centers text, default for all but will be overridden */
+}
+
+.priceHeaders span:first-child {
+    text-align: left; /* Aligns the first span (Giá) to the left */
+}
+
+.priceHeaders span:last-child {
+    text-align: right; /* Aligns the last span (Tổng) to the right */
+}
+
+/* Buttons */
+.formButtons {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.continueButton {
+    background-color: #26736E;
+    color: white;
+    padding: 10px 30px;
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.continueButton:hover {
+    background-color: #154A49;
+}
+
+/* Back Button */
+.backButton {
+    display: flex;
+    align-items: center;
+    gap: 8px; /* Khoảng cách giữa icon và text */
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: bold;
+    color: #26736E;
+    transition: color 0.2s ease;
+}
+
+.backButton:hover {
+    color: #154A49; /* Màu đậm hơn khi hover */
+}
+
+.buttonIcon {
+    width: 16px; /* Kích thước icon */
+    height: 16px;
+    pointer-events: none; /* Đảm bảo không thể click vào icon */
+}
+
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .mainContent {
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .rightColumn {
+        margin-top: 20px;
+    }
+}
+
+
+/* Footer */
+.footer {
+    background-color: #081d22;
+    color: #ffffff;
+    padding: 40px 20px;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    width: 100%;
+  }
+  
+  .footer-left, .footer-right {
+    flex: 1;
+    max-width: 500px;
+    padding: 20px;
+  }
+  
+  /* Adjust footer-right to shift right by 10% */
+  .footer-right {
+    margin-left: 10%;
+  }
+  
+  .footer-newsletter {
+    text-align: left;
+    margin-bottom: 20px;
+  }
+  
+  .footer-newsletter h3 {
+    font-size: 18px;
+    margin-bottom: 20px;
+    padding-left: 10px;
+  }
+  
+  .newsletter-form {
+    display: flex;
+    border: 1px solid #ffffff;
+    margin-bottom: 20px;
+    padding-left: 10px;
+  }
+  
+  .newsletter-form input {
+    flex: 1;
+    padding: 10px;
+    border: none;
+    background-color: #081d22;
+    color: #ffffff;
+  }
+  
+  .newsletter-form button {
+    background-color: #081d22;
+    color: #ffffff;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+  }
+  
+  .footer-newsletter label {
+    display: block;
+    margin-top: 20px;
+    font-size: 14px;
+    color: #9ea7ad;
+    padding-left: 10px;
+  }
+  
+  /* Social Media and Links */
+  .footer-links {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    margin-top: 30px;
+    width: 100%;
+  }
+  
+  .footer-links div {
+    text-align: left;
+  }
+  
+  .footer-links h4 {
+    font-size: 16px;
+    margin-bottom: 10px;
+  }
+  
+  .footer-links a {
+    color: #9ea7ad;
+    text-decoration: none;
+    font-size: 14px;
+    display: block;
+    margin: 5px 0;
+  }
+  
+  /* Footer Social Media */
+  .footer-social {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-top: 60px;
+    padding-bottom: 20px;
+    padding-left: 10px;
+  }
+  
+  .footer-social-icons {
+    display: flex;
+    justify-content: flex-start;
+    gap: 10px;
+  }
+  
+  .footer-social img {
+    width: 24px;
+    height: 24px;
+  }
+  
+  .footer-social p {
+    color: #9ea7ad;
+    margin-top: 10px;
+    font-size: 12px;
+  }
+  
+  /* Responsive Design */
+  @media (max-width: 768px) {
+    .footer {
+      flex-direction: column;
+      align-items: center;
+    }
+  
+    .footer-left, .footer-right {
+      max-width: 100%;
+      padding: 10px;
+      margin-left: 0;
+    }
+  
+    .footer-links {
+      flex-direction: column;
+      align-items: center;
+    }
+  
+    .footer-newsletter {
+      text-align: center;
+    }
+  }
+  

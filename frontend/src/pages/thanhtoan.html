@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trang Thanh Toán</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 50px;
+        }
+        form {
+            max-width: 400px;
+            margin: auto;
+        }
+        input, button {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+        }
+    </style>
+</head>
+<body>
+    <h2>Thanh Toán</h2>
+    <form id="paymentForm">
+        <input type="text" id="customerName" placeholder="Họ và tên" required />
+        <input type="email" id="email" placeholder="Email" required />
+        <input type="text" id="productName" placeholder="Sản phẩm" required />
+        <input type="number" id="amount" placeholder="Số tiền" required />
+        <button type="submit">Thanh Toán</button>
+    </form>
+    <script>
+        document.getElementById("paymentForm").addEventListener("submit", function (e) {
+            e.preventDefault();
+
+            const data = {
+                customer_name: document.getElementById("customerName").value,
+                email: document.getElementById("email").value,
+                product_name: document.getElementById("productName").value,
+                amount: document.getElementById("amount").value
+            };
+
+            fetch("http://localhost:3000/api/orders", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify(data)
+            })
+            .then((response) => response.json())
+            .then((result) => {
+                alert(result.message || "Order created successfully!");
+                document.getElementById("paymentForm").reset();
+            })
+            .catch((error) => console.error("Error:", error));
+        });
+    </script>
+</body>
+</html>

@@ -117,13 +117,16 @@
                 <img src="../../public/icons/icon-backward.svg" alt="Back Icon" class="buttonIcon">
                 Quay Lại Giỏ Hàng
             </a>
-            <button type="submit" class="continueButton">Tiếp Tục</button>
+            <button type="button" class="continueButton" id="continueButton">Tiếp Tục</button>
         </div>
     </div>
 
+    
     <!-- Right Column -->
     <div class="rightColumn">
         <h2>Giỏ Hàng Của Bạn</h2>
+        
+        <!-- Cart Item 1 -->
         <div class="cartItem">
             <img src="../../public/images/Socks-Accessories-Menu.png" alt="Vớ Dài Sọc">
             <div class="cartDetails">
@@ -136,10 +139,11 @@
                     <button class="increaseBtn">+</button>
                 </div>
             </div>
-            <p class="itemPrice">125.000đ</p>
+            <p class="itemPrice" data-price="125000">125.000đ</p>
             <button class="removeItemBtn">✖</button>
         </div>
-
+        
+        <!-- Cart Item 2 -->
         <div class="cartItem">
             <img src="../../public/images/Wallet-Accessories-Menu.png" alt="Ví Cầm Tay">
             <div class="cartDetails">
@@ -152,10 +156,11 @@
                     <button class="increaseBtn">+</button>
                 </div>
             </div>
-            <p class="itemPrice">455.000đ</p>
+            <p class="itemPrice" data-price="455000">455.000đ</p>
             <button class="removeItemBtn">✖</button>
         </div>
 
+        <!-- Cart Item 3 -->
         <div class="cartItem">
             <img src="../../public/images/Derby-Shoes-Menu.png" alt="Giày Derby">
             <div class="cartDetails">
@@ -168,10 +173,11 @@
                     <button class="increaseBtn">+</button>
                 </div>
             </div>
-            <p class="itemPrice">725.000đ</p>
+            <p class="itemPrice" data-price="725000">725.000đ</p>
             <button class="removeItemBtn">✖</button>
         </div>
 
+        <!-- Cart Summary -->
         <div class="cartSummary">
             <p><span>Tổng (3)</span><span>1.305.000đ</span></p>
             <p><span>Thuế, Phí</span><span>0đ</span></p>
@@ -179,7 +185,7 @@
             <p class="totalAmount"><span>Tổng Cộng:</span><span>1.305.000đ</span></p>
         </div>
     </div>
-
+</main>
 </main>
 
     
@@ -231,6 +237,6 @@
             </div>
         </div>
     </footer>
-
+    <script src="/frontend/public/scripts/payment.js"></script>
 </body>
 
