@@ -300,7 +300,7 @@ let updateUserData = (data) => {
   });
 };
 
-const getAllShirts = () => {
+const getAllShirts = (limit) => {
   return new Promise(async (resolve, reject) => {
     try {
       const shirts = await db.Product.findAll({
@@ -327,7 +327,7 @@ const getAllShirts = () => {
         group: ["name"],
         raw: false,
         nest: true,
-        limit: 5,
+        limit: limit,
       });
       resolve(shirts);
     } catch (e) {
@@ -439,6 +439,74 @@ const getAllAccessories = () => {
   });
 };
 
+const getAllGiay = () => {
+  return new Promise(async (resolve, reject) => {
+    try {
+      const shirts = await db.Product.findAll({
+        where: {
+          [Op.or]: [
+            { type_of_clothes: "Sneakers" },
+          ],
+        },
+        attributes: [
+          [Sequelize.fn("DISTINCT", Sequelize.col("name")), "name"],
+          "pd_id",
+          "description",
+          "price",
+        ],
+        include: [
+          {
+            model: db.Image,
+            as: "productImageData",
+            attributes: ["image_id", "image"],
+          },
+        ],
+        group: ["name"],
+        raw: false,
+        nest: true,
+      });
+      resolve(shirts);
+    } catch (e) {
+      reject(e);
+    }
+  });
+};
+
+const getAllDep = () => {
+  return new Promise(async (resolve, reject) => {
+    try {
+      const shirts = await db.Product.findAll({
+        where: {
+          [Op.or]: [
+            { type_of_clothes: "Sandals" },
+          ],
+        },
+        attributes: [
+          [Sequelize.fn("DISTINCT", Sequelize.col("name")), "name"],
+          "pd_id",
+          "description",
+          "price",
+        ],
+        include: [
+          {
+            model: db.Image,
+            as: "productImageData",
+            attributes: ["image_id", "image"],
+          },
+        ],
+        group: ["name"],
+        raw: false,
+        nest: true,
+      });
+      resolve(shirts);
+    } catch (e) {
+      reject(e);
+    }
+  });
+};
+
+
+
 module.exports = {
   getAllProducts,
   createNewProduct,
@@ -453,4 +521,6 @@ module.exports = {
   getAllPants,
   getAllShoes,
   getAllAccessories,
+  getAllGiay,
+  getAllDep
 };
