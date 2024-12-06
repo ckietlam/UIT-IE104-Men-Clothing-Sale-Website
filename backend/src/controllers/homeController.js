@@ -25,8 +25,7 @@ let getProductViewAllGiayDep = async (req, res) => {
   try {
     let giayData = await productService.getAllGiay();
     let depData = await productService.getAllDep();
-    console.log("Noah check giayData: ", giayData)
-    console.log("Noah check depdaya: ", depData)
+
     return res.render("pages/product-view-all-giaydep", {
       giayData: giayData,
       depData: depData
@@ -40,7 +39,27 @@ let getProductViewAllGiayDep = async (req, res) => {
   }
 };
 
+let getProductViewAllAo = async (req, res) => {
+  try {
+    let aoThunData = await productService.getAllAoThun();
+    let aoNiData = await productService.getAllAoNi();
+    let aoSoMiData = await productService.getAllAoSoMi();
+    return res.render("pages/product-view-all-ao", {
+      aoThunData: aoThunData,
+      aoNiData: aoNiData,
+      aoSoMiData: aoSoMiData
+    });
+  } catch (e) {
+    console.log(e);
+    return res.status(200).json({
+      errCode: -1,
+      errMessage: "Error from server",
+    });
+  }
+};
+
 module.exports = {
   getProductViewAll,
-  getProductViewAllGiayDep
+  getProductViewAllGiayDep,
+  getProductViewAllAo
 };

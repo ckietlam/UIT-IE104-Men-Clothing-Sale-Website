@@ -505,6 +505,104 @@ const getAllDep = () => {
   });
 };
 
+const getAllAoThun = () => {
+  return new Promise(async (resolve, reject) => {
+    try {
+      const shirts = await db.Product.findAll({
+        where: {
+          [Op.or]: [
+            { type_of_clothes: "Tees" },
+          ],
+        },
+        attributes: [
+          [Sequelize.fn("DISTINCT", Sequelize.col("name")), "name"],
+          "pd_id",
+          "description",
+          "price",
+        ],
+        include: [
+          {
+            model: db.Image,
+            as: "productImageData",
+            attributes: ["image_id", "image"],
+          },
+        ],
+        group: ["name"],
+        raw: false,
+        nest: true,
+      });
+      resolve(shirts);
+    } catch (e) {
+      reject(e);
+    }
+  });
+};
+
+const getAllAoSoMi = () => {
+  return new Promise(async (resolve, reject) => {
+    try {
+      const shirts = await db.Product.findAll({
+        where: {
+          [Op.or]: [
+            { type_of_clothes: "Shirts" },
+          ],
+        },
+        attributes: [
+          [Sequelize.fn("DISTINCT", Sequelize.col("name")), "name"],
+          "pd_id",
+          "description",
+          "price",
+        ],
+        include: [
+          {
+            model: db.Image,
+            as: "productImageData",
+            attributes: ["image_id", "image"],
+          },
+        ],
+        group: ["name"],
+        raw: false,
+        nest: true,
+      });
+      resolve(shirts);
+    } catch (e) {
+      reject(e);
+    }
+  });
+};
+
+const getAllAoNi = () => {
+  return new Promise(async (resolve, reject) => {
+    try {
+      const shirts = await db.Product.findAll({
+        where: {
+          [Op.or]: [
+            { type_of_clothes: "Sweats" },
+          ],
+        },
+        attributes: [
+          [Sequelize.fn("DISTINCT", Sequelize.col("name")), "name"],
+          "pd_id",
+          "description",
+          "price",
+        ],
+        include: [
+          {
+            model: db.Image,
+            as: "productImageData",
+            attributes: ["image_id", "image"],
+          },
+        ],
+        group: ["name"],
+        raw: false,
+        nest: true,
+      });
+      resolve(shirts);
+    } catch (e) {
+      reject(e);
+    }
+  });
+};
 
 
 module.exports = {
@@ -522,5 +620,8 @@ module.exports = {
   getAllShoes,
   getAllAccessories,
   getAllGiay,
-  getAllDep
+  getAllDep,
+  getAllAoThun,
+  getAllAoSoMi,
+  getAllAoNi
 };
