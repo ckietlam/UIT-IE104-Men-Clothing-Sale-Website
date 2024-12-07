@@ -8,6 +8,8 @@ let initWebRouters = (app) => {
   router.get("/product-view-all", homeController.getProductViewAll)
   router.get("/product-view-all-giaydep", homeController.getProductViewAllGiayDep)
   router.get("/product-view-all-ao", homeController.getProductViewAllAo)
+  router.get("/product-view-all-quan", homeController.getProductViewAllQuan)
+  router.get("/product-view-all-phukien", homeController.getProductViewAllPhuKien)
   
   return app.use("/", router);
 };

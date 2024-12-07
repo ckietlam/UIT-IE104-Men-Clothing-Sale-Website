@@ -439,14 +439,12 @@ const getAllAccessories = () => {
   });
 };
 
-const getAllGiay = () => {
+const getAllProductsByType = (type) => {
   return new Promise(async (resolve, reject) => {
     try {
-      const shirts = await db.Product.findAll({
+      const products = await db.Product.findAll({
         where: {
-          [Op.or]: [
-            { type_of_clothes: "Sneakers" },
-          ],
+          type_of_clothes: type,
         },
         attributes: [
           [Sequelize.fn("DISTINCT", Sequelize.col("name")), "name"],
@@ -465,139 +463,7 @@ const getAllGiay = () => {
         raw: false,
         nest: true,
       });
-      resolve(shirts);
-    } catch (e) {
-      reject(e);
-    }
-  });
-};
-
-const getAllDep = () => {
-  return new Promise(async (resolve, reject) => {
-    try {
-      const shirts = await db.Product.findAll({
-        where: {
-          [Op.or]: [
-            { type_of_clothes: "Sandals" },
-          ],
-        },
-        attributes: [
-          [Sequelize.fn("DISTINCT", Sequelize.col("name")), "name"],
-          "pd_id",
-          "description",
-          "price",
-        ],
-        include: [
-          {
-            model: db.Image,
-            as: "productImageData",
-            attributes: ["image_id", "image"],
-          },
-        ],
-        group: ["name"],
-        raw: false,
-        nest: true,
-      });
-      resolve(shirts);
-    } catch (e) {
-      reject(e);
-    }
-  });
-};
-
-const getAllAoThun = () => {
-  return new Promise(async (resolve, reject) => {
-    try {
-      const shirts = await db.Product.findAll({
-        where: {
-          [Op.or]: [
-            { type_of_clothes: "Tees" },
-          ],
-        },
-        attributes: [
-          [Sequelize.fn("DISTINCT", Sequelize.col("name")), "name"],
-          "pd_id",
-          "description",
-          "price",
-        ],
-        include: [
-          {
-            model: db.Image,
-            as: "productImageData",
-            attributes: ["image_id", "image"],
-          },
-        ],
-        group: ["name"],
-        raw: false,
-        nest: true,
-      });
-      resolve(shirts);
-    } catch (e) {
-      reject(e);
-    }
-  });
-};
-
-const getAllAoSoMi = () => {
-  return new Promise(async (resolve, reject) => {
-    try {
-      const shirts = await db.Product.findAll({
-        where: {
-          [Op.or]: [
-            { type_of_clothes: "Shirts" },
-          ],
-        },
-        attributes: [
-          [Sequelize.fn("DISTINCT", Sequelize.col("name")), "name"],
-          "pd_id",
-          "description",
-          "price",
-        ],
-        include: [
-          {
-            model: db.Image,
-            as: "productImageData",
-            attributes: ["image_id", "image"],
-          },
-        ],
-        group: ["name"],
-        raw: false,
-        nest: true,
-      });
-      resolve(shirts);
-    } catch (e) {
-      reject(e);
-    }
-  });
-};
-
-const getAllAoNi = () => {
-  return new Promise(async (resolve, reject) => {
-    try {
-      const shirts = await db.Product.findAll({
-        where: {
-          [Op.or]: [
-            { type_of_clothes: "Sweats" },
-          ],
-        },
-        attributes: [
-          [Sequelize.fn("DISTINCT", Sequelize.col("name")), "name"],
-          "pd_id",
-          "description",
-          "price",
-        ],
-        include: [
-          {
-            model: db.Image,
-            as: "productImageData",
-            attributes: ["image_id", "image"],
-          },
-        ],
-        group: ["name"],
-        raw: false,
-        nest: true,
-      });
-      resolve(shirts);
+      resolve(products);
     } catch (e) {
       reject(e);
     }
@@ -619,9 +485,5 @@ module.exports = {
   getAllPants,
   getAllShoes,
   getAllAccessories,
-  getAllGiay,
-  getAllDep,
-  getAllAoThun,
-  getAllAoSoMi,
-  getAllAoNi
+  getAllProductsByType
 };

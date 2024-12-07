@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>H(T)ML Product</title>
     <link rel="icon" type="product_img" href="images/LOGO ICON.png">
-    <link rel="stylesheet" href="styles/product-view-all.css">
+    <link rel="stylesheet" href="styles/product-view-all-ao.css">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600&family=Poppins:wght@900&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet">
     
@@ -209,34 +209,35 @@
             </div>
         </header>
 
+            <!-- Thêm nút trở về ở đây -->
+    <div class="back-button-container">
+        <a href="/product-view-all" class="back-button">← Trở về</a>
+    </div>
     <!-- Product Section -->
      
     <div class="categories-container">
         <div class="category-section">
             <div class="category-header">
-                <h2>Áo</h2>
-                <a href="/product-view-all-ao" class="view-all" onclick="toggleView(this)">Xem tất cả</a>
+                <h2>Hats</h2>
             </div>
             <div class="product-carousel limited-view">
                 <div class="carousel-track">
-                    
-                    <%for (let i = 0; i < 5; i++) {%>
+                    <%for (let i = 0; i < hatsData.length; i++) {%>
                         <div class="product-card">
-                            <a href="/product-view?pd_id=<%=shirtsData[i].pd_id%>">
-                                <img src="<%= shirtsData[i].productImageData[1].image %>" alt="<%= shirtsData[i].name %>">
+                            <a href="/product-view?pd_id=<%=hatsData[i].pd_id%>">
+                                <img src="<%= hatsData[i].productImageData[0].image %>" alt="<%= hatsData[i].name %>">
                                 <h3 class="product-name">
-                                    <%= shirtsData[i].name.length > 30 ? shirtsData[i].name.substring(0, 30) + "..." : shirtsData[i].name %>
+                                    <%= hatsData[i].name.length > 30 ? hatsData[i].name.substring(0, 30) + "..." : hatsData[i].name %>
                                 </h3>
                                 <div class="product-details">
                                     <p class="product-description">
-                                        <%= shirtsData[i].description.length > 100 ? shirtsData[i].description.substring(0, 100) + "..." : shirtsData[i].description %>
+                                        <%= hatsData[i].description.length > 100 ? hatsData[i].description.substring(0, 100) + "..." : hatsData[i].description %>
                                     </p>
-                                    <p class="product-price"><%= shirtsData[i].price %>đ</p>
+                                    <p class="product-price"><%= hatsData[i].price %>đ</p>
                                 </div>
                             </a>
                         </div>
                     <%}%>
-
                 </div>
             </div>
         </div>
@@ -244,23 +245,22 @@
 
         <div class="category-section">
             <div class="category-header">
-                <h2>Quần</h2>
-                <a href="/product-view-all-quan" class="view-all" onclick="toggleView(this)">Xem tất cả</a>
+                <h2>Boxers</h2>
             </div>
             <div class="product-carousel limited-view">
                 <div class="carousel-track">
-                    <%for (let i = 0; i < 5; i++) {%>
+                    <%for (let i = 0; i < boxersData.length; i++) {%>
                         <div class="product-card">
-                            <a href="/product-view?pd_id=<%=pantsData[i].pd_id%>">
-                                <img src="<%= pantsData[i].productImageData[1].image %>" alt="<%= pantsData[i].name %>">
+                            <a href="/product-view?pd_id=<%=boxersData[i].pd_id%>">
+                                <img src="<%= boxersData[i].productImageData[0].image %>" alt="<%= boxersData[i].name %>">
                                 <h3 class="product-name">
-                                    <%= pantsData[i].name.length > 30 ? pantsData[i].name.substring(0, 30) + "..." : pantsData[i].name %>
+                                    <%= boxersData[i].name.length > 30 ? boxersData[i].name.substring(0, 30) + "..." : boxersData[i].name %>
                                 </h3>
                                 <div class="product-details">
                                     <p class="product-description">
-                                        <%= pantsData[i].description.length > 100 ? pantsData[i].description.substring(0, 100) + "..." : pantsData[i].description %>
+                                        <%= boxersData[i].description.length > 100 ? boxersData[i].description.substring(0, 100) + "..." : boxersData[i].description %>
                                     </p>
-                                    <p class="product-price"><%= pantsData[i].price %>đ</p>
+                                    <p class="product-price"><%= boxersData[i].price %>đ</p>
                                 </div>
                             </a>
                         </div>
@@ -271,50 +271,22 @@
 
         <div class="category-section">
             <div class="category-header">
-                <h2>Giày dép</h2>
-                <a href="/product-view-all-giaydep" class="view-all" onclick="toggleView(this)">Xem tất cả</a>
+                <h2>Socks</h2>
             </div>
             <div class="product-carousel limited-view">
                 <div class="carousel-track">
-                    <%for (let i = 0; i < 5; i++) {%>
+                    <%for (let i = 0; i < socksData.length; i++) {%>
                         <div class="product-card">
-                            <a href="/product-view?pd_id=<%=shoesData[i].pd_id%>">
-                                <img src="<%= shoesData[i].productImageData[1].image %>" alt="<%= shoesData[i].name %>">
+                            <a href="/product-view?pd_id=<%=socksData[i].pd_id%>">
+                                <img src="<%= socksData[i].productImageData[0].image %>" alt="<%= socksData[i].name %>">
                                 <h3 class="product-name">
-                                    <%= shoesData[i].name.length > 30 ? shoesData[i].name.substring(0, 30) + "..." : shoesData[i].name %>
+                                    <%= socksData[i].name.length > 30 ? socksData[i].name.substring(0, 30) + "..." : socksData[i].name %>
                                 </h3>
                                 <div class="product-details">
                                     <p class="product-description">
-                                        <%= shoesData[i].description.length > 100 ? shoesData[i].description.substring(0, 100) + "..." : shoesData[i].description %>
+                                        <%= socksData[i].description.length > 100 ? socksData[i].description.substring(0, 100) + "..." : socksData[i].description %>
                                     </p>
-                                    <p class="product-price"><%= shoesData[i].price %>đ</p>
-                                </div>
-                            </a>
-                        </div>
-                    <%}%>
-                </div>
-            </div>
-        </div>
-
-        <div class="category-section">
-            <div class="category-header">
-                <h2>Phụ kiện</h2>
-                <a href="/product-view-all-phukien" class="view-all" onclick="toggleView(this)">Xem tất cả</a>
-            </div>
-            <div class="product-carousel limited-view">
-                <div class="carousel-track">
-                    <%for (let i = 0; i < 5; i++) {%>
-                        <div class="product-card">
-                            <a href="/product-view?pd_id=<%=accessoriesData[i].pd_id%>">
-                                <img src="<%= accessoriesData[i].productImageData[1].image %>" alt="<%= accessoriesData[i].name %>">
-                                <h3 class="product-name">
-                                    <%= accessoriesData[i].name.length > 30 ? accessoriesData[i].name.substring(0, 30) + "..." : accessoriesData[i].name %>
-                                </h3>
-                                <div class="product-details">
-                                    <p class="product-description">
-                                        <%= accessoriesData[i].description.length > 100 ? accessoriesData[i].description.substring(0, 100) + "..." : accessoriesData[i].description %>
-                                    </p>
-                                    <p class="product-price"><%= accessoriesData[i].price %>đ</p>
+                                    <p class="product-price"><%= socksData[i].price %>đ</p>
                                 </div>
                             </a>
                         </div>

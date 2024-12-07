@@ -23,9 +23,8 @@ let getProductViewAll = async (req, res) => {
 
 let getProductViewAllGiayDep = async (req, res) => {
   try {
-    let giayData = await productService.getAllGiay();
-    let depData = await productService.getAllDep();
-
+    let giayData = await productService.getAllProductsByType("Sneakers");
+    let depData = await productService.getAllProductsByType("Sandals");
     return res.render("pages/product-view-all-giaydep", {
       giayData: giayData,
       depData: depData
@@ -41,9 +40,9 @@ let getProductViewAllGiayDep = async (req, res) => {
 
 let getProductViewAllAo = async (req, res) => {
   try {
-    let aoThunData = await productService.getAllAoThun();
-    let aoNiData = await productService.getAllAoNi();
-    let aoSoMiData = await productService.getAllAoSoMi();
+    let aoThunData = await productService.getAllProductsByType("Tees");
+    let aoNiData = await productService.getAllProductsByType("Sweats");
+    let aoSoMiData = await productService.getAllProductsByType("Shirts");
     return res.render("pages/product-view-all-ao", {
       aoThunData: aoThunData,
       aoNiData: aoNiData,
@@ -58,8 +57,46 @@ let getProductViewAllAo = async (req, res) => {
   }
 };
 
+let getProductViewAllQuan = async (req, res) => {
+  try {
+    let jeansData = await productService.getAllProductsByType("Jeans");
+    let shortsData = await productService.getAllProductsByType("Shorts");
+    return res.render("pages/product-view-all-quan", {
+      jeansData: jeansData,
+      shortsData: shortsData,
+    });
+  } catch (e) {
+    console.log(e);
+    return res.status(200).json({
+      errCode: -1,
+      errMessage: "Error from server",
+    });
+  }
+};
+
+let getProductViewAllPhuKien = async (req, res) => {
+  try {
+    let boxersData = await productService.getAllProductsByType("Boxers");
+    let socksData = await productService.getAllProductsByType("Socks");
+    let hatsData = await productService.getAllProductsByType("Hats");
+    return res.render("pages/product-view-all-phukien", {
+      boxersData: boxersData,
+      socksData: socksData,
+      hatsData: hatsData
+    });
+  } catch (e) {
+    console.log(e);
+    return res.status(200).json({
+      errCode: -1,
+      errMessage: "Error from server",
+    });
+  }
+};
+
 module.exports = {
   getProductViewAll,
   getProductViewAllGiayDep,
-  getProductViewAllAo
+  getProductViewAllAo,
+  getProductViewAllQuan,
+  getProductViewAllPhuKien
 };

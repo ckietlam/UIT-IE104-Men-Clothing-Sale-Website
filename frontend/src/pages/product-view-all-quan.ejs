@@ -211,63 +211,33 @@
 
             <!-- Thêm nút trở về ở đây -->
     <div class="back-button-container">
-        <a href="product-view-all.html" class="back-button">← Trở về</a>
+        <a href="/product-view-all" class="back-button">← Trở về</a>
     </div>
     <!-- Product Section -->
      
     <div class="categories-container">
         <div class="category-section">
             <div class="category-header">
-                <h2>Tất</h2>
+                <h2>Shorts</h2>
             </div>
             <div class="product-carousel limited-view">
                 <div class="carousel-track">
-                    <div class="product-card">
-                        <a href="../pages/product-view-blazer.html">
-                            <img src="images/temp/assets/products/accessories/Tat/co_dai/vo-dai-soc-vo073-18560-slide-products-6650b88c3b048 (1).jpg" alt="vo-dai-soc-vo073-18560-slide-products-6650b88c3b048">
-                            <h3>Tất cổ dài</h3>
-                            <div class="product-details">
-                                <p class="product-description">Tất cổ dài sọc</p>
-                                <p class="product-price">125.000đ</p>
-                            </div>
-                        </a>
-                    </div>
-                    
-                    <div class="product-card">
-                        <a href="../pages/product-view-varsity1.html">
-                            <img src="images/temp/assets/products/accessories/Tat/co_ngan/-18381-slide-products-65d870e3a7ed0.jpg" alt="tat-co-ngan">
-                            <h3>Tất cổ ngắn</h3>
-                            <div class="product-details">
-                                <p class="product-description">Tất nam cổ ngắn</p>
-                                <p class="product-price">125.000đ</p>
-                            </div>
-                        </a>
-                    </div>
-
-                    <div class="product-card">
-                        <img src="images/temp/assets/products/accessories/Tat/dai_soc/vo-dai-tron-vo071-18558-slide-products-6650b7b4eef2e.jpg" alt="tat-dai-soc">
-                        <h3>Tất dài sọc</h3>
-                        <div class="product-details">
-                            <p class="product-description">Tất dài sọc ngang</p>
-                            <p class="product-price">125.000đ</p>
+                    <%for (let i = 0; i < shortsData.length; i++) {%>
+                        <div class="product-card">
+                            <a href="/product-view?pd_id=<%=shortsData[i].pd_id%>">
+                                <img src="<%= shortsData[i].productImageData[0].image %>" alt="<%= shortsData[i].name %>">
+                                <h3 class="product-name">
+                                    <%= shortsData[i].name.length > 30 ? shortsData[i].name.substring(0, 30) + "..." : shortsData[i].name %>
+                                </h3>
+                                <div class="product-details">
+                                    <p class="product-description">
+                                        <%= shortsData[i].description.length > 100 ? shortsData[i].description.substring(0, 100) + "..." : shortsData[i].description %>
+                                    </p>
+                                    <p class="product-price"><%= shortsData[i].price %>đ</p>
+                                </div>
+                            </a>
                         </div>
-                    </div>
-                    <div class="product-card">
-                        <img src="images/temp/assets/products/accessories/Tat/dai_tron/vo-nam-co-ngan-phoi-mau-vo070-18391-slide-products-65d87a868654a.jpg" alt="tat-dai-tron">
-                        <h3>Tất dài trơn</h3>
-                        <div class="product-details">
-                            <p class="product-description">Tất trơn một màu</p>
-                            <p class="product-price">125.000đ</p>
-                        </div>
-                    </div>
-                    <div class="product-card">
-                        <img src="images/temp/assets/products/accessories/Tat/tat_luoi/vo-nam-co-ngan-vo066-18393-slide-products-65dc021edda1c.jpg" alt="tat-luoi">
-                        <h3>Tất lười</h3>
-                        <div class="product-details">
-                            <p class="product-description">Tất lười cho nam</p>
-                            <p class="product-price">100.000đ</p>
-                        </div>
-                    </div>
+                    <%}%>
                 </div>
             </div>
         </div>
@@ -275,93 +245,26 @@
 
         <div class="category-section">
             <div class="category-header">
-                <h2>Thắt lưng</h2>
+                <h2>Jeans</h2>
             </div>
             <div class="product-carousel limited-view">
                 <div class="carousel-track">
-                    <div class="product-card">
-                        <img src="images/temp/assets/products/accessories/That_lung/dau_kim_1/that-lung-dau-kim-tl165-18572-slide-products-66570a11e3e78.jpg" alt="dau-kim-1">
-                        <h3>Đầu kim 1</h3>
-                        <div class="product-details">
-                            <p class="product-description">Thắt lưng đầu kim (1)</p>
-                            <p class="product-price">185.000đ</p>
+                    <%for (let i = 0; i < jeansData.length; i++) {%>
+                        <div class="product-card">
+                            <a href="/product-view?pd_id=<%=jeansData[i].pd_id%>">
+                                <img src="<%= jeansData[i].productImageData[0].image %>" alt="<%= jeansData[i].name %>">
+                                <h3 class="product-name">
+                                    <%= jeansData[i].name.length > 30 ? jeansData[i].name.substring(0, 30) + "..." : jeansData[i].name %>
+                                </h3>
+                                <div class="product-details">
+                                    <p class="product-description">
+                                        <%= jeansData[i].description.length > 100 ? jeansData[i].description.substring(0, 100) + "..." : jeansData[i].description %>
+                                    </p>
+                                    <p class="product-price"><%= jeansData[i].price %>đ</p>
+                                </div>
+                            </a>
                         </div>
-                    </div>
-
-                    <div class="product-card">
-                        <img src="images/temp/assets/products/accessories/That_lung/dau_kim_2/that-lung-dau-kim-tl166-18565-slide-products-6655c1885addc.jpg" alt="dau-kim-2">
-                        <h3>Đầu kim 2</h3>
-                        <div class="product-details">
-                            <p class="product-description">Thắt lưng đầu kim (2)</p>
-                            <p class="product-price">185.000đ</p>
-                        </div>
-                    </div>
-                    <div class="product-card">
-                        <img src="images/temp/assets/products/accessories/That_lung/dau_kim_3/that-lung-dau-kim-tl167-18468-slide-products-663c7d692faa0.jpg" alt="dau-kim-3">
-                        <h3>>Đầu kim 3</h3>
-                        <div class="product-details">
-                            <p class="product-description">Thắt lưng đầu kim (3)</p>
-                            <p class="product-price">185.000đ</p>
-                        </div>
-                    </div>
-                    <div class="product-card">
-                        <img src="images/temp/assets/products/accessories/That_lung/khoa_tu_dong_1/that-lung-khoa-tu-dong-tl163-18466-slide-products-663c7c480f1a1.jpg" alt="khoa-tu-dong-1">
-                        <h3>Khóa tự động 1</h3>
-                        <div class="product-details">
-                            <p class="product-description">Thắt lưng tự động khóa (1)</p>
-                            <p class="product-price">200.000đ</p>
-                        </div>
-                    </div>
-                    <div class="product-card">
-                        <img src="images/temp/assets/products/accessories/That_lung/khoa_tu_dong_2/that-lung-khoa-tu-dong-tl154-18421-slide-products-65e82ba8866d5.jpg" alt="khoa-tu-dong-2">
-                        <h3>Khóa tự động 2</h3>
-                        <div class="product-details">
-                            <p class="product-description">Thắt lưng tự động khóa (2)</p>
-                            <p class="product-price">200.000đ</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="category-section">
-            <div class="category-header">
-                <h2>Ví</h2>
-            </div>
-            <div class="product-carousel limited-view">
-                <div class="carousel-track">
-                    <div class="product-card">
-                        <img src="images/temp/assets/products/accessories/Vi/dang_doc/-17514-slide-products-636b7a66dad09.jpg" alt="vi-dang-doc">
-                        <h3>Ví dáng dọc</h3>
-                        <div class="product-details">
-                            <p class="product-description">Ví da dáng dọc</p>
-                            <p class="product-price">225.000đ</p>
-                        </div>
-                    </div>
-                    <div class="product-card">
-                        <img src="images/temp/assets/products/accessories/Vi/dang_ngang/-17838-slide-products-63f5b6c549094.jpg" alt="vi-dang-ngang">
-                        <h3>Ví dáng ngang</h3>
-                        <div class="product-details">
-                            <p class="product-description">Ví da dáng ngang</p>
-                            <p class="product-price">250.000đ</p>
-                        </div>
-                    </div>
-                    <div class="product-card">
-                        <img src="images/temp/assets/products/accessories/Vi/khoa_ca_sau/vi-cam-tay-co-khoa-ca-sau-017-16397-slide-products-621464c90b454.jpg" alt="vi-khoa-ca-sau">
-                        <h3>Ví khóa cá sấu</h3>
-                        <div class="product-details">
-                            <p class="product-description">Ví có khóa cá sấu</p>
-                            <p class="product-price">275.000đ</p>
-                        </div>
-                    </div>
-                    <div class="product-card">
-                        <img src="images/temp/assets/products/accessories/Vi/khoa_tron/vi-cam-tay-co-khoa-tron-020-mau-den-16530-slide-products-6214656432f13.jpg" alt="vi-khoa-tron">
-                        <h3>Ví khóa trơn</h3>
-                        <div class="product-details">
-                            <p class="product-description">Ví có khóa trơn</p>
-                            <p class="product-price">315.000đ</p>
-                        </div>
-                    </div>
+                    <%}%>
                 </div>
             </div>
         </div>
