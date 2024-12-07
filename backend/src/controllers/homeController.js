@@ -4,18 +4,16 @@ const app = express();
 
 let getAdmin = async (req, res) => {
   if (!req.session.user) {
-    return res.redirect('/404');
+    return res.redirect("/404");
   }
 
   if (req.session.user.role === "Admin") {
-      return res.render("pages/admin", {
-          user: req.session.user
-      });
+    return res.render("pages/admin", {
+      user: req.session.user,
+    });
   } else {
-      return res.redirect('/404');
-}
-
-  
+    return res.redirect("/404");
+  }
 };
 let getProductManagementPage = async (req, res) => {
   try {
@@ -79,12 +77,10 @@ let getAddProductPage = async (req, res) => {
 };
 const getHomePage = async (req, res) => {
   try {
-    
     const isAuthenticated = req.session.authenticated || false;
     const user = req.session.user || null;
 
-    
-    return res.render('pages/homepage', {
+    return res.render("pages/homepage", {
       user: user,
       message: null,
       isAuthenticated: isAuthenticated, // Can be used for conditional rendering
@@ -99,26 +95,47 @@ const getHomePage = async (req, res) => {
 };
 
 const get404Page = async (req, res) => {
-    try {
-      return res.redirect('/404');
-    } catch (error) {
-      console.error("Error rendering 404 page:", error);
-      return res.status(500).json({
-        message: "Error from server",
-        error: error.message,
-      });
-    }
-}
+  try {
+    return res.redirect("/404");
+  } catch (error) {
+    console.error("Error rendering 404 page:", error);
+    return res.status(500).json({
+      message: "Error from server",
+      error: error.message,
+    });
+  }
+};
+
+let getProductViewAll = async (req, res) => {
+  try {
+    let shirtsData = await productService.getAllShirts(5);
+    let pantsData = await productService.getAllPants();
+    let shoesData = await productService.getAllShoes();
+    let accessoriesData = await productService.getAllAccessories();
+    return res.render("pages/product-view-all", {
+      shirtsData: shirtsData,
+      pantsData: pantsData,
+      shoesData: shoesData,
+      accessoriesData: accessoriesData,
+    });
+  } catch (e) {
+    console.log(e);
+    return res.status(200).json({
+      errCode: -1,
+      errMessage: "Error from server",
+    });
+  }
+};
 
 let getProductViewAllAo = async (req, res) => {
   try {
-    let aoThunData = await productService.getAllAoThun();
-    let aoNiData = await productService.getAllAoNi();
-    let aoSoMiData = await productService.getAllAoSoMi();
+    let aoThunData = await productService.getAllProductsByType("Tees");
+    let aoNiData = await productService.getAllProductsByType("Sweats");
+    let aoSoMiData = await productService.getAllProductsByType("Shirts");
     return res.render("pages/product-view-all-ao", {
       aoThunData: aoThunData,
       aoNiData: aoNiData,
-      aoSoMiData: aoSoMiData
+      aoSoMiData: aoSoMiData,
     });
   } catch (e) {
     console.log(e);
@@ -135,38 +152,7 @@ let getProductViewAllGiayDep = async (req, res) => {
     let depData = await productService.getAllProductsByType("Sandals");
     return res.render("pages/product-view-all-giaydep", {
       giayData: giayData,
-      depData: depData
-    });
-  } catch (e) {
-    console.log(e);
-    return res.status(200).json({
-      errCode: -1,
-      errMessage: "Error from server",
-    });
-  }
-};
-
-const getProductViewAllPhuKien = async  (req,res) => {
-  return res.render('pages/product-view-all-phukien', { 
-    message: null
-})
-};
-
-const getProductViewAllQuan = async (req,res) => {
-  return res.render('pages/product-view-all-quan', { 
-    message: null
-})
-};
-
-let getProductViewAll = async (req, res) => {
-  try {
-    let aoThunData = await productService.getAllProductsByType("Tees");
-    let aoNiData = await productService.getAllProductsByType("Sweats");
-    let aoSoMiData = await productService.getAllProductsByType("Shirts");
-    return res.render("pages/product-view-all-ao", {
-      aoThunData: aoThunData,
-      aoNiData: aoNiData,
-      aoSoMiData: aoSoMiData
+      depData: depData,
     });
   } catch (e) {
     console.log(e);
@@ -202,7 +188,24 @@ let getProductViewAllPhuKien = async (req, res) => {
     return res.render("pages/product-view-all-phukien", {
       boxersData: boxersData,
       socksData: socksData,
-      hatsData: hatsData
+      hatsData: hatsData,
+    });
+  } catch (e) {
+    console.log(e);
+    return res.status(200).json({
+      errCode: -1,
+      errMessage: "Error from server",
+    });
+  }
+};
+
+let getProductViewAProduct = async (req, res) => {
+  try {
+    let id = req.query.pd_id;
+    let productData = await productService.getAllProducts(id);
+    console.log("Noah check data: ", productData);
+    return res.render("pages/product-view", {
+      productData: productData,
     });
   } catch (e) {
     console.log(e);
@@ -225,5 +228,6 @@ module.exports = {
   getProductViewAllGiayDep,
   getProductViewAllAo,
   getProductViewAllQuan,
-  getProductViewAllPhuKien
+  getProductViewAllPhuKien,
+  getProductViewAProduct,
 };

@@ -22,7 +22,8 @@ let initWebRouters = (app) => {
   router.get('/product-view-all-phukien',homeController.getProductViewAllPhuKien);
   router.get('/product-view-all-quan',homeController.getProductViewAllQuan);
   router.get('/product-view-all',homeController.getProductViewAll);
-
+  router.get('/product-view',homeController.getProductViewAProduct);
+  
 
 
   router.get("/admin", homeController.getAdmin);

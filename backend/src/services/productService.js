@@ -470,6 +470,31 @@ const getAllProductsByType = (type) => {
   });
 };
 
+const getProductById = (pd_id) => {
+  return new Promise(async (resolve, reject) => {
+    try {
+      const product = await db.Product.findOne({
+        where: {
+          pd_id: pd_id,
+        },
+        attributes: ["name", "pd_id", "description", "price"],
+        include: [
+          {
+            model: db.Image,
+            as: "productImageData",
+            attributes: ["image_id", "image"],
+          },
+        ],
+        group: ["name"],
+        raw: false,
+        nest: true,
+      });
+      resolve(product);
+    } catch (e) {
+      reject(e);
+    }
+  });
+};
 
 module.exports = {
   getAllProducts,
@@ -485,5 +510,6 @@ module.exports = {
   getAllPants,
   getAllShoes,
   getAllAccessories,
-  getAllProductsByType
+  getAllProductsByType,
+  getProductById
 };
