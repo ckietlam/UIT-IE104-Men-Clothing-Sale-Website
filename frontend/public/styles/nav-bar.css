@@ -8,7 +8,7 @@
 
 @font-face {
   font-family: 'Montserrat'; 
-  src: url('../assets/fonts/Montserrat/Montserrat-Regular.ttf') format('truetype');
+  src: url('../../public/fonts/Montserrat/Montserrat-Regular.ttf') format('truetype');
   font-weight: normal; 
   font-style: normal; 
 }
@@ -33,6 +33,7 @@
   font-weight: bold;
   font-style: normal;
 }
+
 
 /* Áp dụng Montserrat Regular cho toàn bộ trang */
 body {
