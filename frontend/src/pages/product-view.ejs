@@ -3,16 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Áo Blazer Công Sở Phong Cách Thanh Lịch</title>
+    <title><%= productData.name %></title>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600&family=Poppins:wght@900&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet"> 
-    <link rel="stylesheet" href="../../public/styles/product-view-blazer.css">
+    <link rel="stylesheet" href="styles/product-view-blazer.css">
 </head>
 <body>
     
     <header class="header">
         <div class="brand-logo">
-            <img src="../../public/icons/logos/logo-html.svg" alt="H(T)ML Logo">
+            <img src="icons/logos/logo-html.svg" alt="H(T)ML Logo">
             <span class="brand-name">H(T)ML</span>
         </div>
     
@@ -49,11 +49,11 @@
                         <div class="shirtColumn">
                             <div class="shirtProductImages">
                                 <div class="shirtProductItem">
-                                    <img src="../../public/images/Polo-Shirt-Menu.png" alt="Polo Shirt">
+                                    <img src="images/Polo-Shirt-Menu.png" alt="Polo Shirt">
                                     <p>Polo</p>
                                 </div>
                                 <div class="shirtProductItem">
-                                    <img src="../../public/images/Thun-Shirt-Menu.png" alt="T-Shirt">
+                                    <img src="images/Thun-Shirt-Menu.png" alt="T-Shirt">
                                     <p>Thun</p>
                                 </div>
                             </div>
@@ -87,15 +87,15 @@
                         <div class="pantsColumn">
                             <div class="pantsProductImages">
                                 <div class="pantsProductItem">
-                                    <img src="../../public/images/Jeans-Pants-Menu.png" alt="Jeans">
+                                    <img src="images/Jeans-Pants-Menu.png" alt="Jeans">
                                     <p>Jeans</p>
                                 </div>
                                 <div class="pantsProductItem">
-                                    <img src="../../public/images/Jogger-Pants-Menu.png" alt="Jogger">
+                                    <img src="images/Jogger-Pants-Menu.png" alt="Jogger">
                                     <p>Jogger</p>
                                 </div>
                                 <div class="pantsProductItem">
-                                    <img src="../../public/images/Shorts-Pants-Menu.png" alt="Short">
+                                    <img src="images/Shorts-Pants-Menu.png" alt="Short">
                                     <p>Short</p>
                                 </div>
                             </div>
@@ -135,11 +135,11 @@
                         <div class="shoesColumn">
                             <div class="shoesProductImages">
                                 <div class="shoesProductItem">
-                                    <img src="../../public/images/Sandal-Shoes-Menu.png" alt="Sandal">
+                                    <img src="images/Sandal-Shoes-Menu.png" alt="Sandal">
                                     <p>Sandal</p>
                                 </div>
                                 <div class="shoesProductItem">
-                                    <img src="../../public/images/Derby-Shoes-Menu.png" alt="Derby">
+                                    <img src="images/Derby-Shoes-Menu.png" alt="Derby">
                                     <p>Derby</p>
                                 </div>
                             </div>
@@ -183,11 +183,11 @@
                         <div class="accessoriesColumn">
                             <div class="accessoriesProductImages">
                                 <div class="accessoriesProductItem">
-                                    <img src="../../public/images/Wallet-Accessories-Menu.png" alt="Ví Có Khóa Cá Sấu">
+                                    <img src="images/Wallet-Accessories-Menu.png" alt="Ví Có Khóa Cá Sấu">
                                     <p>Ví Có Khóa Cá Sấu</p>
                                 </div>
                                 <div class="accessoriesProductItem">
-                                    <img src="../../public/images/Socks-Accessories-Menu.png" alt="Tất Cổ Dài">
+                                    <img src="images/Socks-Accessories-Menu.png" alt="Tất Cổ Dài">
                                     <p>Tất Cổ Dài</p>
                                 </div>
                             </div>
@@ -201,39 +201,51 @@
         </div>
     
             <div class="header-icons">
-                <img src="../../public/icons/icon-search.svg" alt="Search">
-                <img src="../../public/icons/icon-user.svg" alt="User">
-                <img src="../../public/icons/icon-shopping.svg" alt="Shopping Bag">
+                <img src="icons/icon-search.svg" alt="Search">
+                <img src="icons/icon-user.svg" alt="User">
+                <img src="icons/icon-shopping.svg" alt="Shopping Bag">
             </div>
         </header>
 
     <main>
         <div class="breadcrumb">
-            <a href="../pages/product-view-all.html">Tất cả sản phẩm</a> &gt; 
-            <a href="#">Áo</a> &gt; 
-            <span><strong>Blazer Đen</strong></span>
+            <a href="/product-view-all">Tất cả sản phẩm</a> &gt; 
+            <% if (productData.type_of_clothes === "Shirts" || productData.type_of_clothes === "Sweats" || productData.type_of_clothes === "Tees") { %>
+            <a href="/product-view-all-ao">Áo</a> &gt; 
+            <% } %>
+
+            <% if (productData.type_of_clothes === "Jeans" || productData.type_of_clothes === "Shorts") { %>
+            <a href="/product-view-all-quan">Quần</a> &gt; 
+            <% } %>
+            
+            <% if (productData.type_of_clothes === "Boxers" || productData.type_of_clothes === "Socks" || productData.type_of_clothes === "Hats") { %>
+            <a href="/product-view-all-phukien">Phụ kiện</a> &gt; 
+            <% } %>
+            
+            <% if (productData.type_of_clothes === "Sneakers" || productData.type_of_clothes === "Sandals") { %>
+            <a href="/product-view-all-giaydep">GIày dép</a> &gt; 
+            <% } %>
+            <span><strong><%= productData.name %></strong></span>
         </div>
     
         <div class="product-detail">
             <div class="product-image">
                 <div class="thumbnail-container">
-                    <img src="../../public/images/temp/assets/products/shirts/aokhoac/ao_blazer/can_ao.jpg" alt="Blazer Đen" class="thumbnail" onclick="changeImage('can_ao.jpg')">
-                    <img src="../../public/images/temp/assets/products/shirts/aokhoac/ao_blazer/den-1.jpg" alt="Blazer Đen 2" class="thumbnail" onclick="changeImage('den-1.jpg')">
-                    <img src="../../public/images/temp/assets/products/shirts/aokhoac/ao_blazer/den-2.jpg" alt="Blazer Đen 3" class="thumbnail" onclick="changeImage('den-2.jpg')">
+                    <% if (productData.productImageData && productData.productImageData.length > 0) { %>
+                        <% productData.productImageData.map((imageData, i) => { %>
+                            <img src="<%= productData.productImageData[i].image %>" alt="<%= productData.name %>" class="thumbnail" onclick="changeImage('<%= productData.productImageData[i].image %>')">
+                        <% }) %>
+                    <% } %>
+                    
                 </div>
-                <img id="main-image" src="../../public/images/temp/assets/products/shirts/aokhoac/ao_blazer/can_ao.jpg" alt="Blazer Đen">
+                <img id="main-image" src="<%= productData.productImageData[0].image %>" alt="Blazer Đen">
             </div>
             <div class="product-info">
-                <h2>Áo Blazer Công Sở Thanh Lịch</h2>
-                <p><strong>Giá: 550.000đ</strong></p>
+                <h2><%=productData.name %></h2>
+                <p><strong>Giá: <%=productData.price %>đ</strong></p>
                 <p><strong>Mô tả:</strong></p>
                 <ul>
-                    <li>Áo Blazer thanh lịch với thiết kế cổ điển, phù hợp cho các buổi họp, sự kiện trang trọng hay mặc đi làm.</li>
-                    <li>Chất liệu vải cao cấp, mềm mại, tạo cảm giác thoải mái khi mặc.</li>
-                    <li>Kiểu dáng suông, dễ phối đồ, có thể kết hợp với quần tây hoặc jeans cho phong cách năng động.</li>
-                    <li>Màu sắc: Đen, xám, xanh navy.</li>
-                    <li>Các size từ S đến XL, phù hợp với nhiều dáng người.</li>
-                    <li>Lý tưởng để tạo phong cách chuyên nghiệp và lịch lãm.</li>
+                    <p><%=productData.description %></p>
                 </ul>
                 <div class="button-container">
                     <button class="add-to-cart-btn">
@@ -270,7 +282,7 @@
                     <h3>Theo Dõi Các Tin Tức Mới Nhất Từ H(T)ML!</h3>
                     <div class="newsletter-form">
                         <input type="email" placeholder="Nhập Email Của Bạn">
-                        <button><img src="../../public/icons/arrow-forward.svg" alt="Arrow"></button>
+                        <button><img src="icons/arrow-forward.svg" alt="Arrow"></button>
                     </div>
                     <label>
                         <input type="checkbox"> Bằng việc nhập email, bạn đồng ý với việc nhận các tin quảng cáo, ưu đãi từ
@@ -279,10 +291,10 @@
                 </div>
                 <div class="footer-social">
                     <div class="footer-social-icons">
-                        <img src="../../public/icons/logos/logo-instagram.svg" alt="Instagram">
-                        <img src="../../public/icons/logos/logo-facebook.svg" alt="Facebook">
-                        <img src="../../public/icons/logos/logo-pinterest.svg" alt="Pinterest">
-                        <img src="../../public/icons/logos/logo-tiktok.svg" alt="TikTok">
+                        <img src="icons/logos/logo-instagram.svg" alt="Instagram">
+                        <img src="icons/logos/logo-facebook.svg" alt="Facebook">
+                        <img src="icons/logos/logo-pinterest.svg" alt="Pinterest">
+                        <img src="icons/logos/logo-tiktok.svg" alt="TikTok">
                     </div>
                     <p>© 2024 H(T)ML. All Rights Reserved.</p>
                 </div>
@@ -311,6 +323,6 @@
         </footer>
 
         
-    <script src="../../public/scripts/product-view-blazer.js"></script>
+    <script src="scripts/product-view-blazer.js"></script>
 </body>
 </html>
