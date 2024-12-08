@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Quản lý sản phẩm</title>
+    <link rel="stylesheet" href="styles/product-management.css" />
+  </head>
+  <body>
+
+    <%- include('../partials/admin-sidebar', { activeIdx: 0 }) %>
+    <% if (typeof message !== 'undefined' && message != null) { %> 
+      <script> alert('<%= message %>'); </script> 
+    <% } %>
+
+    <!-- Main Content Section -->
+    <div class="mainContent">
+      <h2 class="pageTitle">Danh sách sản phẩm</h2>
+
+      <!-- Filter and Search Row -->
+      <div class="filterSearchRow">
+        <div class="filterEntries">
+          <label for="entriesSelect">Hiển thị</label>
+          <select id="entriesSelect" class="entriesSelect">
+            <option value="10">10</option>
+            <option value="25">25</option>
+            <option value="50">50</option>
+            <option value="100">100</option>
+          </select>
+          <span>sản phẩm</span>
+        </div>
+        <div class="searchContainer">
+          <label for="searchInput">Tìm kiếm:</label>
+          <input
+            type="text"
+            id="searchInput"
+            class="searchInput"
+            placeholder="Nhập từ khóa..."
+          />
+        </div>
+      </div>
+
+      <!-- Table Container -->
+      <div class="tableContainer">
+        <table class="dataTable">
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Name</th>
+              <th>Price</th>
+              <th>Type</th>
+              <th>Description</th>
+              <th>Category</th>
+              <th>Size</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% for(let i=0; i < dataTable.length; i++) { %>
+            <tr>
+              <td><%= dataTable[i].pd_id %></td>
+              <td><%= dataTable[i].name %></td>
+              <td><%= dataTable[i].price %></td>
+              <td><%= dataTable[i].type_of_clothes %></td>
+              <td><%= dataTable[i].description %></td>
+              <td>
+                <%= dataTable[i].categoryData ? dataTable[i].categoryData.name :
+                'Không có danh mục' %>
+              </td>
+              <td><%= dataTable[i].size %></td>
+              <td class="action-buttons">
+                <button class="btn-edit">
+                  <a
+                    href="/edit-product?pd_id=<%= dataTable[i].pd_id %>"
+                    class="btn-edit"
+                    type="button"
+                    onmouseover="this.style.textDecoration='none'"
+                    >Edit</a
+                  >
+                </button>
+                <button class="btn-delete">
+                  <a
+                    href="/delete-product?pd_id=<%= dataTable[i].pd_id %>"
+                    class="btn-delete"
+                    type="button"
+                    onmouseover="this.style.textDecoration='none'"
+                    >Delete</a
+                  >
+                </button>
+              </td>
+            </tr>
+            <% } %>
+            <!-- Thêm nhiều dòng trống khác ở đây -->
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Pagination -->
+      <div class="paginationContainer">
+        <span class="paginationInfo">Showing 1 to 10 of 30 entries</span>
+        <div class="paginationControls">
+          <button class="paginationButton" id="prevPage">Previous</button>
+          <button class="paginationButton active">1</button>
+          <button class="paginationButton">2</button>
+          <button class="paginationButton">3</button>
+          <button class="paginationButton" id="nextPage">Next</button>
+        </div>
+      </div>
+    </div>
+
+    <script src="scripts/admin-product-management.js"></script>
+
+  </body>
+</html>
