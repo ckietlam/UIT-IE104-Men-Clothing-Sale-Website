@@ -79,11 +79,12 @@ const getHomePage = async (req, res) => {
   try {
     const isAuthenticated = req.session.authenticated || false;
     const user = req.session.user || null;
-
+    const user_id = req.session.user_id || null;
     return res.render("pages/homepage", {
       user: user,
       message: null,
-      isAuthenticated: isAuthenticated, // Can be used for conditional rendering
+      isAuthenticated: isAuthenticated
+      // Can be used for conditional rendering
     });
   } catch (error) {
     console.error("Error rendering homepage:", error);
@@ -206,6 +207,7 @@ let getProductViewAProduct = async (req, res) => {
     console.log("Noah check data: ", productData);
     return res.render("pages/product-view", {
       productData: productData,
+      session: req.session
     });
   } catch (e) {
     console.log(e);

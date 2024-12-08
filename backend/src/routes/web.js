@@ -3,6 +3,7 @@ import homeController from "../controllers/homeController";
 import productController from "../controllers/productController"
 import userController from "../controllers/userController";
 import addSessionData from "../middlewares/addSessionData";
+import cartController from "../controllers/cartController";
 let router = express.Router();
 
 let initWebRouters = (app) => {
@@ -23,8 +24,14 @@ let initWebRouters = (app) => {
   router.get('/product-view-all-quan',homeController.getProductViewAllQuan);
   router.get('/product-view-all',homeController.getProductViewAll);
   router.get('/product-view',homeController.getProductViewAProduct);
-  
+  router.get('/fetchUserId',userController.fetchUserId);
 
+
+  router.post("/api/add-cart", cartController.handleAddCart);
+  router.get("/api/get-cart-by-user-id", cartController.handleGetCartByUserId);
+  router.put("/api/update-cart", cartController.handleUpdateCart);
+  router.delete("/api/delete-cart", cartController.handleDeleteCart);
+  router.delete("/api/clear-cart", cartController.handleClearCart);
 
   router.get("/admin", homeController.getAdmin);
   router.get("/admin-products-management", homeController.getProductManagementPage);

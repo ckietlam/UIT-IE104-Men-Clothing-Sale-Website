@@ -53,6 +53,7 @@ const handleLogin = async (req, res) => {
             });
         }
         req.session.user = {
+            user_id: user.user_id,
             id: user.id,
             email: user.email,
             name: user.name,
@@ -64,7 +65,8 @@ const handleLogin = async (req, res) => {
         if (user.role === 'Admin') {
             return res.redirect('/admin');
         }
-        
+       
+        res.cookie('user_id', user.user_id, { maxAge: 86400000, httpOnly: true });
         return res.redirect('/');
     } catch (error) {
         return res.status(500).json({
@@ -190,6 +192,12 @@ const handleUpdateProfile = async (req, res) => {
         });
     }
 }
+
+const fetchUserId = async (req, res) => {
+    user_id = req.session.user_id
+    console.log(req.session);
+    return user_id;  
+}
 module.exports = {
     handleRegister,
     handleLogin,
@@ -199,5 +207,6 @@ module.exports = {
     getLogin,
     getLogout,
     getProfilePage,
-    handleUpdateProfile
+    handleUpdateProfile,
+    fetchUserId
 }
