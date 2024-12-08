@@ -1,5 +1,6 @@
 import productService from "../services/productService";
 import db from "../models";
+
 let handleGetAllProducts = async (req, res) => {
   try {
     let pd_id = req.query.pd_id;
@@ -20,6 +21,7 @@ let handleGetAllProducts = async (req, res) => {
     });
   }
 };
+
 let handleCreateNewProduct = async (req, res) => {
   try {
     let response = await productService.createNewProduct(req.body);
@@ -37,6 +39,7 @@ let handleCreateNewProduct = async (req, res) => {
     });
   }
 };
+
 let handleEditProduct = async (req, res) => {
   try {
     let data = req.body;
@@ -55,6 +58,7 @@ let handleEditProduct = async (req, res) => {
     });
   }
 };
+
 let handleDeleteProduct = async (req, res) => {
   try {
     if (!req.query.pd_id) {
@@ -76,6 +80,7 @@ let handleDeleteProduct = async (req, res) => {
     });
   }
 };
+
 let handleGetAllCategories = async (req, res) => {
   try {
     let categories = await productService.getAllCategories();
@@ -88,6 +93,7 @@ let handleGetAllCategories = async (req, res) => {
     });
   }
 };
+
 let handleGetAllImagesById = async (req, res) => {
   try {
     let images = await productService.getAllImagesById(req.query.pd_id);

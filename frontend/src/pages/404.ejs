@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>404 - Page Not Found</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap');
+
+        :root {
+            --primary-color: #3b82f6;
+            --secondary-color: #10b981;
+            --background-color: #f0f9ff;
+            --text-color: #1f2937;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--background-color);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            overflow: hidden;
+        }
+
+        .error-container {
+            text-align: center;
+            padding: 2rem;
+            max-width: 600px;
+            background-color: white;
+            border-radius: 20px;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.1);
+            position: relative;
+            overflow: hidden;
+            z-index: 10;
+        }
+
+        .error-code {
+            font-size: 12rem;
+            font-weight: 700;
+            background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 1rem;
+            line-height: 1;
+        }
+
+        .error-message {
+            font-size: 1.5rem;
+            color: var(--text-color);
+            margin-bottom: 1.5rem;
+            font-weight: 500;
+        }
+
+        .error-description {
+            color: #6b7280;
+            margin-bottom: 2rem;
+            line-height: 1.6;
+        }
+
+        .action-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+        }
+
+        .btn {
+            text-decoration: none;
+            padding: 0.75rem 1.5rem;
+            border-radius: 10px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .btn-primary {
+            background-color: var(--primary-color);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background-color: #2563eb;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+
+        .btn-secondary {
+            background-color: transparent;
+            border: 2px solid var(--primary-color);
+            color: var(--primary-color);
+        }
+
+        .btn-secondary:hover {
+            background-color: var(--primary-color);
+            color: white;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+
+        .background-shapes {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            overflow: hidden;
+        }
+
+        .circle {
+            position: absolute;
+            border-radius: 50%;
+            opacity: 0.1;
+        }
+
+        .circle-1 {
+            width: 200px;
+            height: 200px;
+            background: var(--primary-color);
+            top: -100px;
+            right: -100px;
+        }
+
+        .circle-2 {
+            width: 300px;
+            height: 300px;
+            background: var(--secondary-color);
+            bottom: -150px;
+            left: -150px;
+        }
+
+        @media (max-width: 600px) {
+            .error-code {
+                font-size: 8rem;
+            }
+            .error-message {
+                font-size: 1.2rem;
+            }
+            .action-buttons {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="error-container">
+        <div class="background-shapes">
+            <div class="circle circle-1"></div>
+            <div class="circle circle-2"></div>
+        </div>
+        
+        <div class="error-code">404</div>
+        <h1 class="error-message">Trang Không Tìm Thấy</h1>
+        <p class="error-description">
+            Rất tiếc, trang bạn đang tìm kiếm có vẻ như đã bay xa hoặc chưa được tạo ra. 
+            Hãy kiểm tra lại đường dẫn hoặc quay lại trang chủ.
+        </p>
+        
+        <div class="action-buttons">
+            <a href="/" class="btn btn-primary">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+                    <polyline points="9 22 9 12 15 12 15 22"></polyline>
+                </svg>
+                Về Trang Chủ
+            </a>
+            <a href="/" class="btn btn-secondary">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+                </svg>
+                Liên Hệ Hỗ Trợ
+            </a>
+        </div>
+    </div>
+</body>
+</html>

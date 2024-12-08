@@ -1,10 +1,21 @@
 import productService from "../services/productService";
-import orderService from "../services/orderService";
+import express from "express";
+const app = express();
+
 let getAdmin = async (req, res) => {
-  return res.render("pages/admin", {
-    message: null,
-  });
+  if (!req.session.user) {
+    return res.redirect('/404');
+  }
+
+  if (req.session.user.role === "Admin") {
+      return res.render("pages/admin", {
+          user: req.session.user
+      });
+  } else {
+      return res.redirect('/404');
+}
 };
+
 let getProductManagementPage = async (req, res) => {
   try {
     let data = await productService.getAllProducts("ALL");
@@ -116,12 +127,80 @@ let getEditOrderPage = async (req, res) => {
   }
 };
 
+const getHomePage = async (req, res) => {
+  try {
+    
+    const isAuthenticated = req.session.authenticated || false;
+    const user = req.session.user || null;
+
+    
+    return res.render('pages/homepage', {
+      user: user,
+      message: null,
+      isAuthenticated: isAuthenticated, // Can be used for conditional rendering
+    });
+  } catch (error) {
+    console.error("Error rendering homepage:", error);
+    return res.status(500).json({
+      message: "Error from server",
+      error: error.message,
+    });
+  }
+};
+
+const get404Page = async (req, res) => {
+    try {
+      return res.redirect('/404');
+    } catch (error) {
+      console.error("Error rendering 404 page:", error);
+      return res.status(500).json({
+        message: "Error from server",
+        error: error.message,
+      });
+    }
+}
+const getProductViewAllAo = async (req,res) => {
+  return res.render('pages/product-view-all-ao', { 
+    message: null
+})
+};
+
+const getProductViewAllGiayDep = async (req,res) => {
+  return res.render('pages/product-view-all-giaydep', { 
+    message: null
+})
+};
+
+const getProductViewAllPhuKien = async  (req,res) => {
+  return res.render('pages/product-view-all-phukien', { 
+    message: null
+})
+};
+
+const getProductViewAllQuan = async (req,res) => {
+  return res.render('pages/product-view-all-quan', { 
+    message: null
+})
+};
+const getProductViewAll = async (req,res) => {
+  return res.render('pages/product-view-all', { 
+    message: null
+})
+};
+
 module.exports = {
   getAdmin,
   getProductManagementPage,
   getEditProductPage,
+  getUserManagementPage,
   getAddProductPage,
   getOrderManagementPage,
   getEditOrderPage,
-  getUserManagementPage
+  getHomePage,
+  get404Page,
+  getProductViewAllAo,
+  getProductViewAllGiayDep,
+  getProductViewAllPhuKien,
+  getProductViewAllQuan,
+  getProductViewAll
 };

@@ -1,10 +1,30 @@
 import express from "express";
 import homeController from "../controllers/homeController";
-import productController from "../controllers/productController";
+import productController from "../controllers/productController"
+import userController from "../controllers/userController";
+import addSessionData from "../middlewares/addSessionData";
 import orderController from "../controllers/orderController"
+
 let router = express.Router();
 
 let initWebRouters = (app) => {
+  app.use(addSessionData);
+
+  router.get("/", homeController.getHomePage);
+  router.get("/profile", userController.getProfilePage);
+  router.get("/login", userController.getLogin);
+  router.post("/login", userController.handleLogin);
+  router.get("/register", userController.getRegister);
+  router.post("/register", userController.handleRegister);
+  router.get("/logout", userController.getLogout);
+  router.get("/404", homeController.get404Page);
+  router.post("/update-profile", userController.handleUpdateProfile);
+  router.get("/product-view-all-ao", homeController.getProductViewAllAo);
+  router.get("/product-view-all-giaydep", homeController.getProductViewAllGiayDep);
+  router.get('/product-view-all-phukien',homeController.getProductViewAllPhuKien);
+  router.get('/product-view-all-quan',homeController.getProductViewAllQuan);
+  router.get('/product-view-all',homeController.getProductViewAll);
+
   router.get("/admin", homeController.getAdmin);
   router.get(
     "/admin-products-management",
@@ -15,6 +35,7 @@ let initWebRouters = (app) => {
   router.get("/admin-orders-management", homeController.getOrderManagementPage);
   router.get("/admin-users-management", homeController.getUserManagementPage);
   router.get("/edit-order-status", homeController.getEditOrderPage);
+  
   //Product api
   router.get("/api/get-all-products", productController.handleGetAllProducts);
   router.post("/create-new-product", productController.handleCreateNewProduct);
@@ -26,8 +47,10 @@ let initWebRouters = (app) => {
   );
   router.get("/delete-image-by-id", productController.handleDeleteImageById);
   router.post("/post-order-status", orderController.handleEditOrder);
+  
   //User api
   router.get("/update-user-role", productController.handleUpdateRole);
+  
   return app.use("/", router);
 };
 
