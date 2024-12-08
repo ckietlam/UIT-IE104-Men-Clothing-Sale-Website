@@ -73,7 +73,7 @@ body {
 
 .sidebarTitle {
     margin: 0;
-    font-size: 20px;
+    font-size: 28px;
     white-space: nowrap;
 }
 
@@ -146,8 +146,8 @@ body {
 .submenu {
     display: none; /* Hidden by default */
     position: absolute;
-    top: 100%; /* Align below the dropdown toggle */
-    left: 20px;
+    top: 0; /* Changed top position to align with the dropdown button */
+    left: 100%; /* Submenu appears to the right of the dropdown button */
     background-color: white;
     color: #000;
     list-style-type: none;
@@ -155,7 +155,7 @@ body {
     padding: 10px 0;
     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); /* Shadow for depth */
     border-radius: 5px; /* Rounded corners */
-    width: 200px;
+    width: 200px; /* Adjust width to match expanded state */
     z-index: 1000;
 }
 
@@ -186,22 +186,12 @@ body {
 
 /* Adjust submenu position when sidebar is collapsed */
 .sidebar.collapsed .submenu {
-    left: 10px; /* Aligns with the collapsed sidebar width */
-    width: 100px; /* Adjusted width for the collapsed state */
+    left: calc(100% - 20px); /* Adjusted left property for collapsed state */
+    width: 200px; /* Ensure submenu has the same width as in expanded state */
 }
 
-/* Adjust spacing for "Người dùng" when dropdown is active */
-.menuItem.dropdown.active + .menuItem {
-    left: 10px;
-    margin-top: 160px; /* Add spacing when dropdown is active */
-}
-
-.sidebar.collapsed .menuItem.dropdown.active + .menuItem {
-    margin-top: 220px;
-}
-
-.menuItem + .menuItem {
-    margin-top: 10px; /* Default spacing between items */
+.menuItem.dropdown.active .submenu {
+    display: block; /* Ensure submenu is displayed when active */
 }
 
 
