@@ -99,6 +99,21 @@ font-weight: normal; /* Giữ độ dày mặc định */
   margin-right: 30px; /* Tạo khoảng cách với viền phải */
 }
 
+/* General style for all icons */
+.icon {
+  -webkit-filter: brightness(0) invert(0); /* Ensure all icons are black by default */
+  filter: brightness(0) invert(0);
+  transition: filter 0.3s ease; /* Smooth transition for filter effect */
+}
+
+/* Hover effect for all icons */
+.icon:hover {
+  -webkit-filter: brightness(0.5) sepia(1) hue-rotate(100deg) saturate(500%); /* Change to green color */
+  filter: brightness(0.5) sepia(1) hue-rotate(100deg) saturate(500%);
+}
+
+
+
 /* Shirt Navbar container */
 .shirtNavbar {
   overflow: hidden;
@@ -692,27 +707,8 @@ clear: both;
 }
 
 /* Box Search*/
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Montserrat', sans-serif;
-  }
-  
-  /* Header */
-  .header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 20px 40px;
-    border-bottom: 1px solid #ddd;
-    position: relative;
-    height: 100%;
-    z-index: 999;
-    background-color: #fff;
-  }
-  
-  .box-search {
+
+.box-search {
     position: absolute;
     width: 100%;
     height: 100px;
@@ -724,9 +720,9 @@ clear: both;
     justify-content: center;
     align-items: center;
     z-index: 2;
-  }
+}
   
-  .box-search input {
+.box-search input {
     width: 80%;
     border: 0;
     font-family: inherit;
@@ -740,9 +736,9 @@ clear: both;
     border-bottom: 1px solid #fff;
     color: #fff;
     padding: 5px 5px 5px 30px;
-  }
+}
   
-  .overlay {
+.overlay {
     position: fixed;
     top: 0;
     left: 0;
@@ -751,40 +747,18 @@ clear: both;
     background-color: #0000004d;
     z-index: 1;
     display: none;
-  }
+}
   
-  .icon-search img {
-    -webkit-filter: brightness(0) invert(1);
-    filter: brightness(0) invert(1);
-  }
-  
-  .box-search input::placeholder {
+.box-search input::placeholder {
     color: #fff;
-  }
+}
   
-  .box-search .icon-search {
+.box-search .icon-search {
     position: absolute;
     left: 150px;
-  }
+}
   
-  .show {
+.show {
     display: flex;
-  }
+}
   
-  .brand-logo {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-  }
-  
-  .nav-menu a {
-    color: #333;
-    text-decoration: none;
-    font-weight: 600;
-    margin: 0 15px;
-  }
-  
-  .header-icons img {
-    margin: 0 10px;
-    cursor: pointer;
-  }
