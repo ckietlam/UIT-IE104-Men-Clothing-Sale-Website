@@ -52,8 +52,10 @@
               <span>Đơn hàng</span>
             </a>
           </li>
-          <hr class="menuDivider" />
+
           <!-- Divider added here -->
+          <hr class="menuDivider" />
+          
           <li class="menuItem">
             <a href="#">
               <img
@@ -64,17 +66,16 @@
               <span>Settings</span>
             </a>
           </li>
-  
+
           <li class="menuItem">
-            <a href="#">
-              <img
-                src="icons/icon-logout.svg"
-                alt="Logout Icon"
-                class="menuIcon"
-              />
-              <span>Đăng xuất</span>
-            </a>
-          </li>
+            <form action="/logout" method="GET">
+                <button type="submit">
+                    <img src="icons/icon-logout.svg" alt="Logout Icon" class="menuIcon"/>
+                    <span>Đăng xuất</span>
+                </button>
+            </form>
+        </li>
+        
         </ul>
   
         <button class="toggleSidebarBtn">

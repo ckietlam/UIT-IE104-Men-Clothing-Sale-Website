@@ -216,7 +216,7 @@ body {
 }
 
 
-  /* Toggle Sidebar Button */
+/* Toggle Sidebar Button */
 .toggleSidebarBtn {
     position: absolute; /* Fixed position */
     bottom: 20px; /* Position at the bottom */
@@ -230,6 +230,37 @@ body {
 .toggleSidebarBtn img {
     width: 20px; /* Icon size */
     height: 20px;
+}
+
+
+/* Exit Button */
+.menuItem form {
+    width: 100%; /* Ensures the form takes up the full width of the menu item */
+    margin: 0; /* Removes any default margin */
+}
+
+.menuItem button {
+    background: none; /* Removes any background styles */
+    border: none; /* Removes any border styles */
+    color: white; /* Sets the text color to white */
+    display: flex; /* Uses flexbox for alignment */
+    align-items: center; /* Centers the items vertically */
+    padding: 10px 20px; /* Provides padding similar to other menu items */
+    width: 100%; /* Ensures the button takes up the full width of its container */
+    cursor: pointer; /* Ensures the cursor changes to a pointer on hover */
+    text-decoration: none; /* Removes underline from any text */
+    justify-content: flex-start; /* Aligns content to the left */
+    font-size: 16px;
+}
+
+/* Hide text in menu items when sidebar is collapsed */
+.sidebar.collapsed .menuItem button span {
+    display: none; /* Hide the text */
+}
+
+/* Ensure the icon is centered in the button when sidebar is collapsed */
+.sidebar.collapsed .menuItem button {
+    justify-content: center; /* Center the content (icon) */
 }
 
 /* Sidebar Collapsed - Toggle Button Icon Flip */
