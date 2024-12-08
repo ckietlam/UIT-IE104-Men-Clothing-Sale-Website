@@ -7,85 +7,11 @@
     <link rel="stylesheet" href="styles/edit-order-status.css" />
   </head>
   <body>
-    <!-- Sidebar Section -->
-    <div class="sidebar">
-      <div class="sidebarHeader">
-        <h2>ADMIN</h2>
-        <hr class="menuDivider" />
-      </div>
 
-      <ul class="menu">
-        <li class="menuItem">
-          <a href="#">
-            <img
-              src="icons/icon-dashboard.svg"
-              alt="Dashboard Icon"
-              class="menuIcon"
-            />
-            Dashboard
-          </a>
-        </li>
-        <hr class="menuDivider" />
-        <!-- Divider added here -->
-        <li class="menuItem dropdown">
-          <button class="dropdownToggle">
-            <img
-              src="icons/icon-table.svg"
-              alt="Product Icon"
-              class="menuIcon"
-            />
-            <span>Sản phẩm</span>
-          </button>
-          <ul class="submenu">
-            <li><a href="/admin-add-product">Thêm sản phẩm</a></li>
-            <li><a href="/admin-products-management">Quản lý sản phẩm</a></li>
-          </ul>
-        </li>
-        <li class="menuItem">
-          <a href="#">
-            <img src="icons/icon-user.svg" alt="User Icon" class="menuIcon" />
-            Người dùng
-          </a>
-        </li>
-        <li class="menuItem">
-          <a href="/admin-orders-management">
-            <img src="icons/icon-table.svg" alt="Order Icon" class="menuIcon" />
-            Đơn hàng
-          </a>
-        </li>
-        <hr class="menuDivider" />
-        <!-- Divider added here -->
-        <li class="menuItem">
-          <a href="/admin-users-management">
-            <img
-              src="icons/icon-setting.svg"
-              alt="Logout Icon"
-              class="menuIcon"
-            />
-            Settings
-          </a>
-        </li>
-
-        <li class="menuItem">
-          <a href="#">
-            <img
-              src="icons/icon-logout.svg"
-              alt="Logout Icon"
-              class="menuIcon"
-            />
-            Đăng xuất
-          </a>
-        </li>
-      </ul>
-
-      <button class="toggleSidebarBtn">
-        <img
-          src="icons/icon-backward.svg"
-          alt="Toggle Icon"
-          class="toggleIcon"
-        />
-      </button>
-    </div>
+    <%- include('../partials/admin-sidebar', { activeIdx: 0 }) %>
+    <% if (typeof message !== 'undefined' && message != null) { %> 
+      <script> alert('<%= message %>'); </script> 
+    <% } %>
 
     <!-- Main Content Section -->
     <div class="mainContent">
@@ -179,7 +105,5 @@
       </div>
     </div>
 
-    <!-- Add your JavaScript file -->
-    <script src="scripts/admin-sidebar.js"></script>
   </body>
 </html>

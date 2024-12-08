@@ -1,0 +1,290 @@
+  /* General Reset */
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Montserrat", sans-serif;
+}
+
+@font-face {
+  font-family: 'Montserrat'; 
+  src: url('/fonts/Montserrat/Montserrat-Regular.ttf') format('truetype');
+  font-weight: normal; 
+  font-style: normal; 
+}
+
+@font-face {
+  font-family: 'Montserrat';
+  src: url('/fonts/Montserrat/Montserrat-Bold.ttf') format('truetype');
+  font-weight: bold;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Montserrat';
+  src: url('/fonts/Montserrat/Montserrat-Italic.ttf') format('truetype');
+  font-weight: normal;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'Poppins';
+  src: url('/fonts/Poppins/Poppins-ExtraBold.ttf') format('truetype');
+  font-weight: bold;
+  font-style: normal;
+}
+
+/* Áp dụng Montserrat Regular cho toàn bộ trang */
+body {
+    font-family: 'Montserrat', sans-serif; /* Sử dụng Montserrat Regular */
+    font-weight: normal; /* Đảm bảo dùng độ dày Regular */
+    line-height: 1.6; /* Dòng chữ dễ đọc hơn */
+    color: black; /* Màu chữ mặc định */
+    }
+  
+  /* Sidebar Styling */
+.sidebar {
+    width: 240px; /* Fixed width for the sidebar */
+    background-color: #1D7873;    /*Background color của sidebar */
+    color: white; /* White text color */
+    position: fixed; /* Fixed position */
+    height: 100%; /* Full height */
+    padding-top: 20px; /* Top padding */
+}
+
+.sidebarHeader {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 10px 30px;
+}
+
+/* Điều chỉnh cho trạng thái Collapsed */
+.sidebar.collapsed .sidebarHeader {
+    justify-content: center; /* Căn giữa cho logo khi collapsed */
+    padding: 10px; /* Giảm padding khi collapsed để căn giữa logo */
+}
+
+.sidebarLogo {
+    width: 40px;
+    height: auto;
+    margin-right: 10px;
+}
+
+.sidebarTitle {
+    margin: 0;
+    font-size: 20px;
+    white-space: nowrap;
+}
+
+
+/* Style for Menu Divider */
+.menuDivider {
+    border: 0.5px solid #e3d3d3; /* Light gray divider */
+    margin: 10px 0; /* Space above and below divider */
+    width: 80%; /* Adjust width as necessary */
+    margin-left: auto; /* Center horizontally */
+    margin-right: auto; /* Center horizontally */
+}
+
+
+.menuItem a {
+    display: flex; /* Flexbox for aligning icon and text */
+    align-items: center; /* Center items vertically */
+    padding: 10px 20px; /* Padding inside each menu item */
+    color: white; /* White text color */
+    text-decoration: none; /* No underline */
+}
+  .menu {
+    list-style-type: none; /* Remove default bullet points */
+    padding: 0; /* Remove padding */
+  }
+  
+  .menuItem {
+    padding: 10px 20px; /* Spacing around menu items */
+  }
+  
+  .menuIcon {
+    width: 20px; /* Icon width */
+    height: 20px; /* Icon height */
+    margin-right: 10px; /* Space between icon and text */
+    filter: brightness(0) invert(1);
+}   
+    .toggleIcon {
+    filter: brightness(0) invert(1);
+}
+/* Style for Sidebar Divider */
+.sidebarDivider {
+    border: 0.5px solid #cccccc; /* Light gray divider */
+    margin: 10px 0; /* Space above and below */
+}
+  
+/* Style for Submenu */
+
+/* Dropdown Menu */
+.menuItem.dropdown {
+    position: relative; /* Relative for absolute submenu positioning */
+}
+
+.dropdownToggle {
+    display: flex; /* Align icon and text horizontally */
+    width: 100%; /* Match width of parent */
+    background-color: transparent; /* Remove default button background */
+    border: none; /* Remove default button border */
+    color: white; /* White text to match menu items */
+    font-size: 1rem; /* Same size as Dashboard and others */
+    padding: 10px 20px; /* Match padding of other items */
+    cursor: pointer; /* Pointer cursor on hover */
+    text-align: left; /* Align text to the left */
+    font-family: Arial, sans-serif; /* Use the same font as others */
+}
+
+.dropdownToggle .menuIcon {
+    margin-right: 10px;
+}
+
+.submenu {
+    display: none; /* Hidden by default */
+    position: absolute;
+    top: 100%; /* Align below the dropdown toggle */
+    left: 20px;
+    background-color: white;
+    color: #000;
+    list-style-type: none;
+    margin: 0;
+    padding: 10px 0;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); /* Shadow for depth */
+    border-radius: 5px; /* Rounded corners */
+    width: 200px;
+    z-index: 1000;
+}
+
+.submenu li {
+    padding: 8px 20px;
+    font-size: 13px;
+}
+
+.submenu li a {
+    color: #000;
+    text-decoration: none;
+}
+
+.submenu li:hover {
+    background-color: #f8f9fc; /* Light gray */
+    color: #4e73df; /* Optional hover color */
+}
+
+/* Sidebar Dropdown */
+.menuItem.dropdown .submenu {
+    display: none; /* Hidden by default */
+    margin-top: 10px; /* Spacing below the dropdown */
+}
+
+.menuItem.dropdown.active .submenu {
+    display: block; /* Display submenu when active */
+}
+
+/* Adjust submenu position when sidebar is collapsed */
+.sidebar.collapsed .submenu {
+    left: 10px; /* Aligns with the collapsed sidebar width */
+    width: 100px; /* Adjusted width for the collapsed state */
+}
+
+/* Adjust spacing for "Người dùng" when dropdown is active */
+.menuItem.dropdown.active + .menuItem {
+    left: 10px;
+    margin-top: 160px; /* Add spacing when dropdown is active */
+}
+
+.sidebar.collapsed .menuItem.dropdown.active + .menuItem {
+    margin-top: 220px;
+}
+
+.menuItem + .menuItem {
+    margin-top: 10px; /* Default spacing between items */
+}
+
+
+/* Rotate Icon */
+.menuItem.dropdown.active .dropdownIcon {
+    transform: rotate(90deg); /* Xoay icon khi active */
+}
+
+/* Icon Styling */
+.menuIcon {
+    width: 20px; /* Set the icon size */
+    height: 20px;
+    margin-right: 10px; /* Add spacing between the icon and text */
+    vertical-align: middle; /* Align icon with text */
+}
+
+.submenuIcon {
+    width: 15px; /* Smaller icons for submenu */
+    height: 15px;
+    margin-right: 8px;
+    vertical-align: middle;
+}
+
+
+  /* Toggle Sidebar Button */
+.toggleSidebarBtn {
+    position: absolute; /* Fixed position */
+    bottom: 20px; /* Position at the bottom */
+    left: 50%; /* Center horizontally */
+    transform: translateX(-50%); /* Align center */
+    background-color: transparent; /* Transparent background */
+    border: none; /* No border */
+    cursor: pointer; /* Pointer cursor on hover */
+}
+
+.toggleSidebarBtn img {
+    width: 20px; /* Icon size */
+    height: 20px;
+}
+
+/* Sidebar Collapsed - Toggle Button Icon Flip */
+.sidebar.collapsed .toggleSidebarBtn img {
+    transform: rotate(180deg); /* Rotate the icon */
+}
+
+/* Responsive Sidebar (collapsed state) */
+.sidebar.collapsed {
+    width: 80px;
+  }
+  
+.sidebar.collapsed .toggleSidebarBtn img {
+    transform: rotate(180deg);
+}
+
+/* Responsive adjustments for collapsed sidebar */
+
+.sidebar.collapsed .sidebarLogo {
+    margin-right: 0; /* Remove margin when collapsed */
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.sidebar.collapsed .sidebarTitle {
+    display: none; /* Hide title in collapsed state */
+}
+
+
+/* Adjust menu items for collapsed state */
+.sidebar.collapsed .menuItem a,
+.sidebar.collapsed .dropdownToggle {
+    justify-content: center;  /* Center the icons horizontally */
+    text-align: center;       /* Ensure text (if any) is centered, though it will be hidden */
+    padding: 15px;            /* Increase padding for tap targets */
+}
+
+/* Hide text spans in collapsed state for all menu items */
+.sidebar.collapsed .menuItem a span,
+.sidebar.collapsed .dropdownToggle span {
+    display: none;  /* Hide the text */
+}
+
+/* Ensure icons are centered and visible in collapsed state */
+.sidebar.collapsed .menuIcon {
+    margin: 0 auto;  /* Center icons horizontally */
+    display: block;  /* Ensure icons are block level to center properly */
+}
