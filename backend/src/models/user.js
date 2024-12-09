@@ -9,7 +9,7 @@ module.exports = (sequelize, DataTypes) => {
       });
       User.hasMany(models.Order, {
         foreignKey: "user_id",
-        as: "Order",
+        as: "userData",
       });
     }
   }

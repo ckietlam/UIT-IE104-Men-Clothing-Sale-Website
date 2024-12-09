@@ -3,7 +3,9 @@ import homeController from "../controllers/homeController";
 import productController from "../controllers/productController"
 import userController from "../controllers/userController";
 import addSessionData from "../middlewares/addSessionData";
+import orderController from "../controllers/orderController"
 import cartController from "../controllers/cartController";
+
 let router = express.Router();
 
 let initWebRouters = (app) => {
@@ -23,6 +25,7 @@ let initWebRouters = (app) => {
   router.get('/product-view-all-phukien',homeController.getProductViewAllPhuKien);
   router.get('/product-view-all-quan',homeController.getProductViewAllQuan);
   router.get('/product-view-all',homeController.getProductViewAll);
+
   router.get('/product-view',homeController.getProductViewAProduct);
   router.get('/api/get-user-id',userController.fetchUserId);
 
@@ -36,7 +39,11 @@ let initWebRouters = (app) => {
   router.get("/admin", homeController.getAdmin);
   router.get("/admin-products-management", homeController.getProductManagementPage);
   router.get("/edit-product", homeController.getEditProductPage);
-  router.get("/admin-add-product", homeController.getAddProductPage)
+  router.get("/admin-add-product", homeController.getAddProductPage);
+  router.get("/admin-orders-management", homeController.getOrderManagementPage);
+  router.get("/admin-users-management", homeController.getUserManagementPage);
+  router.get("/edit-order-status", homeController.getEditOrderPage);
+
   //Product api
   router.get("/api/get-all-products", productController.handleGetAllProducts);
   router.post(
