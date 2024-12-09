@@ -54,6 +54,8 @@ let initWebRouters = (app) => {
   router.get("/product-view-all-ao", homeController.getProductViewAllAo)
   router.get("/product-view-all-quan", homeController.getProductViewAllQuan)
   router.get("/product-view-all-phukien", homeController.getProductViewAllPhuKien)
+ //Search
+  router.get("/search-products", productController.handleSearchProducts);
   
   return app.use("/", router);
 };

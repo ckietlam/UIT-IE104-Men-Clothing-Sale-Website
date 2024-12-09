@@ -144,7 +144,23 @@ let handleDeleteImageById = async (req, res) => {
     });
   }
 };
-
+let handleSearchProducts = async (req, res) => {
+  try {
+    let keyword = req.query.keyword || ''; // Lấy từ khóa từ query parameter
+    let products = await productService.searchProductsByName(keyword); // Gọi hàm trong service để tìm kiếm
+    return res.status(200).json({
+      errCode: 0,
+      errMessage: "OK",
+      data: products,
+    });
+  } catch (e) {
+    console.log(e);
+    return res.status(500).json({
+      errCode: -1,
+      errMessage: "Error from server!",
+    });
+  }
+};
 module.exports = {
   handleGetAllProducts,
   handleCreateNewProduct,
@@ -153,4 +169,6 @@ module.exports = {
   handleGetAllCategories,
   handleGetAllImagesById,
   handleDeleteImageById,
+  //search 
+  handleSearchProducts,
 };

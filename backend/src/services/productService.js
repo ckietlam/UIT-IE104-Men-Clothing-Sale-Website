@@ -495,6 +495,29 @@ const getProductById = (pd_id) => {
     }
   });
 };
+// Tim kiem 
+let searchProductsByName = async (keyword) => {
+  try {
+    // Tìm kiếm sản phẩm theo tên (không phân biệt chữ hoa/thường)
+    let products = await db.Product.findAll({
+      where: {
+        name: {
+          [db.Sequelize.Op.like]: `%${keyword}%`, // Sử dụng LIKE để tìm kiếm
+        },
+      },
+    });
+    return {
+      errCode: 0,
+      data: products,
+    };
+  } catch (e) {
+    console.log(e);
+    return {
+      errCode: -1,
+      errMessage: "Error from server!",
+    };
+  }
+};
 
 module.exports = {
   getAllProducts,
@@ -511,5 +534,7 @@ module.exports = {
   getAllShoes,
   getAllAccessories,
   getAllProductsByType,
-  getProductById
+  getProductById,
+  //search 
+  searchProductsByName
 };
