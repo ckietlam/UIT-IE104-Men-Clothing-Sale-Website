@@ -22,7 +22,6 @@ let handleGetAllProducts = async (req, res) => {
 };
 let handleCreateNewProduct = async (req, res) => {
   try {
-    // console.log("Noah check req.body: ", req.body.images);
     let response = await productService.createNewProduct(req.body);
     if (response.errCode === 0) {
       let data = await productService.getAllProducts("ALL");
@@ -113,7 +112,6 @@ let handleDeleteImageById = async (req, res) => {
       let image = await db.Image.findOne({
         where: { image_id: req.query.image_id },
       });
-      console.log("Noah check req.query.image_id: ", req.query.image_id);
       await productService.deleteImage(req.query.image_id);
       let productId = image.pd_id;
       if (productId) {

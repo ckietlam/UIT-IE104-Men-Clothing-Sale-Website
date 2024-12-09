@@ -24,7 +24,7 @@ let initWebRouters = (app) => {
   router.get('/product-view-all-quan',homeController.getProductViewAllQuan);
   router.get('/product-view-all',homeController.getProductViewAll);
   router.get('/product-view',homeController.getProductViewAProduct);
-  router.get('/fetchUserId',userController.fetchUserId);
+  router.get('/api/get-user-id',userController.fetchUserId);
 
 
   router.post("/api/add-cart", cartController.handleAddCart);

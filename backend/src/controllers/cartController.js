@@ -45,7 +45,6 @@ let handleUpdateCart = async (req, res) => {
 
 let handleDeleteCart = async (req, res) => {
   try {
-    console.log("Noah check req", req.body);
     if (!req.body.pd_id || !req.body.user_id) {
       return res.status(200).json({
         errCode: 1,

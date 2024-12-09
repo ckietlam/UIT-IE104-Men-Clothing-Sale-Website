@@ -1,4 +1,3 @@
-
 import db from "../models/index";
 let getCartByUserId = (user_id) => {
   return new Promise(async (resolve, reject) => {
@@ -14,8 +13,8 @@ let getCartByUserId = (user_id) => {
               include: [
                 {
                   model: db.Image,
-                  attributes: ["image_id", "image"], //lấy ra một mảng nhưng khi hiển thị ở giỏ hàng thì chỉ hiện một hình thôi
                   as: "productImageData",
+                  attributes: ["image_id", "image"],
                 },
               ],
               as: "productCartData",
@@ -35,18 +34,16 @@ let getCartByUserId = (user_id) => {
 let addCart = (data) => {
   return new Promise(async (resolve, reject) => {
     try {
-     
       const existingItem = await db.Cart_item.findOne({
         where: {
           user_id: data.user_id,
-          pd_id: data.pd_id
-        }
+          pd_id: data.pd_id,
+        },
       });
 
       if (existingItem) {
-       
         await existingItem.update({
-          quantity: existingItem.quantity + 1
+          quantity: existingItem.quantity + 1,
         });
       } else {
         // If item doesn't exist, create new cart item

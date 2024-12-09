@@ -83,7 +83,7 @@ const getHomePage = async (req, res) => {
     return res.render("pages/homepage", {
       user: user,
       message: null,
-      isAuthenticated: isAuthenticated
+      isAuthenticated: isAuthenticated,
       // Can be used for conditional rendering
     });
   } catch (error) {
@@ -204,10 +204,9 @@ let getProductViewAProduct = async (req, res) => {
   try {
     let id = req.query.pd_id;
     let productData = await productService.getAllProducts(id);
-    console.log("Noah check data: ", productData);
     return res.render("pages/product-view", {
       productData: productData,
-      session: req.session
+      session: req.session,
     });
   } catch (e) {
     console.log(e);
