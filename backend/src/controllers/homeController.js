@@ -29,7 +29,20 @@ let getProductManagementPage = async (req, res) => {
     });
   }
 };
-
+let getOrderManagementPage = async (req, res) => {
+  try {
+    let data = await orderService.getAllOrder();
+    return res.render("pages/order-management", {
+      dataTable: data.data,
+    });
+  } catch (e) {
+    console.log(e);
+    return res.status(200).json({
+      errCode: -1,
+      errMessage: "Error from server",
+    });
+  }
+};
 let getEditProductPage = async (req, res) => {
   try {
     let productId = req.query.pd_id;
@@ -51,6 +64,41 @@ let getEditProductPage = async (req, res) => {
       });
     } else {
       return res.send("Product not found!");
+    }
+  } catch (e) {
+    console.log(e);
+    return res.status(200).json({
+      errCode: -1,
+      errMessage: "Error from server",
+    });
+  }
+};
+
+let getUserManagementPage = async (req, res) => {
+  try {
+    let data = await productService.getAllUsers("ALL");
+    return res.render("pages/user-management", {
+      dataTable: data,
+    });
+  } catch (e) {
+    console.log(e);
+    return res.status(200).json({
+      errCode: -1,
+      errMessage: "Error from server",
+    });
+  }
+};
+
+let getEditOrderPage = async (req, res) => {
+  try {
+    let orderId = req.query.order_id;
+    if (orderId) {
+      let data = await orderService.getOderByOrderId(orderId);
+      return res.render("pages/edit-order-status", {
+        orderData: data.data,
+      });
+    } else {
+      return res.send("Order not found!");
     }
   } catch (e) {
     console.log(e);
@@ -222,6 +270,9 @@ module.exports = {
   getProductManagementPage,
   getEditProductPage,
   getAddProductPage,
+  getEditOrderPage,
+  getUserManagementPage,
+  getOrderManagementPage,
   getHomePage,
   get404Page,
   getProductViewAllPhuKien,

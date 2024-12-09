@@ -150,10 +150,35 @@ let clearCart = (userId) => {
     }
   });
 };
+
+const checkEmptyCart = (userId) => {
+  return new Promise(async (resolve, reject) => {
+    try {
+      const cart = await db.Cart_item.findOne({
+        where: { user_id: userId },
+        raw: true,
+      });
+      if (!cart) {
+        resolve({
+          errCode: 0,
+          message: "Cart is empty",
+        });
+      } else {
+        resolve({
+          errCode: 1,
+          message: "Cart is not empty",
+        });
+      }
+    } catch (e) {
+      reject(e);
+    }
+  });
+};
 module.exports = {
   addCart,
   getCartByUserId,
   updateCart,
   deleteCart,
   clearCart,
+  checkEmptyCart
 };

@@ -35,6 +35,7 @@ let initWebRouters = (app) => {
   router.put("/api/update-cart", cartController.handleUpdateCart);
   router.delete("/api/delete-cart", cartController.handleDeleteCart);
   router.delete("/api/clear-cart", cartController.handleClearCart);
+  router.get("/api/check-empty-cart", cartController.handleCheckEmptyCart);
 
   router.get("/admin", homeController.getAdmin);
   router.get("/admin-products-management", homeController.getProductManagementPage);

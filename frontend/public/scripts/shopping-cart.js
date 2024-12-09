@@ -1,211 +1,286 @@
 // shopping-cart.js
+// Comprehensive shopping cart functionality with improved error handling and user experience
 
-// Các phần tử trong DOM
+// DOM Element Selectors
 const cartButton = document.querySelector("#cart-btn");
 const cartPopup = document.querySelector("#cart-popup");
 const closeCartButton = document.querySelector("#close-cart-btn");
 const continueShoppingButton = document.querySelector("#continue-shopping-btn");
 const checkoutButton = document.querySelector("#checkout-btn");
 
-// Các phần tử giỏ hàng
+// Cart State Elements
 const emptyCart = document.querySelector("#empty-cart");
 const filledCart = document.querySelector("#filled-cart");
 const cartItemsList = document.getElementById("cart-items");
 const totalPriceElement = document.querySelector(".total-price");
 
-// Khi nhấn vào giỏ hàng, hiển thị/đóng popup giỏ hàng
-cartButton.addEventListener("click", (event) => {
-  event.stopPropagation(); // Ngăn không cho sự kiện click propagating
+// Number Formatter for Price Display
+const numberFormatter = new Intl.NumberFormat("de-DE");
 
-  // Kiểm tra xem giỏ hàng có đang mở không
+// Cart Button Event Listeners
+cartButton.addEventListener("click", (event) => {
+  event.stopPropagation(); // Prevent event propagation
+
+  // Toggle cart popup visibility
   if (cartPopup.style.display === "flex") {
-    // Nếu giỏ hàng đang mở, đóng nó
     cartPopup.style.display = "none";
   } else {
-    // Nếu giỏ hàng đang đóng, mở nó và cập nhật giỏ hàng
-    fetchCartItems(); // Fetch from server and update UI
-    cartPopup.style.display = "flex"; // Hiển thị giỏ hàng
+    fetchCartItems(); // Fetch and update cart items before displaying
+    cartPopup.style.display = "flex";
   }
 });
 
-// Đóng giỏ hàng
+// Close Cart Button Event Listener
 closeCartButton.addEventListener("click", function (event) {
-  event.stopPropagation(); // Ngăn không cho sự kiện click propagating
+  event.stopPropagation();
   cartPopup.style.display = "none";
 });
 
-// Khi nhấn "Tiếp tục mua sắm", đóng giỏ hàng
+// Continue Shopping Button Event Listener
 continueShoppingButton.addEventListener("click", () => {
-  cartPopup.style.display = "none"; // Đóng popup giỏ hàng
+  cartPopup.style.display = "none";
 });
 
-// Khi nhấn "Thanh toán", chuyển hướng
+// Checkout Button Event Listener
 checkoutButton.addEventListener("click", () => {
-  window.location.href = "/checkout"; // Chuyển hướng đến trang thanh toán
+  window.location.href = "/checkout";
 });
 
-// Cập nhật danh sách sản phẩm trong giỏ hàng
+/**
+ * Update the cart items display in the UI
+ * @param {Array} items - List of cart items to display
+ */
 function updateCartItems(items) {
+  // Clear existing cart items
   cartItemsList.innerHTML = "";
 
+  // Handle empty cart scenario
   if (items.length === 0) {
     filledCart.style.display = "none";
     emptyCart.style.display = "block";
+    totalPriceElement.textContent = "0 ₫";
   } else {
     filledCart.style.display = "block";
     emptyCart.style.display = "none";
 
+    // Render each cart item
     items.forEach((item, index) => {
       const li = document.createElement("li");
       li.classList.add("cart-item");
-      console.log(
-        "Noah check image: ",
-        item.productCartData.productImageData[0].image
-      );
+      
       li.innerHTML = `
-                <img src="${
-                  item.productCartData.productImageData[0].image
-                }" alt="${item.productCartData.name}" class="cart-item-image">
-                <div class="cart-item-details">
-                    <p class="cart-item-name">${item.productCartData.name}</p>
-                    <p class="cart-item-price">${numberFormatter.format(
-                      item.productCartData.price
-                    )}₫</p>
-                    <div class="cart-item-quantity">
-                        <span class="decrease-quantity">-</span>
-                        <span class="quantity">${item.quantity}</span>
-                        <span class="increase-quantity">+</span>
-                    </div>
-                </div>
-                <span class="remove-item-btn" data-index="${index}">X</span>
-            `;
+        <div class="cart-item-details">
+          <p class="cart-item-name">${item.productCartData.name}</p>
+          <p class="cart-item-price">${numberFormatter.format(item.productCartData.price)}₫</p>
+          <div class="cart-item-quantity">
+            <span class="decrease-quantity" data-index="${index}">-</span>
+            <span class="quantity">${item.quantity}</span>
+            <span class="increase-quantity" data-index="${index}">+</span>
+          </div>
+        </div>
+        <span class="remove-item-btn" data-index="${index}">X</span>
+      `;
+      
       cartItemsList.appendChild(li);
-
-      // Gắn sự kiện cho nút giảm số lượng
-      li.querySelector(".decrease-quantity").addEventListener(
-        "click",
-        function () {
-          if (item.quantity > 1) {
-            item.quantity--;
-            updateCartItemQuantity(index, item.quantity);
-          }
-        }
-      );
-
-      // Gắn sự kiện cho nút tăng số lượng
-      li.querySelector(".increase-quantity").addEventListener(
-        "click",
-        function () {
-          item.quantity++;
-          updateCartItemQuantity(index, item.quantity);
-        }
-      );
-
-      // Gắn sự kiện xóa sản phẩm
-      li.querySelector(".remove-item-btn").addEventListener(
-        "click",
-        function (event) {
-          event.stopPropagation(); // Ngăn không cho sự kiện click propagating ra ngoài
-          removeItem(index);
-        }
-      );
     });
 
-    // Tính tổng tiền giỏ hàng
+    // Calculate and display total price
     const totalPrice = items.reduce(
       (acc, item) => acc + item.productCartData.price * item.quantity,
       0
     );
     totalPriceElement.textContent = `${numberFormatter.format(totalPrice)} ₫`;
   }
+
+  // Add event listeners for quantity and removal buttons
+  attachCartItemEventListeners();
 }
 
-const numberFormatter = new Intl.NumberFormat("de-DE");
+/**
+ * Attach event listeners to cart item buttons
+ */
+function attachCartItemEventListeners() {
+  // Decrease quantity buttons
+  document.querySelectorAll('.decrease-quantity').forEach(button => {
+    button.addEventListener('click', function() {
+      const index = parseInt(this.dataset.index);
+      changeQuantity(index, -1);
+    });
+  });
 
-// Hàm cập nhật số lượng sản phẩm sau khi thay đổi
-function updateCartItemQuantity(index, newQuantity) {
-  fetch("/api/update-cart-item-quantity", {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ index, quantity: newQuantity }),
-  })
-    .then((response) => response.json())
-    .then((updatedItems) => {
-      updateCartItems(updatedItems);
-    })
-    .catch((error) => console.error("Error updating cart item:", error));
+  // Increase quantity buttons
+  document.querySelectorAll('.increase-quantity').forEach(button => {
+    button.addEventListener('click', function() {
+      const index = parseInt(this.dataset.index);
+      changeQuantity(index, 1);
+    });
+  });
+
+  // Remove item buttons
+  document.querySelectorAll('.remove-item-btn').forEach(button => {
+    button.addEventListener('click', function() {
+      const index = parseInt(this.dataset.index);
+      removeItem(index);
+    });
+  });
 }
 
-// Gắn sự kiện xóa sản phẩm cho toàn bộ các phần tử trong giỏ hàng
-cartItemsList.addEventListener("click", function (event) {
-  if (event.target && event.target.classList.contains("remove-item-btn")) {
-    const index = event.target.dataset.index;
-    removeItem(index); // Gọi hàm xóa sản phẩm tại vị trí `index`
+/**
+ * Change quantity of a cart item
+ * @param {number} index - Index of the cart item
+ * @param {number} change - Amount to change quantity by (+1 or -1)
+ */
+async function changeQuantity(index, change) {
+  try {
+    // Fetch current user ID and cart items
+    const userId = await fetchID();
+    const cartItems = await fetchCurrentCartItems(userId);
+    
+    const currentItem = cartItems[index];
+    if (!currentItem) {
+      throw new Error("Cart item not found");
+    }
+
+    const currentQuantity = currentItem.quantity;
+    const newQuantity = currentQuantity + change;
+
+    // Validate quantity
+    if (newQuantity < 1) {
+      console.warn("Quantity must be at least 1");
+      return;
+    }
+    console.log(currentItem.cart_item_id, userId,currentItem.pd_id, newQuantity);
+    // Update cart item on server
+    const response = await fetch("/api/update-cart", {
+      method: "PUT",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        cart_item_id: currentItem.cart_item_id,
+        user_id: userId,
+        pd_id: currentItem.pd_id,
+        quantity: newQuantity
+      })
+    });
+
+    if (!response.ok) {
+      throw new Error(`Server error: ${response.status}`);
+    }
+
+    const result = await response.json();
+    
+    if (result.errCode === 0) {
+      // Refresh cart items
+      fetchCartItems();
+    } else {
+      throw new Error(result.errMessage || "Unknown error updating cart");
+    }
+  } catch (error) {
+    console.error("Error changing cart item quantity:", error);
+   
   }
-
-  // Kiểm tra nút tăng giảm số lượng
-  if (event.target && event.target.classList.contains("decrease-quantity")) {
-    const index = event.target.dataset.index;
-    changeQuantity(index, -1); // Giảm số lượng
-  }
-
-  if (event.target && event.target.classList.contains("increase-quantity")) {
-    const index = event.target.dataset.index;
-    changeQuantity(index, 1); // Tăng số lượng
-  }
-});
-
-// Hàm thay đổi số lượng sản phẩm
-function changeQuantity(index, change) {
-  fetch("/api/change-cart-item-quantity", {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ index, change }),
-  })
-    .then((response) => response.json())
-    .then((updatedItems) => {
-      updateCartItems(updatedItems);
-    })
-    .catch((error) =>
-      console.error("Error changing cart item quantity:", error)
-    );
 }
 
-// Hàm xóa sản phẩm khỏi giỏ hàng
-function removeItem(index) {
-  fetch("/api/remove-cart-item", {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ index }),
-  })
-    .then((response) => response.json())
-    .then((updatedItems) => {
-      updateCartItems(updatedItems);
-    })
-    .catch((error) => console.error("Error removing cart item:", error));
+/**
+ * Remove an item from the cart
+ * @param {number} index - Index of the cart item to remove
+ */
+async function removeItem(index) {
+  try {
+    
+    const userId = await fetchID();
+    const cartItems = await fetchCurrentCartItems(userId);
+    
+    const currentItem = cartItems[index];
+    console.log(currentItem.pd_id, userId);
+    const response = await fetch("/api/delete-cart", {
+      method: "DELETE",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ 
+        pd_id: currentItem.pd_id,
+        user_id: userId 
+      })
+    });
+
+    if (!response.ok) {
+      throw new Error(`Server error: ${response.status}`);
+    }
+
+    const result = await response.json();
+    console.log("Delete cart response:", result);
+
+    // After successful deletion, refetch cart items
+    // This ensures we get the most up-to-date cart state
+    await fetchCartItems();
+
+   } catch (error) {
+      console.error("Error removing cart item:", error);
+      alert("Could not remove item from cart. Please try again.");
+   }
+
 }
 
+/**
+ * Fetch current user ID
+ * @returns {Promise<string>} User ID
+ */
 async function fetchID() {
-  const response = await fetch("/api/get-user-id");
-  const user_id = await response.json(); // Chờ chuyển đổi JSON
-  console.log(user_id); // Xem nội dung trả về từ API
-  return user_id; // Trả về user_id
+  try {
+    const response = await fetch("/api/get-user-id");
+    
+    if (!response.ok) {
+      throw new Error(`User ID fetch failed: ${response.status}`);
+    }
+    
+    const user_id = await response.json();
+    return user_id;
+  } catch (error) {
+    console.error("Error fetching user ID:", error);
+    throw error;
+  }
 }
 
+/**
+ * Fetch current cart items for a user
+ * @param {string} userId - User ID to fetch cart for
+ * @returns {Promise<Array>} Cart items
+ */
+async function fetchCurrentCartItems(userId) {
+  try {
+    const response = await fetch(`/api/get-cart-by-user-id?user_id=${userId}`);
+    
+    if (!response.ok) {
+      throw new Error(`Cart fetch failed: ${response.status}`);
+    }
+    
+    return await response.json();
+  } catch (error) {
+    console.error("Error fetching cart items:", error);
+    throw error;
+  }
+}
+
+/**
+ * Fetch and update cart items in the UI
+ */
 async function fetchCartItems() {
-  let USERID = await fetchID();
-  console.log("userId", USERID);
-  const response = await fetch(`/api/get-cart-by-user-id?user_id=${USERID}`);
-  const cartItems = await response.json();
-  updateCartItems(cartItems);
+  try {
+    const userId = await fetchID();
+    const cartItems = await fetchCurrentCartItems(userId);
+    updateCartItems(cartItems);
+  } catch (error) {
+    console.error("Error in cart initialization:", error);
+    emptyCart.style.display = "block";
+    filledCart.style.display = "none";
+    
+  }
 }
 
-// Lưu sản phẩm vào localStorage để kiểm tra (Not needed anymore)
-localStorage.removeItem("cartItems");
-
-// Thêm sự kiện để đóng giỏ hàng khi click ra ngoài
+// Close cart when clicking outside
 document.addEventListener("click", (event) => {
   if (!cartPopup.contains(event.target) && event.target !== cartButton) {
-    cartPopup.style.display = "none"; // Đóng giỏ hàng nếu click ra ngoài
+    cartPopup.style.display = "none";
   }
 });
+
+// Initial cart load (optional, depending on your page load strategy)
+document.addEventListener("DOMContentLoaded", fetchCartItems);
