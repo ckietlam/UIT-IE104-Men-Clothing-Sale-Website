@@ -69,7 +69,6 @@ let initWebRouters = (app) => {
   router.get("/product-view-all-quan", homeController.getProductViewAllQuan)
   router.get("/product-view-all-phukien", homeController.getProductViewAllPhuKien)
 
-  router.get("/payment-cart", orderController.getPaymentCart);
   router.get("/terms-and-conditions", placeHolderController.getTermsAndConditions);
   router.get("/customer-supports", placeHolderController.getCustomerSupport);
   router.get("/terms", placeHolderController.getTerms);
