@@ -43,7 +43,19 @@ let initWebRouters = (app) => {
   router.delete("/api/clear-cart", cartController.handleClearCart);
   router.get("/api/check-empty-cart", cartController.handleCheckEmptyCart);
 
+  router.get('/product-view',homeController.getProductViewAProduct);
+  router.get('/api/get-user-id',userController.fetchUserId);
+
+
+  router.post("/api/add-cart", cartController.handleAddCart);
+  router.get("/api/get-cart-by-user-id", cartController.handleGetCartByUserId);
+  router.put("/api/update-cart", cartController.handleUpdateCart);
+  router.delete("/api/delete-cart", cartController.handleDeleteCart);
+  router.delete("/api/clear-cart", cartController.handleClearCart);
+  router.get("/api/check-empty-cart", cartController.handleCheckEmptyCart);
+
   router.get("/admin", homeController.getAdmin);
+  router.get("/admin-products-management", homeController.getProductManagementPage);
   router.get("/admin-products-management", homeController.getProductManagementPage);
   router.get("/edit-product", homeController.getEditProductPage);
   router.get("/admin-add-product", homeController.getAddProductPage);
@@ -51,8 +63,13 @@ let initWebRouters = (app) => {
   router.get("/admin-users-management", homeController.getUserManagementPage);
   router.get("/edit-order-status", homeController.getEditOrderPage);
 
+
   //Product api
   router.get("/api/get-all-products", productController.handleGetAllProducts);
+  router.post(
+    "/create-new-product",
+    productController.handleCreateNewProduct
+  );
   router.post(
     "/create-new-product",
     productController.handleCreateNewProduct
