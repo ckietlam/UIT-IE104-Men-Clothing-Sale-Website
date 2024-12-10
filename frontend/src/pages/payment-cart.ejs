@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= productData.name %></title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600&family=Poppins:wght@900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet"> 
+    <link rel="stylesheet" href="styles/product-view-blazer.css">
+</head>
+<body>
+    
+    <%- include('../partials/header', { activeIdx: 1 }) %>
+
+    <main>
+        <div class="breadcrumb">
+            <a href="/product-view-all">Tất cả sản phẩm</a> &gt; 
+            <% if (productData.type_of_clothes === "Shirts" || productData.type_of_clothes === "Sweats" || productData.type_of_clothes === "Tees") { %>
+            <a href="/product-view-all-ao">Áo</a> &gt; 
+            <% } %>
+
+            <% if (productData.type_of_clothes === "Jeans" || productData.type_of_clothes === "Shorts") { %>
+            <a href="/product-view-all-quan">Quần</a> &gt; 
+            <% } %>
+            
+            <% if (productData.type_of_clothes === "Boxers" || productData.type_of_clothes === "Socks" || productData.type_of_clothes === "Hats") { %>
+            <a href="/product-view-all-phukien">Phụ kiện</a> &gt; 
+            <% } %>
+            
+            <% if (productData.type_of_clothes === "Sneakers" || productData.type_of_clothes === "Sandals") { %>
+            <a href="/product-view-all-giaydep">GIày dép</a> &gt; 
+            <% } %>
+            <span><strong><%= productData.name %></strong></span>
+        </div>
+    
+        <div class="product-detail">
+            <div class="product-image">
+                <div class="thumbnail-container">
+                    <% if (productData.productImageData && productData.productImageData.length > 0) { %>
+                        <% productData.productImageData.map((imageData, i) => { %>
+                            <img src="<%= productData.productImageData[i].image %>" alt="<%= productData.name %>" class="thumbnail" onclick="changeImage('<%= productData.productImageData[i].image %>')">
+                        <% }) %>
+                    <% } %>
+                    
+                </div>
+                
+            </div>
+            <div class="product-info">
+                <h2><%=productData.name %></h2>
+                <p><strong>Giá: <%=productData.price %>đ</strong></p>
+                <p><strong>Mô tả:</strong></p>
+                <ul>
+                    <p><%=productData.description %></p>
+                </ul>
+                <% if (isAuthenticated) { %>
+                    <form action="/api/add-cart" method="POST">
+                        <div class="button-container">
+                            <button class="add-to-cart-btn">
+                                <i class="material-icons-outlined">add_shopping_cart</i> Thêm vào giỏ hàng
+                            </button>
+                        </div>
+
+                     
+                    </form>  
+                <% } else { %>
+                     <a href="/login">
+                        <div class="button-container">
+                            <button class="add-to-cart-btn">
+                                    <i class="material-icons-outlined">add_shopping_cart</i> Thêm vào giỏ hàng
+                                </button>
+                            
+                                <button class="buy-now-btn">
+                                    <i class="material-icons-outlined">shopping_cart</i> Mua ngay
+                                </button>
+                            </div>
+                        </a>
+                <% } %>
+                <!-- Đánh giá -->
+                <div class="reviews">
+                    <h3>Đánh giá sản phẩm</h3>
+                    <div class="review-stars">
+                        <span class="material-icons-outlined">star</span>
+                        <span class="material-icons-outlined">star</span>
+                        <span class="material-icons-outlined">star</span>
+                        <span class="material-icons-outlined">star_half</span>
+                        <span class="material-icons-outlined">star_border</span>
+                    </div>
+                    <p><strong>4.5/5</strong> (Dựa trên 120 đánh giá)</p>
+                    <p><em>Người dùng đánh giá cao sản phẩm này vì chất liệu tốt và thiết kế đẹp.</em></p>
+                </div>
+                    </div>
+                </div>
+    </main>
+    
+    <%- include('../partials/footer', { activeIdx: 1 }) %>
+
+        
+    <script src="scripts/product-view-blazer.js"></script>
+</body>
+</html>

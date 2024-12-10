@@ -1,0 +1,609 @@
+
+
+/* Main Content */
+.main-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 60px 0;
+    margin: 0 auto;
+    max-width: 800px; /* Đặt chiều rộng tối đa để căn giữa */
+  }
+  
+  
+  /* Login Container */
+  .login-container {
+    display: flex;
+    gap: 30px;
+    align-items: center;
+    max-width: 900px;
+  }
+  
+  /* Login Banner */
+  .login-banner {
+    width: 50%;
+    height: auto;
+  }
+  
+  /* Login Form */
+  .login-form {
+    width: 50%;
+    max-width: 400px;
+  }
+  
+  /* Centered Login Heading */
+  .login-form h2 {
+    font-size: 24px;
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  /* Input Group */
+  .input-group {
+    margin-bottom: 15px;
+    position: relative;
+  }
+  
+  /* Input Fields */
+  .input-group input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+  
+  /* Visibility Icon */
+  .visibility-icon {
+    position: absolute;
+    top: 50%;
+    right: 10px;
+    transform: translateY(-50%);
+    cursor: pointer;
+  }
+  
+  /* Forgot Password Link */
+  .forgot-password {
+    display: block;
+    text-align: right;
+    margin-top: 5px;
+    margin-bottom: 20px; /* Tạo khoảng cách rộng hơn giữa "Quên Mật Khẩu?" và nút Đăng Nhập */
+    font-size: 14px;
+    color: #1d7873;
+    text-decoration: none;
+  }
+  
+  .forgot-password:hover {
+    text-decoration: underline;
+  }
+  
+  /* Login Button */
+  .login-button {
+    width: 100%;
+    padding: 10px;
+    color: #fff;
+    background-color: #1d7873;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    text-align: center;
+    margin-bottom: 15px; /* Tạo khoảng cách giữa nút Đăng Nhập và phần "Chưa Có Tài Khoản?" */
+  }
+  
+  /* Terms Text */
+  .terms {
+    font-size: 14px;
+    text-align: center;
+    color: #666;
+    line-height: 1.5;
+    margin-top: 20px; /* Tăng khoảng cách trên */
+    margin-bottom: 20px; /* Tăng khoảng cách dưới */
+  }
+  
+  .login-form p {
+    margin-top: 15px;
+    text-align: center;
+  }
+  
+  /* Register Text */
+  .login-form p {
+    font-size: 14px;
+    color: #000000;
+    margin-top: 10px;
+  }
+  
+  .login-form p a {
+    color: #1d7873;
+    text-decoration: none;
+  }
+  
+  .login-form p a:hover {
+    text-decoration: underline;
+  }
+
+
+  .terms-page {
+    background-color: #f9f9f9;
+    padding: 40px 0;
+}
+
+.terms-container {
+    max-width: 800px;
+    margin: 0 auto;
+    background-color: white;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.terms-container h1 {
+    text-align: center;
+    color: #1d7873;
+    margin-bottom: 30px;
+    font-size: 28px;
+}
+
+.terms-section {
+    margin-bottom: 25px;
+}
+
+.terms-section h2 {
+    color: #1d7873;
+    border-bottom: 2px solid #1d7873;
+    padding-bottom: 10px;
+    margin-bottom: 15px;
+    font-size: 20px;
+}
+
+.terms-section p, .terms-section ul {
+    line-height: 1.6;
+    color: #333;
+}
+
+.terms-section ul {
+    padding-left: 30px;
+}
+
+.terms-footer {
+    text-align: center;
+    color: #666;
+    font-style: italic;
+    margin-top: 30px;
+}
+
+.faq-item {
+    margin-bottom: 20px;
+    padding: 15px;
+    background-color: #f4f4f4;
+    border-radius: 5px;
+}
+
+.faq-item h3 {
+    color: #1d7873;
+    margin-bottom: 10px;
+    font-size: 18px;
+}
+
+.faq-item p {
+    color: #333;
+    line-height: 1.6;
+}
+
+/* Giữ nguyên tất cả CSS cũ */
+
+/* CSS mới cho trang Mua Hàng & Vận Chuyển */
+.terms-container {
+    position: relative;
+    overflow: hidden;
+}
+
+.terms-container::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 5px;
+    background: linear-gradient(90deg, #1d7873, #2a9d8f);
+}
+
+.terms-section h2 {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.terms-section h2::before {
+    content: '📦';
+    font-size: 24px;
+}
+
+.terms-section:nth-child(2) h2::before {
+    content: '🚚';
+}
+
+.terms-section:nth-child(3) h2::before {
+    content: '💰';
+}
+
+.terms-section:nth-child(4) h2::before {
+    content: '📱';
+}
+
+.terms-section:nth-child(5) h2::before {
+    content: '🔄';
+}
+
+.terms-section ul li {
+    position: relative;
+    padding-left: 25px;
+    margin-bottom: 10px;
+}
+
+.terms-section ul li::before {
+    content: '✓';
+    position: absolute;
+    left: 0;
+    color: #1d7873;
+    font-weight: bold;
+}
+
+.terms-footer {
+    border-top: 2px dashed #1d7873;
+    padding-top: 20px;
+    margin-top: 40px;
+}
+
+.terms-footer p {
+    font-size: 14px;
+    color: #666;
+    margin: 5px 0;
+}
+
+/* Hiệu ứng hover cho các mục trong danh sách */
+.terms-section ul li:hover {
+    transform: translateX(10px);
+    transition: transform 0.3s ease;
+    color: #1d7873;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .terms-container {
+        padding: 20px;
+        margin: 15px;
+    }
+
+    .terms-container h1 {
+        font-size: 24px;
+    }
+
+    .terms-section h2 {
+        font-size: 18px;
+    }
+
+    .terms-section ul li {
+        font-size: 14px;
+    }
+}
+
+/* Print styles */
+@media print {
+    .terms-container {
+        box-shadow: none;
+    }
+
+    .terms-section h2::before {
+        display: none;
+    }
+
+    .terms-footer {
+        border-top: 1px solid #000;
+    }
+}
+
+/* Thêm animation cho heading */
+.terms-container h1 {
+    animation: slideIn 0.5s ease-out;
+}
+
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Style cho liên kết email trong footer */
+.terms-footer a {
+    color: #1d7873;
+    text-decoration: none;
+    border-bottom: 1px dashed #1d7873;
+}
+
+.terms-footer a:hover {
+    color: #2a9d8f;
+    border-bottom: 1px solid #2a9d8f;
+}
+
+/* Thêm hiệu ứng hover cho các section */
+.terms-section {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.terms-section:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+/* CSS mới cho trang Trả Hàng & Hoàn Tiền */
+.terms-section h2::before {
+    content: '↩️';
+}
+
+.terms-section:nth-child(2) h2::before {
+    content: '📝';
+}
+
+.terms-section:nth-child(3) h2::before {
+    content: '💵';
+}
+
+.terms-section:nth-child(4) h2::before {
+    content: '🚛';
+}
+
+.terms-section:nth-child(5) h2::before {
+    content: '⛔';
+}
+
+/* Thêm style cho hotline */
+.terms-footer p:last-child {
+    font-weight: bold;
+    color: #1d7873;
+}
+
+/* Thêm hiệu ứng cảnh báo cho phần không được trả hàng */
+.terms-section:last-of-type {
+    background-color: #fff5f5;
+    border-left: 4px solid #ff4d4d;
+    padding-left: 20px;
+}
+
+.terms-section:last-of-type h2 {
+    color: #ff4d4d;
+}
+
+.terms-section:last-of-type li::before {
+    color: #ff4d4d;
+}
+
+/* Thêm hiệu ứng cho phần hoàn tiền */
+.terms-section:nth-child(3) {
+    background-color: #f0fff4;
+    border-left: 4px solid #1d7873;
+    padding-left: 20px;
+}
+
+/* Thêm badge cho các điều kiện quan trọng */
+.terms-section:first-child li:first-child::after {
+    content: 'Quan trọng';
+    background-color: #1d7873;
+    color: white;
+    font-size: 12px;
+    padding: 2px 8px;
+    border-radius: 12px;
+    margin-left: 10px;
+}
+
+/* Animation cho các section khi scroll */
+.terms-section {
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeInUp 0.5s ease forwards;
+}
+
+@keyframes fadeInUp {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Thêm style cho hotline */
+.terms-footer p:last-child {
+    background: linear-gradient(90deg, #1d7873, #2a9d8f);
+    display: inline-block;
+    padding: 10px 20px;
+    border-radius: 25px;
+    color: white;
+}
+
+/* CSS cho trang FAQ */
+.faq-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.faq-section {
+    margin-bottom: 40px;
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeInUp 0.5s ease forwards;
+    animation-delay: calc(var(--section-index) * 0.2s);
+}
+
+.faq-section h2 {
+    color: #1d7873;
+    border-bottom: 2px solid #1d7873;
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.faq-section:nth-child(1) h2::before {
+    content: '💳';
+}
+
+.faq-section:nth-child(2) h2::before {
+    content: '🚚';
+}
+
+.faq-section:nth-child(3) h2::before {
+    content: '↩️';
+}
+
+.faq-section:nth-child(4) h2::before {
+    content: '🔒';
+}
+
+.faq-item {
+    background: #fff;
+    border-radius: 8px;
+    margin-bottom: 15px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    overflow: hidden;
+}
+
+.faq-question {
+    padding: 15px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    background: #f8f9fa;
+    transition: all 0.3s ease;
+}
+
+.faq-question:hover {
+    background: #e9ecef;
+}
+
+.faq-question span {
+    font-weight: 500;
+    color: #2c3e50;
+}
+
+.faq-question i {
+    transition: transform 0.3s ease;
+}
+
+.faq-answer {
+    padding: 0 20px;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease;
+}
+
+.faq-answer p, .faq-answer ul, .faq-answer ol {
+    margin: 15px 0;
+}
+
+.faq-answer ul li, .faq-answer ol li {
+    margin: 8px 0;
+    line-height: 1.6;
+}
+
+.faq-footer {
+    text-align: center;
+    padding: 30px 0;
+    background: #f8f9fa;
+    border-radius: 8px;
+    margin-top: 40px;
+}
+
+.faq-footer p {
+    margin: 5px 0;
+}
+
+.faq-footer p:first-child {
+    font-size: 1.2em;
+    color: #1d7873;
+    font-weight: 500;
+}
+
+/* Animation */
+@keyframes fadeInUp {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Hover effects */
+.faq-question.active {
+    background: #1d7873;
+    color: white;
+}
+
+.faq-question.active span {
+    color: white;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .faq-container {
+        padding: 15px;
+    }
+
+    .faq-section h2 {
+        font-size: 1.5em;
+    }
+
+    .faq-question span {
+        font-size: 0.9em;
+    }
+}
+
+/* Badge styles */
+.faq-question span::after {
+    content: 'New';
+    background: #ff4d4d;
+    color: white;
+    font-size: 0.7em;
+    padding: 2px 8px;
+    border-radius: 12px;
+    margin-left: 10px;
+    display: none;
+}
+
+.faq-item:first-child .faq-question span::after {
+    display: inline;
+}
+
+/* Print styles */
+@media print {
+    .faq-question {
+        page-break-inside: avoid;
+    }
+
+    .faq-answer {
+        max-height: none !important;
+        display: block !important;
+    }
+}
+
+/* Accessibility */
+.faq-question:focus {
+    outline: 2px solid #1d7873;
+    outline-offset: -2px;
+}
+
+/* Custom scrollbar */
+.faq-answer::-webkit-scrollbar {
+    width: 8px;
+}
+
+.faq-answer::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+.faq-answer::-webkit-scrollbar-thumb {
+    background: #1d7873;
+    border-radius: 4px;
+}

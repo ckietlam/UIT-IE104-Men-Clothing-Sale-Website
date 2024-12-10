@@ -3,19 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Áo Jacket Thời Trang Phong Cách Hiện Đại</title>
+    <title>Áo Blazer Công Sở Phong Cách Thanh Lịch</title>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600&family=Poppins:wght@900&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet"> 
-    <link rel="stylesheet" href="../../public/styles/product-view-blazer.css">
+    <link rel="stylesheet" href="/styles/product-view-blazer.css">
+
 </head>
+
 <body>
-    
+
     <header class="header">
         <div class="brand-logo">
-            <img src="../../public/icons/logos/logo-html.svg" alt="H(T)ML Logo">
+            <img src="/icons/logos/logo-html.svg" alt="H(T)ML Logo">
             <span class="brand-name">H(T)ML</span>
         </div>
-    
+
         <!-- Shirt Navbar Container -->
         <div class="shirtNavbar">
             <div class="shirtDropdown">
@@ -49,11 +51,11 @@
                         <div class="shirtColumn">
                             <div class="shirtProductImages">
                                 <div class="shirtProductItem">
-                                    <img src="../../public/images/Polo-Shirt-Menu.png" alt="Polo Shirt">
+                                    <img src="/images/Polo-Shirt-Menu.png" alt="Polo Shirt">
                                     <p>Polo</p>
                                 </div>
                                 <div class="shirtProductItem">
-                                    <img src="../../public/images/Thun-Shirt-Menu.png" alt="T-Shirt">
+                                    <img src="/images/Thun-Shirt-Menu.png" alt="T-Shirt">
                                     <p>Thun</p>
                                 </div>
                             </div>
@@ -62,8 +64,7 @@
                 </div>
             </div>
         </div>
-    
-    
+
         <!-- Pants Navbar Container -->
         <div class="pantsNavbar">
             <div class="pantsDropdown">
@@ -87,15 +88,15 @@
                         <div class="pantsColumn">
                             <div class="pantsProductImages">
                                 <div class="pantsProductItem">
-                                    <img src="../../public/images/Jeans-Pants-Menu.png" alt="Jeans">
+                                    <img src="/images/Jeans-Pants-Menu.png" alt="Jeans">
                                     <p>Jeans</p>
                                 </div>
                                 <div class="pantsProductItem">
-                                    <img src="../../public/images/Jogger-Pants-Menu.png" alt="Jogger">
+                                    <img src="/images/Jogger-Pants-Menu.png" alt="Jogger">
                                     <p>Jogger</p>
                                 </div>
                                 <div class="pantsProductItem">
-                                    <img src="../../public/images/Shorts-Pants-Menu.png" alt="Short">
+                                    <img src="/images/Shorts-Pants-Menu.png" alt="Short">
                                     <p>Short</p>
                                 </div>
                             </div>
@@ -104,9 +105,8 @@
                 </div>
             </div>
         </div>
-    
-    
-            <!-- Shoes Navbar Container -->
+
+        <!-- Shoes Navbar Container -->
         <div class="shoesNavbar">
             <div class="shoesDropdown">
                 <button class="dropdownButton">Giày Dép
@@ -135,11 +135,11 @@
                         <div class="shoesColumn">
                             <div class="shoesProductImages">
                                 <div class="shoesProductItem">
-                                    <img src="../../public/images/Sandal-Shoes-Menu.png" alt="Sandal">
+                                    <img src="/images/Sandal-Shoes-Menu.png" alt="Sandal">
                                     <p>Sandal</p>
                                 </div>
                                 <div class="shoesProductItem">
-                                    <img src="../../public/images/Derby-Shoes-Menu.png" alt="Derby">
+                                    <img src="/images/Derby-Shoes-Menu.png" alt="Derby">
                                     <p>Derby</p>
                                 </div>
                             </div>
@@ -148,7 +148,7 @@
                 </div>
             </div>
         </div>
-    
+
         <!-- Accessories Navbar Container -->
         <div class="accessoriesNavbar">
             <div class="accessoriesDropdown">
@@ -183,11 +183,11 @@
                         <div class="accessoriesColumn">
                             <div class="accessoriesProductImages">
                                 <div class="accessoriesProductItem">
-                                    <img src="../../public/images/Wallet-Accessories-Menu.png" alt="Ví Có Khóa Cá Sấu">
+                                    <img src="/images/Wallet-Accessories-Menu.png" alt="Ví Có Khóa Cá Sấu">
                                     <p>Ví Có Khóa Cá Sấu</p>
                                 </div>
                                 <div class="accessoriesProductItem">
-                                    <img src="../../public/images/Socks-Accessories-Menu.png" alt="Tất Cổ Dài">
+                                    <img src="/images/Socks-Accessories-Menu.png" alt="Tất Cổ Dài">
                                     <p>Tất Cổ Dài</p>
                                 </div>
                             </div>
@@ -196,44 +196,43 @@
                 </div>
             </div>
         </div>
+    </div>
     
-    
-        </div>
-    
-            <div class="header-icons">
-                <img src="../../public/icons/icon-search.svg" alt="Search">
-                <img src="../../public/icons/icon-user.svg" alt="User">
-                <img src="../../public/icons/icon-shopping.svg" alt="Shopping Bag">
-            </div>
-        </header>
+    <div class="header-icons">
+        <img src="/icons/icon-search.svg" alt="Search">
+        <img src="/icons/icon-user.svg" alt="User">
+        <img src="/icons/icon-shopping.svg" alt="Shopping Bag">
+    </div>
+</header>
 
     <main>
+        <!-- Breadcrumb -->
         <div class="breadcrumb">
-            <a href="../pages/product-view-all.html">Tất cả sản phẩm</a> &gt; 
-            <a href="#">Áo</a> &gt; 
-            <span><strong>Varsity 1</strong></span>
+        <a href="/product/view-all">Tất cả sản phẩm</a> &gt;
+        <a href="#"> <%= product.category %> </a> &gt;
+        <span><strong><%= product.name %></strong></span>
         </div>
-    
+
+
+        <!-- Product Detail -->
         <div class="product-detail">
             <div class="product-image">
                 <div class="thumbnail-container">
-                    <img src="../../public/images/temp/jacket(1).jpg" alt="jacket1" class="thumbnail" onclick="changeImage('jacket(1).jpg')">
-                    <img src="../../public/images/temp/jacket(2).jpg" alt="jacket2" class="thumbnail" onclick="changeImage('jacket(2).jpg')">
-                    <img src="../../public/images/temp/jacket(3).jpg" alt="jacket3" class="thumbnail" onclick="changeImage('jacket(3).jpg')">
+                    <% product.images.forEach(function(image) { %>
+                        <img src="/<%= image %>" alt="<%= product.name %>" class="thumbnail" onclick="changeImage('<%= image %>')">
+                    <% }) %>
                 </div>
-                <img id="main-image" src="../../public/images/temp/jacket(1).jpg" alt="Blazer Đen">
+                <img id="main-image" src="/<%= product.images[0] %>" alt="<%= product.name %>">
             </div>
+            
             <div class="product-info">
-                <h2>Áo Jacket Thời Trang Hiện Đại</h2>
-                <p><strong>Giá: 400.000đ</strong></p>
+                <h2><%= product.name %></h2>
+                <p><strong>Giá: <%= product.price %></strong></p>
                 <p><strong>Mô tả:</strong></p>
                 <ul>
-                    <li>Áo Jacket phong cách hiện đại, thiết kế đơn giản, phù hợp với nhiều dịp khác nhau.</li>
-                    <li>Chất liệu vải chống gió và giữ ấm, thích hợp cho những ngày se lạnh.</li>
-                    <li>Phom dáng rộng, thoải mái, dễ dàng vận động.</li>
-                    <li>Màu sắc: Đen, xám, xanh rêu.</li>
-                    <li>Size từ M đến XXL, cho cả nam và nữ.</li>
-                    <li>Phối đồ dễ dàng với áo thun và quần jeans để tạo phong cách năng động.</li>
+                    <% product.description.forEach(function(desc) { %>
+                        <li><%= desc %></li>
+                    <% }) %>
                 </ul>
                 <div class="button-container">
                     <button class="add-to-cart-btn">
@@ -243,8 +242,8 @@
                         <i class="material-icons-outlined">shopping_cart</i> Mua ngay
                     </button>
                 </div>
-    
-                <!-- Đánh giá -->
+
+                <!-- Reviews -->
                 <div class="reviews">
                     <h3>Đánh giá sản phẩm</h3>
                     <div class="review-stars">
@@ -257,84 +256,56 @@
                     <p><strong>4.5/5</strong> (Dựa trên 120 đánh giá)</p>
                     <p><em>Người dùng đánh giá cao sản phẩm này vì chất liệu tốt và thiết kế đẹp.</em></p>
                 </div>
-    
-                <!-- <div class="product-suggestions"> -->
-                    <!-- <h3>Sản phẩm gợi ý</h3> -->
-                    <!-- <div class="suggested-products"> -->
-                        <!-- <div class="suggested-item"> -->
-                            <!-- <img src="../../assets/blazer(2).jpg" alt="Blazer Xanh Navy"> -->
-                            <!-- <p>Blazer Xanh Navy</p> -->
-                        <!-- </div> -->
-                        <!-- <div class="suggested-item"> -->
-                            <!-- <img src="../../assets/blazer(3).jpg" alt="Blazer Xám"> -->
-                            <!-- <p>Blazer Xám</p> -->
-                        <!-- </div> -->
-                        <!-- <div class="suggested-item"> -->
-                            <!-- <img src="../../assets/blazer(4).jpg" alt="Blazer Xanh Dương"> -->
-                            <!-- <p>Blazer Xanh Dương</p> -->
-                        <!-- </div> -->
-                        <!-- <div class="suggested-item"> -->
-                            <!-- <img src="../../assets/blazer(5).jpg" alt="Blazer Trắng"> -->
-                            <!-- <p>Blazer Trắng</p> -->
-                        <!-- </div> -->
-                        <!-- <div class="suggested-item"> -->
-                            <!-- <img src="../../assets/blazer(6).jpg" alt="Blazer Đỏ"> -->
-                            <!-- <p>Blazer Đỏ</p> -->
-                        <!-- </div> -->
-                    </div>
-                </div>
+            </div>
+        </div>
     </main>
-    
-           <!-- Footer Section -->
-    
-        <!-- Left Side of Footer -->
-        <footer class="footer">
-            <div class="footer-left">
-                <div class="footer-newsletter">
-                    <h3>Theo Dõi Các Tin Tức Mới Nhất Từ H(T)ML!</h3>
-                    <div class="newsletter-form">
-                        <input type="email" placeholder="Nhập Email Của Bạn">
-                        <button><img src="../../public/icons/arrow-forward.svg" alt="Arrow"></button>
-                    </div>
-                    <label>
-                        <input type="checkbox"> Bằng việc nhập email, bạn đồng ý với việc nhận các tin quảng cáo, ưu đãi từ
-                        H(T)ML
-                    </label>
-                </div>
-                <div class="footer-social">
-                    <div class="footer-social-icons">
-                        <img src="../../public/icons/logos/logo-instagram.svg" alt="Instagram">
-                        <img src="../../public/icons/logos/logo-facebook.svg" alt="Facebook">
-                        <img src="../../public/icons/logos/logo-pinterest.svg" alt="Pinterest">
-                        <img src="../../public/icons/logos/logo-tiktok.svg" alt="TikTok">
-                    </div>
-                    <p>© 2024 H(T)ML. All Rights Reserved.</p>
-                </div>
-            </div>
-    
-            <!-- Right Side of Footer -->
-            <div class="footer-right">
-                <div class="footer-links">
-                    <div>
-                        <h4>Về H(T)ML</h4>
-                        <a href="#">Bộ Sưu Tập</a>
-                        <a href="#">Quyền Riêng Tư</a>
-                        <a href="#">Hệ Thống Hỗ Trợ</a>
-                        <a href="#">Điều Khoản</a>
-                        <a href="#">Bản Quyền</a>
-                    </div>
-                    <div>
-                        <h4>Hỗ Trợ</h4>
-                        <a href="#">Mua Hàng & Vận Chuyển</a>
-                        <a href="#">Trả Hàng & Hoàn Tiền</a>
-                        <a href="#">Các Câu Hỏi Thường Gặp</a>
-                        <a href="#">Liên Hệ Với Chúng Tôi</a>
-                    </div>
-                </div>
-            </div>
-        </footer>
 
-        
-    <script src="../../public/scripts/product-view-blazer.js"></script>
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-left">
+            <div class="footer-newsletter">
+                <h3>Theo Dõi Các Tin Tức Mới Nhất Từ H(T)ML!</h3>
+                <div class="newsletter-form">
+                    <input type="email" placeholder="Nhập Email Của Bạn">
+                    <button><img src="/icons/arrow-forward.svg" alt="Arrow"></button>
+                </div>
+                <label>
+                    <input type="checkbox"> Bằng việc nhập email, bạn đồng ý với việc nhận các tin quảng cáo, ưu đãi từ H(T)ML
+                </label>
+            </div>
+            <div class="footer-social">
+                <div class="footer-social-icons">
+                    <img src="/icons/logos/logo-instagram.svg" alt="Instagram">
+                    <img src="/icons/logos/logo-facebook.svg" alt="Facebook">
+                    <img src="/icons/logos/logo-pinterest.svg" alt="Pinterest">
+                    <img src="/icons/logos/logo-tiktok.svg" alt="TikTok">
+                </div>
+                <p>© 2024 H(T)ML. All Rights Reserved.</p>
+            </div>
+        </div>
+
+        <div class="footer-right">
+            <div class="footer-links">
+                <div>
+                    <h4>Về H(T)ML</h4>
+                    <a href="#">Bộ Sưu Tập</a>
+                    <a href="#">Quyền Riêng Tư</a>
+                    <a href="#">Hệ Thống Hỗ Trợ</a>
+                    <a href="#">Điều Khoản</a>
+                    <a href="#">Bản Quyền</a>
+                </div>
+                <div>
+                    <h4>Hỗ Trợ</h4>
+                    <a href="#">Mua Hàng & Vận Chuyển</a>
+                    <a href="#">Trả Hàng & Hoàn Tiền</a>
+                    <a href="#">Các Câu Hỏi Thường Gặp</a>
+                    <a href="#">Liên Hệ Với Chúng Tôi</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../public/scripts/product-view-blazer.js"></script>
 </body>
+
 </html>
