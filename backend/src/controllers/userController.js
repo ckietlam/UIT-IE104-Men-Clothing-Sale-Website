@@ -81,13 +81,15 @@ const handleForgotPassword = async (req, res) => {
     if (!email) {
       return res.status(400).json({
         message: "Missing email",
+        userEmail: "" 
       });
     }
 
     const user = await userService.checkUserEmail(email);
     if (!user) {
-      return res.status(404).json({
+      return res.status(404).render("pages/forgot-password", {
         message: "User not found",
+        userEmail: "" 
       });
     }
 
@@ -119,13 +121,15 @@ const handleForgotPassword = async (req, res) => {
 
     await transporter.sendMail(mailOptions);
 
-    return res.status(200).json({
-      message: "OTP sent to email",
+    return res.status(200).render("pages/change-password", {
+      message: `OTP sent to your email: ${email}`, 
+      userEmail: email 
     });
   } catch (error) {
     return res.status(500).json({
       message: "Error from server",
       error: error.message,
+      userEmail: "" 
     });
   }
 };
@@ -133,9 +137,14 @@ const handleForgotPassword = async (req, res) => {
 const handleChangePassword = async (req, res) => {
   try {
     const { email, otp, newPassword } = req.body;
-    await userService.resetPassword(email, otp, newPassword);
-
-    return res.status(200).json({
+    const check = await userService.resetPassword(email, otp, newPassword);
+    if (!check) {
+      return res.status(400).render("pages/change-password", {
+        message: "Invalid OTP",
+        userEmail: email
+      });
+    }
+    return res.status(200).render("pages/login", {
       message: "Password changed successfully",
     });
   } catch (error) {
@@ -206,6 +215,18 @@ const fetchUserId = async (req, res) => {
     });
   }
 };
+
+const getForgotPassword = async (req, res) => {
+  return res.render("pages/forgot-password", {
+    message: null,
+  });
+};
+
+const getChangePassword = async (req, res) => {
+  return res.render("pages/change-password", {
+    message: null,
+  });
+};
 module.exports = {
   handleRegister,
   handleLogin,
@@ -217,4 +238,6 @@ module.exports = {
   getProfilePage,
   handleUpdateProfile,
   fetchUserId,
+  getForgotPassword,
+  getChangePassword,
 };

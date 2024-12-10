@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Câu Hỏi Thường Gặp - H(T)ML Website</title>
+    <link rel="stylesheet" href="/styles/Terms2.css">
+</head>
+<body>
+    <!-- Header Section -->
+    <%- include('../../partials/header', { activeIdx: 0 }) %>
+
+    <!-- Main Content Section -->
+    <div class="faq-page">
+        <div class="faq-container">
+            <h1>Câu Hỏi Thường Gặp (FAQ)</h1>
+
+            <div class="faq-section">
+                <h2>Đặt Hàng & Thanh Toán</h2>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>Làm thế nào để đặt hàng trên website?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Để đặt hàng, bạn có thể thực hiện theo các bước sau:</p>
+                        <ol>
+                            <li>Chọn sản phẩm và thêm vào giỏ hàng</li>
+                            <li>Kiểm tra giỏ hàng và nhấn "Thanh toán"</li>
+                            <li>Điền thông tin giao hàng</li>
+                            <li>Chọn phương thức thanh toán</li>
+                            <li>Xác nhận đơn hàng</li>
+                        </ol>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>Những phương thức thanh toán nào được chấp nhận?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Chúng tôi chấp nhận các phương thức thanh toán:</p>
+                        <ul>
+                            <li>Thanh toán khi nhận hàng (COD)</li>
+                            <li>Chuyển khoản ngân hàng</li>
+                            <li>Thẻ tín dụng/ghi nợ</li>
+                            <li>Ví điện tử (Momo, ZaloPay, VNPay)</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="faq-section">
+                <h2>Vận Chuyển & Giao Hàng</h2>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>Thời gian giao hàng mất bao lâu?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Thời gian giao hàng phụ thuộc vào khu vực:</p>
+                        <ul>
+                            <li>Nội thành: 1-2 ngày</li>
+                            <li>Tỉnh thành lớn: 2-3 ngày</li>
+                            <li>Các khu vực khác: 3-5 ngày</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>Phí vận chuyển được tính như thế nào?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Phí vận chuyển được tính dựa trên:</p>
+                        <ul>
+                            <li>Khoảng cách vận chuyển</li>
+                            <li>Trọng lượng đơn hàng</li>
+                            <li>Kích thước package</li>
+                        </ul>
+                        <p>Miễn phí vận chuyển cho đơn hàng từ 500.000đ</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="faq-section">
+                <h2>Đổi Trả & Hoàn Tiền</h2>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>Chính sách đổi trả như thế nào?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Chính sách đổi trả trong vòng 7 ngày với điều kiện:</p>
+                        <ul>
+                            <li>Sản phẩm còn nguyên tem mác</li>
+                            <li>Không có dấu hiệu đã sử dụng</li>
+                            <li>Có đầy đủ hóa đơn mua hàng</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>Quy trình hoàn tiền mất bao lâu?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Quy trình hoàn tiền thông thường:</p>
+                        <ul>
+                            <li>Thanh toán online: 3-7 ngày làm việc</li>
+                            <li>Thanh toán COD: 7-10 ngày làm việc</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="faq-section">
+                <h2>Tài Khoản & Bảo Mật</h2>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>Làm sao để thay đổi mật khẩu?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Để thay đổi mật khẩu:</p>
+                        <ol>
+                            <li>Đăng nhập vào tài khoản</li>
+                            <li>Vào mục "Cài đặt tài khoản"</li>
+                            <li>Chọn "Đổi mật khẩu"</li>
+                            <li>Làm theo hướng dẫn</li>
+                        </ol>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>Thông tin cá nhân có được bảo mật không?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Chúng tôi cam kết:</p>
+                        <ul>
+                            <li>Mã hóa thông tin người dùng</li>
+                            <li>Không chia sẻ thông tin với bên thứ ba</li>
+                            <li>Tuân thủ quy định bảo mật của pháp luật</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="faq-footer">
+                <p>Không tìm thấy câu trả lời cho câu hỏi của bạn?</p>
+                <p>Liên hệ với chúng tôi qua:</p>
+                <p>Email: hotro@hmlwebsite.com</p>
+                <p>Hotline: 1900 xxxx</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer Section -->
+    <%- include('../../partials/footer', { activeIdx: 0 }) %>
+
+    <script>
+        document.querySelectorAll('.faq-question').forEach(question => {
+            question.addEventListener('click', () => {
+                const answer = question.nextElementSibling;
+                const icon = question.querySelector('i');
+                
+                // Toggle answer visibility
+                answer.style.maxHeight = answer.style.maxHeight ? null : answer.scrollHeight + "px";
+                
+                // Toggle icon rotation
+                icon.style.transform = icon.style.transform === 'rotate(180deg)' ? 'rotate(0deg)' : 'rotate(180deg)';
+                
+                // Toggle active class
+                question.classList.toggle('active');
+            });
+        });
+    </script>
+</body>
+</html>

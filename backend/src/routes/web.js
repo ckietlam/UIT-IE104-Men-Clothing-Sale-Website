@@ -5,6 +5,7 @@ import userController from "../controllers/userController";
 import addSessionData from "../middlewares/addSessionData";
 import orderController from "../controllers/orderController"
 import cartController from "../controllers/cartController";
+import placeHolderController from "../controllers/placeHolderController";
 
 let router = express.Router();
 
@@ -18,6 +19,11 @@ let initWebRouters = (app) => {
   router.get("/register", userController.getRegister);
   router.post("/register", userController.handleRegister);
   router.get("/logout", userController.getLogout);
+  router.get("/forgot-password", userController.getForgotPassword);
+  router.post("/forgot-password", userController.handleForgotPassword);
+  router.get("/change-password", userController.getChangePassword);
+  router.post("/change-password", userController.handleChangePassword);
+
   router.get("/404", homeController.get404Page);
   router.post("/update-profile", userController.handleUpdateProfile);
   router.get("/product-view-all-ao", homeController.getProductViewAllAo);
@@ -62,6 +68,16 @@ let initWebRouters = (app) => {
   router.get("/product-view-all-ao", homeController.getProductViewAllAo)
   router.get("/product-view-all-quan", homeController.getProductViewAllQuan)
   router.get("/product-view-all-phukien", homeController.getProductViewAllPhuKien)
+
+  router.get("/payment-cart", orderController.getPaymentCart);
+  router.get("/terms-and-conditions", placeHolderController.getTermsAndConditions);
+  router.get("/customer-supports", placeHolderController.getCustomerSupport);
+  router.get("/terms", placeHolderController.getTerms);
+  router.get("/copyright", placeHolderController.getCopyRight);
+  router.get("/ordering-rules", placeHolderController.getOrderingRules);
+  router.get("/delivering-rules", placeHolderController.getDeliveringRules);
+  router.get("/frequent-questions", placeHolderController.getFrequentQuestions);
+
   
   return app.use("/", router);
 };

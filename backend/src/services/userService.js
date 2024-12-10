@@ -88,17 +88,23 @@ const resetPassword = async (email, otp, newPassword) => {
     try {
         // Await the findOne method
         const user = await db.User.findOne({ where: { email: email, otp: otp } });
-        
+        console.log("User found:", user);
         // Check if the user was found
-        if (!user) {
-            throw new Error('Invalid email or OTP');
-        }
+        if (user) {
         const newotp = otpService.generateOtp();
         user.password = hashPassword(newPassword);
         user.otp = newotp; 
 
         // Save the user object
         await user.save();
+        return true;
+        }
+        else 
+        {
+            return false;
+        }
+
+        
     } catch (error) {
         throw error;  
     }

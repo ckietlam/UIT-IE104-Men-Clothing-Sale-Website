@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mua Hàng & Vận Chuyển - H(T)ML Website</title>
+    <link rel="stylesheet" href="/styles/Terms.css">
+</head>
+<body>
+    <!-- Header Section -->
+    <%- include('../../partials/header', { activeIdx: 0 }) %>
+
+    <!-- Main Content Section -->
+    <div class="terms-page">
+        <div class="terms-container">
+            <h1>Chính Sách Mua Hàng & Vận Chuyển</h1>
+
+            <div class="terms-section">
+                <h2>1. Quy Trình Đặt Hàng</h2>
+                <ul>
+                    <li>Chọn sản phẩm và thêm vào giỏ hàng</li>
+                    <li>Kiểm tra giỏ hàng và số lượng sản phẩm</li>
+                    <li>Điền thông tin giao hàng</li>
+                    <li>Chọn phương thức thanh toán</li>
+                    <li>Xác nhận đơn hàng</li>
+                </ul>
+            </div>
+
+            <div class="terms-section">
+                <h2>2. Chính Sách Vận Chuyển</h2>
+                <p>Chúng tôi hợp tác với các đơn vị vận chuyển uy tín để đảm bảo hàng hóa đến tay khách hàng an toàn và đúng hẹn:</p>
+                <ul>
+                    <li>Nội thành: 1-2 ngày làm việc</li>
+                    <li>Ngoại thành: 2-3 ngày làm việc</li>
+                    <li>Tỉnh thành khác: 3-5 ngày làm việc</li>
+                </ul>
+            </div>
+
+            <div class="terms-section">
+                <h2>3. Phí Vận Chuyển</h2>
+                <ul>
+                    <li>Nội thành: 20.000đ - 30.000đ</li>
+                    <li>Ngoại thành: 30.000đ - 40.000đ</li>
+                    <li>Tỉnh thành khác: Tính theo khu vực</li>
+                    <li>Miễn phí vận chuyển cho đơn hàng trên 500.000đ</li>
+                </ul>
+            </div>
+
+            <div class="terms-section">
+                <h2>4. Theo Dõi Đơn Hàng</h2>
+                <p>Khách hàng có thể theo dõi đơn hàng thông qua:</p>
+                <ul>
+                    <li>Tài khoản cá nhân trên website</li>
+                    <li>Mã vận đơn được gửi qua email</li>
+                    <li>Liên hệ trực tiếp với bộ phận CSKH</li>
+                </ul>
+            </div>
+
+            <div class="terms-section">
+                <h2>5. Chính Sách Đổi Trả</h2>
+                <ul>
+                    <li>Thời gian đổi trả: trong vòng 7 ngày</li>
+                    <li>Sản phẩm còn nguyên tem mác</li>
+                    <li>Chưa qua sử dụng hoặc giặt là</li>
+                    <li>Có đầy đủ hóa đơn mua hàng</li>
+                </ul>
+            </div>
+
+            <div class="terms-footer">
+                <p>Cập nhật lần cuối: 10/12/2024</p>
+                <p>Mọi thắc mắc xin liên hệ: hotro@hmlwebsite.com</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer Section -->
+    <%- include('../../partials/footer', { activeIdx: 0 }) %>
+</body>
+</html>
