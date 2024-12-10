@@ -218,6 +218,78 @@ let deleteImage = (imageId) => {
     });
   });
 };
+
+let getAllUsers = (userId) => {
+  return new Promise(async (resolve, reject) => {
+    try {
+      let users = "";
+      if (userId === "ALL") {
+        users = await db.User.findAll({
+          raw: true,
+          attributes: [
+            "user_id",
+            "email",
+            "name",
+            "phone",
+            "updatedAt",
+            "role",
+          ],
+        });
+      }
+      if (userId && userId !== "ALL") {
+        users = await db.User.findOne({
+          where: { user_id: userId },
+          attributes: [
+            "user_id",
+            "email",
+            "name",
+            "phone",
+            "updatedAt",
+            "role",
+          ],
+          raw: false,
+          nest: true,
+        });
+      }
+      resolve(users);
+    } catch (e) {
+      reject(e);
+    }
+  });
+};
+
+let updateUserData = (data) => {
+  return new Promise(async (resolve, reject) => {
+    try {
+      if (!data) {
+        resolve({
+          errCode: 2,
+          errMessage: "Missing required parameters!",
+        });
+      }
+      let user = await db.User.findOne({
+        where: { user_id: data.user_id },
+        raw: false,
+      });
+      if (user) {
+        user.role = data.role;
+        await user.save();
+        resolve({
+          errCode: 0,
+          message: `Update the user role succeeds!`,
+        });
+      } else {
+        resolve({
+          errCode: 1,
+          errMessage: `User's not found!`,
+        });
+      }
+    } catch (e) {
+      reject(e);
+    }
+  });
+};
+
 module.exports = {
   getAllProducts,
   createNewProduct,
@@ -226,4 +298,6 @@ module.exports = {
   getAllCategories,
   getAllImagesById,
   deleteImage,
+  getAllUsers,
+  updateUserData,
 };

@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Quản lý sản phẩm</title>
+    <link rel="stylesheet" href="styles/order-management.css" />
+  </head>
+  <body>
+
+    <%- include('../partials/admin-sidebar', { activeIdx: 0 }) %>
+    <% if (typeof message !== 'undefined' && message != null) { %> 
+      <script> alert('<%= message %>'); </script> 
+    <% } %>
+
+    <!-- Main Content Section -->
+    <div class="mainContent">
+      <h2 class="pageTitle">Danh sách đơn hàng</h2>
+
+      <!-- Filter and Search Row -->
+      <div class="filterSearchRow">
+        <div class="filterEntries">
+          <label for="entriesSelect">Hiển thị</label>
+          <select id="entriesSelect" class="entriesSelect">
+            <option value="10">10</option>
+            <option value="25">25</option>
+            <option value="50">50</option>
+            <option value="100">100</option>
+          </select>
+          <span>đơn hàng</span>
+        </div>
+        <div class="searchContainer">
+          <label for="searchInput">Tìm kiếm:</label>
+          <input
+            type="text"
+            id="searchInput"
+            class="searchInput"
+            placeholder="Nhập từ khóa..."
+          />
+        </div>
+      </div>
+
+      <!-- Table Container -->
+      <div class="tableContainer">
+        <table class="dataTable">
+          <thead>
+            <tr>
+              <th>Order ID</th>
+              <th>Cost</th>
+              <th>User ID</th>
+              <th>Address Shipping</th>
+              <th>Status</th>
+              <th>Payment Type</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% for(let i=0; i < dataTable.length; i++) { %>
+            <tr>
+              <td><%= dataTable[i].order_id %></td>
+              <td><%= dataTable[i].cost %></td>
+              <td><%= dataTable[i].user_id %></td>
+              <td><%= dataTable[i].address_shipping %></td>
+              <td><%= dataTable[i].status %></td>
+              <td><%= dataTable[i].payment_type %></td>
+              <td class="action-buttons">
+                <button class="btn-edit">
+                  <a
+                    href="/edit-order-status?order_id=<%= dataTable[i].order_id %>"
+                    class="btn-edit"
+                    type="button"
+                    onmouseover="this.style.textDecoration='none'"
+                    >Edit</a
+                  >
+                </button>
+              </td>
+            </tr>
+            <% } %>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Pagination -->
+      <div class="paginationContainer">
+        <span class="paginationInfo">Showing 1 to 10 of 50 entries</span>
+        <div class="paginationControls">
+          <button class="paginationButton" id="prevPage">Previous</button>
+          <button class="paginationButton active">1</button>
+          <button class="paginationButton">2</button>
+          <button class="paginationButton">3</button>
+          <button class="paginationButton" id="nextPage">Next</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Add your JavaScript file -->
+    <script src="scripts/admin-sidebar.js"></script>
+    <script src="scripts/admin-order-management.js"></script>
+  </body>
+</html>
