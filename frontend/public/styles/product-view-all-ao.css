@@ -5,7 +5,23 @@
     box-sizing: border-box;
     font-family: "Montserrat", sans-serif;
 }
+.carousel-track {
+  display: flex; /* Đặt các sản phẩm theo hàng ngang */
+  flex-wrap: wrap; /* Cho phép tự động xuống hàng khi không đủ chỗ */
+  gap: 16px; /* Khoảng cách giữa các sản phẩm */
+  justify-content: center; /* Canh giữa các sản phẩm trong container */
+}
 
+.product-card {
+  flex: 1 1 calc(20% - 16px); /* Mỗi sản phẩm chiếm 20% chiều rộng container trừ khoảng cách */
+  max-width: calc(20% - 16px); /* Đảm bảo không vượt quá 20% chiều rộng */
+  box-sizing: border-box; /* Bao gồm padding và border vào kích thước tổng */
+  text-align: center; /* Canh giữa nội dung bên trong */
+  border: 1px solid #ddd; /* Viền nhẹ cho mỗi sản phẩm */
+  border-radius: 8px; /* Góc bo tròn */
+  overflow: hidden; /* Ẩn nội dung vượt quá */
+  padding: 8px; /* Khoảng cách bên trong */
+}
 @font-face {
   font-family: 'Montserrat'; 
   src: url('../assets/fonts/Montserrat/Montserrat-Regular.ttf') format('truetype');

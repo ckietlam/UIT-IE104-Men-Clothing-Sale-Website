@@ -126,7 +126,7 @@ let handleDeleteImageById = async (req, res) => {
         let imagesData = await productService.getAllImagesById(productId);
         let images = "";
         if (imagesData.data) {
-          images = imagesData.data.map((item, index) => ({
+            images = imagesData.data.map((item, index) => ({
             image_id: item.image_id,
             image: Buffer.from(item.image, "base64").toString("binary"),
           }));

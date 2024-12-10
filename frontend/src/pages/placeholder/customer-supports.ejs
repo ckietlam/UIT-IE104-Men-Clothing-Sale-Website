@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hệ Thống Hỗ Trợ - H(T)ML Website</title>
+    <link rel="stylesheet" href="/styles/Terms.css">
+</head>
+<body>
+    <!-- Header Section -->
+    <%- include('../../partials/header', { activeIdx: 0 }) %>
+
+    <!-- Main Content Section -->
+    <main class="main-content terms-page">
+        <div class="terms-container">
+            <h1>Hệ Thống Hỗ Trợ Khách Hàng</h1>
+            
+            <section class="terms-section">
+                <h2>1. Liên Hệ Hỗ Trợ</h2>
+                <p>Chúng tôi luôn sẵn sàng hỗ trợ bạn. Bạn có thể liên hệ với chúng tôi qua các kênh sau:</p>
+                <ul>
+                    <li>Điện thoại: 0123 456 789</li>
+                    <li>Email: hotro@htmlwebsite.com</li>
+                    <li>Địa chỉ: Số X, Đường Y, Phường Z, Thành phố</li>
+                </ul>
+            </section>
+
+            <section class="terms-section">
+                <h2>2. Các Câu Hỏi Thường Gặp (FAQ)</h2>
+                <div class="faq-item">
+                    <h3>Làm thế nào để theo dõi đơn hàng?</h3>
+                    <p>Bạn có thể theo dõi đơn hàng bằng cách đăng nhập vào tài khoản và chọn mục "Đơn hàng của tôi".</p>
+                </div>
+                <div class="faq-item">
+                    <h3>Chính sách đổi trả như thế nào?</h3>
+                    <p>Chúng tôi cho phép đổi trả trong vòng 7 ngày kể từ ngày nhận hàng. Sản phẩm phải còn nguyên nhãn mác và chưa qua sử dụng.</p>
+                </div>
+                <div class="faq-item">
+                    <h3>Làm sao để thanh toán?</h3>
+                    <p>Chúng tôi hỗ trợ nhiều hình thức thanh toán: Chuyển khoản ngân hàng, thanh toán khi nhận hàng (COD), và các ví điện tử.</p>
+                </div>
+            </section>
+
+            <section class="terms-section">
+                <h2>3. Hỗ Trợ Kỹ Thuật</h2>
+                <p>Nếu bạn gặp bất kỳ vấn đề kỹ thuật nào khi sử dụng trang web, vui lòng:</p>
+                <ul>
+                    <li>Kiểm tra kết nối internet</li>
+                    <li>Thử làm mới trang</li>
+                    <li>Liên hệ bộ phận hỗ trợ kỹ thuật của chúng tôi</li>
+                </ul>
+            </section>
+
+            <section class="terms-section">
+                <h2>4. Giờ Làm Việc Hỗ Trợ</h2>
+                <p>Đội ngũ hỗ trợ khách hàng của chúng tôi làm việc:</p>
+                <ul>
+                    <li>Thứ 2 - Thứ 6: 8:00 AM - 9:00 PM</li>
+                    <li>Thứ 7 - Chủ Nhật: 9:00 AM - 6:00 PM</li>
+                    <li>Các ngày lễ: Hỗ trợ qua email</li>
+                </ul>
+            </section>
+
+            <section class="terms-section">
+                <h2>5. Phản Hồi Của Khách Hàng</h2>
+                <p>Chúng tôi rất trân trọng mọi ý kiến đóng góp của bạn. Vui lòng gửi phản hồi về:</p>
+                <ul>
+                    <li>Email: phanhoi@htmlwebsite.com</li>
+                    <li>Biểu mẫu trực tuyến trên trang web</li>
+                    <li>Messenger hoặc các kênh mạng xã hội của chúng tôi</li>
+                </ul>
+            </section>
+
+            <p class="terms-footer">Hệ thống hỗ trợ được cập nhật lần cuối: Tháng 12 năm 2024</p>
+        </div>
+    </main>
+
+    <!-- Footer Section -->
+    <%- include('../../partials/footer', { activeIdx: 0 }) %>
+</body>
+</html>

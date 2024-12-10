@@ -5,6 +5,18 @@
     box-sizing: border-box;
     font-family: "Montserrat", sans-serif;
 }
+.product-description {
+  white-space: nowrap; /* Không cho phép xuống dòng */
+  overflow: hidden;    /* Ẩn bớt phần văn bản thừa */
+  text-overflow: ellipsis; /* Thêm dấu ba chấm khi vượt quá */
+}
+
+.product-name {
+  white-space: nowrap; /* Không cho phép xuống dòng */
+  overflow: hidden;    /* Ẩn phần văn bản thừa */
+  text-overflow: ellipsis; /* Thêm dấu ba chấm khi vượt quá */
+}
+
 
 @font-face {
   font-family: 'Montserrat'; 
