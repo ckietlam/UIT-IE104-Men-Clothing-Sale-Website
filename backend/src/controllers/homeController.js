@@ -17,6 +17,12 @@ let getAdmin = async (req, res) => {
 };
 let getProductManagementPage = async (req, res) => {
   try {
+    if (!req.session.user) {
+      return res.redirect("/404");
+    }
+    if (req.session.user.role !== "Admin")
+      return res.redirect("/404");
+
     let data = await productService.getAllProducts("ALL");
     return res.render("pages/product-management", {
       dataTable: data,
@@ -31,6 +37,12 @@ let getProductManagementPage = async (req, res) => {
 };
 let getOrderManagementPage = async (req, res) => {
   try {
+    if (!req.session.user) {
+      return res.redirect("/404");
+    }
+    if (req.session.user.role !== "Admin")
+      return res.redirect("/404");
+
     let data = await orderService.getAllOrder();
     return res.render("pages/order-management", {
       dataTable: data.data,
@@ -45,6 +57,12 @@ let getOrderManagementPage = async (req, res) => {
 };
 let getEditProductPage = async (req, res) => {
   try {
+    if (!req.session.user) {
+      return res.redirect("/404");
+    }
+    if (req.session.user.role !== "Admin")
+      return res.redirect("/404");
+
     let productId = req.query.pd_id;
     if (productId) {
       let data = await productService.getAllProducts(productId);
@@ -76,6 +94,12 @@ let getEditProductPage = async (req, res) => {
 
 let getUserManagementPage = async (req, res) => {
   try {
+    if (!req.session.user) {
+      return res.redirect("/404");
+    }
+    if (req.session.user.role !== "Admin")
+      return res.redirect("/404");
+
     let data = await productService.getAllUsers("ALL");
     return res.render("pages/user-management", {
       dataTable: data,
@@ -91,6 +115,12 @@ let getUserManagementPage = async (req, res) => {
 
 let getEditOrderPage = async (req, res) => {
   try {
+    if (!req.session.user) {
+      return res.redirect("/404");
+    }
+    if (req.session.user.role !== "Admin")
+      return res.redirect("/404");
+
     let orderId = req.query.order_id;
     if (orderId) {
       let data = await orderService.getOderByOrderId(orderId);
@@ -111,6 +141,12 @@ let getEditOrderPage = async (req, res) => {
 
 let getAddProductPage = async (req, res) => {
   try {
+    if (!req.session.user) {
+      return res.redirect("/404");
+    }
+    if (req.session.user.role !== "Admin")
+      return res.redirect("/404");
+
     let categoriesData = await productService.getAllCategories();
     return res.render("pages/add-product", {
       categoriesData: categoriesData.data,
