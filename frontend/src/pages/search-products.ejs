@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>H(T)ML Product</title>
+    <link rel="icon" type="product_img" href="images/LOGO ICON.png">
+    <link rel="stylesheet" href="styles/product-view-all.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600&family=Poppins:wght@900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet">
+    
+</head>
+<body>
+
+    <%- include('../partials/header', { activeIdx: 1 }) %>
+
+    <!-- Product Section -->
+     
+    <div class="categories-container">
+        <div class="category-section">
+            <div class="category-header">
+                <a href="/product-view-all-ao" class="view-all" onclick="toggleView(this)">Xem tất cả</a>
+            </div>
+            <div class="product-carousel limited-view">
+                <div class="carousel-track">
+                    
+                    <%for (let i = 0; i < productsData.length; i++) {%>
+                        <div class="product-card">
+                            <a href="/product-view?pd_id=<%=productsData[i].pd_id%>">
+                                <img src="<%= productsData[i].productImageData[0].image %>" alt="<%= productsData[i].name %>">
+                                <h3 class="product-name">
+                                    <%= productsData[i].name.length > 30 ? productsData[i].name.substring(0, 30) + "..." : productsData[i].name %>
+                                </h3>
+                                <div class="product-details">
+                                    <p class="product-description">
+                                        <%= productsData[i].description.length > 100 ? productsData[i].description.substring(0, 100) + "..." : productsData[i].description %>
+                                    </p>
+                                    <p class="product-price"><%= productsData[i].price %>đ</p>
+                                </div>
+                            </a>
+                        </div>
+                    <%}%>
+
+                </div>
+            </div>
+        </div>
+          
+
+        
+
+           <!-- Footer Section -->
+    
+        <!-- Left Side of Footer -->
+        <footer class="footer">
+            <div class="footer-left">
+                <div class="footer-newsletter">
+                    <h3>Theo Dõi Các Tin Tức Mới Nhất Từ H(T)ML!</h3>
+                    <div class="newsletter-form">
+                        <input type="email" placeholder="Nhập Email Của Bạn">
+                        <button><img src="icons/arrow-forward.svg" alt="Arrow"></button>
+                    </div>
+                    <label>
+                        <input type="checkbox"> Bằng việc nhập email, bạn đồng ý với việc nhận các tin quảng cáo, ưu đãi từ
+                        H(T)ML
+                    </label>
+                </div>
+                <div class="footer-social">
+                    <div class="footer-social-icons">
+                        <img src="icons/logos/logo-instagram.svg" alt="Instagram">
+                        <img src="icons/logos/logo-facebook.svg" alt="Facebook">
+                        <img src="icons/logos/logo-pinterest.svg" alt="Pinterest">
+                        <img src="icons/logos/logo-tiktok.svg" alt="TikTok">
+                    </div>
+                    <p>© 2024 H(T)ML. All Rights Reserved.</p>
+                </div>
+            </div>
+    
+            <!-- Right Side of Footer -->
+            <div class="footer-right">
+                <div class="footer-links">
+                    <div>
+                        <h4>Về H(T)ML</h4>
+                        <a href="#">Bộ Sưu Tập</a>
+                        <a href="#">Quyền Riêng Tư</a>
+                        <a href="#">Hệ Thống Hỗ Trợ</a>
+                        <a href="#">Điều Khoản</a>
+                        <a href="#">Bản Quyền</a>
+                    </div>
+                    <div>
+                        <h4>Hỗ Trợ</h4>
+                        <a href="#">Mua Hàng & Vận Chuyển</a>
+                        <a href="#">Trả Hàng & Hoàn Tiền</a>
+                        <a href="#">Các Câu Hỏi Thường Gặp</a>
+                        <a href="#">Liên Hệ Với Chúng Tôi</a>
+                    </div>
+                </div>
+            </div>
+        </footer>
+
+    <script src="scripts/product-view-all.js"></script>
+</body>
+</html>

@@ -217,7 +217,6 @@ let getProductViewAProduct = async (req, res) => {
     });
   }
 };
-
 module.exports = {
   getAdmin,
   getProductManagementPage,

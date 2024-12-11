@@ -495,29 +495,41 @@ const getProductById = (pd_id) => {
     }
   });
 };
-// Tim kiem 
-let searchProductsByName = async (keyword) => {
-  try {
-    // Tìm kiếm sản phẩm theo tên (không phân biệt chữ hoa/thường)
-    let products = await db.Product.findAll({
-      where: {
-        name: {
-          [db.Sequelize.Op.like]: `%${keyword}%`, // Sử dụng LIKE để tìm kiếm
+//Tim kiem 
+
+const searchProductsByName = (name) => {
+  return new Promise(async (resolve, reject) => {
+    try {
+      const products = await db.Product.findAll({
+        where: {
+          name: {
+            [Sequelize.Op.like]: `%${name}%`, // Tìm kiếm tất cả các sản phẩm có tên chứa từ khóa
+          },
         },
-      },
-    });
-    return {
-      errCode: 0,
-      data: products,
-    };
-  } catch (e) {
-    console.log(e);
-    return {
-      errCode: -1,
-      errMessage: "Error from server!",
-    };
-  }
+        attributes: [
+          [Sequelize.fn("DISTINCT", Sequelize.col("name")), "name"],
+          "pd_id",
+          "description",
+          "price",
+        ],
+        include: [
+          {
+            model: db.Image,
+            as: "productImageData",
+            attributes: ["image_id", "image"],
+          },
+        ],
+        raw: false,
+        nest: true,
+      });
+      resolve(products);
+    } catch (e) {
+      reject(e);
+    }
+  });
 };
+
+
 
 module.exports = {
   getAllProducts,
