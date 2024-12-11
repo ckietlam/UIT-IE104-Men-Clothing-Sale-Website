@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>H(T)ML Website</title>
+    <link rel="stylesheet" href="styles/payment-info.css" />
+  </head>
+
+  <body>
+    <!-- Header Section -->
+    <header class="header">
+      <div class="brand-logo">
+        <img src="icons/logos/logo-html.svg" alt="H(T)ML Logo" />
+        <span class="brand-name">H(T)ML</span>
+      </div>
+    </header>
+
+    <!-- Navigation Steps -->
+    <div class="navSteps">
+      <span>Giỏ hàng</span> / <span>Thông tin</span> / <span>Giao hàng</span> /
+      <span>Thanh toán</span>
+    </div>
+
+    <!-- Main Section -->
+    <main class="mainContent">
+      <!-- Left Column -->
+      <div class="leftColumn">
+        <div class="contactInformation">
+          <div class="headerSection">
+            <h2>Thông Tin Liên Hệ</h2>
+          </div>
+          <form>
+            <div class="inputGroup">
+              <!-- Email -->
+              <div class="inputWrapper">
+                <input
+                  type="email"
+                  id="email"
+                  placeholder="Nhập email của bạn"
+                  value="<%=email %>"
+                  required
+                />
+                <img
+                  src="icons/icon-user.svg"
+                  alt="User Icon"
+                  class="inputIcon"
+                />
+              </div>
+            </div>
+          </form>
+        </div>
+
+        <form class="contactForm">
+          <!-- Họ và Tên -->
+          <div class="doubleInputGroup">
+            <div class="inputWrapper">
+              <input type="text" id="lastName" placeholder="Họ" required />
+            </div>
+            <div class="inputWrapper">
+              <input type="text" id="firstName" placeholder="Tên" required />
+            </div>
+          </div>
+
+          <!-- Công Ty -->
+          <div class="inputGroup">
+            <input
+              type="text"
+              id="company"
+              placeholder="Công Ty (Không Bắt Buộc)"
+            />
+          </div>
+
+          <!-- Địa Chỉ -->
+          <div class="inputGroup">
+            <input type="text" id="address" placeholder="Địa Chỉ" required />
+          </div>
+
+          <!-- Tòa Nhà, Số Nhà -->
+          <div class="inputGroup">
+            <input
+              type="text"
+              id="building"
+              placeholder="Tòa Nhà, Số Nhà (Không Bắt Buộc)"
+            />
+          </div>
+
+          <!-- Thành Phố và Quận Huyện -->
+          <div class="doubleInputGroup">
+            <div class="inputWrapper">
+              <div class="inputWrapper">
+                <img
+                  src="icons/icon-search.svg"
+                  alt="City Icon"
+                  class="inputIcon"
+                />
+                <input type="text" id="city" placeholder="Thành Phố" required />
+              </div>
+            </div>
+            <div class="inputWrapper">
+              <div class="inputWrapper">
+                <img
+                  src="icons/icon-search.svg"
+                  alt="District Icon"
+                  class="inputIcon"
+                />
+                <input
+                  type="text"
+                  id="district"
+                  placeholder="Quận Huyện"
+                  required
+                />
+              </div>
+            </div>
+          </div>
+
+          <!-- Số Điện Thoại -->
+          <div class="inputGroup">
+            <div class="inputWrapper">
+              <img
+                src="icons/icon-phone-minimal.svg"
+                alt="Phone Icon"
+                class="inputIcon"
+              />
+              <input
+                type="text"
+                id="phone"
+                placeholder="Số Điện Thoại"
+                value="<%= phone%>"
+                required
+              />
+            </div>
+          </div>
+        </form>
+        <!-- Payment Method -->
+        <!-- <div>
+          <h3>Chọn Phương Thức Thanh Toán</h3>
+          <div class="radioGroup">
+            <div class="item GHN">
+              <input
+                type="radio"
+                name="payment_type"
+                id="payment_type"
+                value="CASH"
+              />
+              <label>
+                <span>CASH</span>
+              </label>
+            </div>
+          </div>
+          <div class="radioGroup">
+            <div class="item GHN">
+              <input
+                type="radio"
+                name="payment_type"
+                id="payment_type"
+                value="CARD"
+              />
+              <label>
+                <span>CARD</span>
+              </label>
+            </div>
+          </div>
+        </div> -->
+        <!-- Navigation Buttons -->
+        <div class="formButtons">
+          <a href="#" class="backButton">
+            <img
+              src="icons/icon-backward.svg"
+              alt="Back Icon"
+              class="buttonIcon"
+            />
+            Quay Lại Giỏ Hàng
+          </a>
+          <button type="submit" class="continueButton">Tiếp Tục</button>
+        </div>
+      </div>
+
+      <!-- Right Column -->
+      <div class="rightColumn">
+        <h2>Giỏ Hàng Của Bạn</h2>
+        <% let sum = 0; %> <%for (let i = 0; i < cartData.length; i++) {%>
+        <div class="cartItem">
+          <img
+            src="<%= cartData[i].productCartData.productImageData[0].image %>"
+            alt="<%= cartData[i].productCartData.name %>"
+          />
+          <div class="cartDetails">
+            <p class="itemName"><%= cartData[i].productCartData.name %></p>
+            <p>Kích Cỡ: <%= cartData[i].productCartData.size %></p>
+            <div class="quantityControl">
+              <span class="quantity">Số lượng: <%=cartData[i].quantity %></span>
+            </div>
+          </div>
+          <p class="itemPrice">
+            <% let itemPrice = cartData[i].productCartData.price *
+            cartData[i].quantity; sum += itemPrice; %> <%= itemPrice %>
+          </p>
+        </div>
+        <%}%>
+
+        <div class="cartSummary">
+          <p><span>Tổng (3)</span><span><%=sum%></span></p>
+          <p><span>Thuế, Phí</span><span>0đ</span></p>
+          <p><span>Phí Giao Hàng</span><span>0đ</span></p>
+          <p class="totalAmount">
+            <span>Tổng Cộng:</span><span><%=sum%></span>
+          </p>
+        </div>
+      </div>
+    </main>
+
+    <!-- Footer Section -->
+
+    <!-- Left Side of Footer -->
+    <footer class="footer">
+      <div class="footer-left">
+        <div class="footer-newsletter">
+          <h3>Theo Dõi Các Tin Tức Mới Nhất Từ H(T)ML!</h3>
+          <div class="newsletter-form">
+            <input type="email" placeholder="Nhập Email Của Bạn" />
+            <button>
+              <img src="icons/arrow-forward.svg" alt="Arrow" />
+            </button>
+          </div>
+          <label>
+            <input type="checkbox" /> Bằng việc nhập email, bạn đồng ý với việc
+            nhận các tin quảng cáo, ưu đãi từ H(T)ML
+          </label>
+        </div>
+        <div class="footer-social">
+          <div class="footer-social-icons">
+            <img src="icons/logos/logo-instagram.svg" alt="Instagram" />
+            <img src="icons/logos/logo-facebook.svg" alt="Facebook" />
+            <img src="icons/logos/logo-pinterest.svg" alt="Pinterest" />
+            <img src="icons/logos/logo-tiktok.svg" alt="TikTok" />
+          </div>
+          <p>© 2024 H(T)ML. All Rights Reserved.</p>
+        </div>
+      </div>
+
+      <!-- Right Side of Footer -->
+      <div class="footer-right">
+        <div class="footer-links">
+          <div>
+            <h4>Về H(T)ML</h4>
+            <a href="#">Bộ Sưu Tập</a>
+            <a href="#">Quyền Riêng Tư</a>
+            <a href="#">Hệ Thống Hỗ Trợ</a>
+            <a href="#">Điều Khoản</a>
+            <a href="#">Bản Quyền</a>
+          </div>
+          <div>
+            <h4>Hỗ Trợ</h4>
+            <a href="#">Mua Hàng & Vận Chuyển</a>
+            <a href="#">Trả Hàng & Hoàn Tiền</a>
+            <a href="#">Các Câu Hỏi Thường Gặp</a>
+            <a href="#">Liên Hệ Với Chúng Tôi</a>
+          </div>
+        </div>
+      </div>
+    </footer>
+    <script src="scripts/payment-info.js"></script>
+  </body>
+</html>
