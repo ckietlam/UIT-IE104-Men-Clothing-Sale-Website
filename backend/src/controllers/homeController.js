@@ -1,4 +1,6 @@
 import productService from "../services/productService";
+import cartService from "../services/cartService";
+import orderService from "../services/orderService";
 import express from "express";
 const app = express();
 
@@ -20,8 +22,7 @@ let getProductManagementPage = async (req, res) => {
     if (!req.session.user) {
       return res.redirect("/404");
     }
-    if (req.session.user.role !== "Admin")
-      return res.redirect("/404");
+    if (req.session.user.role !== "Admin") return res.redirect("/404");
 
     let data = await productService.getAllProducts("ALL");
     return res.render("pages/product-management", {
@@ -40,8 +41,7 @@ let getOrderManagementPage = async (req, res) => {
     if (!req.session.user) {
       return res.redirect("/404");
     }
-    if (req.session.user.role !== "Admin")
-      return res.redirect("/404");
+    if (req.session.user.role !== "Admin") return res.redirect("/404");
 
     let data = await orderService.getAllOrder();
     return res.render("pages/order-management", {
@@ -60,8 +60,7 @@ let getEditProductPage = async (req, res) => {
     if (!req.session.user) {
       return res.redirect("/404");
     }
-    if (req.session.user.role !== "Admin")
-      return res.redirect("/404");
+    if (req.session.user.role !== "Admin") return res.redirect("/404");
 
     let productId = req.query.pd_id;
     if (productId) {
@@ -97,8 +96,7 @@ let getUserManagementPage = async (req, res) => {
     if (!req.session.user) {
       return res.redirect("/404");
     }
-    if (req.session.user.role !== "Admin")
-      return res.redirect("/404");
+    if (req.session.user.role !== "Admin") return res.redirect("/404");
 
     let data = await productService.getAllUsers("ALL");
     return res.render("pages/user-management", {
@@ -118,8 +116,7 @@ let getEditOrderPage = async (req, res) => {
     if (!req.session.user) {
       return res.redirect("/404");
     }
-    if (req.session.user.role !== "Admin")
-      return res.redirect("/404");
+    if (req.session.user.role !== "Admin") return res.redirect("/404");
 
     let orderId = req.query.order_id;
     if (orderId) {
@@ -144,8 +141,7 @@ let getAddProductPage = async (req, res) => {
     if (!req.session.user) {
       return res.redirect("/404");
     }
-    if (req.session.user.role !== "Admin")
-      return res.redirect("/404");
+    if (req.session.user.role !== "Admin") return res.redirect("/404");
 
     let categoriesData = await productService.getAllCategories();
     return res.render("pages/add-product", {
@@ -300,7 +296,95 @@ let getProductViewAProduct = async (req, res) => {
     });
   }
 };
+let getCheckOutPage = async (req, res) => {
+  try {
+    let user_id = req.session.user.user_id || NULL;
+    let cartData = await cartService.getCartByUserId(user_id);
+    console.log("Noah check session: ", req.session);
 
+    return res.render("pages/payment-cart", {
+      cartData: cartData,
+      user_id: user_id,
+    });
+  } catch (e) {
+    console.log(e);
+    return res.status(200).json({
+      errCode: -1,
+      errMessage: "Error from server",
+    });
+  }
+};
+
+let deleteCartItem = async (req, res) => {
+  try {
+    await cartService.deleteCartItemById(req.query.cart_item_id);
+    let user_id = req.session.user.user_id || NULL;
+    let cartData = await cartService.getCartByUserId(user_id);
+    return res.render("pages/payment-cart", {
+      cartData: cartData,
+      user_id: user_id,
+    });
+  } catch (e) {
+    console.log(e);
+    return res.status(200).json({
+      errCode: -1,
+      errMessage: "Error from server",
+    });
+  }
+};
+
+let getPaymentInfoPage = async (req, res) => {
+  try {
+    let user_id = req.session.user.user_id || NULL;
+    let cartData = await cartService.getCartByUserId(user_id);
+    return res.render("pages/payment-info", {
+      cartData: cartData,
+      user_id: user_id,
+      email: req.session.user.email,
+      phone: req.session.user.phone,
+    });
+  } catch (e) {
+    console.log(e);
+    return res.status(200).json({
+      errCode: -1,
+      errMessage: "Error from server",
+    });
+  }
+};
+
+let getPaymentDeliveryPage = async (req, res) => {
+  try {
+    let user_id = req.session.user.user_id || NULL;
+    const { email, lastName, firstName, address, city, phone, district } =
+      req.query;
+
+    let deliveryAddress = address + ", " + district + ", " + city;
+    let selectedPaymentType = "CASH";
+    let addressShipping = deliveryAddress + " " + lastName + " Tên: " + firstName + " SDT: " + phone;
+    //tạo order rồi order detail ở đây: ---
+    console.log("Noah check input order create: ", addressShipping, " ", selectedPaymentType)
+
+    let cartData = await cartService.getCartByUserId(user_id);
+    let order = await orderService.createOrder(
+      user_id,
+      selectedPaymentType,
+      addressShipping
+    );
+    await cartService.clearCart(user_id);
+    return res.render("pages/payment-delivery", {
+      cartData: cartData,
+      user_id: user_id,
+      deliveryAddress: deliveryAddress,
+      email: email,
+    });
+  } catch (e) {
+    console.log(e);
+    return res.status(200).json({
+      errCode: -1,
+      errMessage: "Error from server",
+    });
+  }
+};
 module.exports = {
   getAdmin,
   getProductManagementPage,
@@ -318,4 +402,8 @@ module.exports = {
   getProductViewAllQuan,
   getProductViewAllPhuKien,
   getProductViewAProduct,
+  getCheckOutPage,
+  deleteCartItem,
+  getPaymentInfoPage,
+  getPaymentDeliveryPage,
 };
