@@ -1,6 +1,7 @@
 import productService from "../services/productService";
 import cartService from "../services/cartService";
 import orderService from "../services/orderService";
+import nodemailer from "nodemailer";
 import express from "express";
 const app = express();
 
@@ -337,11 +338,14 @@ let getPaymentInfoPage = async (req, res) => {
   try {
     let user_id = req.session.user.user_id || NULL;
     let cartData = await cartService.getCartByUserId(user_id);
+    let total = req.body.total;
+    console.log("\n\n Noah check sum: ", total);
     return res.render("pages/payment-info", {
       cartData: cartData,
       user_id: user_id,
       email: req.session.user.email,
       phone: req.session.user.phone,
+      total: total,
     });
   } catch (e) {
     console.log(e);
@@ -354,28 +358,52 @@ let getPaymentInfoPage = async (req, res) => {
 
 let getPaymentDeliveryPage = async (req, res) => {
   try {
+    
     let user_id = req.session.user.user_id || NULL;
-    const { email, lastName, firstName, address, city, phone, district } =
+    const { email, lastName, firstName, address, city, phone, district, total } =
       req.query;
 
     let deliveryAddress = address + ", " + district + ", " + city;
     let selectedPaymentType = "CASH";
-    let addressShipping = deliveryAddress + " " + lastName + " Tên: " + firstName + " SDT: " + phone;
+    let addressShipping = deliveryAddress + ". " + "Họ tên của bạn là: " + lastName + firstName + ". Số điện thoại là: " + phone;
     //tạo order rồi order detail ở đây: ---
     console.log("Noah check input order create: ", addressShipping, " ", selectedPaymentType)
-
+    console.log("req query ", req.query);
     let cartData = await cartService.getCartByUserId(user_id);
     let order = await orderService.createOrder(
       user_id,
       selectedPaymentType,
       addressShipping
     );
+   
+
+    const transporter = nodemailer.createTransport({
+      service: "gmail",
+      port: 465,
+      secure: true,
+      logger: true,
+      debug: true,
+      secureConnection: false,
+      auth: {
+        user: process.env.EMAIL_USER,
+        pass: process.env.EMAIL_PASS,
+      },
+      tls: {
+        rejectUnauthorized: true,
+      },
+    });
+
+    const mailOptions = {
+      from: "process.env.EMAIL_USER",
+      to: email,
+      subject: "Xác nhận đơn hàng",
+      text: `Cảm ơn bạn đã đặt hàng! Đơn hàng của bạn đang được xử lý. \nĐịa chỉ giao hàng: ${addressShipping}. \nTổng số tiền: ${total}. \nPhương thức thanh toán: ${selectedPaymentType}.`,
+    };
+
+    await transporter.sendMail(mailOptions);
     await cartService.clearCart(user_id);
-    return res.render("pages/payment-delivery", {
-      cartData: cartData,
-      user_id: user_id,
-      deliveryAddress: deliveryAddress,
-      email: email,
+    return res.render("pages/homepage", {
+      message: `Your order has been placed successfully, check at this email address: ${email}`,
     });
   } catch (e) {
     console.log(e);

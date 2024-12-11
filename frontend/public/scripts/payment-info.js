@@ -18,6 +18,7 @@ document.querySelector('.continueButton').addEventListener('click', (e) => {
   const city = document.getElementById('city').value.trim();
   const phone = document.getElementById('phone').value.trim();
   const district = document.getElementById('district').value.trim();
+  const total = document.querySelector('input[name="total"]').value;
 
   // Khởi tạo thông báo lỗi
   let errorMessage = '';
@@ -59,7 +60,8 @@ document.querySelector('.continueButton').addEventListener('click', (e) => {
     city,
     phone,
     district,
-    selectedPaymentType
+    selectedPaymentType,
+    total
   };
 
   const queryParams = new URLSearchParams(formData).toString();

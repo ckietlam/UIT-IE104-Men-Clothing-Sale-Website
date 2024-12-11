@@ -11,15 +11,16 @@
     <!-- Header Section -->
     <header class="header">
       <div class="brand-logo">
-        <img src="icons/logos/logo-html.svg" alt="H(T)ML Logo" />
+        <a href = "/">
+          <img src="icons/logos/logo-html.svg" alt="H(T)ML Logo">
+        </a>
         <span class="brand-name">H(T)ML</span>
       </div>
     </header>
 
     <!-- Navigation Steps -->
     <div class="navSteps">
-      <span>Giỏ hàng</span> / <span>Thông tin</span> / <span>Giao hàng</span> /
-      <span>Thanh toán</span>
+      <span>Giỏ hàng</span> / <span>Thông tin và đặt hàng</span>
     </div>
 
     <!-- Main Section -->
@@ -57,19 +58,14 @@
             <div class="inputWrapper">
               <input type="text" id="lastName" placeholder="Họ" required />
             </div>
+            
             <div class="inputWrapper">
               <input type="text" id="firstName" placeholder="Tên" required />
             </div>
           </div>
 
           <!-- Công Ty -->
-          <div class="inputGroup">
-            <input
-              type="text"
-              id="company"
-              placeholder="Công Ty (Không Bắt Buộc)"
-            />
-          </div>
+          
 
           <!-- Địa Chỉ -->
           <div class="inputGroup">
@@ -77,13 +73,7 @@
           </div>
 
           <!-- Tòa Nhà, Số Nhà -->
-          <div class="inputGroup">
-            <input
-              type="text"
-              id="building"
-              placeholder="Tòa Nhà, Số Nhà (Không Bắt Buộc)"
-            />
-          </div>
+          
 
           <!-- Thành Phố và Quận Huyện -->
           <div class="doubleInputGroup">
@@ -129,9 +119,13 @@
                 value="<%= phone%>"
                 required
               />
+              
             </div>
           </div>
+          
         </form>
+
+        
         <!-- Payment Method -->
         <!-- <div>
           <h3>Chọn Phương Thức Thanh Toán</h3>
@@ -163,6 +157,19 @@
           </div>
         </div> -->
         <!-- Navigation Buttons -->
+        <form>
+          <div class="shippingOptions">
+              <h3>Lựa Chọn Phương Thức Thanh Toán</h3>
+              <div class="radioGroup">
+                  <div class="item GHN">
+                      <label>
+                          <input type="radio" name="shipping" checked>
+                          <span>Tiền mặt</span>
+                      </label>
+                  </div>
+              </div>
+          </div>
+        </form>
         <div class="formButtons">
           <a href="#" class="backButton">
             <img
@@ -172,9 +179,11 @@
             />
             Quay Lại Giỏ Hàng
           </a>
-          <button type="submit" class="continueButton">Tiếp Tục</button>
+          <input type="hidden" name="total" value="<%= total %>">
+          <button type="submit" class="continueButton">Đặt hàng</button>
         </div>
       </div>
+      
 
       <!-- Right Column -->
       <div class="rightColumn">
@@ -206,6 +215,8 @@
           <p class="totalAmount">
             <span>Tổng Cộng:</span><span><%=sum%></span>
           </p>
+          <input type="hidden" id="total" name="total" value="<%= sum %>">
+
         </div>
       </div>
     </main>
@@ -213,53 +224,8 @@
     <!-- Footer Section -->
 
     <!-- Left Side of Footer -->
-    <footer class="footer">
-      <div class="footer-left">
-        <div class="footer-newsletter">
-          <h3>Theo Dõi Các Tin Tức Mới Nhất Từ H(T)ML!</h3>
-          <div class="newsletter-form">
-            <input type="email" placeholder="Nhập Email Của Bạn" />
-            <button>
-              <img src="icons/arrow-forward.svg" alt="Arrow" />
-            </button>
-          </div>
-          <label>
-            <input type="checkbox" /> Bằng việc nhập email, bạn đồng ý với việc
-            nhận các tin quảng cáo, ưu đãi từ H(T)ML
-          </label>
-        </div>
-        <div class="footer-social">
-          <div class="footer-social-icons">
-            <img src="icons/logos/logo-instagram.svg" alt="Instagram" />
-            <img src="icons/logos/logo-facebook.svg" alt="Facebook" />
-            <img src="icons/logos/logo-pinterest.svg" alt="Pinterest" />
-            <img src="icons/logos/logo-tiktok.svg" alt="TikTok" />
-          </div>
-          <p>© 2024 H(T)ML. All Rights Reserved.</p>
-        </div>
-      </div>
+    <%- include('../partials/footer', { activeIdx: 1 }) %>
 
-      <!-- Right Side of Footer -->
-      <div class="footer-right">
-        <div class="footer-links">
-          <div>
-            <h4>Về H(T)ML</h4>
-            <a href="#">Bộ Sưu Tập</a>
-            <a href="#">Quyền Riêng Tư</a>
-            <a href="#">Hệ Thống Hỗ Trợ</a>
-            <a href="#">Điều Khoản</a>
-            <a href="#">Bản Quyền</a>
-          </div>
-          <div>
-            <h4>Hỗ Trợ</h4>
-            <a href="#">Mua Hàng & Vận Chuyển</a>
-            <a href="#">Trả Hàng & Hoàn Tiền</a>
-            <a href="#">Các Câu Hỏi Thường Gặp</a>
-            <a href="#">Liên Hệ Với Chúng Tôi</a>
-          </div>
-        </div>
-      </div>
-    </footer>
     <script src="scripts/payment-info.js"></script>
   </body>
 </html>
