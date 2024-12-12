@@ -6,13 +6,6 @@
     min-height: 100vh;
     transition: margin-left 0.3s ease; /* Smooth transition */
 }
-
-
-/* Adjust content margin when sidebar is collapsed */
-.sidebar.collapsed + .mainContent {
-    margin-left: 120px; /* Match collapsed sidebar width */
-    transition: margin-left 0.3s ease; /* Smooth transition */
-}
   
   /* Form Container */
   .formContainer {
@@ -72,23 +65,22 @@
   margin-bottom: 10px;
 }
 
-
 /* Button Submit */
-button[type="submit"] {
+.button-submit {
   margin-left: 250px;
   margin-top: 30px;
-  width: 400px; /* Chiều rộng tùy chỉnh */
-  height: 50px; /* Chiều cao tùy chỉnh */
-  background-color: #4e73df; /* Màu nền */
-  color: white; /* Màu chữ */
-  border: none; /* Loại bỏ viền */
-  border-radius: 5px; /* Bo góc */
-  font-size: 1rem; /* Kích thước chữ */
-  cursor: pointer; /* Hiển thị con trỏ khi hover */
+  width: 400px; /* Custom width */
+  height: 50px; /* Custom height */
+  background-color: #4e73df; /* Background color */
+  color: white; /* Text color */
+  border: none; /* No borders */
+  border-radius: 5px; /* Rounded corners */
+  font-size: 1rem; /* Font size */
+  cursor: pointer; /* Cursor on hover */
 }
 
-button[type="submit"]:hover {
-  background-color: #2e59d9; /* Màu khi hover */
+.button-submit:hover {
+  background-color: #2e59d9; /* Darker shade on hover */
 }
 
   
