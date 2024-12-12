@@ -18,7 +18,7 @@ let getCartByUserId = (user_id) => {
                 },
               ],
               as: "productCartData",
-              attributes: ["price", "name"],
+              attributes: ["price", "name", "size"],
             },
           ],
           next: true,
@@ -174,11 +174,38 @@ const checkEmptyCart = (userId) => {
     }
   });
 };
+
+let deleteCartItemById = (cart_item_id) => {
+  return new Promise(async (resolve, reject) => {
+    try {
+      let cart = await db.Cart_item.findOne({
+        where: { cart_item_id: cart_item_id },
+        raw: false,
+      });
+      if (!cart) {
+        resolve({
+          errCode: 2,
+          errMessage: `The cart isn't exist`,
+        });
+      }
+      await db.Cart_item.destroy({
+        where: { cart_item_id: cart_item_id },
+      });
+      resolve({
+        errCode: 0,
+        message: `The cart is deleted`,
+      });
+    } catch (e) {
+      reject(e);
+    }
+  });
+};
 module.exports = {
   addCart,
   getCartByUserId,
   updateCart,
   deleteCart,
   clearCart,
-  checkEmptyCart
+  checkEmptyCart,
+  deleteCartItemById
 };

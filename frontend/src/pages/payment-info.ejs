@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>H(T)ML Website</title>
+    <link rel="stylesheet" href="styles/payment-info.css" />
+  </head>
+
+  <body>
+    <!-- Header Section -->
+    <header class="header">
+      <div class="brand-logo">
+        <a href = "/">
+          <img src="icons/logos/logo-html.svg" alt="H(T)ML Logo">
+        </a>
+        <span class="brand-name">H(T)ML</span>
+      </div>
+    </header>
+
+    <!-- Navigation Steps -->
+    <div class="navSteps">
+      <span>Giỏ hàng</span> / <span>Thông tin và đặt hàng</span>
+    </div>
+
+    <!-- Main Section -->
+    <main class="mainContent">
+      <!-- Left Column -->
+      <div class="leftColumn">
+        <div class="contactInformation">
+          <div class="headerSection">
+            <h2>Thông Tin Liên Hệ</h2>
+          </div>
+          <form>
+            <div class="inputGroup">
+              <!-- Email -->
+              <div class="inputWrapper">
+                <input
+                  type="email"
+                  id="email"
+                  placeholder="Nhập email của bạn"
+                  value="<%=email %>"
+                  required
+                />
+                <img
+                  src="icons/icon-user.svg"
+                  alt="User Icon"
+                  class="inputIcon"
+                />
+              </div>
+            </div>
+          </form>
+        </div>
+
+        <form class="contactForm">
+          <!-- Họ và Tên -->
+          <div class="doubleInputGroup">
+            <div class="inputWrapper">
+              <input type="text" id="lastName" placeholder="Họ" required />
+            </div>
+            
+            <div class="inputWrapper">
+              <input type="text" id="firstName" placeholder="Tên" required />
+            </div>
+          </div>
+
+          <!-- Công Ty -->
+          
+
+          <!-- Địa Chỉ -->
+          <div class="inputGroup">
+            <input type="text" id="address" placeholder="Địa Chỉ" required />
+          </div>
+
+          <!-- Tòa Nhà, Số Nhà -->
+          
+
+          <!-- Thành Phố và Quận Huyện -->
+          <div class="doubleInputGroup">
+            <div class="inputWrapper">
+              <div class="inputWrapper">
+                <img
+                  src="icons/icon-search.svg"
+                  alt="City Icon"
+                  class="inputIcon"
+                />
+                <input type="text" id="city" placeholder="Thành Phố" required />
+              </div>
+            </div>
+            <div class="inputWrapper">
+              <div class="inputWrapper">
+                <img
+                  src="icons/icon-search.svg"
+                  alt="District Icon"
+                  class="inputIcon"
+                />
+                <input
+                  type="text"
+                  id="district"
+                  placeholder="Quận Huyện"
+                  required
+                />
+              </div>
+            </div>
+          </div>
+
+          <!-- Số Điện Thoại -->
+          <div class="inputGroup">
+            <div class="inputWrapper">
+              <img
+                src="icons/icon-phone-minimal.svg"
+                alt="Phone Icon"
+                class="inputIcon"
+              />
+              <input
+                type="text"
+                id="phone"
+                placeholder="Số Điện Thoại"
+                value="<%= phone%>"
+                required
+              />
+              
+            </div>
+          </div>
+          
+        </form>
+
+        
+        <!-- Payment Method -->
+        <!-- <div>
+          <h3>Chọn Phương Thức Thanh Toán</h3>
+          <div class="radioGroup">
+            <div class="item GHN">
+              <input
+                type="radio"
+                name="payment_type"
+                id="payment_type"
+                value="CASH"
+              />
+              <label>
+                <span>CASH</span>
+              </label>
+            </div>
+          </div>
+          <div class="radioGroup">
+            <div class="item GHN">
+              <input
+                type="radio"
+                name="payment_type"
+                id="payment_type"
+                value="CARD"
+              />
+              <label>
+                <span>CARD</span>
+              </label>
+            </div>
+          </div>
+        </div> -->
+        <!-- Navigation Buttons -->
+        <form>
+          <div class="shippingOptions">
+              <h3>Lựa Chọn Phương Thức Thanh Toán</h3>
+              <div class="radioGroup">
+                  <div class="item GHN">
+                      <label>
+                          <input type="radio" name="shipping" checked>
+                          <span>Tiền mặt</span>
+                      </label>
+                  </div>
+              </div>
+          </div>
+        </form>
+        <div class="formButtons">
+          <a href="#" class="backButton">
+            <img
+              src="icons/icon-backward.svg"
+              alt="Back Icon"
+              class="buttonIcon"
+            />
+            Quay Lại Giỏ Hàng
+          </a>
+          <input type="hidden" name="total" value="<%= total %>">
+          <button type="submit" class="continueButton">Đặt hàng</button>
+        </div>
+      </div>
+      
+
+      <!-- Right Column -->
+      <div class="rightColumn">
+        <h2>Giỏ Hàng Của Bạn</h2>
+        <% let sum = 0; %> <%for (let i = 0; i < cartData.length; i++) {%>
+        <div class="cartItem">
+          <img
+            src="<%= cartData[i].productCartData.productImageData[0].image %>"
+            alt="<%= cartData[i].productCartData.name %>"
+          />
+          <div class="cartDetails">
+            <p class="itemName"><%= cartData[i].productCartData.name %></p>
+            <p>Kích Cỡ: <%= cartData[i].productCartData.size %></p>
+            <div class="quantityControl">
+              <span class="quantity">Số lượng: <%=cartData[i].quantity %></span>
+            </div>
+          </div>
+          <p class="itemPrice">
+            <% let itemPrice = cartData[i].productCartData.price *
+            cartData[i].quantity; sum += itemPrice; %> <%= itemPrice %>
+          </p>
+        </div>
+        <%}%>
+
+        <div class="cartSummary">
+          <p><span>Tổng (3)</span><span><%=sum%></span></p>
+          <p><span>Thuế, Phí</span><span>0đ</span></p>
+          <p><span>Phí Giao Hàng</span><span>0đ</span></p>
+          <p class="totalAmount">
+            <span>Tổng Cộng:</span><span><%=sum%></span>
+          </p>
+          <input type="hidden" id="total" name="total" value="<%= sum %>">
+
+        </div>
+      </div>
+    </main>
+
+    <!-- Footer Section -->
+
+    <!-- Left Side of Footer -->
+    <%- include('../partials/footer', { activeIdx: 1 }) %>
+
+    <script src="scripts/payment-info.js"></script>
+  </body>
+</html>

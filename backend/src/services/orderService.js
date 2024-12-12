@@ -1,6 +1,5 @@
 import { where } from "sequelize";
-import db from "../models/index";
-
+import db, { sequelize } from "../models/index";
 let createOrder = (userId, paymentType, addressShipping) => {
   return new Promise(async (resolve, reject) => {
     const t = await sequelize.transaction();
@@ -42,13 +41,13 @@ let createOrder = (userId, paymentType, addressShipping) => {
           user_id: userId,
           status: "Confirming",
           payment_type: paymentType,
-          addressShipping: addressShipping, //thêm address shipping vào bảng order
+          address_shipping: addressShipping, //thêm address shipping vào bảng order
         },
         { transaction: t }
       );
       let orderDetails = cartItems.map((item) => ({
         pd_id: item.pd_id,
-        order_id: order.id,
+        order_id: order.order_id,
         amount: item.quantity,
         pd_cost: item.productCartData.price,
       }));
@@ -63,6 +62,10 @@ let createOrder = (userId, paymentType, addressShipping) => {
 
       // Xác nhận (commit) transaction khi tất cả các bước đều thành công
       await t.commit();
+      resolve({
+        errCode: 0,
+        errMessage: "Order created successfully.",
+      });
     } catch (e) {
       await t.rollback();
       reject(e);

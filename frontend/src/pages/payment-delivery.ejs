@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>H(T)ML Website</title>
+    <link rel="stylesheet" href="styles/payment-delivery.css">
+</head>
+
+<body>
+    <!-- Header Section -->
+    <header class="header">
+        <div class="brand-logo">
+            <a href = "/">
+                <img src="icons/logos/logo-html.svg" alt="H(T)ML Logo">
+            </a>
+            <span class="brand-name">H(T)ML</span>
+        </div>
+    </header>
+
+
+    <!-- Navigation Steps -->
+    <div class="navSteps">
+        <span>Giỏ hàng</span> / 
+        <span>Thông tin</span> / 
+        <span>Giao hàng</span> / 
+        <span>Thanh toán</span>
+    </div>
+
+    <!-- Main Section -->
+
+    <main class="mainContent">
+        <!-- Left Column -->
+        <div class="leftColumn">
+
+            <!-- Contact Information -->
+            <div class="contactInformation">
+                <div class="headerSection">
+                    <h2>Thông Tin Liên Hệ</h2>
+                </div>  
+                <p><%= email%></p>
+            </div>
+        
+            <!-- Delivery Address -->
+            <div class="deliveryAddress">
+                <div class="headerSection">
+                    <h2>Địa Chỉ Nhận Hàng</h2>
+                </div>
+                <p><%= deliveryAddress%></p>
+            </div>
+        
+            <!-- Shipping Options -->
+        <form>
+            <div class="shippingOptions">
+                <h3>Lựa Chọn Phương Thức Thanh Toán</h3>
+                <div class="radioGroup">
+                    <div class="item GHN">
+                        <label>
+                            <input type="radio" name="shipping" checked>
+                            <span>Tiền mặt</span>
+                        </label>
+                    </div>
+                </div>
+            </div>
+        </form>
+            <!-- Navigation Buttons -->
+            <div class="formButtons">
+                <a href="#" class="backButton">
+                    <img src="icons/icon-backward.svg" alt="Back Icon" class="buttonIcon">
+                    Quay Lại Trang Thông Tin
+                </a>
+                <button type="submit" class="continueButton">Tiếp Tục Thanh Toán</button>
+            </div>
+
+            </div>
+
+        </div>
+        
+
+        <!-- Right Column -->
+        <div class="rightColumn">
+            <h2>Giỏ Hàng Của Bạn</h2>
+            <% let sum = 0; %> <%for (let i = 0; i < cartData.length; i++) {%>
+            <div class="cartItem">
+              <img
+                src="<%= cartData[i].productCartData.productImageData[0].image %>"
+                alt="<%= cartData[i].productCartData.name %>"
+              />
+              <div class="cartDetails">
+                <p class="itemName"><%= cartData[i].productCartData.name %></p>
+                <p>Kích Cỡ: <%= cartData[i].productCartData.size %></p>
+                <div class="quantityControl">
+                  <span class="quantity">Số lượng: <%=cartData[i].quantity %></span>
+                </div>
+              </div>
+              <p class="itemPrice">
+                <% let itemPrice = cartData[i].productCartData.price *
+                cartData[i].quantity; sum += itemPrice; %> <%= itemPrice %>
+              </p>
+            </div>
+            <%}%>
+    
+            <div class="cartSummary">
+              <p><span>Tổng (3)</span><span><%=sum%></span></p>
+              <p><span>Thuế, Phí</span><span>0đ</span></p>
+              <p><span>Phí Giao Hàng</span><span>0đ</span></p>
+              <p class="totalAmount">
+                <span>Tổng Cộng:</span><span><%=sum%></span>
+              </p>
+            </div>
+          </div>
+    
+    </main>
+
+
+    
+    <!-- Footer Section -->
+
+    <!-- Left Side of Footer -->
+    <%- include('../partials/footer', { activeIdx: 1 }) %>
+
+</body>
+

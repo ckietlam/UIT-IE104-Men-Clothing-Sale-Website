@@ -21,6 +21,11 @@ const handleRegister = async (req, res) => {
         message: "Email already exists",
       });
     }
+    if (isExist) {
+      return res.render("pages/register", {
+        message: "Email already exists",
+      });
+    }
 
     const newUser = await userService.createNewUser(req.body);
     return res.status(201).render("pages/login", {
@@ -34,6 +39,7 @@ const handleRegister = async (req, res) => {
     });
   }
 };
+  
 
 const handleLogin = async (req, res) => {
   try {
@@ -44,7 +50,6 @@ const handleLogin = async (req, res) => {
         message: "Missing email or password",
       });
     }
-
     const user = await userService.handleUserLogin(email, password);
     if (!user) {
       return res.status(401).render("pages/login", {
@@ -120,6 +125,7 @@ const handleForgotPassword = async (req, res) => {
     };
 
     await transporter.sendMail(mailOptions);
+    await transporter.sendMail(mailOptions);
 
     return res.status(200).render("pages/change-password", {
       message: `OTP sent to your email: ${email}`, 
@@ -154,6 +160,7 @@ const handleChangePassword = async (req, res) => {
     });
   }
 };
+
 
 const getRegister = async (req, res) => {
   return res.render("pages/register", {
