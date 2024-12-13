@@ -6,22 +6,14 @@
     font-family: "Montserrat", sans-serif;
 }
 .carousel-track {
-  display: flex; /* Đặt các sản phẩm theo hàng ngang */
-  flex-wrap: wrap; /* Cho phép tự động xuống hàng khi không đủ chỗ */
+  display: flex;
+  flex-wrap: wrap; /* Cho phép các sản phẩm xuống dòng khi không đủ không gian */
+  justify-content: flex-start; /* Sử dụng flex-start thay vì space-between */
   gap: 16px; /* Khoảng cách giữa các sản phẩm */
-  justify-content: center; /* Canh giữa các sản phẩm trong container */
+  margin: 0; /* Loại bỏ margin thừa */
+  width: 100%; /* Đảm bảo carousel chiếm đầy chiều rộng của container */
 }
 
-.product-card {
-  flex: 1 1 calc(20% - 16px); /* Mỗi sản phẩm chiếm 20% chiều rộng container trừ khoảng cách */
-  max-width: calc(20% - 16px); /* Đảm bảo không vượt quá 20% chiều rộng */
-  box-sizing: border-box; /* Bao gồm padding và border vào kích thước tổng */
-  text-align: center; /* Canh giữa nội dung bên trong */
-  border: 1px solid #ddd; /* Viền nhẹ cho mỗi sản phẩm */
-  border-radius: 8px; /* Góc bo tròn */
-  overflow: hidden; /* Ẩn nội dung vượt quá */
-  padding: 8px; /* Khoảng cách bên trong */
-}
 @font-face {
   font-family: 'Montserrat'; 
   src: url('../assets/fonts/Montserrat/Montserrat-Regular.ttf') format('truetype');
@@ -100,7 +92,6 @@ font-weight: normal; /* Giữ độ dày mặc định */
   font-weight: bold; /* Đảm bảo độ đậm được sử dụng */
   color: black; /* Màu chữ */
 }
-
 
 .header-icons img {
   margin: 0 10px;
@@ -706,11 +697,6 @@ display: table;
 clear: both;
 }
 
-
-
-
-
-
 /* Footer */
 .footer {
   background-color: #081d22;
@@ -904,11 +890,7 @@ clear: both;
     padding: 10px 0;
 }
 
-.carousel-track {
-    display: flex;
-    gap: 20px;
-    transition: transform 0.5s ease-in-out;
-}
+
 .back-button-container {
     display: flex;
     justify-content: space-between;
@@ -930,106 +912,94 @@ clear: both;
 
 /* Sản phẩm */
 .product-card {
-    min-width: 220px;
-    background-color: #f9f9f9;
-    padding: 15px;
-    border-radius: 8px;
-    text-align: left;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s ease;
-    position: relative;
-    overflow: hidden;
-    cursor: pointer;
-    display: flex;
-    flex-direction: column; 
-    justify-content: space-between; 
-    border: none; 
+  flex: 1 1 calc(20% - 16px); /* Mỗi sản phẩm chiếm 20% chiều rộng container */
+  max-width: calc(20% - 16px); /* Đảm bảo không vượt quá 20% chiều rộng */
+  box-sizing: border-box; /* Bao gồm padding và border vào kích thước tổng */
+  text-align: left; /* Canh lề trái cho nội dung */
+  border: 1px solid #ddd; /* Viền nhẹ cho mỗi sản phẩm */
+  border-radius: 8px; /* Góc bo tròn */
+  overflow: hidden; /* Ẩn nội dung vượt quá */
+  padding: 15px; /* Khoảng cách bên trong */
+  background-color: #f9f9f9; /* Màu nền cho sản phẩm */
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); /* Đổ bóng cho sản phẩm */
+  transition: transform 0.3s ease;
+  position: relative;
+  height: 350px; /* Cố định chiều cao cho các sản phẩm */
 }
 
+/* Các hiệu ứng hover */
 .product-card a {
-    text-decoration: none; /* Xóa gạch chân */
+  text-decoration: none; /* Xóa gạch chân */
 }
 
-/* Hiệu ứng hover đổi ảnh */
 .product-card img {
-    width: 100%;
-    height: auto;
-    border-radius: 8px;
-    transition: opacity 0.3s ease-in-out;
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 8px;
+  transition: opacity 0.3s ease-in-out;
 }
 
-.product-card .hover-image {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    border-radius: 8px;
-    background-size: cover;
-    background-position: center;
-    opacity: 0;
-    transition: opacity 0.3s ease-in-out;
-}
-
+/* Hover effect: ảnh phóng to */
 .product-card:hover img {
-    opacity: 0;
+  transform: scale(1.1);
 }
 
-.product-card:hover .hover-image {
-    opacity: 1;
+/* Hover effect: sản phẩm nâng lên và thêm bóng đổ */
+.product-card:hover {
+  transform: translateY(-5px); /* Đẩy sản phẩm lên trên */
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2); /* Thêm bóng đổ khi hover */
 }
 
+/* Tiêu đề sản phẩm */
 .product-card h3 {
-    font-size: 18px;
-    font-weight: 600;
-    color: #333;
-    margin: 8px 0;
+  font-size: 18px;
+  font-weight: 600;
+  color: #333;
+  margin: 8px 0 4px 0;
 }
 
+/* Mô tả sản phẩm */
 .product-card .product-description {
-    font-size: 14px;
-    color: #666;
-    margin: 4px 0;
+  font-size: 14px;
+  color: #666;
+  margin: 4px 0 8px 0;
 }
 
+/* Giá tiền sản phẩm */
 .product-card .product-price {
-    font-size: 16px;
-    font-weight: 600;
-    color: #1D7873;
-    margin: 10px 0;
+  font-size: 16px;
+  font-weight: 600;
+  color: #1D7873;
+  margin: 0;
 }
 
 /* Ẩn thanh cuộn mặc định */
 .product-carousel::-webkit-scrollbar {
-    display: none;
+  display: none;
 }
 
 /* Đảm bảo rằng sản phẩm không bị thay đổi vị trí khi hover */
 .product-card:hover {
-    transform: translateY(0);
-    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+  transform: translateY(0);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
 }
-
-/* Responsive */
+.product-card {
+  flex: 1 1 calc(20% - 16px); /* Mỗi sản phẩm chiếm 20% chiều rộng container */
+  max-width: calc(20% - 16px); /* Đảm bảo không vượt quá 20% chiều rộng */
+  box-sizing: border-box; /* Bao gồm padding và border vào kích thước tổng */
+}
+/* Responsive: Mobile first */
 @media screen and (max-width: 768px) {
-    .categories-container {
-        padding: 0 20px;
-    }
-    .header-nav a {
-        font-size: 16px;
-    }
-    .product-card {
-        min-width: 180px;
-    }
-    .scroll-left, .scroll-right {
-        font-size: 18px;
-        padding: 8px;
-    }
+  .product-card {
+    flex: 1 1 calc(50% - 16px); /* Hiển thị 2 sản phẩm mỗi hàng */
+    height: 380px; /* Đảm bảo chiều cao sản phẩm không thay đổi trên màn hình nhỏ */
+  }
 }
 
-/* Responsive cho giao diện lớn hơn */
+/* Responsive cho màn hình tablet */
 @media screen and (max-width: 1024px) {
-    .categories-container {
-        padding: 0 50px;
-    }
+  .product-card {
+    flex: 1 1 calc(33.33% - 16px); /* Hiển thị 3 sản phẩm mỗi hàng */
+  }
 }
