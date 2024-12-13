@@ -263,7 +263,18 @@ function submitSearch() {
     }
 }
 
-    </script>
+document.addEventListener('DOMContentLoaded', function() {
+    const searchInput = document.getElementById('search-input');
+    
+    searchInput.addEventListener('keypress', function(event) {
+        // Check if the pressed key is Enter (key code 13)
+        if (event.key === 'Enter') {
+            event.preventDefault(); // Prevent default form submission
+            submitSearch(); // Call the submit search function
+        }
+    });
+});
+</script>
 
 
 <% if (isAuthenticated) { %>
