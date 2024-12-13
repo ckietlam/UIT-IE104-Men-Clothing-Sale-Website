@@ -6,7 +6,7 @@ import addSessionData from "../middlewares/addSessionData";
 import orderController from "../controllers/orderController"
 import cartController from "../controllers/cartController";
 import placeHolderController from "../controllers/placeHolderController";
-
+import zalopay from "../controllers/zaloPay";
 let router = express.Router();
 
 let initWebRouters = (app) => {
@@ -86,7 +86,8 @@ let initWebRouters = (app) => {
   router.get("/delivering-rules", placeHolderController.getDeliveringRules);
   router.get("/frequent-questions", placeHolderController.getFrequentQuestions);
 
-  
+  //zalopay
+  router.post("/payment", zalopay.createrZalopay);
   return app.use("/", router);
 };
 
