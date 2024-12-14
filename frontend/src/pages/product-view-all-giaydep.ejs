@@ -65,7 +65,7 @@
                                     <p class="product-description">
                                         <%= giayData[i].description.length > 100 ? giayData[i].description.substring(0, 100) + "..." : giayData[i].description %>
                                     </p>
-                                    <p class="product-price"><%= giayData[i].price %>đ</p>
+                                    <p class="product-price"><%= numberFormatter.format(giayData[i].price) %>đ</p>
                                 </div>
                             </a>
                         </div>

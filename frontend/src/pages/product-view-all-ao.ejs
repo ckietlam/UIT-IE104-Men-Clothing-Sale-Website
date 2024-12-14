@@ -38,7 +38,7 @@
                                     <p class="product-description">
                                         <%= aoThunData[i].description.length > 100 ? aoThunData[i].description.substring(0, 100) + "..." : aoThunData[i].description %>
                                     </p>
-                                    <p class="product-price"><%= aoThunData[i].price %>đ</p>
+                                    <p class="product-price"><%= numberFormatter.format(aoThunData[i].price) %>đ</p>
                                 </div>
                             </a>
                         </div>

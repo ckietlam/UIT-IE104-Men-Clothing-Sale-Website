@@ -3,6 +3,7 @@ import cartService from "../services/cartService";
 import orderService from "../services/orderService";
 import nodemailer from "nodemailer";
 import express from "express";
+const numberFormatter = new Intl.NumberFormat("de-DE");
 const app = express();
 
 let getAdmin = async (req, res) => {
@@ -199,6 +200,7 @@ let getProductViewAll = async (req, res) => {
       pantsData: pantsData,
       shoesData: shoesData,
       accessoriesData: accessoriesData,
+      numberFormatter: numberFormatter,
     });
   } catch (e) {
     console.log(e);
@@ -218,6 +220,7 @@ let getProductViewAllAo = async (req, res) => {
       aoThunData: aoThunData,
       aoNiData: aoNiData,
       aoSoMiData: aoSoMiData,
+      numberFormatter: numberFormatter
     });
   } catch (e) {
     console.log(e);
@@ -235,6 +238,7 @@ let getProductViewAllGiayDep = async (req, res) => {
     return res.render("pages/product-view-all-giaydep", {
       giayData: giayData,
       depData: depData,
+      numberFormatter: numberFormatter
     });
   } catch (e) {
     console.log(e);
@@ -252,6 +256,7 @@ let getProductViewAllQuan = async (req, res) => {
     return res.render("pages/product-view-all-quan", {
       jeansData: jeansData,
       shortsData: shortsData,
+      numberFormatter: numberFormatter
     });
   } catch (e) {
     console.log(e);
@@ -271,6 +276,7 @@ let getProductViewAllPhuKien = async (req, res) => {
       boxersData: boxersData,
       socksData: socksData,
       hatsData: hatsData,
+      numberFormatter: numberFormatter
     });
   } catch (e) {
     console.log(e);
@@ -288,6 +294,7 @@ let getProductViewAProduct = async (req, res) => {
     return res.render("pages/product-view", {
       productData: productData,
       session: req.session,
+      numberFormatter: numberFormatter
     });
   } catch (e) {
     console.log(e);
