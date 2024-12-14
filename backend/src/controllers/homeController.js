@@ -410,6 +410,7 @@ let getPaymentDeliveryPage = async (req, res) => {
     await transporter.sendMail(mailOptions);
     await cartService.clearCart(user_id);
     return res.render("partials/success", {
+      email: email,
       message: `Your order has been placed successfully, check at this email address: ${email}`,
     });
   } catch (e) {
