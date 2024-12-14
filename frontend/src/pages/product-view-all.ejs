@@ -36,7 +36,7 @@
                                     <p class="product-description">
                                         <%= shirtsData[i].description.length > 100 ? shirtsData[i].description.substring(0, 100) + "..." : shirtsData[i].description %>
                                     </p>
-                                    <p class="product-price"><%= shirtsData[i].price %>đ</p>
+                                    <p class="product-price"><%= numberFormatter.format(shirtsData[i].price) %>đ</p>
                                 </div>
                             </a>
                         </div>
@@ -65,7 +65,7 @@
                                     <p class="product-description">
                                         <%= pantsData[i].description.length > 100 ? pantsData[i].description.substring(0, 100) + "..." : pantsData[i].description %>
                                     </p>
-                                    <p class="product-price"><%= pantsData[i].price %>đ</p>
+                                    <p class="product-price"><%= numberFormatter.format(pantsData[i].price0 %>đ</p>
                                 </div>
                             </a>
                         </div>
@@ -92,7 +92,7 @@
                                     <p class="product-description">
                                         <%= shoesData[i].description.length > 100 ? shoesData[i].description.substring(0, 100) + "..." : shoesData[i].description %>
                                     </p>
-                                    <p class="product-price"><%= shoesData[i].price %>đ</p>
+                                    <p class="product-price"><%= numberFormatter.format(shoesData[i].price) %>đ</p>
                                 </div>
                             </a>
                         </div>

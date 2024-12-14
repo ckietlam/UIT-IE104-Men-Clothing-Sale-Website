@@ -38,7 +38,7 @@
                                     <p class="product-description">
                                         <%= shortsData[i].description.length > 100 ? shortsData[i].description.substring(0, 100) + "..." : shortsData[i].description %>
                                     </p>
-                                    <p class="product-price"><%= shortsData[i].price %>đ</p>
+                                    <p class="product-price"><%= numberFormatter.format(shortsData[i].price) %>đ</p>
                                 </div>
                             </a>
                         </div>

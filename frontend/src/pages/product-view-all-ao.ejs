@@ -65,7 +65,7 @@
                                     <p class="product-description">
                                         <%= aoSoMiData[i].description.length > 100 ? aoSoMiData[i].description.substring(0, 100) + "..." : aoSoMiData[i].description %>
                                     </p>
-                                    <p class="product-price"><%= aoSoMiData[i].price %>đ</p>
+                                    <p class="product-price"><%= numberFormatter.format(aoSoMiData[i].price) %>đ</p>
                                 </div>
                             </a>
                         </div>
@@ -91,7 +91,7 @@
                                     <p class="product-description">
                                         <%= aoNiData[i].description.length > 100 ? aoNiData[i].description.substring(0, 100) + "..." : aoNiData[i].description %>
                                     </p>
-                                    <p class="product-price"><%= aoNiData[i].price %>đ</p>
+                                    <p class="product-price"><%= numberFormatter.format(aoNiData[i].price) %>đ</p>
                                 </div>
                             </a>
                         </div>
