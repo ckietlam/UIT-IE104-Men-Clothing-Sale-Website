@@ -3,6 +3,9 @@ const CryptoJS = require("crypto-js");
 const moment = require("moment");
 
 const createrZalopay = async (req, res) => {
+  const embed_data = {
+    redirecturl: 'https://fef6-222-253-42-125.ngrok-free.app/product-view-all',
+  };
   let amount = req.query.total;
   console.log("Noah check amount: ", amount);
   // APP INFO
@@ -12,8 +15,7 @@ const createrZalopay = async (req, res) => {
     key2: "kLtgPl8HHhfvMuDHPwKfgfsY4Ydm9eIz",
     endpoint: "https://sb-openapi.zalopay.vn/v2/create",
   };
-
-  const embed_data = {};
+  
   const items = [{}];
   const transID = Math.floor(Math.random() * 1000000);
   const order = {
@@ -26,7 +28,8 @@ const createrZalopay = async (req, res) => {
     amount: amount, // Cái này là giá lúc chuyển api sang trang thanh toán
     description: `Lazada - Payment for the order #${transID}`,
     bank_code: "",
-    callback_url: "/callback",
+    callback_url: "/product-view-all",
+
   };
 
   // appid|app_trans_id|appuser|amount|apptime|embeddata|item
@@ -54,6 +57,7 @@ const createrZalopay = async (req, res) => {
     res.status(400).json(error);
   }
 };
+
 
 module.exports = {
   createrZalopay,
