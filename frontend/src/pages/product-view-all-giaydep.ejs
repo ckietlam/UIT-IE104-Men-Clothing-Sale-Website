@@ -78,51 +78,8 @@
            <!-- Footer Section -->
     
         <!-- Left Side of Footer -->
-        <footer class="footer">
-            <div class="footer-left">
-                <div class="footer-newsletter">
-                    <h3>Theo Dõi Các Tin Tức Mới Nhất Từ H(T)ML!</h3>
-                    <div class="newsletter-form">
-                        <input type="email" placeholder="Nhập Email Của Bạn">
-                        <button><img src="icons/arrow-forward.svg" alt="Arrow"></button>
-                    </div>
-                    <label>
-                        <input type="checkbox"> Bằng việc nhập email, bạn đồng ý với việc nhận các tin quảng cáo, ưu đãi từ
-                        H(T)ML
-                    </label>
-                </div>
-                <div class="footer-social">
-                    <div class="footer-social-icons">
-                        <img src="icons/logos/logo-instagram.svg" alt="Instagram">
-                        <img src="icons/logos/logo-facebook.svg" alt="Facebook">
-                        <img src="icons/logos/logo-pinterest.svg" alt="Pinterest">
-                        <img src="icons/logos/logo-tiktok.svg" alt="TikTok">
-                    </div>
-                    <p>© 2024 H(T)ML. All Rights Reserved.</p>
-                </div>
-            </div>
-    
-            <!-- Right Side of Footer -->
-            <div class="footer-right">
-                <div class="footer-links">
-                    <div>
-                        <h4>Về H(T)ML</h4>
-                        <a href="#">Bộ Sưu Tập</a>
-                        <a href="#">Quyền Riêng Tư</a>
-                        <a href="#">Hệ Thống Hỗ Trợ</a>
-                        <a href="#">Điều Khoản</a>
-                        <a href="#">Bản Quyền</a>
-                    </div>
-                    <div>
-                        <h4>Hỗ Trợ</h4>
-                        <a href="#">Mua Hàng & Vận Chuyển</a>
-                        <a href="#">Trả Hàng & Hoàn Tiền</a>
-                        <a href="#">Các Câu Hỏi Thường Gặp</a>
-                        <a href="#">Liên Hệ Với Chúng Tôi</a>
-                    </div>
-                </div>
-            </div>
-        </footer>
+    <%- include('../partials/footer', { activeIdx: 0 }) %>
+
 
     <script src="scripts/product-view-all.js"></script>
 </body>
