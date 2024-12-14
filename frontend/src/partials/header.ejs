@@ -203,17 +203,18 @@
         
         <div id="box-search" class="box-search">
             <div class="icon-search">
-            <img
-                id="search"
-                src="/icons/icon-search.svg"
-                width="25px"
-                height="25px"
-                alt="Search"
-            />
+                <img
+                    id="icon-search"
+                    src="/icons/icon-search.svg"
+                    width="25px"
+                    height="25px"
+                    alt="Search"
+                    onclick="submitSearch()"
+                />
             </div>
-            <input placeholder="Search" type="text" />
+            <input id="search-input" placeholder="Search" type="text" />
         </div>
-<div id="overlay" class="overlay" onclick="closeSearch()"></div>
+        <div id="overlay" class="overlay" onclick="closeSearch()"></div>
 
 
 
@@ -238,7 +239,42 @@
             boxSearch.style.display = 'none';
             overlay.style.display = 'none';
         }
-    </script>
+        //moi them 
+        function handleSearch(event) {
+    const searchInput = document.getElementById("search-input");
+    if (!searchInput.value.trim()) {
+        alert("Please enter a keyword to search!");
+        event.preventDefault(); // Ngăn chặn hành động mặc định (nếu là form submit)
+        return false;
+    }
+    // Thực thi tìm kiếm (có thể thêm logic gọi API hoặc điều hướng)
+    console.log("Searching for:", searchInput.value);
+    return true;
+}
+
+function submitSearch() {
+    // Gọi hàm handleSearch khi click biểu tượng tìm kiếm
+    const event = new Event("submit");
+    if (handleSearch(event)) {
+        // Ví dụ: Điều hướng sang trang kết quả tìm kiếm
+        window.location.href = `/search-products?keyword=${encodeURIComponent(
+            document.getElementById("search-input").value
+        )}`;
+    }
+}
+
+document.addEventListener('DOMContentLoaded', function() {
+    const searchInput = document.getElementById('search-input');
+    
+    searchInput.addEventListener('keypress', function(event) {
+        // Check if the pressed key is Enter (key code 13)
+        if (event.key === 'Enter') {
+            event.preventDefault(); // Prevent default form submission
+            submitSearch(); // Call the submit search function
+        }
+    });
+});
+</script>
 
 
 <% if (isAuthenticated) { %>
@@ -297,5 +333,6 @@
 
 
     <script src="/scripts/shopping-cart.js"></script>
+    <script src="/scripts/search.js"></script>
 
 </header>
