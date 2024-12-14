@@ -91,7 +91,7 @@
                                     <p class="product-description">
                                         <%= socksData[i].description.length > 100 ? socksData[i].description.substring(0, 100) + "..." : socksData[i].description %>
                                     </p>
-                                    <p class="product-price"><%= socksData[i].price %>đ</p>
+                                    <p class="product-price"><%= numberFormatter.format(socksData[i].price) %>đ</p>
                                 </div>
                             </a>
                         </div>
