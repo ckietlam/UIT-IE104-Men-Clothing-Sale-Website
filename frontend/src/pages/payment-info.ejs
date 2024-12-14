@@ -203,19 +203,19 @@
           </div>
           <p class="itemPrice">
             <% let itemPrice = cartData[i].productCartData.price *
-            cartData[i].quantity; sum += itemPrice; %> <%= itemPrice %>
+            cartData[i].quantity; sum += itemPrice; %> <%= numberFormatter.format(itemPrice) %>
           </p>
         </div>
         <%}%>
 
         <div class="cartSummary">
-          <p><span>Tổng (3)</span><span><%=sum%></span></p>
+          <p><span>Tổng (3)</span><span><%= numberFormatter.format(sum)%></span></p>
           <p><span>Thuế, Phí</span><span>0đ</span></p>
           <p><span>Phí Giao Hàng</span><span>0đ</span></p>
           <p class="totalAmount">
-            <span>Tổng Cộng:</span><span><%=sum%></span>
+            <span>Tổng Cộng:</span><span><%=numberFormatter.format(sum)%></span>
           </p>
-          <input type="hidden" id="total" name="total" value="<%= sum %>">
+          <input type="hidden" id="total" name="total" value="<%= numberFormatter.format(sum) %>">
 
         </div>
       </div>

@@ -102,11 +102,11 @@
             <%}%>
     
             <div class="cartSummary">
-              <p><span>Tổng (3)</span><span><%=sum%></span></p>
+              <p><span>Tổng (3)</span><span><%=numberFormatter.format(sum)%></span></p>
               <p><span>Thuế, Phí</span><span>0đ</span></p>
               <p><span>Phí Giao Hàng</span><span>0đ</span></p>
               <p class="totalAmount">
-                <span>Tổng Cộng:</span><span><%=sum%></span>
+                <span>Tổng Cộng:</span><span><%=numberFormatter.format(sum)%></span>
               </p>
             </div>
           </div>

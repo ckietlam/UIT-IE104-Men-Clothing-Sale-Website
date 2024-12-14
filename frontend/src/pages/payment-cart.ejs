@@ -73,28 +73,28 @@
         <div class="pricing">
           <% let sum = 0; %> <%for (let i = 0; i < cartData.length; i++) {%>
           <div class="priceDetail">
-            <span><%=cartData[i].productCartData.price %></span>
+            <span><%=numberFormatter.format(cartData[i].productCartData.price) %></span>
             <div class="quantityControl">
               <span><%=cartData[i].quantity %></span>
             </div>
             <span
               ><% let itemPrice = cartData[i].productCartData.price *
-              cartData[i].quantity; sum += itemPrice; %> <%= itemPrice %>
+              cartData[i].quantity; sum += itemPrice; %> <%= numberFormatter.format(itemPrice) %>
             </span>
           </div>
           <%}%>
         </div>
         <div class="totals">
-          <div><span>Tổng (3)</span><span><%=sum%></span></div>
+          <div><span>Tổng (3)</span><span><%=numberFormatter.format(sum)%></span></div>
           <div><span>Thuế</span><span>0đ</span></div>
           <div><span>Phí Vận Chuyển</span><span>0đ</span></div>
-          <div><span>Tổng Cộng</span><span><%=sum%></span></div>
+          <div><span>Tổng Cộng</span><span><%=numberFormatter.format(sum)%></span></div>
         </div>
 
         <!-- Navigation Buttons -->
         <form action="/payment-info" method="POST">
           <div class="formButtons">
-            <input type="hidden" name="total" value="<%= sum %>">
+            <input type="hidden" name="total" value="<%= numberFormatter.format(sum) %>">
             <button type="submit" class="continueButton">
               Tiếp Tục Thanh Toán
             </button>

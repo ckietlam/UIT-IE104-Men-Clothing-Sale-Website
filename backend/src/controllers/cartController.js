@@ -1,4 +1,6 @@
 import cartService from "../services/cartService";
+const numberFormatter = new Intl.NumberFormat("de-DE");
+
 let handleGetCartByUserId = async (req, res) => {
   try {
     if (!req.query.user_id) {

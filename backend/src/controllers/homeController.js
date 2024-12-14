@@ -48,6 +48,7 @@ let getOrderManagementPage = async (req, res) => {
     let data = await orderService.getAllOrder();
     return res.render("pages/order-management", {
       dataTable: data.data,
+      
     });
   } catch (e) {
     console.log(e);
@@ -313,6 +314,7 @@ let getCheckOutPage = async (req, res) => {
     return res.render("pages/payment-cart", {
       cartData: cartData,
       user_id: user_id,
+      numberFormatter: numberFormatter
     });
   } catch (e) {
     console.log(e);
@@ -353,6 +355,7 @@ let getPaymentInfoPage = async (req, res) => {
       email: req.session.user.email,
       phone: req.session.user.phone,
       total: total,
+      numberFormatter: numberFormatter
     });
   } catch (e) {
     console.log(e);
