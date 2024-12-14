@@ -87,6 +87,8 @@ let initWebRouters = (app) => {
   router.get("/frequent-questions", placeHolderController.getFrequentQuestions);
 
   router.get("/search-products", productController.handleSearchProducts);
+
+  router.get("/success", homeController.getSuccessPage);
   return app.use("/", router);
 };
 

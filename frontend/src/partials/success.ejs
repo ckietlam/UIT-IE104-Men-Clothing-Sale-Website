@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>H(T)ML Website</title>
+    <link rel="stylesheet" href="/styles/footer.css">
+    <link rel="stylesheet" href="/styles/header.css">
+    <link rel="stylesheet" href="/styles/success.css">
+</head>
+
+<body>
+
+<!-- Header Section -->
+<%- include('../partials/header', { activeIdx: 0 }) %>
+
+<main class="mainContent">
+    <div class="box-main">
+        <img src="/images/success.png" alt="Thanh cong" width="100" height="100" >
+        <h1>Thanh toán thành công</h1>
+        <p>
+            Cảm ơn bạn đã lựa chọn mua sắm tại H(T)ML! <br />
+            Thông tin đơn hàng sẽ được gửi đến địa chỉ email của bạn
+        </p>
+        <a href="/" class="btn">Trở về trang chủ</a>
+    </div>
+</main>
+<%- include('../partials/footer', { activeIdx: 0 }) %>
+
+</body>
+
+</html>

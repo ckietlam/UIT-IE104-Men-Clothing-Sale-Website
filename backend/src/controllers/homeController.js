@@ -409,7 +409,7 @@ let getPaymentDeliveryPage = async (req, res) => {
 
     await transporter.sendMail(mailOptions);
     await cartService.clearCart(user_id);
-    return res.render("pages/homepage", {
+    return res.render("partials/success", {
       message: `Your order has been placed successfully, check at this email address: ${email}`,
     });
   } catch (e) {
@@ -420,6 +420,18 @@ let getPaymentDeliveryPage = async (req, res) => {
     });
   }
 };
+
+let getSuccessPage = async (req, res) => {
+  try {
+    return res.render("partials/success");
+  } catch (e) {
+    console.log(e);
+    return res.status(200).json({
+      errCode: -1,
+      errMessage: "Error from server",
+    });
+  }
+}
 module.exports = {
   getAdmin,
   getProductManagementPage,
@@ -441,4 +453,5 @@ module.exports = {
   deleteCartItem,
   getPaymentInfoPage,
   getPaymentDeliveryPage,
+  getSuccessPage
 };
