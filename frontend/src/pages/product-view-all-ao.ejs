@@ -4,20 +4,21 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>H(T)ML Product</title>
-    <link rel="icon" type="product_img" href="images/LOGO ICON.png">
     <link rel="stylesheet" href="styles/product-view-all-ao.css">
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600&family=Poppins:wght@900&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet">
     
 </head>
 <body>
 
-    <%- include('../partials/header', { activeIdx: 1 }) %>
+    <!-- Header -->
+    <%- include('../partials/header', { activeIdx: 0 }) %>
 
-            <!-- Thêm nút trở về ở đây -->
-    <div class="back-button-container">
-        <a href="/product-view-all" class="back-button">← Trở về</a>
+    <!-- Breadcrumb -->
+
+    <div class="breadcrumb">
+        <a href="/product-view-all">Tất cả sản phẩm</a> &gt; 
+        <span><strong>Áo</strong></span>
     </div>
+
     <!-- Product Section -->
      
     <div class="categories-container">
@@ -38,7 +39,7 @@
                                     <p class="product-description">
                                         <%= aoThunData[i].description.length > 100 ? aoThunData[i].description.substring(0, 100) + "..." : aoThunData[i].description %>
                                     </p>
-                                    <p class="product-price"><%= aoThunData[i].price %>đ</p>
+                                    <p class="product-price"><%= aoThunData[i].price.toLocaleString('vi-VN') %>đ</p>
                                 </div>
                             </a>
                         </div>
@@ -65,7 +66,7 @@
                                     <p class="product-description">
                                         <%= aoSoMiData[i].description.length > 100 ? aoSoMiData[i].description.substring(0, 100) + "..." : aoSoMiData[i].description %>
                                     </p>
-                                    <p class="product-price"><%= aoSoMiData[i].price %>đ</p>
+                                    <p class="product-price"><%= aoSoMiData[i].price.toLocaleString('vi-VN') %>đ</p>
                                 </div>
                             </a>
                         </div>
@@ -91,7 +92,7 @@
                                     <p class="product-description">
                                         <%= aoNiData[i].description.length > 100 ? aoNiData[i].description.substring(0, 100) + "..." : aoNiData[i].description %>
                                     </p>
-                                    <p class="product-price"><%= aoNiData[i].price %>đ</p>
+                                    <p class="product-price"><%= aoNiData[i].price.toLocaleString('vi-VN') %>đ</p>
                                 </div>
                             </a>
                         </div>
@@ -101,9 +102,7 @@
         </div>
     </div>
 
-           <!-- Footer Section -->
-    
-        <!-- Left Side of Footer -->
+    <!-- Footer -->    
     <%- include('../partials/footer', { activeIdx: 0 }) %>
 
     <script src="scripts/product-view-all.js"></script>

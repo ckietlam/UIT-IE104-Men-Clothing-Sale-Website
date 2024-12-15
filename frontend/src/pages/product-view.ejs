@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><%= productData.name %></title>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600&family=Poppins:wght@900&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet"> 
     <link rel="stylesheet" href="styles/product-view-blazer.css">
 </head>
@@ -47,7 +46,7 @@
             </div>
             <div class="product-info">
                 <h2><%=productData.name %></h2>
-                <p><strong>Giá: <%=productData.price %>đ</strong></p>
+                <p><strong>Giá: <%=productData.price.toLocaleString('vi-VN') %>đ</strong></p>
                 <p><strong>Mô tả:</strong></p>
                 <ul>
                     <p><%=productData.description %></p>

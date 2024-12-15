@@ -4,15 +4,19 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>H(T)ML Product</title>
-    <link rel="icon" type="product_img" href="images/LOGO ICON.png">
     <link rel="stylesheet" href="styles/product-view-all.css">
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600&family=Poppins:wght@900&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet">
     
 </head>
 <body>
 
+    <!-- Header -->
     <%- include('../partials/header', { activeIdx: 1 }) %>
+
+    <!-- Breadcrumb -->
+    <div class="breadcrumb">
+        <a href="/">Trang chủ</a> &gt; 
+        <span><strong>Tất cả sản phẩm</strong></span>
+    </div>
 
     <!-- Product Section -->
      
@@ -36,7 +40,7 @@
                                     <p class="product-description">
                                         <%= shirtsData[i].description.length > 100 ? shirtsData[i].description.substring(0, 100) + "..." : shirtsData[i].description %>
                                     </p>
-                                    <p class="product-price"><%= shirtsData[i].price %>đ</p>
+                                    <p class="product-price"><%= shirtsData[i].price.toLocaleString('vi-VN') %>đ</p>
                                 </div>
                             </a>
                         </div>
@@ -65,7 +69,7 @@
                                     <p class="product-description">
                                         <%= pantsData[i].description.length > 100 ? pantsData[i].description.substring(0, 100) + "..." : pantsData[i].description %>
                                     </p>
-                                    <p class="product-price"><%= pantsData[i].price %>đ</p>
+                                    <p class="product-price"><%= pantsData[i].price.toLocaleString('vi-VN') %>đ</p>
                                 </div>
                             </a>
                         </div>
@@ -92,7 +96,7 @@
                                     <p class="product-description">
                                         <%= shoesData[i].description.length > 100 ? shoesData[i].description.substring(0, 100) + "..." : shoesData[i].description %>
                                     </p>
-                                    <p class="product-price"><%= shoesData[i].price %>đ</p>
+                                    <p class="product-price"><%= shoesData[i].price.toLocaleString('vi-VN') %>đ</p>
                                 </div>
                             </a>
                         </div>
@@ -119,7 +123,7 @@
                                     <p class="product-description">
                                         <%= accessoriesData[i].description.length > 100 ? accessoriesData[i].description.substring(0, 100) + "..." : accessoriesData[i].description %>
                                     </p>
-                                    <p class="product-price"><%= accessoriesData[i].price %>đ</p>
+                                    <p class="product-price"><%= accessoriesData[i].price.toLocaleString('vi-VN') %>đ</p>
                                 </div>
                             </a>
                         </div>
@@ -129,11 +133,8 @@
         </div>
     </div>
 
-           <!-- Footer Section -->
-    
-        <!-- Left Side of Footer -->
+    <!-- Footer -->    
     <%- include('../partials/footer', { activeIdx: 0 }) %>
-
 
     <script src="scripts/product-view-all.js"></script>
 </body>
