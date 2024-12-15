@@ -1,7 +1,7 @@
 import productService from "../services/productService";
 import cartService from "../services/cartService";
 import orderService from "../services/orderService";
-import userService from "../services/userService"
+import userService from "../services/userService";
 import nodemailer from "nodemailer";
 import express from "express";
 const numberFormatter = new Intl.NumberFormat("de-DE");
@@ -49,7 +49,6 @@ let getOrderManagementPage = async (req, res) => {
     let data = await orderService.getAllOrder();
     return res.render("pages/order-management", {
       dataTable: data.data,
-      
     });
   } catch (e) {
     console.log(e);
@@ -243,7 +242,7 @@ let getProductViewAllAo = async (req, res) => {
       aoThunData: aoThunData,
       aoNiData: aoNiData,
       aoSoMiData: aoSoMiData,
-      numberFormatter: numberFormatter
+      numberFormatter: numberFormatter,
     });
   } catch (e) {
     console.log(e);
@@ -261,7 +260,7 @@ let getProductViewAllGiayDep = async (req, res) => {
     return res.render("pages/product-view-all-giaydep", {
       giayData: giayData,
       depData: depData,
-      numberFormatter: numberFormatter
+      numberFormatter: numberFormatter,
     });
   } catch (e) {
     console.log(e);
@@ -279,7 +278,7 @@ let getProductViewAllQuan = async (req, res) => {
     return res.render("pages/product-view-all-quan", {
       jeansData: jeansData,
       shortsData: shortsData,
-      numberFormatter: numberFormatter
+      numberFormatter: numberFormatter,
     });
   } catch (e) {
     console.log(e);
@@ -299,7 +298,7 @@ let getProductViewAllPhuKien = async (req, res) => {
       boxersData: boxersData,
       socksData: socksData,
       hatsData: hatsData,
-      numberFormatter: numberFormatter
+      numberFormatter: numberFormatter,
     });
   } catch (e) {
     console.log(e);
@@ -317,7 +316,7 @@ let getProductViewAProduct = async (req, res) => {
     return res.render("pages/product-view", {
       productData: productData,
       session: req.session,
-      numberFormatter: numberFormatter
+      numberFormatter: numberFormatter,
     });
   } catch (e) {
     console.log(e);
@@ -336,7 +335,7 @@ let getCheckOutPage = async (req, res) => {
     return res.render("pages/payment-cart", {
       cartData: cartData,
       user_id: user_id,
-      numberFormatter: numberFormatter
+      numberFormatter: numberFormatter,
     });
   } catch (e) {
     console.log(e);
@@ -377,7 +376,7 @@ let getPaymentInfoPage = async (req, res) => {
       email: req.session.user.email,
       phone: req.session.user.phone,
       total: total,
-      numberFormatter: numberFormatter
+      numberFormatter: numberFormatter,
     });
   } catch (e) {
     console.log(e);
@@ -390,16 +389,35 @@ let getPaymentInfoPage = async (req, res) => {
 
 let getPaymentDeliveryPage = async (req, res) => {
   try {
-    
     let user_id = req.session.user.user_id || NULL;
-    const { email, lastName, firstName, address, city, phone, district, total } =
-      req.query;
+    const {
+      email,
+      lastName,
+      firstName,
+      address,
+      city,
+      phone,
+      district,
+      total,
+    } = req.query;
 
     let deliveryAddress = address + ", " + district + ", " + city;
     let selectedPaymentType = "CASH";
-    let addressShipping = deliveryAddress + ". " + "Họ tên của bạn là: " + lastName + firstName + ". Số điện thoại là: " + phone;
+    let addressShipping =
+      deliveryAddress +
+      ". " +
+      "Họ tên của bạn là: " +
+      lastName +
+      firstName +
+      ". Số điện thoại là: " +
+      phone;
     //tạo order rồi order detail ở đây: ---
-    console.log("Noah check input order create: ", addressShipping, " ", selectedPaymentType)
+    console.log(
+      "Noah check input order create: ",
+      addressShipping,
+      " ",
+      selectedPaymentType
+    );
     console.log("req query ", req.query);
     let cartData = await cartService.getCartByUserId(user_id);
     let order = await orderService.createOrder(
@@ -407,7 +425,6 @@ let getPaymentDeliveryPage = async (req, res) => {
       selectedPaymentType,
       addressShipping
     );
-   
 
     const transporter = nodemailer.createTransport({
       service: "gmail",
@@ -457,7 +474,33 @@ let getSuccessPage = async (req, res) => {
       errMessage: "Error from server",
     });
   }
-}
+};
+
+let updateOrderStatus = async (req, res) => {
+  try {
+    await orderService.updateOrderStatus(req.body);
+    if (!req.session.user) {
+      return res.redirect("/404");
+    }
+    if (req.session.user.role !== "Admin") return res.redirect("/404");
+
+    let orderId = req.body.order_id;
+    if (orderId) {
+      let data = await orderService.getOderByOrderId(orderId);
+      return res.render("pages/edit-order-status", {
+        orderData: data.data,
+      });
+    } else {
+      return res.send("Order not found!");
+    }
+  } catch (e) {
+    console.log(e);
+    return res.status(200).json({
+      errCode: -1,
+      errMessage: "Error from server",
+    });
+  }
+};
 module.exports = {
   getAdmin,
   getProductManagementPage,
@@ -480,5 +523,6 @@ module.exports = {
   getPaymentInfoPage,
   getPaymentDeliveryPage,
   getSuccessPage,
-  updateUserRole
+  updateUserRole,
+  updateOrderStatus,
 };
