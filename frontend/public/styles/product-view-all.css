@@ -922,8 +922,6 @@ clear: both;
   flex-direction: column;
   justify-content: space-between;
   border: none;
-  height: 350px; /* Cố định chiều cao cho các sản phẩm */
-  margin: 10px; /* Giữ khoảng cách giữa các sản phẩm */
 }
 
 .product-card a {
@@ -933,7 +931,7 @@ clear: both;
 /* Hiệu ứng hover đổi ảnh */
 .product-card img {
   width: 100%; /* Chiều rộng 100% để ảnh phủ hết không gian */
-  height: 200px; /* Chiều cao cố định cho ảnh */
+  height: 300px; /* Chiều cao cố định cho ảnh */
   object-fit: cover;  /* Đảm bảo ảnh phủ đầy mà không bị méo */
   border-radius: 8px;
   transition: opacity 0.3s ease-in-out;
