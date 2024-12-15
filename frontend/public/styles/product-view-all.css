@@ -1035,3 +1035,33 @@ clear: both;
         padding: 0 50px;
     }
 }
+
+/* Breadcrumb */
+.breadcrumb {
+  display: flex;               
+  justify-content: flex-start; 
+  align-items: center;         
+  font-size: 14px;
+  color: #555;
+  gap: 8px;                    
+  width: 100%;
+  max-width: 1200px;                        
+  padding: 0;                 
+  margin-left: 120px;
+  margin-bottom: 16px;         
+  margin-top: 50px;
+}
+/* Căn chỉnh breadcrumb a */
+.breadcrumb a {
+  text-decoration: none;
+  color: #1D7873;
+  font-weight: bold;
+}
+
+.breadcrumb a:hover {
+  text-decoration: underline;
+}
+
+.breadcrumb span {
+  color: #777;
+}
