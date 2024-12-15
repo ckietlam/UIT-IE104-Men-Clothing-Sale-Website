@@ -180,18 +180,18 @@
         <div class="header-icons">
             <img 
                 onclick="showSearch()"
-                class="search"
-                src="/icons/icon-search.svg"
+                class="search-icon"
+                src="/icons/icon-search-nav.svg"
                 alt="Search"
             />
             <% if (isAuthenticated) { %>
                 <a href="/profile">
-                    <img src="/icons/icon-user-nav.svg" alt="User Icon">
+                    <img class="user-icon" src="/icons/icon-user-nav.svg" alt="User Icon">
                     
                 </a>
             <% } else { %>
                 <a href="/login">
-                    <img src="/icons/icon-user-nav.svg" alt="User Icon">
+                    <img class="user-icon" src="/icons/icon-user-nav.svg" alt="User Icon">
                 </a>
             <% } %>
             <img 

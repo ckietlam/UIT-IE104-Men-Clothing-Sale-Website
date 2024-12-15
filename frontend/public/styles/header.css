@@ -49,20 +49,6 @@ font-family: 'Montserrat', sans-serif; /* Font Montserrat Regular */
 font-weight: normal; /* Giữ độ dày mặc định */
 }
 
-/* Footer */
-.footer, .footer-links a, .footer-social p, .footer-newsletter label {
-font-family: 'Montserrat', sans-serif; /* Font Montserrat Regular */
-font-weight: normal; /* Giữ độ dày mặc định */
-}
-
-/* Các cột và items */
-.column a, .product-item p, h3 {
-font-family: 'Montserrat', sans-serif; /* Font Montserrat Regular */
-font-weight: normal; /* Giữ độ dày mặc định */
-}
-
-
-
 /* Adjust spacing in the header */
 .header {
   display: flex;
@@ -91,10 +77,26 @@ font-weight: normal; /* Giữ độ dày mặc định */
   display: flex;               /* Sử dụng flexbox để căn chỉnh các icon */
   align-items: center;         /* Căn giữa các icon theo chiều dọc */
   justify-content: center;     /* Căn giữa các icon theo chiều ngang */
-  gap: 20px;                   /* Khoảng cách giữa các icon */
+  gap: 30px;                   /* Khoảng cách giữa các icon */
   margin-right: 30px;          /* Khoảng cách với viền phải */
   width: auto;                 /* Đảm bảo container không bị giới hạn chiều rộng */
 }
+
+.search-icon {
+  width: 40px;  /* Điều chỉnh kích thước phù hợp */
+  height: 40px; /* Điều chỉnh kích thước phù hợp */
+}
+
+.user-icon {
+  width: 25px;  /* Điều chỉnh kích thước phù hợp */
+  height: 25px; /* Điều chỉnh kích thước phù hợp */
+}
+
+#cart-btn {
+  width: 35px;  /* Điều chỉnh kích thước phù hợp */
+  height: 35px; /* Điều chỉnh kích thước phù hợp */
+}
+
 
 /* General style for icons */
 .header-icons img {
@@ -109,8 +111,8 @@ font-weight: normal; /* Giữ độ dày mặc định */
 
 /* Hiệu ứng sáng khi nhấn vào icon */
 .header-icons img.active {
-  -webkit-filter: brightness(1.5) saturate(150%); /* Làm sáng icon khi nhấn */
-  filter: brightness(1.5) saturate(150%);
+  -webkit-filter: brightness(2) saturate(200%); /* Làm sáng icon khi nhấn */
+  filter: brightness(2) saturate(200%);
 }
 
 /* Cập nhật hiệu ứng hover */
@@ -121,11 +123,9 @@ font-weight: normal; /* Giữ độ dày mặc định */
 
 /* Đảm bảo hover không làm thay đổi icon khi đã có lớp active */
 .header-icons img.active:hover {
-  -webkit-filter: brightness(1.5) saturate(150%); /* Khi active, hiệu ứng hover không thay đổi */
-  filter: brightness(1.5) saturate(150%);
+  -webkit-filter: brightness(2) saturate(200%); /* Khi active, hiệu ứng hover không thay đổi */
+  filter: brightness(2) saturate(200%);
 }
-
-
 
 /* Shirt Navbar container */
 .shirtNavbar {
