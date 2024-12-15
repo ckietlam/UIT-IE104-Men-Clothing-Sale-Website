@@ -952,72 +952,70 @@ main {
     gap: 20px;
 }
 
-.add-to-cart-btn,
-.buy-now-btn {
-    padding: 14px 30px;
-    border-radius: 5px;
-    font-size: 18px;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 100%;
-    transition: all 0.3s ease;
-}
-
+/* Chỉnh sửa button */
 .button-container {
-    display: flex;
-    gap: 15px; 
-    justify-content: flex-start; 
-    margin-top: 20px; 
+  display: flex;
+  gap: 15px; 
+  justify-content: flex-start; 
+  margin-top: 20px; 
 }
 
 .add-to-cart-btn,
 .buy-now-btn {
-    padding: 12px 25px; 
-    border-radius: 5px;
-    font-size: 16px; 
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: auto; 
-    transition: all 0.3s ease;
+  padding: 12px 25px; 
+  border-radius: 5px;
+  font-size: 16px; 
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: auto; 
+  transition: all 0.3s ease;
+  text-decoration: none; /* Loại bỏ gạch chân */
 }
 
 /* Nút "Thêm vào giỏ hàng" */
 .add-to-cart-btn {
-    background-color: white;
-    border: 2px solid #1D7873;
-    color: #1D7873;
-    font-weight: 600;
+  background-color: white;
+  border: 2px solid #1D7873;
+  color: #1D7873;
+  font-weight: 600;
+  text-decoration: none; /* Đảm bảo không có gạch chân */
 }
 
 .add-to-cart-btn:hover {
-    background-color: #1D7873;
-    color: white;
+  background-color: #1D7873;
+  color: white;
+  text-decoration: none; /* Không gạch chân khi hover */
 }
 
 .add-to-cart-btn i {
-    margin-right: 10px;
-    font-size: 18px; 
+  margin-right: 10px;
+  font-size: 18px; 
 }
 
 /* Nút "Mua ngay" */
 .buy-now-btn {
-    background-color: #1D7873;
-    color: white;
-    border: none;
-    font-weight: 600;
+  background-color: #1D7873;
+  color: white;
+  border: none;
+  font-weight: 600;
+  text-decoration: none; /* Đảm bảo không có gạch chân */
 }
 
 .buy-now-btn:hover {
-    background-color: #164a41;
+  background-color: #164a41;
+  text-decoration: none; /* Không gạch chân khi hover */
 }
 
 .buy-now-btn i {
-    margin-right: 10px;
-    font-size: 18px; 
+  margin-right: 10px;
+  font-size: 18px; 
+}
+
+/* Loại bỏ gạch chân từ thẻ <a> bọc ngoài */
+a {
+  text-decoration: none;
 }
 
 /* Thông tin đánh giá */

@@ -1,10 +1,10 @@
 import productService from "../services/productService";
 import cartService from "../services/cartService";
 import orderService from "../services/orderService";
+import zaloPay from "../controllers/zaloPay";
 import userService from "../services/userService";
 import nodemailer from "nodemailer";
 import express from "express";
-const numberFormatter = new Intl.NumberFormat("de-DE");
 const app = express();
 
 let getAdmin = async (req, res) => {
@@ -113,27 +113,6 @@ let getUserManagementPage = async (req, res) => {
     });
   }
 };
-let updateUserRole = async (req, res) => {
-  try {
-    if (!req.session.user) {
-      return res.redirect("/404");
-    }
-    if (req.session.user.role !== "Admin") return res.redirect("/404");
-    let userId = req.query.user_id;
-    let newRole = req.query.role;
-    await userService.updateUserRole(userId, newRole);
-    let data = await productService.getAllUsers("ALL");
-    return res.render("pages/user-management", {
-      dataTable: data,
-    });
-  } catch (e) {
-    console.log(e);
-    return res.status(200).json({
-      errCode: -1,
-      errMessage: "Error from server",
-    });
-  }
-};
 
 let getEditOrderPage = async (req, res) => {
   try {
@@ -222,7 +201,6 @@ let getProductViewAll = async (req, res) => {
       pantsData: pantsData,
       shoesData: shoesData,
       accessoriesData: accessoriesData,
-      numberFormatter: numberFormatter,
     });
   } catch (e) {
     console.log(e);
@@ -242,7 +220,6 @@ let getProductViewAllAo = async (req, res) => {
       aoThunData: aoThunData,
       aoNiData: aoNiData,
       aoSoMiData: aoSoMiData,
-      numberFormatter: numberFormatter,
     });
   } catch (e) {
     console.log(e);
@@ -260,7 +237,6 @@ let getProductViewAllGiayDep = async (req, res) => {
     return res.render("pages/product-view-all-giaydep", {
       giayData: giayData,
       depData: depData,
-      numberFormatter: numberFormatter,
     });
   } catch (e) {
     console.log(e);
@@ -278,7 +254,6 @@ let getProductViewAllQuan = async (req, res) => {
     return res.render("pages/product-view-all-quan", {
       jeansData: jeansData,
       shortsData: shortsData,
-      numberFormatter: numberFormatter,
     });
   } catch (e) {
     console.log(e);
@@ -298,7 +273,6 @@ let getProductViewAllPhuKien = async (req, res) => {
       boxersData: boxersData,
       socksData: socksData,
       hatsData: hatsData,
-      numberFormatter: numberFormatter,
     });
   } catch (e) {
     console.log(e);
@@ -316,7 +290,6 @@ let getProductViewAProduct = async (req, res) => {
     return res.render("pages/product-view", {
       productData: productData,
       session: req.session,
-      numberFormatter: numberFormatter,
     });
   } catch (e) {
     console.log(e);
@@ -335,7 +308,6 @@ let getCheckOutPage = async (req, res) => {
     return res.render("pages/payment-cart", {
       cartData: cartData,
       user_id: user_id,
-      numberFormatter: numberFormatter,
     });
   } catch (e) {
     console.log(e);
@@ -376,7 +348,6 @@ let getPaymentInfoPage = async (req, res) => {
       email: req.session.user.email,
       phone: req.session.user.phone,
       total: total,
-      numberFormatter: numberFormatter,
     });
   } catch (e) {
     console.log(e);
@@ -399,10 +370,10 @@ let getPaymentDeliveryPage = async (req, res) => {
       phone,
       district,
       total,
+      selectedPaymentType,
     } = req.query;
 
     let deliveryAddress = address + ", " + district + ", " + city;
-    let selectedPaymentType = "CASH";
     let addressShipping =
       deliveryAddress +
       ". " +
@@ -442,19 +413,31 @@ let getPaymentDeliveryPage = async (req, res) => {
       },
     });
 
-    const mailOptions = {
-      from: "process.env.EMAIL_USER",
-      to: email,
-      subject: "Xác nhận đơn hàng",
-      text: `Cảm ơn bạn đã đặt hàng! Đơn hàng của bạn đang được xử lý. \nĐịa chỉ giao hàng: ${addressShipping}. \nTổng số tiền: ${total}. \nPhương thức thanh toán: ${selectedPaymentType}.`,
-    };
-
-    await transporter.sendMail(mailOptions);
-    await cartService.clearCart(user_id);
-    return res.render("partials/success", {
-      email: email,
-      message: `Your order has been placed successfully, check at this email address: ${email}`,
-    });
+    if (selectedPaymentType === "CASH") {
+      const mailOptions = {
+        from: "process.env.EMAIL_USER",
+        to: email,
+        subject: "Xác nhận đơn hàng",
+        text: `Cảm ơn bạn đã đặt hàng! Đơn hàng của bạn đang được xử lý. \nĐịa chỉ giao hàng: ${addressShipping}. \nTổng số tiền: ${total}. \nPhương thức thanh toán: ${selectedPaymentType}.`,
+      };
+      console.log("Noah check selectedPaymentType: ", selectedPaymentType);
+      await transporter.sendMail(mailOptions);
+      await cartService.clearCart(user_id);
+      return res.render("partials/success", {
+        email: email,
+        message: `Your order has been placed successfully, check at this email address: ${email}`,
+      });
+    } else if (selectedPaymentType === "CARD") {
+      let data = await zaloPay.createrZalopay(req, res);
+      let url = data.order_url;
+      if (url) {
+        console.log("Redirecting to ZaloPay order URL:", url);
+        return res.redirect(url); 
+      } else {
+        console.error("ZaloPay order_url is undefined");
+        return res.status(500).send("Failed to process payment with ZaloPay");
+      }
+    }
   } catch (e) {
     console.log(e);
     return res.status(200).json({
@@ -501,6 +484,7 @@ let updateOrderStatus = async (req, res) => {
     });
   }
 };
+
 module.exports = {
   getAdmin,
   getProductManagementPage,
