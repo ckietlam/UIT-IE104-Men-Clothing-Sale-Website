@@ -506,8 +506,8 @@ const searchProductsByName = (name) => {
           },
         },
         attributes: [
-          [Sequelize.fn("DISTINCT", Sequelize.col("name")), "name"],
           "pd_id",
+          "name",
           "description",
           "price",
         ],
@@ -518,6 +518,7 @@ const searchProductsByName = (name) => {
             attributes: ["image_id", "image"],
           },
         ],
+        group: ["name"],
         raw: false,
         nest: true,
       });
