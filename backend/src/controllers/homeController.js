@@ -5,6 +5,7 @@ import zaloPay from "../controllers/zaloPay";
 import userService from "../services/userService";
 import nodemailer from "nodemailer";
 import express from "express";
+const numberFormatter = new Intl.NumberFormat("de-DE");
 const app = express();
 
 let getAdmin = async (req, res) => {
@@ -20,6 +21,7 @@ let getAdmin = async (req, res) => {
     return res.redirect("/404");
   }
 };
+
 let getProductManagementPage = async (req, res) => {
   try {
     if (!req.session.user) {
@@ -39,6 +41,7 @@ let getProductManagementPage = async (req, res) => {
     });
   }
 };
+
 let getOrderManagementPage = async (req, res) => {
   try {
     if (!req.session.user) {
@@ -58,6 +61,7 @@ let getOrderManagementPage = async (req, res) => {
     });
   }
 };
+
 let getEditProductPage = async (req, res) => {
   try {
     if (!req.session.user) {
@@ -101,6 +105,28 @@ let getUserManagementPage = async (req, res) => {
     }
     if (req.session.user.role !== "Admin") return res.redirect("/404");
 
+    let data = await productService.getAllUsers("ALL");
+    return res.render("pages/user-management", {
+      dataTable: data,
+    });
+  } catch (e) {
+    console.log(e);
+    return res.status(200).json({
+      errCode: -1,
+      errMessage: "Error from server",
+    });
+  }
+};
+
+let updateUserRole = async (req, res) => {
+  try {
+    if (!req.session.user) {
+      return res.redirect("/404");
+    }
+    if (req.session.user.role !== "Admin") return res.redirect("/404");
+    let userId = req.query.user_id;
+    let newRole = req.query.role;
+    await userService.updateUserRole(userId, newRole);
     let data = await productService.getAllUsers("ALL");
     return res.render("pages/user-management", {
       dataTable: data,
@@ -158,6 +184,7 @@ let getAddProductPage = async (req, res) => {
     });
   }
 };
+
 const getHomePage = async (req, res) => {
   try {
     const isAuthenticated = req.session.authenticated || false;
@@ -201,6 +228,7 @@ let getProductViewAll = async (req, res) => {
       pantsData: pantsData,
       shoesData: shoesData,
       accessoriesData: accessoriesData,
+      numberFormatter: numberFormatter,
     });
   } catch (e) {
     console.log(e);
@@ -220,6 +248,7 @@ let getProductViewAllAo = async (req, res) => {
       aoThunData: aoThunData,
       aoNiData: aoNiData,
       aoSoMiData: aoSoMiData,
+      numberFormatter: numberFormatter,
     });
   } catch (e) {
     console.log(e);
@@ -237,6 +266,7 @@ let getProductViewAllGiayDep = async (req, res) => {
     return res.render("pages/product-view-all-giaydep", {
       giayData: giayData,
       depData: depData,
+      numberFormatter: numberFormatter,
     });
   } catch (e) {
     console.log(e);
@@ -254,6 +284,7 @@ let getProductViewAllQuan = async (req, res) => {
     return res.render("pages/product-view-all-quan", {
       jeansData: jeansData,
       shortsData: shortsData,
+      numberFormatter: numberFormatter,
     });
   } catch (e) {
     console.log(e);
@@ -273,6 +304,7 @@ let getProductViewAllPhuKien = async (req, res) => {
       boxersData: boxersData,
       socksData: socksData,
       hatsData: hatsData,
+      numberFormatter: numberFormatter,
     });
   } catch (e) {
     console.log(e);
@@ -290,6 +322,7 @@ let getProductViewAProduct = async (req, res) => {
     return res.render("pages/product-view", {
       productData: productData,
       session: req.session,
+      numberFormatter: numberFormatter,
     });
   } catch (e) {
     console.log(e);
@@ -308,6 +341,7 @@ let getCheckOutPage = async (req, res) => {
     return res.render("pages/payment-cart", {
       cartData: cartData,
       user_id: user_id,
+      numberFormatter: numberFormatter,
     });
   } catch (e) {
     console.log(e);
@@ -348,6 +382,7 @@ let getPaymentInfoPage = async (req, res) => {
       email: req.session.user.email,
       phone: req.session.user.phone,
       total: total,
+      numberFormatter: numberFormatter,
     });
   } catch (e) {
     console.log(e);
