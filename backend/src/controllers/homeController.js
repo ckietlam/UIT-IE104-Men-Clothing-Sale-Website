@@ -1,6 +1,7 @@
 import productService from "../services/productService";
 import cartService from "../services/cartService";
 import orderService from "../services/orderService";
+import zaloPay from "../controllers/zaloPay";
 import nodemailer from "nodemailer";
 import express from "express";
 const app = express();
@@ -358,16 +359,35 @@ let getPaymentInfoPage = async (req, res) => {
 
 let getPaymentDeliveryPage = async (req, res) => {
   try {
-    
     let user_id = req.session.user.user_id || NULL;
-    const { email, lastName, firstName, address, city, phone, district, total } =
-      req.query;
+    const {
+      email,
+      lastName,
+      firstName,
+      address,
+      city,
+      phone,
+      district,
+      total,
+      selectedPaymentType,
+    } = req.query;
 
     let deliveryAddress = address + ", " + district + ", " + city;
-    let selectedPaymentType = "CASH";
-    let addressShipping = deliveryAddress + ". " + "Họ tên của bạn là: " + lastName + firstName + ". Số điện thoại là: " + phone;
+    let addressShipping =
+      deliveryAddress +
+      ". " +
+      "Họ tên của bạn là: " +
+      lastName +
+      firstName +
+      ". Số điện thoại là: " +
+      phone;
     //tạo order rồi order detail ở đây: ---
-    console.log("Noah check input order create: ", addressShipping, " ", selectedPaymentType)
+    console.log(
+      "Noah check input order create: ",
+      addressShipping,
+      " ",
+      selectedPaymentType
+    );
     console.log("req query ", req.query);
     let cartData = await cartService.getCartByUserId(user_id);
     let order = await orderService.createOrder(
@@ -375,7 +395,6 @@ let getPaymentDeliveryPage = async (req, res) => {
       selectedPaymentType,
       addressShipping
     );
-   
 
     const transporter = nodemailer.createTransport({
       service: "gmail",
@@ -393,18 +412,30 @@ let getPaymentDeliveryPage = async (req, res) => {
       },
     });
 
-    const mailOptions = {
-      from: "process.env.EMAIL_USER",
-      to: email,
-      subject: "Xác nhận đơn hàng",
-      text: `Cảm ơn bạn đã đặt hàng! Đơn hàng của bạn đang được xử lý. \nĐịa chỉ giao hàng: ${addressShipping}. \nTổng số tiền: ${total}. \nPhương thức thanh toán: ${selectedPaymentType}.`,
-    };
-
-    await transporter.sendMail(mailOptions);
-    await cartService.clearCart(user_id);
-    return res.render("pages/homepage", {
-      message: `Your order has been placed successfully, check at this email address: ${email}`,
-    });
+    if (selectedPaymentType === "CASH") {
+      const mailOptions = {
+        from: "process.env.EMAIL_USER",
+        to: email,
+        subject: "Xác nhận đơn hàng",
+        text: `Cảm ơn bạn đã đặt hàng! Đơn hàng của bạn đang được xử lý. \nĐịa chỉ giao hàng: ${addressShipping}. \nTổng số tiền: ${total}. \nPhương thức thanh toán: ${selectedPaymentType}.`,
+      };
+      console.log("Noah check selectedPaymentType: ", selectedPaymentType);
+      await transporter.sendMail(mailOptions);
+      await cartService.clearCart(user_id);
+      return res.render("pages/homepage", {
+        message: `Your order has been placed successfully, check at this email address: ${email}`,
+      });
+    } else if (selectedPaymentType === "CARD") {
+      let data = await zaloPay.createrZalopay(req, res);
+      let url = data.order_url;
+      if (url) {
+        console.log("Redirecting to ZaloPay order URL:", url);
+        return res.redirect(url); 
+      } else {
+        console.error("ZaloPay order_url is undefined");
+        return res.status(500).send("Failed to process payment with ZaloPay");
+      }
+    }
   } catch (e) {
     console.log(e);
     return res.status(200).json({
