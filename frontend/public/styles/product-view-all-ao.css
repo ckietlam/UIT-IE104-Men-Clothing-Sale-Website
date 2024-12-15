@@ -7,11 +7,11 @@
 }
 .carousel-track {
   display: flex;
-  flex-wrap: wrap; /* Cho phép các sản phẩm xuống dòng khi không đủ không gian */
-  justify-content: flex-start; /* Sử dụng flex-start thay vì space-between */
-  gap: 16px; /* Khoảng cách giữa các sản phẩm */
-  margin: 0; /* Loại bỏ margin thừa */
-  width: 100%; /* Đảm bảo carousel chiếm đầy chiều rộng của container */
+  flex-wrap: wrap; 
+  justify-content: flex-start; 
+  gap: 16px; 
+  margin: 0; 
+  width: 100%; 
 }
 
 @font-face {
@@ -912,24 +912,24 @@ clear: both;
 
 /* Sản phẩm */
 .product-card {
-  flex: 1 1 calc(20% - 16px); /* Mỗi sản phẩm chiếm 20% chiều rộng container */
-  max-width: calc(20% - 16px); /* Đảm bảo không vượt quá 20% chiều rộng */
-  box-sizing: border-box; /* Bao gồm padding và border vào kích thước tổng */
-  text-align: left; /* Canh lề trái cho nội dung */
-  border: 1px solid #ddd; /* Viền nhẹ cho mỗi sản phẩm */
-  border-radius: 8px; /* Góc bo tròn */
-  overflow: hidden; /* Ẩn nội dung vượt quá */
-  padding: 15px; /* Khoảng cách bên trong */
-  background-color: #f9f9f9; /* Màu nền cho sản phẩm */
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); /* Đổ bóng cho sản phẩm */
+  flex: 1 1 calc(20% - 16px); 
+  max-width: calc(20% - 16px); 
+  box-sizing: border-box; 
+  text-align: left; 
+  border: 1px solid #ddd; 
+  border-radius: 8px;
+  overflow: hidden; 
+  padding: 15px; 
+  background-color: #f9f9f9; 
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); 
   transition: transform 0.3s ease;
   position: relative;
-  height: 350px; /* Cố định chiều cao cho các sản phẩm */
+  height: 350px; 
 }
 
 /* Các hiệu ứng hover */
 .product-card a {
-  text-decoration: none; /* Xóa gạch chân */
+  text-decoration: none; 
 }
 
 .product-card img {
@@ -947,8 +947,8 @@ clear: both;
 
 /* Hover effect: sản phẩm nâng lên và thêm bóng đổ */
 .product-card:hover {
-  transform: translateY(-5px); /* Đẩy sản phẩm lên trên */
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2); /* Thêm bóng đổ khi hover */
+  transform: translateY(-5px); 
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2); 
 }
 
 /* Tiêu đề sản phẩm */
@@ -957,13 +957,18 @@ clear: both;
   font-weight: 600;
   color: #333;
   margin: 8px 0 4px 0;
+  white-space: nowrap; 
+  overflow: hidden; 
+  text-overflow: ellipsis; 
 }
-
 /* Mô tả sản phẩm */
 .product-card .product-description {
   font-size: 14px;
   color: #666;
   margin: 4px 0 8px 0;
+  white-space: nowrap;
+  overflow: hidden; 
+  text-overflow: ellipsis; 
 }
 
 /* Giá tiền sản phẩm */
@@ -985,21 +990,21 @@ clear: both;
   box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
 }
 .product-card {
-  flex: 1 1 calc(20% - 16px); /* Mỗi sản phẩm chiếm 20% chiều rộng container */
-  max-width: calc(20% - 16px); /* Đảm bảo không vượt quá 20% chiều rộng */
-  box-sizing: border-box; /* Bao gồm padding và border vào kích thước tổng */
+  flex: 1 1 calc(20% - 16px); 
+  max-width: calc(20% - 16px);
+  box-sizing: border-box; 
 }
 /* Responsive: Mobile first */
 @media screen and (max-width: 768px) {
   .product-card {
-    flex: 1 1 calc(50% - 16px); /* Hiển thị 2 sản phẩm mỗi hàng */
-    height: 380px; /* Đảm bảo chiều cao sản phẩm không thay đổi trên màn hình nhỏ */
+    flex: 1 1 calc(50% - 16px); 
+    height: 380px;
   }
 }
 
 /* Responsive cho màn hình tablet */
 @media screen and (max-width: 1024px) {
   .product-card {
-    flex: 1 1 calc(33.33% - 16px); /* Hiển thị 3 sản phẩm mỗi hàng */
-  }
+    flex: 1 1 calc(33.33% - 16px); 
+}
 }

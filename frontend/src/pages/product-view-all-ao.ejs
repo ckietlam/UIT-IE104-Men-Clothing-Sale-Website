@@ -38,7 +38,7 @@
                                     <p class="product-description">
                                         <%= aoThunData[i].description.length > 100 ? aoThunData[i].description.substring(0, 100) + "..." : aoThunData[i].description %>
                                     </p>
-                                    <p class="product-price"><%= aoThunData[i].price %>đ</p>
+                                    <p class="product-price"><%= aoThunData[i].price.toLocaleString('vi-VN') %>đ</p>
                                 </div>
                             </a>
                         </div>
@@ -65,7 +65,7 @@
                                     <p class="product-description">
                                         <%= aoSoMiData[i].description.length > 100 ? aoSoMiData[i].description.substring(0, 100) + "..." : aoSoMiData[i].description %>
                                     </p>
-                                    <p class="product-price"><%= aoSoMiData[i].price %>đ</p>
+                                    <p class="product-price"><%= aoSoMiData[i].price.toLocaleString('vi-VN') %>đ</p>
                                 </div>
                             </a>
                         </div>
@@ -91,7 +91,7 @@
                                     <p class="product-description">
                                         <%= aoNiData[i].description.length > 100 ? aoNiData[i].description.substring(0, 100) + "..." : aoNiData[i].description %>
                                     </p>
-                                    <p class="product-price"><%= aoNiData[i].price %>đ</p>
+                                    <p class="product-price"><%= aoNiData[i].price.toLocaleString('vi-VN') %>đ</p>
                                 </div>
                             </a>
                         </div>

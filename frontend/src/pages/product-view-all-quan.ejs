@@ -38,7 +38,7 @@
                                     <p class="product-description">
                                         <%= shortsData[i].description.length > 100 ? shortsData[i].description.substring(0, 100) + "..." : shortsData[i].description %>
                                     </p>
-                                    <p class="product-price"><%= shortsData[i].price %>đ</p>
+                                    <p class="product-price"><%= shortsData[i].price.toLocaleString('vi-VN') %>đ</p>
                                 </div>
                             </a>
                         </div>
@@ -65,7 +65,7 @@
                                     <p class="product-description">
                                         <%= jeansData[i].description.length > 100 ? jeansData[i].description.substring(0, 100) + "..." : jeansData[i].description %>
                                     </p>
-                                    <p class="product-price"><%= jeansData[i].price %>đ</p>
+                                    <p class="product-price"><%= jeansData[i].price.toLocaleString('vi-VN') %>đ</p>
                                 </div>
                             </a>
                         </div>
