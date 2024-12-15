@@ -1,6 +1,7 @@
 import productService from "../services/productService";
 import cartService from "../services/cartService";
 import orderService from "../services/orderService";
+import userService from "../services/userService"
 import nodemailer from "nodemailer";
 import express from "express";
 const numberFormatter = new Intl.NumberFormat("de-DE");
@@ -101,6 +102,27 @@ let getUserManagementPage = async (req, res) => {
     }
     if (req.session.user.role !== "Admin") return res.redirect("/404");
 
+    let data = await productService.getAllUsers("ALL");
+    return res.render("pages/user-management", {
+      dataTable: data,
+    });
+  } catch (e) {
+    console.log(e);
+    return res.status(200).json({
+      errCode: -1,
+      errMessage: "Error from server",
+    });
+  }
+};
+let updateUserRole = async (req, res) => {
+  try {
+    if (!req.session.user) {
+      return res.redirect("/404");
+    }
+    if (req.session.user.role !== "Admin") return res.redirect("/404");
+    let userId = req.query.user_id;
+    let newRole = req.query.role;
+    await userService.updateUserRole(userId, newRole);
     let data = await productService.getAllUsers("ALL");
     return res.render("pages/user-management", {
       dataTable: data,
@@ -457,5 +479,6 @@ module.exports = {
   deleteCartItem,
   getPaymentInfoPage,
   getPaymentDeliveryPage,
-  getSuccessPage
+  getSuccessPage,
+  updateUserRole
 };

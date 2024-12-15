@@ -54,7 +54,7 @@ let initWebRouters = (app) => {
   router.get("/admin-orders-management", homeController.getOrderManagementPage);
   router.get("/admin-users-management", homeController.getUserManagementPage);
   router.get("/edit-order-status", homeController.getEditOrderPage);
-
+  router.get("/update-user-role", homeController.updateUserRole)
 
   //Product api
   router.get("/api/get-all-products", productController.handleGetAllProducts);
