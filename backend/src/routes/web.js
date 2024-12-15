@@ -86,8 +86,9 @@ let initWebRouters = (app) => {
   router.get("/delivering-rules", placeHolderController.getDeliveringRules);
   router.get("/frequent-questions", placeHolderController.getFrequentQuestions);
 
-  //zalopay
+
   router.post("/payment", zalopay.createrZalopay);
+  router.get("/search-products", productController.handleSearchProducts);
   return app.use("/", router);
 };
 
