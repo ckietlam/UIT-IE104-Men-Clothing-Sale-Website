@@ -361,6 +361,7 @@ let deleteCartItem = async (req, res) => {
     return res.render("pages/payment-cart", {
       cartData: cartData,
       user_id: user_id,
+      numberFormatter: numberFormatter,
     });
   } catch (e) {
     console.log(e);

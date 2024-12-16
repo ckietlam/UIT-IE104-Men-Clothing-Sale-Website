@@ -35,6 +35,7 @@ let initWebRouters = (app) => {
   router.get("/checkout", homeController.getCheckOutPage)
   router.get("/remove-cart-item", homeController.deleteCartItem)
   router.post("/payment-info", homeController.getPaymentInfoPage);
+  router.get("/payment-info", homeController.getPaymentInfoPage);
   router.get("/payment-delivery", homeController.getPaymentDeliveryPage);
   
   router.post("/api/add-cart", cartController.handleAddCart);
