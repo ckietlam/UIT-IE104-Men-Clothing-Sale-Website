@@ -1,0 +1,364 @@
+/* Advertise Section */
+.advertise {
+    position: relative; /* Để nút hiển thị trên ảnh */
+    width: 100%; /* Chiếm toàn bộ chiều rộng màn hình */
+    margin: 0 0; /* Tạo khoảng cách trên và dưới */
+    display: flex;
+    justify-content: center; /* Căn giữa ảnh */
+}
+
+.advertise-image {
+    position: relative; /* Đặt nút trong phạm vi ảnh */
+    width: 100%; /* Chiếm toàn bộ chiều rộng */
+    height: auto; /* Đảm bảo ảnh tự động điều chỉnh kích thước */
+}
+
+.advertise-image img {
+    width: 100%; /* Ảnh phủ toàn bộ container */
+    height: auto;
+}
+
+/* Advertise Button */
+.advertise-btn {
+    position: absolute; /* Đặt nút chồng lên ảnh */
+    bottom: 19%; /* Vị trí cách đáy ảnh */
+    left: 15%; /* Vị trí cách cạnh trái */
+    transform: translate(-50%, 50%); /* Căn chỉnh để nút nằm chính xác */
+    padding: 20px 40px;
+    font-size: 22px;
+    font-weight: semibold;
+    color: white;
+    background-color: #000000;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.advertise-btn:hover {
+    background-color: #679289; /* Màu xanh đậm hơn khi hover */
+}
+
+
+/* New Arrival Section */
+.new-arrival {
+    margin: 50px 0;
+    padding: 20px;
+    background-color: #ffffff;
+}
+
+/* Section Title */
+.section-title {
+    position: relative; /* Cho phép đặt các phần tử bên trong tuyệt đối */
+    text-align: left;
+}
+
+.text-container {
+    position: absolute;
+    top: -25px;
+    margin-left: -115px;
+    transform: translateX(-50%);
+    z-index: 2; /* Đặt z-index cao hơn icon để chữ nằm trên */
+}
+
+.section-title h2 {
+    font-size: 36px;
+    font-weight: bold;
+    color: #000000;
+}
+
+.icon-container {
+    position: relative;
+    right: 10%;
+    bottom: 10%;
+    margin-left: -220px;
+    z-index: 1; /* Z-index thấp hơn chữ */
+}
+
+.section-title .title-icon {
+    display: block;
+    margin: 0 auto;
+    width: 180px; /* Điều chỉnh kích thước icon */
+    height: 20 ;
+    opacity: 0.8; /* Tùy chọn: giảm opacity để chữ nổi bật hơn */
+}
+
+/* Product Carousel */
+.product-carousel {
+  display: flex;
+  align-items: center;
+  justify-content: center; /* Cân đều các phần tử */
+  position: relative;
+  margin-top: 40px;
+  width: 90%; /* Đảm bảo carousel không chiếm toàn bộ chiều rộng */
+  margin-left: auto; /* Căn giữa carousel */
+  margin-right: auto; /* Căn giữa carousel */
+  gap: 40px; /* Khoảng cách giữa các phần tử (bao gồm mũi tên và sản phẩm) */
+}
+
+/* Carousel Control (Prev/Next Buttons) */
+.carousel-control {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 10px;
+  z-index: 2;
+  width: 40px; /* Đảm bảo kích thước nút mũi tên phù hợp */
+}
+
+.carousel-control.prev {
+  position: absolute;
+  left: 50px; /* Cách mép trái 50px */
+  top: 50%; /* Căn giữa theo chiều dọc */
+  transform: translateY(-50%); /* Đảm bảo căn giữa đúng */
+}
+
+.carousel-control.next {
+  position: absolute;
+  right: 50px; /* Cách mép phải 50px */
+  top: 50%; /* Căn giữa theo chiều dọc */
+  transform: translateY(-50%); /* Đảm bảo căn giữa đúng */
+}
+
+/* Carousel Items */
+.carousel-items {
+  display: flex;
+  gap: 60px; /* Khoảng cách giữa các sản phẩm */
+  overflow: hidden;
+  width: calc(100% - 80px); /* Đảm bảo chừa khoảng trống cho hai mũi tên */
+  justify-content: center;
+}
+
+/* Product Items */
+.product-item {
+  background-color: #f9f9f9;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  padding: 10px;
+  text-align: center;
+  width: 350px; /* Đảm bảo kích thước sản phẩm đồng đều */
+}
+
+.product-item img {
+  width: 100%;
+  height: auto;
+  margin-bottom: 10px;
+  border-radius: 5px;
+}
+
+.product-item h3 {
+  font-size: 22px;
+  font-weight: bold;
+  color: #333333;
+  margin-bottom: 5px;
+}
+
+.product-item p {
+  font-size: 20px;
+  color: #666666;
+  margin-bottom: 10px;
+}
+
+.product-item span {
+  font-size: 22px;
+  font-weight: bold;
+  color: #000000;
+}
+
+
+/* Collection Section */
+.collection {
+  margin: 50px 0;
+  padding: 20px;
+  background-color: #ffffff;
+}
+
+/* Section Title */
+.section-title {
+  position: relative; /* Cho phép đặt các phần tử con tuyệt đối */
+  text-align: left; /* Căn chữ và icon về bên trái */
+}
+
+.text-container {
+  position: absolute;
+  top: -25px; /* Căn chỉnh chữ bên trên icon */
+  left: 17%; /* Đẩy chữ về bên trái theo tỷ lệ */
+  transform: translateX(-50%); /* Đảm bảo căn giữa phần chữ */
+  z-index: 2; /* Đảm bảo chữ nằm trên icon */
+}
+
+.section-title h2 {
+  font-size: 36px; /* Font chữ lớn cho tiêu đề */
+  font-weight: bold;
+  color: #000000;
+}
+
+.icon-container {
+  position: relative;
+  right: 28%; /* Điều chỉnh icon sang bên phải */
+  bottom: 10%; /* Đẩy icon xuống dưới */
+  z-index: 1; /* Đặt icon phía dưới chữ */
+}
+
+.section-title .title-icon {
+  display: block;
+  margin: 0 auto;
+  width: 180px; /* Kích thước icon */
+  height: auto;
+  opacity: 0.8; /* Tùy chỉnh độ trong suốt để làm nổi bật chữ */
+}
+
+
+
+
+/* Collection Section */
+.collection {
+  margin: 50px 0;
+  padding: 20px;
+  background-color: #ffffff;
+}
+
+/* Section Title */
+.section-title {
+  position: relative;
+  text-align: left;
+  margin-left: 10%; /* Căn thẳng hàng với text */
+}
+
+.text-container {
+  position: absolute;
+  top: -25px;
+  left: 17%;
+  transform: translateX(-50%);
+  z-index: 2;
+}
+
+.section-title h2 {
+  font-size: 36px;
+  font-weight: bold;
+  color: #000000;
+}
+
+.icon-container {
+  position: relative;
+  right: 28%;
+  bottom: 10%;
+  z-index: 1;
+}
+
+.section-title .title-icon {
+  display: block;
+  margin: 0 auto;
+  width: 180px;
+  height: auto;
+  opacity: 0.8;
+}
+
+/* Collection Grid */
+.collection-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr; /* Tạo hai cột */
+  grid-template-rows: auto auto; /* Tạo hai hàng với chiều cao tự động */
+  gap: 20px; /* Khoảng cách giữa các items */
+  margin: 0 10%; /* Căn chỉnh để thẳng với "Bộ sưu tập" */
+}
+
+/* Collection Items */
+.collection-item {
+  position: relative;
+  overflow: hidden;
+  text-align: center;
+  border-radius: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.collection-item img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 5px;
+}
+
+/* Button Adjustments */
+.collection-item .item-button {
+  position: absolute;
+  left: 50%; /* Centers the button horizontally */
+  transform: translateX(-50%); /* Ensures it's perfectly centered horizontally */
+  bottom: 10%; /* Adjust this value to place the button over the image */
+  padding: 10px 25px; /* Padding for button size */
+  border-radius: 5px; /* Rounded corners */
+  background-color: rgba(0, 0, 0, 0.7); /* Semi-transparent background */
+  color: #ffffff; /* Text color */
+  font-size: 20px;
+  font-weight: semibold;
+  cursor: pointer;
+  transition: background-color 0.3s ease; /* Smooth transition for hover effect */
+  z-index: 10; /* Higher z-index to ensure it overlays the image */
+}
+
+.collection-item .item-button:hover {
+  background-color: rgba(0, 0, 0, 0.9); /* Darker on hover for better visibility */
+}
+
+/* You can adjust the `bottom`, `left`, and other positions as needed for alignment */
+.item-jacket .item-button {
+  bottom: 27%; /* Example to move the button higher on the jacket image */
+  margin-left: 20%;
+}
+
+.item-shoes .item-button {
+  bottom: 5%; /* Example for positioning the shoe button */
+  margin-left: 20%;
+}
+
+.item-pants .item-button {
+  bottom: 3%; /* Adjust based on the specific image layout */
+  margin-left: 20%;
+}
+
+.item-accessories .item-button {
+  bottom: 26%; /* Position the button at the middle of the accessory image */
+  margin-left: 20%;
+}
+
+/* Specific Grid Placements */
+.item-jacket {
+  grid-column: 1 / 2;
+  grid-row: 1 / 2;
+}
+
+.item-shoes {
+  grid-column: 2 / 3;
+  grid-row: 1 / 2;
+}
+
+.item-pants {
+  grid-column: 1 / 2;
+  grid-row: 2 / 3;
+}
+
+.item-accessories {
+  grid-column: 2 / 3;
+  grid-row: 2 / 3;
+}
+
+/* Specific Styles for Jacket and Shoes */
+.item-jacket {
+  margin-top: -200px; /* Chỉnh margin-top sao cho ngang bằng với đường màu đỏ */
+}
+
+.item-shoes {
+  margin-top: 50px; /* Chỉnh margin-top sao cho ngang bằng với đường màu đỏ */
+  flex: 1 1 auto; /* Adjust this if necessary to allow size override */
+}
+
+.item-pants {
+  margin-top: -150px; /* Chỉnh margin-top sao cho ngang bằng với đường màu đỏ */
+}
+
+.item-accessories {
+  margin-bottom: -180px;
+}

@@ -1,0 +1,116 @@
+/* Main Content Styling */
+.mainContent {
+    margin-left: 260px; /* Đẩy nội dung sang phải để không lấn sidebar (kích thước sidebar là 240px + 20px padding) */
+    padding: 20px;
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    transition: margin-left 0.3s ease-in-out; /* Thêm hiệu ứng khi sidebar thu nhỏ */
+}
+
+.sidebar.collapsed + .mainContent {
+    margin-left: 140px; /* Giảm khoảng cách khi sidebar thu nhỏ */
+}
+
+
+/* Page Title Styling */
+.pageTitle {
+    font-size: 24px;
+    font-weight: bold;
+    color: #4e73df;
+    margin-bottom: 20px;
+    text-align: left;
+}
+
+/* Table Container */
+.tableContainer {
+    overflow-x: auto; /* Đảm bảo bảng cuộn được nếu quá dài */
+    background-color: #ffffff; /* Nền bảng */
+    border-radius: 10px; /* Bo góc bảng */
+    padding: 15px;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* DataTable Styling */
+.dataTable {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: left;
+    margin-top: 10px;
+}
+
+.dataTable thead th {
+    background-color: #4e73df;
+    color: white;
+    padding: 10px;
+    text-align: center;
+    font-weight: bold;
+    border: 1px solid #ddd;
+}
+
+.dataTable tbody td {
+    padding: 10px;
+    border: 1px solid #ddd;
+    text-align: center;
+}
+
+.dataTable tbody tr:hover {
+    background-color: #f1f1f1;
+}
+
+/* Role Dropdown Styling within Table */
+.dataTable .role-select {
+    width: 100%; /* Điều chỉnh chiều rộng để phù hợp với cột */
+    padding: 5px 10px; /* Padding để phù hợp với các ô bảng khác */
+    border-radius: 5px; /* Bo tròn góc */
+    border: 1px solid #ccc; /* Đường viền */
+    background-color: #fff; /* Màu nền trắng */
+    box-shadow: none; /* Không sử dụng bóng */
+    font-size: 16px; /* Cỡ chữ phù hợp */
+    color: #333; /* Màu chữ */
+    outline: none; /* Xóa đường viền nổi bật khi chọn */
+}
+
+.dataTable .role-select:hover {
+    background-color: #f8f8f8; /* Màu nền khi hover */
+}
+
+.dataTable .role-select:focus {
+    border-color: #4e73df; /* Màu viền khi được focus */
+}
+
+/* Action Buttons */
+.action-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+.btn-edit {
+    padding: 5px 10px;
+    border: none;
+    border-radius: 5px;
+    color: white;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.btn-edit {
+    background-color: #13874f;
+}
+
+.btn-edit:hover {
+    background-color: #105e36;
+}
+
+  /* Responsive Design for Sidebar */
+  @media (max-width: 768px) {
+    .sidebar {
+      width: 60px; /* Narrow sidebar for smaller screens */
+    }
+  
+    .mainContent {
+      margin-left: 70px; /* Adjust content margin for smaller sidebar */
+    }
+  }
+  

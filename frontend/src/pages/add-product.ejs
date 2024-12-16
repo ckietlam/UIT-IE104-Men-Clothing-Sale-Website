@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Thêm sản phẩm</title>
+    <link rel="stylesheet" href="styles/add-product.css" />
+  </head>
+
+  <body>
+
+    <%- include('../partials/admin-sidebar', { activeIdx: 0 }) %>
+    
+    <% if (typeof message !== 'undefined' && message != null) { %> 
+      <script> alert('<%= message %>'); </script> 
+    <% } %>
+    
+
+    <!-- Main Content Section -->
+    <div class="mainContent">
+      <!-- Form Section -->
+      <div class="formContainer">
+        <h1>Thêm sản phẩm</h1>
+        <form
+          action="/create-new-product"
+          method="POST"
+          name="myForm"
+          onsubmit="return validateForm()"
+        >
+          <div class="formGroup">
+            <label for="name">Tên sản phẩm</label>
+            <input
+              type="text"
+              id="name"
+              placeholder="Nhập tên sản phẩm"
+              name="name"
+              required
+            />
+          </div>
+          <div class="formGroup">
+            <label for="price">Giá tiền sản phẩm</label>
+            <input
+              type="text"
+              id="price"
+              placeholder="Nhập giá sản phẩm"
+              name="price"
+              required
+            />
+          </div>
+          <div class="formGroup">
+            <label for="upload">Ảnh</label>
+            <script>
+              function getBase64(file) {
+                return new Promise((resolve, reject) => {
+                  const reader = new FileReader();
+                  reader.readAsDataURL(file);
+                  reader.onload = () => resolve(reader.result);
+                  reader.onerror = (error) => reject(error);
+                });
+              }
+              let imageUrls = [];
+              let images = [];
+              handleOnchangeImage = async (event) => {
+                console.log("Noah check images: ", images);
+                const files = event.target.files;
+                imageUrls = [];
+                images = [];
+                for (let i = 0; i < files.length; i++) {
+                  let file = files[i];
+                  let objectUrl = URL.createObjectURL(file);
+                  let base64 = await getBase64(file);
+                  images.push(base64);
+                  imageUrls.push(objectUrl);
+                }
+                document.getElementById("imagesInput").value =
+                  JSON.stringify(images);
+                renderPreviews();
+              };
+              function renderPreviews() {
+                const previewContainer =
+                  document.querySelector(".preview-container");
+                previewContainer.innerHTML = "";
+                imageUrls.forEach((url) => {
+                  const previewDiv = document.createElement("div");
+                  previewDiv.classList.add("preview-image");
+                  previewDiv.style.backgroundImage = `url(${url})`;
+                  previewContainer.appendChild(previewDiv);
+                });
+              }
+              function validateForm() {
+                let nameInput = document.forms["myForm"]["name"].value;
+                let priceInput = document.forms["myForm"]["price"].value;
+                if (nameInput === "" || priceInput === "") {
+                  alert(
+                    "Phải điền tên sản phẩm và giá sản phẩm trước khi tạo!"
+                  );
+                  return false;
+                }
+              }
+            </script>
+            <div>
+              <input
+                type="file"
+                id="inputImage"
+                multiple
+                hidden
+                onchange="handleOnchangeImage(event)"
+              />
+              <label class="label-upload" for="inputImage" nam
+                >Tải ảnh<i class="fas fa-upload"></i
+              ></label>
+            </div>
+          </div>
+          <div class="form-group">
+            <div
+              class="preview-container"
+              style="display: flex; flex-wrap: wrap; gap: 10px"
+            >
+              <!-- Các preview image sẽ được tạo và thêm vào đây -->
+            </div>
+          </div>
+          <div class="formGroup">
+            <label for="type">Thể loại sản phẩm</label>
+            <select id="type" name="type_of_clothes">
+              <% let data = ['Tees', 'Sweats', 'Shirts', 'Jeans', 'Shorts',
+              'Jackets', 'Sneakers', 'Sandals', 'Boxers', 'Socks', 'Hats', 'Wallets', 'Belts']; for
+              (let i = 0; i < data.length; i++){ %>
+              <option value="<%= data[i] %>"><%= data[i] %></option>
+              <% } %>
+            </select>
+          </div>
+          <div class="formGroup">
+            <label for="category">Phân loại sản phẩm</label>
+            <select id="category" name="cat_id">
+              <% for (let i = 0; i < categoriesData.length; i++) { %>
+              <option value="<%= categoriesData[i].cat_id %>">
+                <%= categoriesData[i].name %>
+              </option>
+              <% } %>
+            </select>
+          </div>
+          <div class="formGroup">
+            <label for="size">Kích cỡ sản phẩm</label>
+            <select id="size" name="size">
+              <% let sizes = ['S', 'M', 'L', '39', '40', '41', '42', 'None'];
+              for (let i = 0; i < sizes.length; i++){ %>
+              <option value="<%= sizes[i] %>"><%= sizes[i] %></option>
+              <% } %>
+            </select>
+          </div>
+          <div class="formGroup">
+            <label for="description">Mô tả sản phẩm</label>
+            <textarea
+              id="description"
+              type="text"
+              name="description"
+              placeholder="Nhập mô tả sản phẩm"
+            ></textarea>
+          </div>
+          <input name="pd_id" type="text" hidden />
+          <input type="hidden" id="imagesInput" name="images" />
+
+          <div class="formGroup">
+            <button type="submit" class="button-submit">Tạo thông tin sản phẩm mới</button>
+          </div>          
+        
+        </form>
+      </div>
+    </div>
+
+  </body>
+</html>

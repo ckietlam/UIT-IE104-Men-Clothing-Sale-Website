@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>H(T)ML Product</title>
+    <link rel="icon" type="product_img" href="images/LOGO ICON.png">
+    <link rel="stylesheet" href="styles/product-view-all-ao.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600&family=Poppins:wght@900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet">
+    
+</head>
+<body>
+
+    <%- include('../partials/header', { activeIdx: 1 }) %>
+
+    <!-- Product Section -->
+     
+    <div class="categories-container">
+        <div class="category-section">
+            <div class="category-header">
+                <a href="/product-view-all" class="view-all" onclick="toggleView(this)">Xem tất cả</a>
+            </div>
+            <div class="product-carousel limited-view">
+                <div class="carousel-track">
+                    
+                    <%for (let i = 0; i < productsData.length; i++) {%>
+                        <div class="product-card">
+                            <a href="/product-view?pd_id=<%=productsData[i].pd_id%>">
+                                <img src="<%= productsData[i].productImageData[0].image %>" alt="<%= productsData[i].name %>">
+                                <h3 class="product-name">
+                                    <%= productsData[i].name.length > 30 ? productsData[i].name.substring(0, 30) + "..." : productsData[i].name %>
+                                </h3>
+                                <div class="product-details">
+                                    <p class="product-description">
+                                        <%= productsData[i].description.length > 100 ? productsData[i].description.substring(0, 100) + "..." : productsData[i].description %>
+                                    </p>
+                                    <p class="product-price"><%= numberFormatter.format(productsData[i].price) %>đ</p>
+                                </div>
+                            </a>
+                        </div>
+                    <%}%>
+
+                </div>
+            </div>
+        </div>
+    </div>   
+
+
+    <%- include('../partials/footer', { activeIdx: 0 }) %>
+
+    <script src="scripts/product-view-all.js"></script>
+</body>
+</html>

@@ -1,0 +1,182 @@
+/* Main Content Styling */
+.mainContent {
+    margin-left: 260px; /* Đẩy nội dung sang phải để không lấn sidebar (kích thước sidebar là 240px + 20px padding) */
+    padding: 20px;
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    transition: margin-left 0.3s ease-in-out; /* Thêm hiệu ứng khi sidebar thu nhỏ */
+}
+
+.sidebar.collapsed + .mainContent {
+    margin-left: 140px; /* Giảm khoảng cách khi sidebar thu nhỏ */
+}
+
+/* Filter and Search Row */
+.filterSearchRow {
+    display: flex;
+    justify-content: space-between; /* Tạo khoảng cách giữa hai phần */
+    align-items: center; /* Căn giữa nội dung theo chiều dọc */
+    margin-bottom: 20px; /* Khoảng cách dưới */
+}
+
+.filterEntries,
+.searchContainer {
+    display: flex;
+    align-items: center;
+    gap: 10px; /* Khoảng cách giữa các phần tử */
+}
+
+.entriesSelect {
+    padding: 5px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 14px;
+}
+
+.searchInput {
+    padding: 5px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 14px;
+    width: 200px; /* Độ rộng thanh tìm kiếm */
+}
+
+.filterEntries label,
+.searchContainer label {
+    font-size: 14px;
+    font-weight: bold;
+    color: #4e73df;
+}
+
+
+/* Page Title Styling */
+.pageTitle {
+    font-size: 24px;
+    font-weight: bold;
+    color: #4e73df;
+    margin-bottom: 20px;
+    text-align: left;
+}
+
+/* Table Container */
+.tableContainer {
+    overflow-x: auto; /* Đảm bảo bảng cuộn được nếu quá dài */
+    background-color: #ffffff; /* Nền bảng */
+    border-radius: 10px; /* Bo góc bảng */
+    padding: 15px;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* DataTable Styling */
+.dataTable {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: left;
+    margin-top: 10px;
+}
+
+.dataTable thead th {
+    background-color: #4e73df;
+    color: white;
+    padding: 10px;
+    text-align: center;
+    font-weight: bold;
+    border: 1px solid #ddd;
+}
+
+.dataTable tbody td {
+    padding: 10px;
+    border: 1px solid #ddd;
+    text-align: center;
+}
+
+.dataTable tbody tr:hover {
+    background-color: #f1f1f1;
+}
+
+/* Action Buttons */
+.action-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+.btn-edit,
+.btn-delete {
+    padding: 5px 10px;
+    border: none;
+    border-radius: 5px;
+    color: white;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.btn-edit {
+    background-color: #4e73df;
+}
+
+.btn-edit:hover {
+    background-color: #2e59d9;
+}
+
+.btn-delete {
+    background-color: #e74a3b;
+}
+
+.btn-delete:hover {
+    background-color: #c0392b;
+}
+
+/* Pagination Styling */
+.paginationContainer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 20px;
+    font-size: 14px;
+    color: #6c757d; /* Màu chữ nhẹ */
+}
+
+.paginationInfo {
+    font-size: 14px;
+    color: #6c757d;
+}
+
+.paginationControls {
+    display: flex;
+    gap: 5px;
+}
+
+.paginationButton {
+    padding: 5px 10px;
+    background-color: #f8f9fa;
+    border: 1px solid #ddd;
+    border-radius: 3px;
+    cursor: pointer;
+    color: #007bff;
+}
+
+.paginationButton:hover {
+    background-color: #e9ecef;
+}
+
+.paginationButton.active {
+    background-color: #007bff;
+    color: white;
+    border-color: #007bff;
+}
+
+
+
+  /* Responsive Design for Sidebar */
+  @media (max-width: 768px) {
+    .sidebar {
+      width: 60px; /* Narrow sidebar for smaller screens */
+    }
+  
+    .mainContent {
+      margin-left: 70px; /* Adjust content margin for smaller sidebar */
+    }
+  }
+  

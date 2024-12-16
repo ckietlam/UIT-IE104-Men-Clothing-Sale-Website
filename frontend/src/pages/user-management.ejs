@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Quản lý sản phẩm</title>
+    <link rel="stylesheet" href="styles/user-management.css" />
+  </head>
+
+  <body>
+    <%- include('../partials/admin-sidebar', { activeIdx: 0 }) %> <% if (typeof
+    message !== 'undefined' && message != null) { %>
+    <script>
+      alert("<%= message %>");
+    </script>
+    <% } %>
+
+    <!-- Main Content Section -->
+    <div class="mainContent">
+      <h2 class="pageTitle">Danh sách người dùng</h2>
+
+      <!-- Table Container -->
+      <div class="tableContainer">
+        <table class="dataTable">
+          <thead>
+            <tr>
+              <th>User ID</th>
+              <th>Email</th>
+              <th>Name</th>
+              <th>Phone</th>
+              <th>Role</th>
+              <th>Updated Time</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% for(let i=0; i < dataTable.length; i++) { %>
+            <tr>
+              <td><%= dataTable[i].user_id %></td>
+              <td><%= dataTable[i].email %></td>
+              <td><%= dataTable[i].name %></td>
+              <td><%= dataTable[i].phone %></td>
+              <td>
+                <select
+                  class="role-select"
+                  id="role-<%= dataTable[i].user_id %>"
+                  name="role"
+                >
+                  <option value="<%= dataTable[i].role %>" selected>
+                    <%= dataTable[i].role %>
+                  </option>
+                  <% let roles = ['Customer', 'Admin']; for (let j = 0; j <
+                  roles.length; j++) { if (roles[j] !== dataTable[i].role) { %>
+                  <option value="<%= roles[j] %>"><%= roles[j] %></option>
+                  <% } } %>
+                </select>
+              </td>
+              <td><%= dataTable[i].updatedAt %></td>
+              <td class="action-buttons">
+                <button
+                  class="btn-edit"
+                  data-user-id="<%= dataTable[i].user_id %>"
+                >
+                  Update
+                </button>
+              </td>
+            </tr>
+            <% } %>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <script src="scripts/user-management.js"></script>
+  </body>
+</html>

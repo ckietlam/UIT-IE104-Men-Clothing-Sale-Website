@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sửa thông tin sản phẩm</title>
+    <link rel="stylesheet" href="styles/edit-order-status.css" />
+  </head>
+  <body>
+
+    <%- include('../partials/admin-sidebar', { activeIdx: 0 }) %>
+    <% if (typeof message !== 'undefined' && message != null) { %> 
+      <script> alert('<%= message %>'); </script> 
+    <% } %>
+
+    <!-- Main Content Section -->
+    <div class="mainContent">
+      <!-- Form Section -->
+      <div class="formContainer">
+        <h1>Sửa trạng thái đơn hàng</h1>
+        <form action="/post-order-status" method="POST">
+          <div class="formGroup">
+            <label for="orderId">ID đơn hàng</label>
+            <input
+              type="text"
+              id="orderId"
+              value="<%= orderData.order_id %>"
+              name="order_id"
+              disabled
+            />
+          </div>
+          <div class="formGroup">
+            <label for="customerName">Tên khách hàng</label>
+            <input
+              type="text"
+              id="customerName"
+              value="<%= orderData.userData.name %>"
+              name="name"
+              disabled
+            />
+          </div>
+          <div class="formGroup">
+            <label for="customerPhone">Số điện thoại khách hàng</label>
+            <input
+              type="text"
+              id="customerPhone"
+              value="<%= orderData.userData.phone %>"
+              disabled
+            />
+          </div>
+          <div class="formGroup">
+            <label for="customerEmail">Email khách hàng</label>
+            <input
+              type="email"
+              id="customerEmail"
+              value="<%= orderData.userData.email %>"
+              disabled
+            />
+          </div>
+          <div class="formGroup">
+            <label for="amount">Địa chỉ nhận hàng</label>
+            <input
+              type="text"
+              id="amount"
+              value="<%= orderData.address_shipping %>"
+              disabled
+            />
+          </div>
+          <div class="formGroup">
+            <label for="productCost">Tổng giá trị đơn hàng</label>
+            <input
+              type="number"
+              id="productCost"
+              value="<%= orderData.cost %>"
+              disabled
+            />
+          </div>
+          <div class="formGroup">
+            <label for="status">Trạng thái đơn hàng</label>
+            <select id="status" name="status">
+              <option selected><%= orderData.status %></option>
+              <% let status = ['Confirming', 'Preparing', 'Delivering',
+              'Delivered']; for (let i = 0; i < status.length; i++) { if
+              (status[i] !== orderData.status) { %>
+              <option value="<%= status[i] %>"><%= status[i] %></option>
+              <% } } %>
+            </select>
+          </div>
+          <input
+            name="user_id"
+            value="<%= orderData.userData.user_id %>"
+            type="text"
+            hidden
+          />
+          <input
+            name="order_id"
+            value="<%= orderData.order_id %>"
+            type="text"
+            hidden
+          />
+
+          <div class="formGroup">
+            <button type="submit" class="button-submit">Cập nhật trạng thái</button>
+          </div>
+          
+        </form>
+      </div>
+    </div>
+
+  </body>
+</html>

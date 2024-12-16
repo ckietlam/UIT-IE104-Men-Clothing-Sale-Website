@@ -1,0 +1,97 @@
+/* Main Content Styling */
+  .mainContent {
+    margin-left: 240px; /* Space to the right of the sidebar */
+    padding: 20px;
+    background-color: #f8f9fc;
+    min-height: 100vh;
+    transition: margin-left 0.3s ease; /* Smooth transition */
+}
+  
+  /* Form Container */
+  .formContainer {
+    margin-top: 50px;
+    margin-left: 200px;
+    background: white; /* White background */
+    padding: 20px; /* Padding inside the form */
+    border-radius: 5px; /* Rounded corners */
+    width: 1000px;
+  }
+  
+  h1 {
+    margin: 0 0 20px; /* Space below the header */
+  }
+  
+  .formGroup {
+    margin-bottom: 15px; /* Space between form groups */
+  }
+  
+  label {
+    display: block; /* Block layout for label */
+    margin-bottom: 5px; /* Space below the label */
+  }
+  
+  input, select, textarea, button {
+    width: 100%; /* Full width elements */
+    padding: 10px; /* Padding inside the input */
+    margin: 5px 0; /* Space around elements */
+    border: 1px solid #ddd; /* Light border */
+    border-radius: 5px; /* Rounded corners */
+  }
+
+/* Button Upload */
+.label-upload {
+  border-radius: 3px;
+  padding: 5px;
+  color: white;
+  background-color: #4e73df;
+  cursor: pointer;
+  width: 100px;
+  display: flex; /* Makes the label a flex container */
+  align-items: center; /* Centers the content vertically */
+  justify-content: center; /* Centers the content horizontally */
+  text-align: center; /* Ensures text is centered if flex properties don't fully apply */
+}
+
+.label-upload:hover {
+  opacity: 0.9;
+  background-color: #2e59d9;
+}
+
+.preview-image {
+  height: 100px;
+  width: 100px;
+  background-size: cover;
+  background-position: center;
+  margin-bottom: 10px;
+}
+
+/* Button Submit */
+.button-submit {
+  margin-left: 250px;
+  margin-top: 30px;
+  width: 400px; /* Custom width */
+  height: 50px; /* Custom height */
+  background-color: #4e73df; /* Background color */
+  color: white; /* Text color */
+  border: none; /* No borders */
+  border-radius: 5px; /* Rounded corners */
+  font-size: 1rem; /* Font size */
+  cursor: pointer; /* Cursor on hover */
+}
+
+.button-submit:hover {
+  background-color: #2e59d9; /* Darker shade on hover */
+}
+
+  
+  /* Responsive Design for Sidebar */
+  @media (max-width: 768px) {
+    .sidebar {
+      width: 60px; /* Narrow sidebar for smaller screens */
+    }
+  
+    .mainContent {
+      margin-left: 60px; /* Adjust content margin for smaller sidebar */
+    }
+  }
+  

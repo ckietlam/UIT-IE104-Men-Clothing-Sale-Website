@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Quản lý sản phẩm</title>
+    <link rel="stylesheet" href="/styles/order-management.css" />
+  </head>
+  <body>
+
+    <%- include('../partials/admin-sidebar', { activeIdx: 0 }) %>
+    <% if (typeof message !== 'undefined' && message != null) { %> 
+      <script> alert('<%= message %>'); </script> 
+    <% } %>
+    
+
+        <!-- Main Content Section -->
+        <div class="mainContent">
+        
+          <h2 class="pageTitle">Dashboard</h2>
+        
+        </div>
+
+</body>
+</html>
+    

@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>H(T)ML Product</title>
+    <link rel="stylesheet" href="styles/product-view-all.css">
+    
+</head>
+<body>
+
+    <!-- Header -->
+    <%- include('../partials/header', { activeIdx: 1 }) %>
+
+    <!-- Breadcrumb -->
+    <div class="breadcrumb">
+        <a href="/">Trang chủ</a> &gt; 
+        <span><strong>Tất cả sản phẩm</strong></span>
+    </div>
+
+    <!-- Product Section -->
+     
+    <div class="categories-container">
+        <div class="category-section">
+            <div class="category-header">
+                <h2>Áo</h2>
+                <a href="/product-view-all-ao" class="view-all" onclick="toggleView(this)">Xem tất cả</a>
+            </div>
+            <div class="product-carousel limited-view">
+                <div class="carousel-track">
+                    
+                    <%for (let i = 0; i < 5; i++) {%>
+                        <div class="product-card">
+                            <a href="/product-view?pd_id=<%=shirtsData[i].pd_id%>">
+                                <img src="<%= shirtsData[i].productImageData[1].image %>" alt="<%= shirtsData[i].name %>">
+                                <h3 class="product-name">
+                                    <%= shirtsData[i].name.length > 30 ? shirtsData[i].name.substring(0, 30) + "..." : shirtsData[i].name %>
+                                </h3>
+                                <div class="product-details">
+                                    <p class="product-description">
+                                        <%= shirtsData[i].description.length > 100 ? shirtsData[i].description.substring(0, 100) + "..." : shirtsData[i].description %>
+                                    </p>
+                                    <p class="product-price"><%= numberFormatter.format(shirtsData[i].price) %>đ</p>
+                                </div>
+                            </a>
+                        </div>
+                    <%}%>
+
+                </div>
+            </div>
+        </div>
+          
+
+        <div class="category-section">
+            <div class="category-header">
+                <h2>Quần</h2>
+                <a href="/product-view-all-quan" class="view-all" onclick="toggleView(this)">Xem tất cả</a>
+            </div>
+            <div class="product-carousel limited-view">
+                <div class="carousel-track">
+                    <%for (let i = 0; i < 5; i++) {%>
+                        <div class="product-card">
+                            <a href="/product-view?pd_id=<%=pantsData[i].pd_id%>">
+                                <img src="<%= pantsData[i].productImageData[1].image %>" alt="<%= pantsData[i].name %>">
+                                <h3 class="product-name">
+                                    <%= pantsData[i].name.length > 30 ? pantsData[i].name.substring(0, 30) + "..." : pantsData[i].name %>
+                                </h3>
+                                <div class="product-details">
+                                    <p class="product-description">
+                                        <%= pantsData[i].description.length > 100 ? pantsData[i].description.substring(0, 100) + "..." : pantsData[i].description %>
+                                    </p>
+                                    <p class="product-price"><%= numberFormatter.format(pantsData[i].price) %>đ</p>
+                                </div>
+                            </a>
+                        </div>
+                    <%}%>
+                </div>
+            </div>
+        </div>
+
+        <div class="category-section">
+            <div class="category-header">
+                <h2>Giày dép</h2>
+                <a href="/product-view-all-giaydep" class="view-all" onclick="toggleView(this)">Xem tất cả</a>
+            </div>
+            <div class="product-carousel limited-view">
+                <div class="carousel-track">
+                    <%for (let i = 0; i < 5; i++) {%>
+                        <div class="product-card">
+                            <a href="/product-view?pd_id=<%=shoesData[i].pd_id%>">
+                                <img src="<%= shoesData[i].productImageData[1].image %>" alt="<%= shoesData[i].name %>">
+                                <h3 class="product-name">
+                                    <%= shoesData[i].name.length > 30 ? shoesData[i].name.substring(0, 30) + "..." : shoesData[i].name %>
+                                </h3>
+                                <div class="product-details">
+                                    <p class="product-description">
+                                        <%= shoesData[i].description.length > 100 ? shoesData[i].description.substring(0, 100) + "..." : shoesData[i].description %>
+                                    </p>
+                                    <p class="product-price"><%= numberFormatter.format(shoesData[i].price) %>đ</p>
+                                </div>
+                            </a>
+                        </div>
+                    <%}%>
+                </div>
+            </div>
+        </div>
+
+        <div class="category-section">
+            <div class="category-header">
+                <h2>Phụ kiện</h2>
+                <a href="/product-view-all-phukien" class="view-all" onclick="toggleView(this)">Xem tất cả</a>
+            </div>
+            <div class="product-carousel limited-view">
+                <div class="carousel-track">
+                    <%for (let i = 0; i < 5; i++) {%>
+                        <div class="product-card">
+                            <a href="/product-view?pd_id=<%=accessoriesData[i].pd_id%>">
+                                <img src="<%= accessoriesData[i].productImageData[1].image %>" alt="<%= accessoriesData[i].name %>">
+                                <h3 class="product-name">
+                                    <%= accessoriesData[i].name.length > 30 ? accessoriesData[i].name.substring(0, 30) + "..." : accessoriesData[i].name %>
+                                </h3>
+                                <div class="product-details">
+                                    <p class="product-description">
+                                        <%= accessoriesData[i].description.length > 100 ? accessoriesData[i].description.substring(0, 100) + "..." : accessoriesData[i].description %>
+                                    </p>
+                                    <p class="product-price"><%= numberFormatter.format(accessoriesData[i].price) %>đ</p>
+                                </div>
+                            </a>
+                        </div>
+                    <%}%>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->    
+    <%- include('../partials/footer', { activeIdx: 0 }) %>
+
+    <script src="scripts/product-view-all.js"></script>
+</body>
+</html>
