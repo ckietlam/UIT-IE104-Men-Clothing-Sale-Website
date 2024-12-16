@@ -4,7 +4,7 @@ const moment = require("moment");
 
 const createrZalopay = async (req, res, amount) => {
   const embed_data = {
-    redirecturl: ' https://e6bc-2001-ee0-4f05-51b0-959c-c2a3-5cee-a2a2.ngrok-free.app/product-view-all',
+    redirecturl: 'http://localhost:8000/intermediary',
   };
 
   // Sử dụng amount đã được chuyển đổi trước khi truyền vào

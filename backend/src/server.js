@@ -49,6 +49,12 @@ app.use(function (req, res, next) {
     next();
 });
 
+// Thêm điểm cuối `/intermediary` cho Zalopay chuyển thẳng về Website
+app.get('/intermediary', (req, res) => {
+    // Địa chỉ ngrok cuối cùng bạn muốn chuyển hướng đến
+    res.redirect('https://a733-2001-ee0-4f05-51b0-fcfb-5527-83b2-f1b2.ngrok-free.app/product-view-all');
+});
+
 //config app
 
 // app.use(bodyParser.json());
