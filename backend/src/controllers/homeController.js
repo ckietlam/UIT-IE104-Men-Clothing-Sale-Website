@@ -460,7 +460,7 @@ let getPaymentDeliveryPage = async (req, res) => {
       console.log("Noah check selectedPaymentType: ", selectedPaymentType);
       await transporter.sendMail(mailOptions);
       await cartService.clearCart(user_id);
-      return res.render("partials/success", {
+      return res.render("partials/success-order", {
         email: email,
         message: `Your order has been placed successfully, check at this email address: ${email}`,
       });
@@ -488,6 +488,18 @@ let getPaymentDeliveryPage = async (req, res) => {
 let getSuccessPage = async (req, res) => {
   try {
     return res.render("partials/success");
+  } catch (e) {
+    console.log(e);
+    return res.status(200).json({
+      errCode: -1,
+      errMessage: "Error from server",
+    });
+  }
+};
+
+let getSuccessOrderPage = async (req, res) => {
+  try {
+    return res.render("partials/success-order");
   } catch (e) {
     console.log(e);
     return res.status(200).json({
@@ -545,6 +557,7 @@ module.exports = {
   getPaymentInfoPage,
   getPaymentDeliveryPage,
   getSuccessPage,
+  getSuccessOrderPage,
   updateUserRole,
   updateOrderStatus,
 };

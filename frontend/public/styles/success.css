@@ -17,3 +17,30 @@
 .box-main p {
     line-height: 2.5;
 }
+
+.formButtons {
+    display: flex;
+    justify-content: space-between; /* Đẩy hai nút ra hai bên */
+    align-items: center;
+    margin-top: 20%;
+    padding-right: 10%;
+    gap: 200px;
+  }
+  
+.returnButton {
+    background-color: #26736E;
+    color: white;
+    padding: 15px 40px;
+    margin-top: 20px;
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    font-weight: semibold;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    text-decoration: none;
+  }
+  
+.returnButton:hover {
+    background-color: #154A49;
+  }
