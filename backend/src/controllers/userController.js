@@ -125,8 +125,7 @@ const handleForgotPassword = async (req, res) => {
     };
 
     await transporter.sendMail(mailOptions);
-    await transporter.sendMail(mailOptions);
-
+    
     return res.status(200).render("pages/change-password", {
       message: `OTP sent to your email: ${email}`, 
       userEmail: email 
