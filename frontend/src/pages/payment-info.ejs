@@ -20,7 +20,7 @@
 
     <!-- Navigation Steps -->
     <div class="navSteps">
-      <span>Giỏ hàng</span> / <span>Thông tin và đặt hàng</span>
+      <p>Giỏ hàng</p> / <p><strong>Thông tin và đặt hàng </strong></p>
     </div>
 
     <!-- Main Section -->
@@ -179,7 +179,7 @@
           </div>
         </form>
         <div class="formButtons">
-          <a href="#" class="backButton">
+          <a href="/checkout" class="backButton">
             <img
               src="icons/icon-backward.svg"
               alt="Back Icon"
@@ -211,19 +211,19 @@
           </div>
           <p class="itemPrice">
             <% let itemPrice = cartData[i].productCartData.price *
-            cartData[i].quantity; sum += itemPrice; %> <%= itemPrice %>
+            cartData[i].quantity; sum += itemPrice; %> <%= numberFormatter.format(itemPrice) %>
           </p>
         </div>
         <%}%>
 
         <div class="cartSummary">
-          <p><span>Tổng (3)</span><span><%=sum%></span></p>
+          <p><span>Tổng Giá Sản Phẩm</span><span><%= numberFormatter.format(sum)%></span></p>
           <p><span>Thuế, Phí</span><span>0đ</span></p>
           <p><span>Phí Giao Hàng</span><span>0đ</span></p>
           <p class="totalAmount">
-            <span>Tổng Cộng:</span><span><%=sum%></span>
+            <span>Tổng Cộng:</span><span><%=numberFormatter.format(sum)%></span>
           </p>
-          <input type="hidden" id="total" name="total" value="<%= sum %>">
+          <input type="hidden" id="total" name="total" value="<%= numberFormatter.format(sum) %>">
 
         </div>
       </div>

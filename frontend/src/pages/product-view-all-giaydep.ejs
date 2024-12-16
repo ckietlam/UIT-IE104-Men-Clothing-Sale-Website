@@ -38,7 +38,7 @@
                                     <p class="product-description">
                                         <%= depData[i].description.length > 100 ? depData[i].description.substring(0, 100) + "..." : depData[i].description %>
                                     </p>
-                                    <p class="product-price"><%= depData[i].price.toLocaleString('vi-VN') %>đ</p>
+                                    <p class="product-price"><%= numberFormatter.format(depData[i].price) %>đ</p>
                                 </div>
                             </a>
                         </div>
@@ -65,7 +65,7 @@
                                     <p class="product-description">
                                         <%= giayData[i].description.length > 100 ? giayData[i].description.substring(0, 100) + "..." : giayData[i].description %>
                                     </p>
-                                    <p class="product-price"><%= giayData[i].price.toLocaleString('vi-VN') %>đ</p>
+                                    <p class="product-price"><%= numberFormatter.format(giayData[i].price) %>đ</p>
                                 </div>
                             </a>
                         </div>

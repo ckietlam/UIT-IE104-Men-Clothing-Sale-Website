@@ -2,8 +2,10 @@ import productService from "../services/productService";
 import cartService from "../services/cartService";
 import orderService from "../services/orderService";
 import zaloPay from "../controllers/zaloPay";
+import userService from "../services/userService";
 import nodemailer from "nodemailer";
 import express from "express";
+const numberFormatter = new Intl.NumberFormat("de-DE");
 const app = express();
 
 let getAdmin = async (req, res) => {
@@ -19,6 +21,7 @@ let getAdmin = async (req, res) => {
     return res.redirect("/404");
   }
 };
+
 let getProductManagementPage = async (req, res) => {
   try {
     if (!req.session.user) {
@@ -38,6 +41,7 @@ let getProductManagementPage = async (req, res) => {
     });
   }
 };
+
 let getOrderManagementPage = async (req, res) => {
   try {
     if (!req.session.user) {
@@ -57,6 +61,7 @@ let getOrderManagementPage = async (req, res) => {
     });
   }
 };
+
 let getEditProductPage = async (req, res) => {
   try {
     if (!req.session.user) {
@@ -100,6 +105,28 @@ let getUserManagementPage = async (req, res) => {
     }
     if (req.session.user.role !== "Admin") return res.redirect("/404");
 
+    let data = await productService.getAllUsers("ALL");
+    return res.render("pages/user-management", {
+      dataTable: data,
+    });
+  } catch (e) {
+    console.log(e);
+    return res.status(200).json({
+      errCode: -1,
+      errMessage: "Error from server",
+    });
+  }
+};
+
+let updateUserRole = async (req, res) => {
+  try {
+    if (!req.session.user) {
+      return res.redirect("/404");
+    }
+    if (req.session.user.role !== "Admin") return res.redirect("/404");
+    let userId = req.query.user_id;
+    let newRole = req.query.role;
+    await userService.updateUserRole(userId, newRole);
     let data = await productService.getAllUsers("ALL");
     return res.render("pages/user-management", {
       dataTable: data,
@@ -157,6 +184,7 @@ let getAddProductPage = async (req, res) => {
     });
   }
 };
+
 const getHomePage = async (req, res) => {
   try {
     const isAuthenticated = req.session.authenticated || false;
@@ -200,6 +228,7 @@ let getProductViewAll = async (req, res) => {
       pantsData: pantsData,
       shoesData: shoesData,
       accessoriesData: accessoriesData,
+      numberFormatter: numberFormatter,
     });
   } catch (e) {
     console.log(e);
@@ -219,6 +248,7 @@ let getProductViewAllAo = async (req, res) => {
       aoThunData: aoThunData,
       aoNiData: aoNiData,
       aoSoMiData: aoSoMiData,
+      numberFormatter: numberFormatter,
     });
   } catch (e) {
     console.log(e);
@@ -236,6 +266,7 @@ let getProductViewAllGiayDep = async (req, res) => {
     return res.render("pages/product-view-all-giaydep", {
       giayData: giayData,
       depData: depData,
+      numberFormatter: numberFormatter,
     });
   } catch (e) {
     console.log(e);
@@ -253,6 +284,7 @@ let getProductViewAllQuan = async (req, res) => {
     return res.render("pages/product-view-all-quan", {
       jeansData: jeansData,
       shortsData: shortsData,
+      numberFormatter: numberFormatter,
     });
   } catch (e) {
     console.log(e);
@@ -265,13 +297,14 @@ let getProductViewAllQuan = async (req, res) => {
 
 let getProductViewAllPhuKien = async (req, res) => {
   try {
-    let boxersData = await productService.getAllProductsByType("Boxers");
+    let beltsData = await productService.getAllProductsByType("Belts");
     let socksData = await productService.getAllProductsByType("Socks");
-    let hatsData = await productService.getAllProductsByType("Hats");
+    let walletsData = await productService.getAllProductsByType("Wallets");
     return res.render("pages/product-view-all-phukien", {
-      boxersData: boxersData,
+      beltsData: beltsData,
       socksData: socksData,
-      hatsData: hatsData,
+      walletsData: walletsData,
+      numberFormatter: numberFormatter,
     });
   } catch (e) {
     console.log(e);
@@ -289,6 +322,7 @@ let getProductViewAProduct = async (req, res) => {
     return res.render("pages/product-view", {
       productData: productData,
       session: req.session,
+      numberFormatter: numberFormatter,
     });
   } catch (e) {
     console.log(e);
@@ -298,6 +332,7 @@ let getProductViewAProduct = async (req, res) => {
     });
   }
 };
+
 let getCheckOutPage = async (req, res) => {
   try {
     let user_id = req.session.user.user_id || NULL;
@@ -307,6 +342,7 @@ let getCheckOutPage = async (req, res) => {
     return res.render("pages/payment-cart", {
       cartData: cartData,
       user_id: user_id,
+      numberFormatter: numberFormatter,
     });
   } catch (e) {
     console.log(e);
@@ -325,6 +361,7 @@ let deleteCartItem = async (req, res) => {
     return res.render("pages/payment-cart", {
       cartData: cartData,
       user_id: user_id,
+      numberFormatter: numberFormatter,
     });
   } catch (e) {
     console.log(e);
@@ -347,6 +384,7 @@ let getPaymentInfoPage = async (req, res) => {
       email: req.session.user.email,
       phone: req.session.user.phone,
       total: total,
+      numberFormatter: numberFormatter,
     });
   } catch (e) {
     console.log(e);
@@ -422,15 +460,17 @@ let getPaymentDeliveryPage = async (req, res) => {
       console.log("Noah check selectedPaymentType: ", selectedPaymentType);
       await transporter.sendMail(mailOptions);
       await cartService.clearCart(user_id);
-      return res.render("pages/homepage", {
+      return res.render("partials/success-order", {
+        email: email,
         message: `Your order has been placed successfully, check at this email address: ${email}`,
       });
     } else if (selectedPaymentType === "CARD") {
-      let data = await zaloPay.createrZalopay(req, res);
+      let amount = parseInt(req.query.total.replace(/[.,]/g, ""));
+      let data = await zaloPay.createrZalopay(req, res, amount);
       let url = data.order_url;
       if (url) {
         console.log("Redirecting to ZaloPay order URL:", url);
-        return res.redirect(url); 
+        return res.redirect(url);
       } else {
         console.error("ZaloPay order_url is undefined");
         return res.status(500).send("Failed to process payment with ZaloPay");
@@ -444,6 +484,57 @@ let getPaymentDeliveryPage = async (req, res) => {
     });
   }
 };
+
+let getSuccessPage = async (req, res) => {
+  try {
+    return res.render("partials/success");
+  } catch (e) {
+    console.log(e);
+    return res.status(200).json({
+      errCode: -1,
+      errMessage: "Error from server",
+    });
+  }
+};
+
+let getSuccessOrderPage = async (req, res) => {
+  try {
+    return res.render("partials/success-order");
+  } catch (e) {
+    console.log(e);
+    return res.status(200).json({
+      errCode: -1,
+      errMessage: "Error from server",
+    });
+  }
+};
+
+let updateOrderStatus = async (req, res) => {
+  try {
+    await orderService.updateOrderStatus(req.body);
+    if (!req.session.user) {
+      return res.redirect("/404");
+    }
+    if (req.session.user.role !== "Admin") return res.redirect("/404");
+
+    let orderId = req.body.order_id;
+    if (orderId) {
+      let data = await orderService.getOderByOrderId(orderId);
+      return res.render("pages/edit-order-status", {
+        orderData: data.data,
+      });
+    } else {
+      return res.send("Order not found!");
+    }
+  } catch (e) {
+    console.log(e);
+    return res.status(200).json({
+      errCode: -1,
+      errMessage: "Error from server",
+    });
+  }
+};
+
 module.exports = {
   getAdmin,
   getProductManagementPage,
@@ -465,4 +556,8 @@ module.exports = {
   deleteCartItem,
   getPaymentInfoPage,
   getPaymentDeliveryPage,
+  getSuccessPage,
+  getSuccessOrderPage,
+  updateUserRole,
+  updateOrderStatus,
 };

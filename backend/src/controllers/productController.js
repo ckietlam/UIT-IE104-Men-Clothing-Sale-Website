@@ -1,4 +1,5 @@
 import productService from "../services/productService";
+const numberFormatter = new Intl.NumberFormat("de-DE");
 import db from "../models";
 
 let handleGetAllProducts = async (req, res) => {
@@ -176,6 +177,7 @@ let handleSearchProducts = async (req, res) => {
     let products = await productService.searchProductsByName(keyword); // Gọi hàm trong service để tìm kiếm
     return res.render("pages/search-products", {
       productsData: products,
+      numberFormatter: numberFormatter,
     });
     
     /*

@@ -409,9 +409,9 @@ const getAllAccessories = () => {
       const shirts = await db.Product.findAll({
         where: {
           [Op.or]: [
-            { type_of_clothes: "Boxers" },
+            { type_of_clothes: "Wallets" },
             { type_of_clothes: "Socks" },
-            { type_of_clothes: "Hats" },
+            { type_of_clothes: "Belts" },
           ],
         },
         attributes: [

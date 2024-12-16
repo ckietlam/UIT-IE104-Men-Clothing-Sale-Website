@@ -35,6 +35,7 @@ let initWebRouters = (app) => {
   router.get("/checkout", homeController.getCheckOutPage)
   router.get("/remove-cart-item", homeController.deleteCartItem)
   router.post("/payment-info", homeController.getPaymentInfoPage);
+  router.get("/payment-info", homeController.getPaymentInfoPage);
   router.get("/payment-delivery", homeController.getPaymentDeliveryPage);
   
   router.post("/api/add-cart", cartController.handleAddCart);
@@ -54,8 +55,8 @@ let initWebRouters = (app) => {
   router.get("/admin-orders-management", homeController.getOrderManagementPage);
   router.get("/admin-users-management", homeController.getUserManagementPage);
   router.get("/edit-order-status", homeController.getEditOrderPage);
-
-
+  router.get("/update-user-role", homeController.updateUserRole)
+  router.post("/post-order-status", homeController.updateOrderStatus)
   //Product api
   router.get("/api/get-all-products", productController.handleGetAllProducts);
   router.post(
@@ -72,7 +73,8 @@ let initWebRouters = (app) => {
     "/api/get-all-categories",
     productController.handleGetAllCategories
   );
-  router.get("/delete-image-by-id", productController.handleDeleteImageById);  router.get("/product-view-all", homeController.getProductViewAll)
+  router.get("/delete-image-by-id", productController.handleDeleteImageById); 
+  router.get("/product-view-all", homeController.getProductViewAll)
   router.get("/product-view-all-giaydep", homeController.getProductViewAllGiayDep)
   router.get("/product-view-all-ao", homeController.getProductViewAllAo)
   router.get("/product-view-all-quan", homeController.getProductViewAllQuan)
@@ -89,6 +91,8 @@ let initWebRouters = (app) => {
 
   router.post("/payment", zalopay.createrZalopay);
   router.get("/search-products", productController.handleSearchProducts);
+
+  router.get("/success", homeController.getSuccessPage);
   return app.use("/", router);
 };
 

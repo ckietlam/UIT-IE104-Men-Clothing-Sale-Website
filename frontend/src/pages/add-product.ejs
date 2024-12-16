@@ -123,7 +123,7 @@
             <label for="type">Thể loại sản phẩm</label>
             <select id="type" name="type_of_clothes">
               <% let data = ['Tees', 'Sweats', 'Shirts', 'Jeans', 'Shorts',
-              'Jackets', 'Sneakers', 'Sandals', 'Boxers', 'Socks', 'Hats']; for
+              'Jackets', 'Sneakers', 'Sandals', 'Boxers', 'Socks', 'Hats', 'Wallets', 'Belts']; for
               (let i = 0; i < data.length; i++){ %>
               <option value="<%= data[i] %>"><%= data[i] %></option>
               <% } %>
@@ -159,9 +159,11 @@
           </div>
           <input name="pd_id" type="text" hidden />
           <input type="hidden" id="imagesInput" name="images" />
+
           <div class="formGroup">
-            <button type="submit">Tạo thông tin sản phẩm mới</button>
-          </div>
+            <button type="submit" class="button-submit">Tạo thông tin sản phẩm mới</button>
+          </div>          
+        
         </form>
       </div>
     </div>

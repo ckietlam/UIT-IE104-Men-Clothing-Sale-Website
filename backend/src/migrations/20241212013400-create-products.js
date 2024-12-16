@@ -29,7 +29,9 @@ module.exports = {
           "Sandals",
           "Boxers",
           "Socks",
-          "Hats"
+          "Hats",
+          "Wallets",
+          "Belts"
         ),
       },
       description: {
