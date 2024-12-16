@@ -297,13 +297,13 @@ let getProductViewAllQuan = async (req, res) => {
 
 let getProductViewAllPhuKien = async (req, res) => {
   try {
-    let boxersData = await productService.getAllProductsByType("Boxers");
+    let beltsData = await productService.getAllProductsByType("Belts");
     let socksData = await productService.getAllProductsByType("Socks");
-    let hatsData = await productService.getAllProductsByType("Hats");
+    let walletsData = await productService.getAllProductsByType("Wallets");
     return res.render("pages/product-view-all-phukien", {
-      boxersData: boxersData,
+      beltsData: beltsData,
       socksData: socksData,
-      hatsData: hatsData,
+      walletsData: walletsData,
       numberFormatter: numberFormatter,
     });
   } catch (e) {
@@ -470,7 +470,7 @@ let getPaymentDeliveryPage = async (req, res) => {
       let url = data.order_url;
       if (url) {
         console.log("Redirecting to ZaloPay order URL:", url);
-        return res.redirect(url); 
+        return res.redirect(url);
       } else {
         console.error("ZaloPay order_url is undefined");
         return res.status(500).send("Failed to process payment with ZaloPay");

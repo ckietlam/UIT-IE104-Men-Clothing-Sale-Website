@@ -22,7 +22,7 @@
     <div class="categories-container">
         <div class="category-section">
             <div class="category-header">
-                <h2>Shorts</h2>
+                <h2>Quần Ngắn</h2>
             </div>
             <div class="product-carousel limited-view">
                 <div class="carousel-track">
@@ -49,11 +49,11 @@
 
         <div class="category-section">
             <div class="category-header">
-                <h2>Jeans</h2>
+                <h2>Quần Jeans</h2>
             </div>
             <div class="product-carousel limited-view">
                 <div class="carousel-track">
-                    <%for (let i = 0; i < 5; i++) {%>
+                    <%for (let i = 0; i < jeansData.length; i++) {%>
                         <div class="product-card">
                             <a href="/product-view?pd_id=<%=jeansData[i].pd_id%>">
                                 <img src="<%= jeansData[i].productImageData[0].image %>" alt="<%= jeansData[i].name %>">
