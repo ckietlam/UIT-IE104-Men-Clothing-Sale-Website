@@ -72,7 +72,8 @@ let initWebRouters = (app) => {
     "/api/get-all-categories",
     productController.handleGetAllCategories
   );
-  router.get("/delete-image-by-id", productController.handleDeleteImageById);  router.get("/product-view-all", homeController.getProductViewAll)
+  router.get("/delete-image-by-id", productController.handleDeleteImageById); 
+  router.get("/product-view-all", homeController.getProductViewAll)
   router.get("/product-view-all-giaydep", homeController.getProductViewAllGiayDep)
   router.get("/product-view-all-ao", homeController.getProductViewAllAo)
   router.get("/product-view-all-quan", homeController.getProductViewAllQuan)

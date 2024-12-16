@@ -332,6 +332,7 @@ let getProductViewAProduct = async (req, res) => {
     });
   }
 };
+
 let getCheckOutPage = async (req, res) => {
   try {
     let user_id = req.session.user.user_id || NULL;
@@ -463,7 +464,8 @@ let getPaymentDeliveryPage = async (req, res) => {
         message: `Your order has been placed successfully, check at this email address: ${email}`,
       });
     } else if (selectedPaymentType === "CARD") {
-      let data = await zaloPay.createrZalopay(req, res);
+      let amount = parseInt(req.query.total.replace(/[.,]/g, ""));
+      let data = await zaloPay.createrZalopay(req, res, amount);
       let url = data.order_url;
       if (url) {
         console.log("Redirecting to ZaloPay order URL:", url);
