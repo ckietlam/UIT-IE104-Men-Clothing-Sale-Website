@@ -24,8 +24,8 @@
                         <input type="text" name="email" placeholder="Tên Người Dùng/Email" required>
                     </div>
                     <div class="input-group">
-                        <input type="password" name="password" placeholder="Mật Khẩu" required>
-                        <img src="/icons/icon-hiddeneyes.svg" alt="Toggle Visibility" class="visibility-icon">
+                        <input type="password" id="password" name="password" placeholder="Mật Khẩu" required>
+                        <img src="/icons/icon-hiddeneyes.svg" alt="Toggle Visibility" class="visibility-icon" onclick="togglePasswordVisibility()">
                     </div>
                     <a href="/forgot-password" class="forgot-password">Quên Mật Khẩu?</a>
                     <button type="submit" class="login-button">Đăng Nhập</button> <!-- Add type for button -->
@@ -46,7 +46,17 @@
     <!-- Left Side of Footer -->
 <%- include('../partials/footer', { activeIdx: 0 }) %>
    
-
+<script>
+    // Define a function to toggle the password visibility
+    function togglePasswordVisibility() {
+        const passwordInput = document.getElementById('password');
+        if (passwordInput.type === 'password') {
+            passwordInput.type = 'text';
+        } else {
+            passwordInput.type = 'password';
+        }
+    }
+</script>
 </body>
 
 </html>

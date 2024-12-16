@@ -28,8 +28,8 @@
                         <small id="email-error" style="color: red;"></small>
                     </div>
                     <div class="input-group">
-                        <input type="password" name="password" placeholder="Mật Khẩu" required>
-                        <img src="/icons/icon-hiddeneyes.svg" alt="Toggle Visibility" class="visibility-icon">
+                        <input type="password" id="password" name="password" placeholder="Mật Khẩu" required>
+                        <img src="/icons/icon-hiddeneyes.svg" alt="Toggle Visibility" class="visibility-icon" onclick="togglePasswordVisibility()">
                     </div>
                     <div class="input-group">
                         <input 
@@ -58,5 +58,16 @@
 
     <!-- Footer Section -->
     <%- include('../partials/footer', { activeIdx: 0 }) %>
+<script>
+        // Define a function to toggle the password visibility
+        function togglePasswordVisibility() {
+            const passwordInput = document.getElementById('password');
+            if (passwordInput.type === 'password') {
+                passwordInput.type = 'text';
+            } else {
+                passwordInput.type = 'password';
+            }
+        }
+</script>   
 </body>
 </html>
