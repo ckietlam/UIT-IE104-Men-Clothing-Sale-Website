@@ -3,6 +3,7 @@ import cartService from "../services/cartService";
 import orderService from "../services/orderService";
 import zaloPay from "../controllers/zaloPay";
 import userService from "../services/userService";
+import adminService from "../services/adminService";
 import nodemailer from "nodemailer";
 import express from "express";
 const numberFormatter = new Intl.NumberFormat("de-DE");
@@ -14,8 +15,19 @@ let getAdmin = async (req, res) => {
   }
 
   if (req.session.user.role === "Admin") {
+    let totalCustomer = await adminService.getAllUsers('Customer');
+    let totalOrder = await adminService.getTotalOrders();
+    let totalRevenue = await adminService.getTotalRevenue();
+    let totalProduct = await adminService.getTotalProduct();
+    console.log("Total customer: ", totalCustomer);
+    console.log("Total order: ", totalOrder);
     return res.render("pages/admin", {
+      numberFormatter: numberFormatter,
+      totalProduct: totalProduct,
+      totalRevenue: totalRevenue,
       user: req.session.user,
+      totalOrder: totalOrder,
+      totalCustomer: totalCustomer,
     });
   } else {
     return res.redirect("/404");
@@ -416,7 +428,7 @@ let getPaymentDeliveryPage = async (req, res) => {
       ". " +
       "Họ tên của bạn là: " +
       lastName +
-      firstName +
+      " " + firstName +
       ". Số điện thoại là: " +
       phone;
     //tạo order rồi order detail ở đây: ---
@@ -534,6 +546,7 @@ let updateOrderStatus = async (req, res) => {
     });
   }
 };
+
 
 module.exports = {
   getAdmin,

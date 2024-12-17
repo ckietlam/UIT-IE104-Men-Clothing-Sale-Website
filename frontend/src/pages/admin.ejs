@@ -24,27 +24,27 @@
             <div class="dashboard-courses">
               
               <div class="course-item">
-                <h3>Total Orders</h3>
-                <p class="course-count">X</p> <!-- Thay 'X' bằng số liệu thực từ server -->
-                <a href="#" class="course-link">View details</a>
+                <h3>Tổng Đơn Hàng Thành Công</h3>
+                <p class="course-count"><%= totalOrder%></p> 
+                <a href="/admin-orders-management" class="course-link">View details</a>
               </div>
 
               <div class="course-item">
-                <h3>Total Revenue</h3>
-                <p class="course-count">$Y</p> <!-- Thay 'Y' bằng số liệu thực từ server -->
-                <a href="#" class="course-link">View details</a>
+                <h3>Tổng Doanh Thu</h3>
+                <p class="course-count"><%=  numberFormatter.format(totalRevenue)%>đ</p> <!-- Thay 'Y' bằng số liệu thực từ server -->
+                <a href="/admin-orders-management" class="course-link">View details</a>
               </div>
 
               <div class="course-item">
-                <h3>Total Customers</h3>
-                <p class="course-count">Z</p> <!-- Thay 'Z' bằng số liệu thực từ server -->
-                <a href="#" class="course-link">View details</a>
+                <h3>Tổng Khách Hàng</h3>
+                <p class="course-count"><%= totalCustomer %></p> <!-- Thay 'Z' bằng số liệu thực từ server -->
+                <a href="/admin-users-management" class="course-link">View details</a>
               </div>
 
               <div class="course-item">
-                <h3>Total Products</h3>
-                <p class="course-count">W</p> <!-- Thay 'W' bằng số liệu thực từ server -->
-                <a href="#" class="course-link">View details</a>
+                <h3>Tổng sản Phẩm</h3>
+                <p class="course-count"><%= totalProduct %></p> <!-- Thay 'W' bằng số liệu thực từ server -->
+                <a href="/admin-products-management" class="course-link">View details</a>
               </div>
 
             </div>
