@@ -1,0 +1,80 @@
+/* Main Content Styling */
+.mainContent {
+    margin-left: 260px; /* Đẩy nội dung sang phải để không lấn sidebar (kích thước sidebar là 240px + 20px padding) */
+    padding: 20px;
+    background-color: #ffffff; /* Màu nền */
+    border-radius: 10px; /* Bo tròn góc */
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); /* Đổ bóng */
+    transition: margin-left 0.3s ease-in-out; /* Thêm hiệu ứng khi sidebar thu nhỏ */
+}
+
+.sidebar.collapsed + .mainContent {
+    margin-left: 140px; /* Giảm khoảng cách khi sidebar thu nhỏ */
+}
+
+.dashboard-courses {
+    display: flex;
+    justify-content: space-between;
+}
+  
+.dashboard-title {
+    font-size: 24px;
+    font-weight: bold;
+    color: #4e73df;
+    margin-top: 20px;
+    text-align: left;
+}
+  
+.dashboard-subtitle {
+    font-size: 16px;
+    color: #666;
+    margin-top: 10px;
+    margin-bottom: 20px;
+}
+    
+.course-item {
+    text-align: center;
+    flex-basis: 24%;
+    padding: 10px;
+    border-right: 1px solid #ccc; /* Thêm đường viền phải màu xám nhạt */
+}
+
+.course-item:last-child {
+    border-right: none; /* Loại bỏ đường viền phải cho mục cuối cùng */
+}
+  
+.course-item h3 {
+    font-size: 18px;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.course-count {
+    font-size: 24px;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 10px;
+}
+  
+.course-link {
+    font-size: 16px;
+    color: #0066cc;
+    text-decoration: none;
+}
+
+.course-link:hover {
+    text-decoration: underline;
+}
+  
+
+/* Responsive Design for Sidebar */
+@media (max-width: 768px) {
+    .sidebar {
+      width: 60px; /* Narrow sidebar for smaller screens */
+    }
+  
+    .mainContent {
+      margin-left: 70px; /* Adjust content margin for smaller sidebar */
+    }
+}
+  
