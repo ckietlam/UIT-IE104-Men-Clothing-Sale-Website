@@ -1,95 +1,126 @@
 # Frontend - Website Bán Đồ Nam
 
 ## **Mục tiêu**
-Frontend-Member hoàn thành nhiệm vụ xây dựng giao diện người dùng cho website bán đồ nam với các danh mục cần thiết cho dự án.
+Xây dựng giao diện người dùng cho website bán đồ nam với các danh mục cần thiết cho dự án.
 
 ---
 
 ## **Cấu trúc thư mục**
 ```plaintext
-frontend/
-├── components/                # Các thành phần giao diện tái sử dụng
-│   ├── Header.js              # Phần header của trang
-│   ├── Footer.js              # Phần footer của trang
-│   └── ProductCard.js         # Thành phần hiển thị sản phẩm
-├── pages/                     # Các trang chính
-│   ├── index.html             # Trang chủ
-│   ├── ao.html                # Trang danh mục Áo
-│   ├── quan.html              # Trang danh mục Quần
-│   ├── giay.html              # Trang danh mục Giày
-│   └── phu-kien.html          # Trang danh mục Phụ kiện
-├── styles/                    # Các file CSS
-│   ├── global.css             # CSS chung
-│   ├── ao.css                 # CSS cho trang Áo
-│   ├── quan.css               # CSS cho trang Quần
-│   └── giay.css               # CSS cho trang Giày
-└── assets/                    # Thư mục chứa tài nguyên
-    ├── icons/                 # Icon SVG
-    └── images/                # Hình ảnh sản phẩm
+
+frontend/ 
+├── public/           # Thư mục chứa tài nguyên tĩnh 
+│ ├── fonts/          # Chứa các file phông chữ 
+│ ├── icons/          # Chứa các icon 
+│ ├── images/         # Chứa các hình ảnh 
+│ ├── scripts/        # Chứa các script JavaScript 
+│ └── styles/         # Chứa các file CSS 
+├── src/              # Thư mục chứa mã nguồn 
+│ ├── pages/          # Chứa các trang web 
+│ └── partials/       # Chứa các thành phần giao diện tái sử dụng
+
 ```
 ---
 
 ## **Yêu cầu**
-- Trình duyệt web hỗ trợ HTML5 và CSS3.
-- Editor khuyến nghị dùng cho dự án: **Visual Studio Code**.
+1. **Node.js** (phiên bản >= 16.x.x):
+   - Dự án này yêu cầu Node.js để chạy server và xử lý các phụ thuộc. Bạn có thể tải Node.js tại [https://nodejs.org](https://nodejs.org).
+
+2. **npm** (Node Package Manager):
+   - npm sẽ giúp bạn cài đặt các phụ thuộc của dự án. npm đi kèm với Node.js, vì vậy bạn sẽ tự động có npm khi cài đặt Node.js. Bạn có thể kiểm tra phiên bản npm bằng lệnh:
+     ```bash
+     npm -v
+     ```
+
+3. **Database** (Tuỳ chọn, nếu sử dụng cơ sở dữ liệu):
+   - Dự án sử dụng **XAMPP** để khởi tạo và quản lý cơ sở dữ liệu MySQL. Bạn có thể tải và cài đặt XAMPP tại [https://www.apachefriends.org/index.html](https://www.apachefriends.org/index.html).
+   - Sau khi cài đặt XAMPP, hãy khởi động **Apache** và **MySQL** trong XAMPP Control Panel để đảm bảo rằng server web và cơ sở dữ liệu MySQL hoạt động.
+   - **MySQL Database**: Dự án này sử dụng **MySQL** làm hệ quản trị cơ sở dữ liệu. Bạn có thể truy cập phpMyAdmin để quản lý cơ sở dữ liệu thông qua trình duyệt tại [http://localhost/phpmyadmin](http://localhost/phpmyadmin).
+   - Ngoài ra bạn có thể chỉ dùng MySQL thuần thôi cũng được
+    
+4. **Editor (tuỳ chọn)**:
+     - **Visual Studio Code**: [https://code.visualstudio.com/](https://code.visualstudio.com/)
+
+5. **Postman / API Testing Tool (tuỳ chọn)**:
+   - Để kiểm tra các API endpoints, bạn có thể sử dụng công cụ như [Postman](https://www.postman.com/) để gửi yêu cầu HTTP và kiểm tra kết quả.
+
+6. **Git** (tuỳ chọn):
+   - Nếu bạn sử dụng Git để quản lý mã nguồn, bạn có thể cần cài đặt Git từ [https://git-scm.com/](https://git-scm.com/).
+
+7. **HTML5 & CSS3 & EJS**  
+   - Trình duyệt web hỗ trợ HTML5 và CSS3. 
+   - Quá trình phát triển bắt đầu bằng việc tạo các trang tĩnh với HTML5. Sau đó, chúng tôi chuyển đổi những trang này sang định dạng EJS để phục vụ render trên server.
 
 ---
 
 ## **Cách sử dụng**
-### **1. Clone dự án**
-Tải mã nguồn Frontend từ GitHub:
-```bash
-git clone <URL-repository-frontend>
-cd frontend/
-```
+### 1. **Clone repo**:
+   - Clone repo:
+     ```bash
+     git clone https://github.com/ckietlam/UIT-IE104-Men-Clothing-Sale-Website.git
+     cd backend
+     ```
 
-### **2. Chạy dự án**
-- Tùy chọn 1: Chạy trực tiếp
-Mở file index.html trong trình duyệt:
-```bash
-frontend/pages/index.html
-```
-- Tùy chọn 2: Dùng Live Server
-Cài đặt extension Live Server trong VS Code.
-Click chuột phải vào file index.html → Open with Live Server.
+### 2. **Cài đặt phụ thuộc**:
+   - Chạy lệnh sau để cài đặt tất cả các gói phụ thuộc:
+     ```bash
+     npm install
+     npm install express-session
+     ```
+### 3. **Tạo database**:
+   - Chạy lệnh sau để cài đặt database:
+     ```bash
+     npx sequelize-cli db:create
+     ```
+### 4. **Tạo các table**:
+   - Chạy lệnh sau để cài đặt database:
+     ```bash
+     npx sequelize-cli db:migrate
+     ```
+### 5. **Tạo dữ liệu ảo**:
+   - Chạy lệnh sau để cài đặt database:
+     ```bash
+     npx sequelize db:seed:all
+     ```
+### 6. **Khởi động server**:
+   - Chạy lệnh dưới đây để khởi động server:
+     ```bash
+     npm start
+     ```
 
 ---
 
 ## **Quy tắc đặt tên và tổ chức code**
-1. **Cấu trúc CSS**:
-   - **Global styles**: Đặt trong `global.css` để định nghĩa các thành phần tái sử dụng (ví dụ: `body`, `header`, `footer`).
-   - **Page-specific styles**: Mỗi trang sẽ có file CSS riêng (ví dụ: `ao.css`, `giay.css`) để giữ code gọn gàng.
+- **Cấu trúc CSS**: 
+  - Mỗi trang sẽ có file *CSS* riêng để giữ code gọn gàng và đặt trong thư mục `/public/styles/`.
 
-2. **Cấu trúc HTML**:
-   - Sử dụng chuẩn **BEM (Block-Element-Modifier)** để tên class rõ ràng và dễ đọc theo **quy tắc CamelCase**:
-     ```html
-     <div class="product-card product-card--highlight">
-         <h2 class="product-card__title">Tên sản phẩm</h2>
-     </div>
-     ```
+- **Cấu trúc EJS**: 
+  - Sử dụng chuẩn *BEM (Block-Element-Modifier)* với tên class theo **quy tắc CamelCase** để tạo sự rõ ràng và dễ đọc. Ví dụ:
+    ```html
+    <div class="product-card product-card--highlight">
+        <h2 class="product-card__title">Tên sản phẩm</h2>
+    </div>
+    ```
 
-3. **Thư mục tài nguyên**:
-   - **Hình ảnh**: Đặt trong `assets/images/` và sử dụng tên file mô tả rõ ràng, ví dụ: `ao-thun-trang.jpg`.
-   - **Icon**: Đặt trong `assets/icons/` với định dạng SVG để tối ưu kích thước.
+- **Thư mục tài nguyên**: 
+  - **Hình ảnh**: Các file ảnh nên được đặt trong thư mục `/public/images/`.
+  - **Icon**: Các icon nên được đặt trong thư mục `/public/icons/` và sử dụng định dạng SVG để tối ưu hóa kích thước và chất lượng.
 
 ---
 
 ## **Thành viên chịu trách nhiệm**
-| **Thành viên** | **Nhiệm vụ**              | **Tệp tin liên quan**         |
-|-----------------|---------------------------|--------------------------------|
-| Kiết Lâm           | Thiết kế giao diện Trang *name* | `ao.html`, `ao.css`           |
-| Vỹ Linh           | Phát triển logic Trang *name* | `quan.html`, `quan.css`       |
-| FE-3 (nếu có)  | Tối ưu giao diện Trang Giày và Phụ kiện | `giay.html`, `phu-kien.html` |
+| **Thành viên** | **Nhiệm vụ**              | 
+|-----------------|---------------------------|
+| Kiết Lâm           | Thiết kế giao diện các trang: Admin;  Homepage; Payment | 
+| Vỹ Linh           | Thiết kế giao diện các trang: Product | 
+| Tuấn Minh  | Thiết kế giao diện các trang: Success; Header; Footer  | 
 
 ---
 
 ## **Ghi chú**
 - Tất cả các thay đổi cần được commit với message rõ ràng. Ví dụ:
   ```bash
-  git commit -m "[FE-1] Update layout for ao.html"
-
-- Sử dụng phần UI trong Code editor: Visual Studio Code để ghi Commit Messages
-
-
+  git commit -m "add/fix/feat/delete: <short-details>"
+   ```
 ---
 

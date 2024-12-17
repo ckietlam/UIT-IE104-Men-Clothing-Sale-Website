@@ -5,21 +5,21 @@ Tạo các chức năng cần thiết cho một website bán đồ nam.
 ---
 ## **Cấu trúc thư mục**
 ```plaintext
-backend/                       # Chứa toàn bộ mã nguồn của Backend
-├── src/                     
+backend/
+├── env/                       
+│   ├── .env                   # Chứa các biến môi trường nhạy cảm và cấu hình.
+│   ├── .env.example           # Cung cấp một ví dụ về các biến môi trường.                       
+├── src/                       # Chứa toàn bộ mã nguồn của Backend
 │   ├── config/                # Lưu trữ các tệp cấu hình phía Backend.
-│   ├── controller/            # Chứa các controller, là các hàm xử lý logic cho các route của ứng dụng.
+│   ├── controllers/           # Chứa các controller, là các hàm xử lý logic cho các route của ứng dụng.
 │   ├── middlewares/           # Chứa các middleware của ứng dụng. Middleware là các hàm xử lý được gọi trong chuỗi các yêu cầu HTTP. 
 │   ├── migrations/            # Lưu trữ các tệp migration dùng để thay đổi cấu trúc của cơ sở dữ liệu theo thời gian.
 │   ├── models/                # Chứa các mô hình dữ liệu (models). Mô hình này là các lớp đại diện cho dữ liệu trong cơ sở dữ liệu.
-│   ├── public/                # Chứa các file tĩnh (static files) như ảnh, CSS, JavaScript, font, v.v. 
-│   ├── route/                 # Lưu trữ các tệp định nghĩa các route của ứng dụng.
+│   ├── routes/                # Lưu trữ các tệp định nghĩa các route của ứng dụng.
 │   ├── seeders/               # Chứa các tệp seeding dữ liệu, giúp tạo dữ liệu giả để thử nghiệm hoặc khởi tạo cơ sở dữ liệu với dữ liệu mẫu.
 │   ├── services/              # Chứa các logic nghiệp vụ của ứng dụng. 
-│   ├── views/                 # Chứa các file view (template) mà ứng dụng sẽ render để gửi phản hồi HTML về cho client.
+│   ├── utils/                 # Chứa hàm tiện ích tái sử dụng, tối ưu. 
 │   ├── server.js              # Cấu hình và khởi động server cho ứng dụng  
-├── .env                       # Chứa các biến môi trường nhạy cảm và cấu hình.
-├── .env.example               # Cung cấp một ví dụ về các biến môi trường.
 ├── .sequelizerc               # Cấu hình cho Sequelize ORM.
 ├── package-lock.json          # Ghi lại các phiên bản chính xác của các phụ thuộc.
 ├── package.json               # Cấu hình chính của dự án Node.js, bao gồm các phụ thuộc và scripts.
@@ -28,7 +28,7 @@ backend/                       # Chứa toàn bộ mã nguồn của Backend
 ---
 
 ## **Yêu cầu**
-1. **Node.js** (phiên bản >= 14.x.x):
+1. **Node.js** (phiên bản >= 16.x.x):
    - Dự án này yêu cầu Node.js để chạy server và xử lý các phụ thuộc. Bạn có thể tải Node.js tại [https://nodejs.org](https://nodejs.org).
 
 2. **npm** (Node Package Manager):
@@ -55,15 +55,17 @@ backend/                       # Chứa toàn bộ mã nguồn của Backend
 
 ## **Cách sử dụng**
 ### 1. **Clone repo**:
-   - Clone nhánh `backend` từ repo:
+   - Clone repo:
      ```bash
-     git clone -b backend https://github.com/your-repo-name.git
+     git clone https://github.com/ckietlam/UIT-IE104-Men-Clothing-Sale-Website.git
+     cd backend
      ```
 
 ### 2. **Cài đặt phụ thuộc**:
    - Chạy lệnh sau để cài đặt tất cả các gói phụ thuộc:
      ```bash
      npm install
+     npm install express-session
      ```
 ### 3. **Tạo database**:
    - Chạy lệnh sau để cài đặt database:
@@ -101,20 +103,18 @@ backend/                       # Chứa toàn bộ mã nguồn của Backend
 ---
 
 ## **Thành viên chịu trách nhiệm**
-| **Thành viên** | **Nhiệm vụ**              | **Tệp tin liên quan**         |
-|-----------------|---------------------------|--------------------------------|
-| Bùi Quốc Lâm           | Phụ trách phần Products, Order sản phẩm, Cart |         |
-| Huy           |                     |   |
-| Minh  |  |  |
+
+| **Thành viên** | **Nhiệm vụ**              | 
+|-----------------|---------------------------|
+| Quốc Lâm           | Phụ trách phát triển tính năng: Admin; Product; Payment - Cash  | 
+| Quang Huy           | Phụ trách phát triển tính năng: SignIn/SignUp; Shopping Cart; Buttons links Pages to Pages | 
+| Tuấn Minh  | Phụ trách phát triển tính năng: Search; Shopping Cart; Payment - ZaloPay  | 
 
 ---
 
 ## **Ghi chú**
 - Tất cả các thay đổi cần được commit với message rõ ràng. Ví dụ:
   ```bash
-  git commit -m "[BE-1] Update layout for xxx"
-
-- Sử dụng phần UI trong Code editor: Visual Studio Code để ghi Commit Messages
-
-
+  git commit -m "add/fix/feat/delete: <short-details>"
+  ```
 ---
