@@ -129,10 +129,52 @@ https://github.com/user-attachments/assets/b75f80ce-28e8-499a-8883-73d82ba11216
   ```bash
   npm start
   ```
-- Access the website via a web browser( **localhost:8000** )
+- Access the website via a web browser( **localhost:8000** ).
 
 ---
 
 ## Directory Structure
+
+```
+backend/
+├── env/                       
+│   ├── .env                   # Contains sensitive environment variables and configurations.
+│   ├── .env.example           # Provides an example of the environment variables.
+├── node_modules/              # NPM packages (not tracked by Git).
+├── src/                       # Contains all backend source code.
+│   ├── config/                # Stores backend configuration files.
+│   ├── controllers/           # Contains controllers, which are functions that handle logic for application routes.
+│   ├── middlewares/           # Contains application middleware. Middleware are functions that handle requests in the HTTP request pipeline.
+│   ├── migrations/            # Stores migration files used to evolve the database schema over time.
+│   ├── models/                # Contains data models. These models are classes that represent data from the database.
+│   ├── routes/                # Stores files that define application routes.
+│   ├── seeders/               # Contains data seeding files, which populate the database with initial data for testing or setup.
+│   ├── services/              # Contains business logic of the application.
+│   ├── utils/                 # Contains reusable utility functions.
+│   ├── server.js              # Configures and starts the application server.
+├── .babelrc                   # Configuration for Babel.
+├── .gitignore                 # Specifies intentionally untracked files to ignore by Git.
+├── .sequelizerc               # Configuration for Sequelize ORM.
+├── package-lock.json          # Records exact versions of all installed NPM packages.
+├── package.json               # Node.js project configuration, including dependencies and scripts.
+├── README.md                  # Provides documentation for the project, installation, and usage instructions.
+
+docs/
+├── gifs/                      # GIF files for documentation.
+├── videos/                    # Video files for documentation.
+
+frontend/
+├── public/                    # Public assets folder.
+│   ├── fonts/                 # Font files.
+│   ├── icons/                 # Icon files.
+│   ├── images/                # Images used in the frontend.
+│   ├── scripts/               # JavaScript files.
+│   ├── styles/                # CSS files.
+├── src/                       # Source code for the frontend.
+│   ├── pages/                 # React components for full pages.
+│   ├── partials/              # React components for parts of pages.
+├── .gitignore                 # Specifies files to be ignored by Git.
+├── README.md                  # Documentation for the frontend part of the project.
+```
 
 ---
