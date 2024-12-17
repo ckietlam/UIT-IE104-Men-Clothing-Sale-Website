@@ -1,158 +1,138 @@
-# IE104-NHOM6
+# Fashion E-commerce Website Project
 
-# **Quy Tắc Làm Việc Cho Dự Án**
+## Key Features
 
-## **Mục tiêu**
-Dự án được thực hiện bởi nhiều thành viên, do đó để đảm bảo sự phối hợp hiệu quả và tránh xung đột code, tất cả các thành viên cần tuân thủ các quy tắc sau.
+### Homepage
+- Visually displays the latest products, featured collections, and attractive promotions.
+- Large banner with eye-catching product images and a **"Buy Now"** button for easy access to featured items.
+- "New Arrivals" and "Collections" sections are organized to help users quickly find suitable products.
+![Homescreen](docs/Homescreen.gif)
+
+### Registration/Login
+- Login grants Admins and Customers access to their accounts.
+- **Interface Features:**
+  - Login form with fields for **Username/Email** and **Password**.
+  - **"Forgot Password"** link for account recovery (send OTP via registered Email)
+- **Workflow:**
+  1. User inputs credentials.
+  2. Verified credentials redirect:
+     - Admins to the admin panel.
+     - Customers to the homepage (Every registered account will automatically be assigned the "Customer" role)
+     - Invalid details show "Invalid login credentials."
+- **Security:** Encrypted passwords using Node's Bcrypt.
+![Login](docs/Login.gif)
+ 
+
+### Product Categories and Searching 
+- Clear classification into categories like Shirts, Pants, Footwear, and Accessories.
+- Horizontal navigation bar along with the **Search bar** makes accessing and searching for products intuitive.
+  - Quickly search for products by name.
+  - Search bar supports filtering results based on user input.
+![Products](docs/Products.gif)
+
+### Product Detail Page
+- Displays detailed product information: high-quality images, name, price, description, size, and user reviews.
+- User can add the item to cart via **"Add to Cart"** Button. If user is not logged in then the button will redirect to the **Login** page 
+![Product-View](docs/Product-View.gif)
+
+### Shopping Cart
+- Allows users to add, adjust quantity, remove items, and view the total price.
+- Pop-up displays detailed information about items in the cart for quick review.
+![Shopping-cart](docs/Shopping-cart.gif)
+
+### Checkout
+- Simplified, fast, and secure checkout process.
+- Supports multiple payment methods, including cash and ZaloPay.
+- Sends a confirmation email with order details after successful payment.
+![Purchasing](docs/Purchasing.gif)
+
+### Product and Order Management (Admin)
+- Admin can add, edit, delete products, and update order statuses.
+- Efficient system control through an intuitive interface.
+- **Admin dashboard** displays the number of delivered orders, total revenue, customer accounts, and products in the database.
+![Admin](docs/Admin.gif)
+
+### Logic Testing
+- Unauthenticated or "Customer" accounts are redirected to a 404 page when attempting to access "Admin" pages.
+- "Add to Cart" and "Shopping Bag" buttons redirect unauthenticated users to the login page.
+![Testing](docs/Testing.gif)
+- Recovering an account requires an email for OTP; invalid emails show an alert.
+- After completing an order, the Shopping Bag is automatically cleared of previous items.
+![Testing2](docs/Testing2.gif)
+
+### A Step-by-Step Guide to Purchasing a Product 
+https://github.com/user-attachments/assets/b75f80ce-28e8-499a-8883-73d82ba11216
+
+
+---
+## Technologies Used
+
+### Frontend
+- **HTML, CSS, JavaScript**: Build a user-friendly, cross-device compatible interface.
+- **EJS (Embedded JavaScript)**: Create dynamic web pages and integrate backend data into the frontend.
+
+### Backend
+- **Node.js**: Develop a flexible and high-performance server.
+- **Express.js**: Framework for building APIs and handling HTTP requests.
+
+### Additional Libraries and Tools
+- **Axios**: HTTP client for API calls.
+- **Bcrypt/Bcryptjs**: Password hashing for security.
+- **Body-Parser**: Parse incoming request bodies.
+- **Cookie-Parser**: Handle cookies.
+- **CORS**: Enable Cross-Origin Resource Sharing.
+- **Crypto-JS**: Data encryption.
+- **Dotenv**: Manage environment variables.
+- **Express-Session**: Manage user sessions.
+- **Moment.js**: Format and manipulate dates.
+- **Nodemailer**: Send emails (e.g., OTP for password reset or Confirmation after a purchase).
+- **OTP-Generator**: Generate one-time passwords.
+
+### Database
+- **MySQL**: Store product, user, order, and related information. ORM tools like **Sequelize** was used
+
+### Project Management Tools
+- **Google Drive**: Document storage and sharing.
+- **Microsoft Planner**: Task assignment and progress tracking.
+- **Microsoft Teams**: Online communication and meetings.
+- **Git/GitHub**: Source code management.
+
+### Design and Development Tools
+- **Figma**: Design website interfaces.
+- **VSCode (Visual Studio Code)**: Code editor.
+- **XAMPP**: Development and testing environment setup.
 
 ---
 
-## **Cách Sử Dụng và Quyền Hạn**
-### **1. Cách sử dụng Git và các nhánh**
-- **Nhánh chính (`main`)**:
-  - Đây là nhánh ổn định nhất, chỉ chứa code đã hoàn thiện và qua kiểm duyệt.
-  - **Không ai được phép push trực tiếp lên nhánh `main`.**
+## Installation Guide
 
-- **Nhánh phát triển (`develop`)**:
-  - Chỉ dành cho các tính năng liên quan đến Frontend hoặc Backend.
-  - Code từ các nhánh cá nhân chỉ được merge vào đây sau khi có sự đồng ý của **Lead** và **Reviewer**.
+### 1. Set up the Development Environment
+- Install **Node.js** and **npm (Node Package Manager)**.
+- Install **MySQL** and **XAMPP** to manage the database.
 
-- **Nhánh cá nhân (`feature/<task-name>` hoặc `fix/<task-name>`):**
-  - Mỗi thành viên **bắt buộc** làm việc trên nhánh riêng.
-  - Tên nhánh phải rõ ràng, ví dụ:
-    ```plaintext
-    feature/login-page
-    fix/cart-bug
-    ```
-  - Có thể push code lên nhánh cá nhân bao nhiêu lần tùy ý.
+### 2. Download the Source Code
+- Clone the source code from the GitHub repository to your local machine.
 
-### **2. Luật Merge Code**
-- **Pull Request (PR)**:
-  - Khi muốn merge code từ nhánh cá nhân vào folder `frontend`, `backend` ở **develop**, các thành viên **bắt buộc phải tạo Pull Request**.
-  - Pull Request cần bao gồm:
-    - **Mô tả thay đổi** rõ ràng (tính năng mới, bug fix,...).
-    - **Danh sách file thay đổi**.
-    - Gắn tag người review (Lead và Reviewer).
-
-- **Quy trình duyệt Pull Request**:
-  - Pull Request chỉ được merge sau khi có ít nhất **2 phiếu đồng ý (YES)** từ:
-    1. **Leader: Chung Kiết Lâm**
-    2. **Reviewer: Bùi Quốc Lâm**
-
-
-  **Cấm tuyệt đối**  
-```bash
-   ❌ Không sử dụng lệnh `git push --force` hoặc `git push -f` ❌
-
-   ⚠️ Điều này có thể gây mất code hoặc làm hỏng lịch sử commit ⚠️
-```
-
----
-
-## **Quyền Hạn Của Các Thành Viên**
-| **Thành Viên**   | **Quyền Hạn**                                                |
-|-------------------|-------------------------------------------------------------|
-| **Chung Kiết Lâm**         | Quản lý toàn bộ dự án, review tất cả Pull Request, phụ trách chính source Frontend.          |
-| **Bùi Quốc Lâm** | Hỗ trợ review code, đảm bảo chất lượng trước khi merge, phụ trách chính source Backend.  |
-| **Châu Trần Vỹ Linh** | Làm việc trên nhánh Frontend riêng, push code vào nhánh riêng. |
-| **Vũ Quang Huy** | Làm việc trên nhánh Backend riêng, push code vào nhánh riêng. |
-| **Phan Tuấn Minh** | Làm việc trên nhánh Backend riêng, push code vào nhánh riêng. |
-
----
-
-## **Hướng Dẫn Làm Việc**
-### **1. Bắt đầu công việc**
-- **Tạo nhánh cá nhân** từ nhánh phát triển (`develop`):
+### 3. Install Dependencies
+- Open a terminal or command prompt.
+- Navigate to the project directory and run:
   ```bash
-  Step 1: Mở nhánh phát triển
-  git checkout develop
-
-  Step 2:
-  Tạo nhánh cá nhân (nếu chưa có): git checkout -b feature/<task-name>
-  Nếu đã có nhánh cá nhân: git checkout <address>
+  npm install
   ```
-### **2. Commit code**
-- Sau khi thực hiện thay đổi, lưu lại các thay đổi bằng cách commit.
-- Quy tắc đặt tên commit:
-  - **Cú pháp**: `[Task Type] Mô tả ngắn gọn`
-    - `[Feature]` - Thêm tính năng mới.
-    - `[Fix]` - Sửa lỗi.
-    - `[Update]` - Cập nhật hoặc cải tiến code.
-    - `[Refactor]` - Tái cấu trúc code.
-  
-  **Ví dụ**:
+
+### 4. Configure the Database
+- Create a MySQL database ( **shopping_web_db** ).
+- Configure connection details in the project’s configuration file.
+
+### 5. Run the Application
+- Start the server using:
   ```bash
-  git commit -m "[Feature] Thêm giao diện trang đăng nhập"
-  git commit -m "[Fix] Sửa lỗi hiển thị trên trang sản phẩm"
+  npm start
   ```
-  
-  ### **3. Push code lên nhánh cá nhân**
-- Push thay đổi từ nhánh cá nhân lên GitHub:
-  ```bash
-  git push origin feature/<task-name>
-  ```
-
-### **4. Tạo Pull Request (PR)**
-- Khi hoàn thành công việc trên nhánh cá nhân, tạo Pull Request để yêu cầu merge vào nhánh phát triển **develop**.
-
-#### **Cách thực hiện:**
-1. Truy cập tab **Pull Requests** trên GitHub.
-2. Nhấn nút **New Pull Request**.
-3. Chọn nhánh **base** là nhánh đích `develop`.
-4. Chọn nhánh **compare** là nhánh cá nhân của bạn (`feature/<task-name>`).
-5. Điền thông tin Pull Request:
-   - **Tiêu đề (Title)**:
-     - Quy tắc: `[Task Type] Mô tả ngắn gọn`.
-     - Ví dụ: `[Feature] Thêm giao diện trang giỏ hàng`.
-   - **Mô tả (Description)**:
-     - Tóm tắt những thay đổi đã thực hiện.
-     - Liệt kê các file thay đổi hoặc logic chính.
-     - Đề cập nếu cần sự hỗ trợ hoặc chú ý đặc biệt.
-
-6. Thêm người review:
-   - Gắn tag **Lead** và **Reviewer (bạn B)** vào phần reviewer.
-   - Ví dụ: `@LeadUsername`, `@ReviewerUsername`.
-
-7. Nhấn **Create Pull Request** để gửi yêu cầu.
----
-
-#### **Quy trình duyệt Pull Request:**
-- Pull Request chỉ được merge nếu:
-  1. Có ít nhất **2 phiếu đồng ý (YES)** từ Lead và Reviewer.
-  2. Không còn xung đột (conflict) với nhánh đích.
-  3. Các quy tắc commit và code review được đảm bảo.
-- Nếu Pull Request bị yêu cầu chỉnh sửa:
-  - Thực hiện các thay đổi cần thiết trên nhánh cá nhân.
-  - Commit và push lại lên GitHub:
-    ```bash
-    git add .
-    git commit -m "[Fix] Chỉnh sửa PR theo phản hồi #123"
-    git push origin feature/<task-name>
-    ```
+- Access the website via a web browser( **localhost:8000** )
 
 ---
 
-### **5. Đợi duyệt và phản hồi**
-- Sau khi Pull Request được chấp thuận:
-  - **Reviewer** hoặc **Lead** sẽ tiến hành merge Pull Request.
-  - Nhánh cá nhân có thể được xóa sau khi merge nếu không cần thiết nữa:
-    ```bash
-    git branch -d feature/<task-name>
-    ```
-- Trước khi bắt đầu nhiệm vụ mới, đảm bảo đồng bộ code mới nhất từ nhánh phát triển:
-  ```bash
-  git pull origin develop
-  ```
----
-
-### **Liên Hệ**
-- Nếu gặp bất kỳ vấn đề nào trong quá trình làm việc, hãy liên hệ **Leader** thông qua nhóm **Zalo** để được hỗ trợ kịp thời.
-- **Leader** chịu trách nhiệm giải đáp các thắc mắc về:
-  - Quy trình làm việc (workflow Git).
-  - Quyền hạn và trách nhiệm của từng thành viên.
-  - Xử lý xung đột (conflict) khi merge code.
-- Vui lòng tuân thủ các nguyên tắc đã đặt ra để đảm bảo hiệu quả làm việc của toàn nhóm.
+## Directory Structure
 
 ---
-
-
