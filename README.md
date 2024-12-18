@@ -6,7 +6,7 @@
 - Visually displays the latest products, featured collections, and attractive promotions.
 - Large banner with eye-catching product images and a **"Buy Now"** button for easy access to featured items.
 - "New Arrivals" and "Collections" sections are organized to help users quickly find suitable products.
-![Homescreen](docs/Homescreen.gif)
+![Homescreen](docs/gifs/Homescreen.gif)
 
 ### Registration/Login
 - Login grants Admins and Customers access to their accounts.
@@ -20,7 +20,7 @@
      - Customers to the homepage (Every registered account will automatically be assigned the "Customer" role)
      - Invalid details show "Invalid login credentials."
 - **Security:** Encrypted passwords using Node's Bcrypt.
-![Login](docs/Login.gif)
+![Login](docs/gifs/Login.gif)
  
 
 ### Product Categories and Searching 
@@ -28,37 +28,37 @@
 - Horizontal navigation bar along with the **Search bar** makes accessing and searching for products intuitive.
   - Quickly search for products by name.
   - Search bar supports filtering results based on user input.
-![Products](docs/Products.gif)
+![Products](docs/gifs/Products.gif)
 
 ### Product Detail Page
 - Displays detailed product information: high-quality images, name, price, description, size, and user reviews.
 - User can add the item to cart via **"Add to Cart"** Button. If user is not logged in then the button will redirect to the **Login** page 
-![Product-View](docs/Product-View.gif)
+![Product-View](docs/gifs/Product-View.gif)
 
 ### Shopping Cart
 - Allows users to add, adjust quantity, remove items, and view the total price.
 - Pop-up displays detailed information about items in the cart for quick review.
-![Shopping-cart](docs/Shopping-cart.gif)
+![Shopping-cart](docs/gifs/Shopping-cart.gif)
 
 ### Checkout
 - Simplified, fast, and secure checkout process.
 - Supports multiple payment methods, including cash and ZaloPay.
 - Sends a confirmation email with order details after successful payment.
-![Purchasing](docs/Purchasing.gif)
+![Purchasing](docs/gifs/Purchasing.gif)
 
 ### Product and Order Management (Admin)
 - Admin can add, edit, delete products, and update order statuses.
 - Efficient system control through an intuitive interface.
 - **Admin dashboard** displays the number of delivered orders, total revenue, customer accounts, and products in the database.
-![Admin](docs/Admin.gif)
+![Admin](docs/gifs/Admin.gif)
 
 ### Logic Testing
 - Unauthenticated or "Customer" accounts are redirected to a 404 page when attempting to access "Admin" pages.
 - "Add to Cart" and "Shopping Bag" buttons redirect unauthenticated users to the login page.
-![Testing](docs/Testing.gif)
+![Testing](docs/gifs/Testing.gif)
 - Recovering an account requires an email for OTP; invalid emails show an alert.
 - After completing an order, the Shopping Bag is automatically cleared of previous items.
-![Testing2](docs/Testing2.gif)
+![Testing2](docs/gifs/Testing2.gif)
 
 ### A Step-by-Step Guide to Purchasing a Product 
 https://github.com/user-attachments/assets/b75f80ce-28e8-499a-8883-73d82ba11216
